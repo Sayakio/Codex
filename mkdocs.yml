@@ -1,0 +1,66 @@
+site_name: Sayaki's Codex
+site_description: Personal Study Library
+site_author: Sayaki
+
+theme:
+  name: material
+  features:
+    - navigation.tabs 
+    - navigation.top  
+    - search.suggest  
+    - content.code.copy
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: black
+      accent: indigo
+      toggle:
+        icon: material/weather-night
+        name: Switch to system preference
+  favicon: 'favicon.svg'
+  icon:
+    logo: 'material/vpn'
+  font:
+    text: 'Fira Sans'
+    code: 'Fira Mono'
+
+nav:
+  - 首页: index.md
+  - 读书笔记:
+    - Calculus of Variations: 
+      - Books/Calculus of Variations/Chapter I Elements of the theory.md
+
+plugins:
+- toggle-sidebar:
+    theme: material
+    toggle_button: all
+
+markdown_extensions:
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - admonition
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.details
+  - pymdownx.superfences:
+      custom_fences:
+        - name: math
+          class: arithmatex
+          format: !!python/object/apply:pymdownx.arithmatex.arithmatex_fenced_format {kwds: {mode:generic}}
+  - pymdownx.arithmatex:
+      generic: true
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+repo_url: https://github.com/Sayaki-qwq/Codex
+repo_name: Sayaki/Codex

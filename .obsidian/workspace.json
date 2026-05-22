@@ -4,16 +4,16 @@
     "type": "split",
     "children": [
       {
-        "id": "7379e28a054e7a34",
+        "id": "6696092ec1078f46",
         "type": "tabs",
         "children": [
           {
-            "id": "d292ffa2fb7c940e",
+            "id": "07702bdf5732ff2c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Books/Calculus of Variations/Chapter I Elements of the theory.md",
+                "file": "docs/Books/Calculus of Variations/Chapter I Elements of the theory.md",
                 "mode": "source",
                 "source": false
               },
@@ -78,7 +78,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 217.5
+    "width": 200
   },
   "right": {
     "id": "dd8776b6bb1e1111",
@@ -193,19 +193,24 @@
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "d292ffa2fb7c940e",
+  "active": "07702bdf5732ff2c",
   "lastOpenFiles": [
+    "$null",
+    "docs/favicon.svg",
+    "docs/vpn.svg",
+    "docs/javascripts/mathjax.js",
+    "docs/javascripts/新建 文本文档.txt",
+    "docs/javascripts",
+    "docs/新建文件夹",
+    "新建文件夹",
+    "docs/index.md",
+    "未命名.md",
+    "docs/新建 文本文档.txt",
+    "mkdocs.yml",
+    "新建 文本文档.txt",
     "Books/Computer/Programming Massively Parallel Processors.pdf",
     "Books/Pattern Recognition and Machine Learning",
-    "Notes",
-    "System",
-    "Books",
     "Books/Calculus of Variations/Chapter I Elements of the theory.md",
-    "Books/Computer/COMPUTER ARCHICTECTURE.pdf",
-    "未命名.base",
-    "Books/Calculus of Variations",
-    "Book/Quant",
-    "欢迎.md",
-    "Book/Logic"
+    "欢迎.md"
   ]
 }
