@@ -35,7 +35,7 @@ nav:
   - 首页: index.md
   - 读书笔记:
     - Calculus of Variations: 
-      - Books/Calculus of Variations/Chapter I Elements of the theory.md
+      - Chapter I Elements of the theory: books/calculus-of-variations/chapter1-elements-of-the-theory.md
 
 plugins:
 - toggle-sidebar:
