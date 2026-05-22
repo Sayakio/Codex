@@ -178,7 +178,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 277.5
+    "width": 291.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -193,7 +193,7 @@
       "obsidian42-brat:BRAT": false
     }
   },
-  "active": "07702bdf5732ff2c",
+  "active": "9017f391cc88795a",
   "lastOpenFiles": [
     "$null",
     "docs/favicon.svg",
