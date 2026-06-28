@@ -1,0 +1,8 @@
+{
+  "cssTheme": "Things",
+  "baseFontSize": 22,
+  "textFontFamily": "",
+  "enabledCssSnippets": [
+    "callout"
+  ]
+}
