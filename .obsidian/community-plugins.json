@@ -1,10 +1,10 @@
 [
+  "math-in-callout",
   "dataview",
+  "editing-toolbar",
   "obsidian-git",
-  "obsidian-style-settings",
-  "obsidian42-brat",
   "mathlinks",
   "quick-preview",
-  "math-in-callout",
-  "editing-toolbar"
+  "obsidian-style-settings",
+  "obsidian-latex-suite"
 ]
