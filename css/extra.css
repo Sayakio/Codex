@@ -1,0 +1,5 @@
+/* 增大所有提示框（note、warning 等）内的字体 */
+.md-typeset .admonition,
+.md-typeset details {
+  font-size: 0.8rem;   /* 原默认约 0.64rem，你可以按需要调整 */
+}

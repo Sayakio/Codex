@@ -1,0 +1,1529 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal Study Library">
+      
+      
+        <meta name="author" content="Sayaki">
+      
+      
+        <link rel="canonical" href="https://sayakio.github.io/Codex/books/pattern-recognition-and-machine-learning/chapter1-introduction/">
+      
+      
+        <link rel="prev" href="../../calculus-of-variations/chapter1-elements-of-the-theory/">
+      
+      
+        <link rel="next" href="../chapter2-probability-distribution/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>Chapter I Introduction - Sayaki's Codex</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  <script src="../../../assets/javascripts/toggle-sidebar.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-polynomial-curve-fitting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Sayaki&#39;s Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"/></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sayaki's Codex
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter I Introduction
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal"  aria-label="Switch to system preference"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sayaki-qwq/Codex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sayaki/Codex
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  首页
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../calculus-of-variations/chapter1-elements-of-the-theory/" class="md-tabs__link">
+          
+  
+  
+  读书笔记
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Sayaki&#39;s Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"/></svg>
+
+    </a>
+    Sayaki's Codex
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sayaki-qwq/Codex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Sayaki/Codex
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    首页
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    读书笔记
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    读书笔记
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calculus of Variations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Calculus of Variations
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Elements of the theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pattern Recognition and Machine Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pattern Recognition and Machine Learning
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Introduction
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-polynomial-curve-fitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. POLYNOMIAL CURVE FITTING
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. POLYNOMIAL CURVE FITTING">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preliminary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preliminary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regularization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-probability-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PROBABILITY THEORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PROBABILITY THEORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bayesian-probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bayesian Probabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaussian-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaussian Distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curve-fitting-re-visited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curve Fitting Re-visited
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-decision-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DECISION THEORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DECISION THEORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimizing-misclassification-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimizing Misclassification Rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimizing-expected-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimizing Expected Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reject Option
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference &amp; Decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-information-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. INFORMATION THEORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. INFORMATION THEORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relative-entropy-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relative Entropy &amp; Mutual Information
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter2-probability-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter II Probability Distribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-polynomial-curve-fitting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. POLYNOMIAL CURVE FITTING
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. POLYNOMIAL CURVE FITTING">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#preliminary" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Preliminary
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#parameter" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Parameter
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#regularization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Regularization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-probability-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PROBABILITY THEORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PROBABILITY THEORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bayesian-probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Bayesian Probabilities
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gaussian-distribution" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gaussian Distribution
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curve-fitting-re-visited" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Curve Fitting Re-visited
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-decision-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. DECISION THEORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. DECISION THEORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#minimizing-misclassification-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimizing Misclassification Rate
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#minimizing-expected-loss" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Minimizing Expected Loss
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#reject-option" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Reject Option
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inference-decision" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inference &amp; Decision
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-information-theory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. INFORMATION THEORY
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. INFORMATION THEORY">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Introduction
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#relative-entropy-mutual-information" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Relative Entropy &amp; Mutual Information
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+  <h1>Chapter I Introduction</h1>
+
+<blockquote>
+<p>Although these might sound like daunting topics, they are in fact straightforward, and a clear understanding of them is essential if machine learning techniques are to be used to best effect in practical applications.</p>
+</blockquote>
+<h2 id="1-polynomial-curve-fitting">1. POLYNOMIAL CURVE FITTING<a class="headerlink" href="#1-polynomial-curve-fitting" title="Permanent link">&para;</a></h2>
+<h3 id="preliminary">Preliminary<a class="headerlink" href="#preliminary" title="Permanent link">&para;</a></h3>
+<p>假设给定训练集 <span class="arithmatex">\(S\)</span> 包含 <span class="arithmatex">\(N\)</span> 个观察点 <span class="arithmatex">\(\mathbf{X} \equiv (x_1, x_2, \cdots, x_N)^\mathrm{T}\)</span> 以及对应观察值 <span class="arithmatex">\(\mathbf{T} \equiv (t_1, t_2, \cdots, t_N)^\mathrm{T}\)</span> ．目标为对新的输入 <span class="arithmatex">\(\widehat{x}\)</span> 预测其对应值 <span class="arithmatex">\(\widehat{\,t\,}\)</span>．这里我们将其视为简单的曲线拟合问题．特别地，选取如下形式的多项式函数作为拟合目标：</p>
+<div class="arithmatex">\[
+y(x;\mathbf{w}) = w_0 + w_1 x + w_2 x^2 + \cdots + w_M x^M = \sum_{j=0}^M w_j x^j
+\]</div>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>如上 <span class="arithmatex">\(y(x;\mathbf{w})\)</span> 关于 <span class="arithmatex">\(x\)</span> 非线性，但是关于参数 <span class="arithmatex">\(\mathbf{w}\)</span> 线性，被称为 <strong>线性模型（Linear Model）</strong>．</p>
+</details>
+<h3 id="parameter">Parameter<a class="headerlink" href="#parameter" title="Permanent link">&para;</a></h3>
+<p>参数 <span class="arithmatex">\(\mathbf{w}\)</span> 的值可由最小化 <strong>误差函数（Error Function）</strong> 的方式确定．误差函数衡量了给定参数 <span class="arithmatex">\(\mathbf{w}\)</span> 时预测函数 <span class="arithmatex">\(y(x;\mathbf{w})\)</span> 和训练集数据的误差度，如均方误差：</p>
+<div class="arithmatex">\[
+E(\mathbf{w}) = \frac12 \sum_{n=1}^N\, [y(x_n;\mathbf{w}) - t_n]^2
+\]</div>
+<p>由 <span class="arithmatex">\(E(\mathbf{w})\)</span> 关于 <span class="arithmatex">\(\mathbf{w}\)</span> 的凸性，其有唯一的极小值点．记 <span class="arithmatex">\(\mathbf{w}^* = \operatorname{arg}\min_\mathbf{w} E(\mathbf{w})\)</span>，对应结果多项式为 <span class="arithmatex">\(y(x;\mathbf{w}^*)\)</span>．</p>
+<p>现在问题转为确定多项式的阶数 <span class="arithmatex">\(Ｍ\)</span>．下图为 <span class="arithmatex">\(M = 0,1,3,9\)</span> 时拟合结果多项式的对比图像（绿色为原曲线，红色为拟合曲线）．</p>
+<p><img alt="polynomial-M" src="../images/introduction1.png" /></p>
+<p>此外还可以进行一些定量分析．考虑测试集 <span class="arithmatex">\(T\)</span>，对于不同 <span class="arithmatex">\(M\)</span> 计算在 <span class="arithmatex">\(T\)</span> 上的 <strong>均方根误差（Root-mean-square，RMS）</strong>：</p>
+<div class="arithmatex">\[
+E_{\text{RMS}} = \sqrt{\frac{2 E(\mathbf{w}^*)}{N}}
+\]</div>
+<p>训练集和测试集上的均方根误差随 <span class="arithmatex">\(M\)</span> 分布图如下：</p>
+<p><img alt="E-RMS" src="../images/introduction2.png" /></p>
+<p>可以看到，<span class="arithmatex">\(M\)</span> 从 <span class="arithmatex">\(0\)</span> 开始增加时，结果多项式拟合效果持续上升．但 <span class="arithmatex">\(M = 9\)</span> 时，虽然训练集误差降低到 <span class="arithmatex">\(0\)</span>，但测试误差激增，产生 <strong>过拟合（Over-fitting）</strong> 现象．</p>
+<h3 id="regularization">Regularization<a class="headerlink" href="#regularization" title="Permanent link">&para;</a></h3>
+<p>如上的结果似乎存在一些矛盾：</p>
+<ol>
+<li>低阶多项式可视为高阶多项式的特殊情形，<span class="arithmatex">\(M=9\)</span> 的结果应该至少与 <span class="arithmatex">\(M=3\)</span> 相当．</li>
+<li>数据是从 <span class="arithmatex">\(\sin(2\pi x)\)</span> 函数中加噪生成的，其 <a href="https://en.wikipedia.org/wiki/Taylor_series">Taylor Expansion</a> 包括所有阶的项，拟合结果应该随 <span class="arithmatex">\(M\)</span> 增长而改善．</li>
+</ol>
+<p>我们从以下两个视角考察这个问题：</p>
+<p>首先是系数 <span class="arithmatex">\(\mathbf{w}^*\)</span> 随 <span class="arithmatex">\(M\)</span> 的量级变化．</p>
+<p><img alt="magnitude" src="../images/introduction3.png" /></p>
+<p>直观来说，具有较大阶数 <span class="arithmatex">\(M\)</span> 的复杂多项式越来越适应目标值上的随机噪声．</p>
+<p>其次是给定模型（<span class="arithmatex">\(M=9\)</span>）对不同量级数据集的拟合效果变化．</p>
+<p><img alt="diff-size" src="../images/introduction4.png" /></p>
+<p>数据集越大，就越能容得起对数据拟合一个更复杂的模型．</p>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>一个粗略的经验法则：数据点的数量不应少于模型中自适应参数数量的某个倍数（例如5或10）．</p>
+</details>
+<p>一个经常用来控制过拟合现象的技巧是引入 <strong>正则化（Regularization）</strong> 项．最简单的方式为添加系数的二阶和：</p>
+<div class="arithmatex">\[
+\widetilde{E}(\mathbf{w}) = \frac12 \sum_{n=1}^M\, [y(x_n;\mathbf{w}) - t_n]^2 + \frac{\lambda}{2} \Vert \mathbf{w} \Vert^2
+\]</div>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>值得注意一点，通常会省略正则化项中的系数 <span class="arithmatex">\(w_0\)</span>，因为包含该系数会导致结果依赖于目标变量的原点选择．或者，该系数配以独立的正则化系数．</p>
+</details>
+<p>如下图表展示了 <span class="arithmatex">\(M=9\)</span> 时，添加不同系数 <span class="arithmatex">\(\lambda\)</span> 的正则项后，拟合结果对比图，系数 <span class="arithmatex">\(\mathbf{w}\)</span> 量级对比表和 <span class="arithmatex">\(E_{\text{RMS}}\)</span> 变化趋势图：</p>
+<p><img alt="diff-lambda" src="../images/introduction5.png" />
+<img alt="lambda-magnitude" src="../images/introduction6.png" />
+<img alt="lambda-Erms" src="../images/introduction7.png" /></p>
+<h2 id="2-probability-theory">2. PROBABILITY THEORY<a class="headerlink" href="#2-probability-theory" title="Permanent link">&para;</a></h2>
+<p>概率论基本知识可参考 Wiki: <a href="https://en.wikipedia.org/wiki/Probability_theory">Probability Theory</a>，<a href="https://en.wikipedia.org/wiki/Expected_value">Expectation</a>，<a href="https://en.wikipedia.org/wiki/Covariance">Covariance</a>．</p>
+<h3 id="bayesian-probabilities">Bayesian Probabilities<a class="headerlink" href="#bayesian-probabilities" title="Permanent link">&para;</a></h3>
+<details class="note" open="open">
+<summary>The Rules of Probability</summary>
+<div class="arithmatex">\[
+\begin{align}
+\textbf{sum rule}\qquad &amp;\mathbb{P}(X) = \sum_Y \mathbb{P}(X,Y) \\
+\textbf{product rule}\qquad &amp;\mathbb{P}(X,Y) = \mathbb{P}(Y \vert X)\cdot \mathbb{P}(X)
+\end{align}
+\]</div>
+</details>
+<p>由以上的基本法则，可以推出如下条件概率之间的关系：</p>
+<details class="note" open="open">
+<summary>Bayes‘s Theorem</summary>
+<div class="arithmatex">\[
+\mathbb{P}(Y \vert X) = \frac{\mathbb{P}(X \vert Y) \cdot \mathbb{P}(Y)}{\mathbb{P}(X)} = \frac{\mathbb{P}(X \vert Y) \cdot \mathbb{P}(Y)}{\sum_Y \mathbb{P}(X \vert Y) \cdot \mathbb{P}(Y)}
+\]</div>
+</details>
+<p>若 <span class="arithmatex">\(X = \mathcal{D}\)</span> 为观测数据，<span class="arithmatex">\(Y=\mathbf{w}\)</span> 为模型参数，则：</p>
+<ul>
+<li><span class="arithmatex">\(p(\mathbf{w})\)</span> 称为 <span class="arithmatex">\(\mathbf{w}\)</span> 的 <strong>先验概率（Prior Probability）</strong>，因其是在观测前确定的概率；</li>
+<li><span class="arithmatex">\(p(\mathbf{w} \vert \mathcal{D})\)</span> 称为 <span class="arithmatex">\(\mathbf{w}\)</span> 的 <strong>后验概率（Posterior Probability）</strong>，因其是在观测数据后得到的概率；</li>
+<li><span class="arithmatex">\(p(\mathcal{D}\vert \mathbf{w})\)</span> 称为关于 <span class="arithmatex">\(\mathbf{w}\)</span> 的 <strong>似然函数（Likelihood Function）</strong>，代表了对于不同参数向量 <span class="arithmatex">\(\mathbf{w}\)</span> 观测数据出现的可能性．</li>
+</ul>
+<p>此时，Bayes' Theorem 可重新表述为：</p>
+<div class="arithmatex">\[
+\text{posterior} \propto \text{likelihood} \times \text{prior}
+\]</div>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>注意似然不是一个关于 <span class="arithmatex">\(\mathbf{w}\)</span> 的概率分布，因而只称为函数，其关于 <span class="arithmatex">\(\mathbf{w}\)</span> 的积分结果不一定为 <span class="arithmatex">\(1\)</span>．如上正比关系也是关于 <span class="arithmatex">\(\mathbf{w}\)</span> 而言．</p>
+</details>
+<p>在频率学派和贝叶斯学派中，似然 <span class="arithmatex">\(p(\mathcal{D}\vert \mathbf{w})\)</span> 都扮演着重要的角色，但具体使用方式截然不同：</p>
+<ul>
+<li>在频率学派中，<span class="arithmatex">\(\mathbf{w}\)</span> 被视为由某种估计器（如最大似然估计）确定的固定参数，并且误差棒由可能的数据集 <span class="arithmatex">\(\mathcal{D}\)</span> 的分布决定；</li>
+<li>在贝叶斯学派中，只有唯一的数据集 <span class="arithmatex">\(\mathcal{D}\)</span> （即观测到的那一个），并且参数 <span class="arithmatex">\(\mathbf{w}\)</span> 的不确定性由其分布 <span class="arithmatex">\(p(\mathbf{w})\)</span> 表示．</li>
+</ul>
+<h3 id="gaussian-distribution">Gaussian Distribution<a class="headerlink" href="#gaussian-distribution" title="Permanent link">&para;</a></h3>
+<details class="note" open="open">
+<summary>Gaussian Distribution</summary>
+<p>一维高斯分布：</p>
+<div class="arithmatex">\[
+\mathcal{N}(x\vert \mu, \sigma^2) = \frac{1}{(2\pi \sigma^2)^{1/2}} \exp\left\{ -\frac{1}{2\sigma^2}(x-\mu)^2 \right\}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mu\)</span> 为均值，<span class="arithmatex">\(\sigma\)</span> 为标准差，<span class="arithmatex">\(\beta=1/ \sigma^2\)</span> 为精度．计算有：</p>
+<div class="arithmatex">\[
+\mathbb{E}[x] = \mu, \quad \mathbb{E}[x^2] = \mu^2 + \sigma^2,\quad \operatorname{var}[x] = \mathbb{E}[x^2] - \mathbb{E}[x]^2 = \sigma^2
+\]</div>
+<p><span class="arithmatex">\(D\)</span> 维高斯分布：</p>
+<div class="arithmatex">\[
+\mathcal{N}(\mathbf{x}\vert \mathbf{\mu}, \mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \mathbf{\Sigma}\vert^{1/2}} \exp \left\{ -\frac12 (\mathbf{x}-\mu)^\mathrm{T} \mathbf{\Sigma}^{-1} (\mathbf{x}-\mu) \right\}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{\mu}\)</span> 为均值，<span class="arithmatex">\(\mathbf{\Sigma}\)</span> 为协方差</p>
+</details>
+<h3 id="curve-fitting-re-visited">Curve Fitting Re-visited<a class="headerlink" href="#curve-fitting-re-visited" title="Permanent link">&para;</a></h3>
+<p>重新考虑 <a href="#1-polynomial-curve-fitting">第一节</a> 中的曲线拟合问题．使用概率分布表达目标变量的不确定性，即对于输入 <span class="arithmatex">\(x\)</span>，假设其对应值 <span class="arithmatex">\(t \sim \mathcal{N}(y(x,\mathbf{w}),\beta^{-1})\)</span> ：</p>
+<div class="arithmatex">\[
+p(t\vert x,\mathbf{w},\beta) = \mathcal{N}(t\vert y(x,\mathbf{w}),\beta^{-1})
+\]</div>
+<p>现在使用训练集 <span class="arithmatex">\(S=(\mathbf{X},\mathbf{T})\)</span> 来决定参数 <span class="arithmatex">\(\mathbf{w}, \beta\)</span>．</p>
+<ul>
+<li>
+<p>频率学派 <strong>最大似然（Maximum Likelihood，ML）</strong> 估计．</p>
+<p>似然函数计算如下：</p>
+<div class="arithmatex">\[
+\begin{align}
+p(\mathbf{T}\vert \mathbf{X},\mathbf{w},\beta) &amp;= \prod_{n=1}^N p(t_n\vert x_n, \mathbf{w},\beta) = \prod_{n=1}^N \mathcal{N}(t_n\vert y(x_n,\mathbf{w}),\beta) \\
+-\ln p(\mathbf{T}\vert \mathbf{X},\mathbf{w},\beta) &amp;= \frac{\beta}{2}\sum_{n=1}^N [y(x_n,\mathbf{w})-t_n]^2 - \frac N2 \ln\beta + \frac N2\ln(2\pi)
+\end{align}
+\]</div>
+<p>最大化似然可得：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{w}_{\rm{ML}} &amp;= \arg \min_{\mathbf{w}}\, \frac12[y(x_n,\mathbf{w})-t_n]^2 \\
+\beta_{\mathrm{ML}}^{-1} &amp;= \frac1N \sum_{n=1}^N [y(x_n,\mathbf{w_{\mathrm{ML}}})-t_n]^2
+\end{align}
+\]</div>
+<p>即第一节中均方误差的形式实际为最大似然的结果．</p>
+</li>
+<li>
+<p>贝叶斯思想 <strong>最大后验（Maximum Posterior，MAP）</strong> 估计．</p>
+<p>引入参数 <span class="arithmatex">\(\mathbf{w}\)</span> 的先验分布：</p>
+<div class="arithmatex">\[
+p(\mathbf{w}\vert \alpha) = \mathcal{N}(\mathbf{w}\vert \mathbf{0},\alpha^{-1}\mathbf{I}) = \left(\frac{\alpha}{2\pi}\right)^{(M+1)/2} \exp\left\{ -\frac{\alpha}2 \mathbf{w}^{\mathrm{T}}\mathbf{w} \right\}
+\]</div>
+<p>由贝叶斯公式计算后验有：</p>
+<div class="arithmatex">\[
+\begin{align}
+p(\mathbf{w}\vert \mathbf{X},\mathbf{T},\alpha,\beta) &amp;\propto p(\mathbf{T}\vert \mathbf{X},\mathbf{w},\beta) p(\mathbf{w}\vert \alpha) \\
+-\ln p(\mathbf{w}\vert \mathbf{X},\mathbf{T},\alpha,\beta) = \frac{\beta}{2}\sum_{n=1}^N [y(x_n,&amp;\mathbf{w})-t_n]^2 + \frac{\alpha}2 \mathbf{w}^{\mathrm{T}}\mathbf{w}- \frac N2 \ln\beta + \text{Const}
+\end{align}
+\]</div>
+<p>最大化后验可得：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{w}_{\rm{MAP}} &amp;= \arg \min_{\mathbf{w}}\, \frac\beta2[y(x_n,\mathbf{w})-t_n]^2 + \frac\alpha2 \mathbf{w}^{\mathrm{T}}\mathbf{w} \\
+\beta_{\mathrm{MAP}}^{-1} &amp;= \frac1N \sum_{n=1}^N [y(x_n,\mathbf{w_{\mathrm{MAP}}})-t_n]^2
+\end{align}
+\]</div>
+<p>即第一节中加入正则项的均方误差的形式实际为最大后验的结果，其中 <span class="arithmatex">\(\lambda=\alpha/\beta\)</span>．</p>
+</li>
+<li>
+<p>完全贝叶斯方法</p>
+<p>如上方法仍停留在对 <span class="arithmatex">\(\mathbf{w}\)</span> 作点估计，下面处理中会对 <span class="arithmatex">\(\mathbf{w}\)</span> 取值作积分．这里假设参数 <span class="arithmatex">\(\alpha,\beta\)</span> 值已知，考虑 <span class="arithmatex">\(p(t\vert x,\mathbf{X},\mathbf{T})\)</span>，计算有：</p>
+<div class="arithmatex">\[
+p(t\vert x,\mathbf{X},\mathbf{T}) = \int p(t\vert x,\mathbf{w}) p(\mathbf{w}\vert \mathbf{X},\mathbf{T})\, \mathrm{d}\mathbf{w} = \mathcal{N}(t\vert m(x),s^{2}(x))
+\]</div>
+<p>均值和方差由如下式子给出：</p>
+<div class="arithmatex">\[
+\begin{align}
+m(x) &amp;= \beta \mathbf{\phi}(x)^\mathrm{T}\mathbf{S}\sum_{n=1}^N \mathbf{\phi}(x_{n})t_{n}\\
+s^{2}(x) &amp;= \beta^{-1} + \mathbf{\phi}(x)^\mathrm{T}\mathbf{S}\mathbf{\phi}(x) \\ \\
+\mathbf{S}^{-1} = \alpha \mathbf{I} + &amp;\beta \sum_{n=1}^N \mathbf{\phi}(x_{n})\mathbf{\phi}(x)^\mathrm{T}, \quad \mathbf{\phi}_{i}(x) = x^i
+\end{align}
+\]</div>
+<p>可以看到：</p>
+<ul>
+<li>均值和方差都是依赖于 <span class="arithmatex">\(x\)</span> 的；</li>
+<li>方差第一项 <span class="arithmatex">\(\beta^{-1}\)</span> 表示由目标变量上的噪声引起的预测值 <span class="arithmatex">\(t\)</span> 的不确定性，类似 <span class="arithmatex">\(\beta_{\text{ML}}^{-1}\)</span>．第二项源于 <span class="arithmatex">\(\mathbf{w}\)</span> 的不确定性，是贝叶斯处理的结果．</li>
+</ul>
+</li>
+</ul>
+<h2 id="3-decision-theory">3. DECISION THEORY<a class="headerlink" href="#3-decision-theory" title="Permanent link">&para;</a></h2>
+<p>概率论提供了数学框架，量化和处理不确定性．决策理论将会基于此给出不同情况下的最优决策．</p>
+<p>以分类任务为例，假设 <span class="arithmatex">\(\mathbf{x}\)</span> 为输入向量，<span class="arithmatex">\(t\)</span> 为输出向量，其可分类为 <span class="arithmatex">\(\mathcal{C}_{k}\)</span>．</p>
+<ul>
+<li><strong>推断（Inference）</strong> 任务包括决定 <span class="arithmatex">\(p(\mathbf{x},\mathcal{C_{k}})\)</span>；</li>
+<li><strong>决策（Decision）</strong> 任务包括在某种最优情况下根据 <span class="arithmatex">\(\mathbf{x}\)</span> 决定 <span class="arithmatex">\(t\)</span> 的类别 <span class="arithmatex">\(\mathcal{C}_{k}\)</span>．</li>
+</ul>
+<h3 id="minimizing-misclassification-rate">Minimizing Misclassification Rate<a class="headerlink" href="#minimizing-misclassification-rate" title="Permanent link">&para;</a></h3>
+<p>将输入空间分为 <strong>决策域（Decision Regions）</strong> <span class="arithmatex">\(\mathcal{R}_{k}\)</span> ，认为 <span class="arithmatex">\(\mathcal{R}_{k}\)</span> 中的点对应于类别 <span class="arithmatex">\(\mathcal{C}_{k}\)</span>．从而最小化如下误分类率：</p>
+<div class="arithmatex">\[
+\begin{align}
+p(\text{mistake}) &amp;= p(\mathbf{x} \in \mathcal{R}_{1},\mathcal{C}_{2} ) + p(\mathbf{x} \in \mathcal{R}_{2},\mathcal{C}_{1})  \\
+&amp;= \int_{\mathcal{R}_{1}} p(\mathbf{x},\mathcal{C}_{2})\, \mathrm{d}\mathbf{x}  + \int_{\mathcal{R}_{2}} p(\mathbf{x},\mathcal{C}_{1})\, \mathrm{d}\mathbf{x}
+\end{align} 
+\]</div>
+<p>多类别情况下可最大化如下正确率：</p>
+<div class="arithmatex">\[
+\begin{align}
+p(\text{correct}) &amp;= \sum_{k=1}^K p(\mathbf{x}\in \mathcal{R}_{k},\mathcal{C}_{k})  \\
+&amp;= \sum_{k=1}^K \int_{\mathcal{R}_{k}} p(\mathbf{x},\mathcal{C}_{k})\, \mathrm{d}\mathbf{x} \\
+&amp;= \sum_{k=1}^K \int_{\mathcal{R}_{k}} p(\mathcal{C}_{k}\vert \mathbf{x}) p(\mathbf{x})\, \mathrm{d}\mathbf{x}
+\end{align} 
+\]</div>
+<p>其中对于每一个 <span class="arithmatex">\(\mathbf{x}\)</span>，<span class="arithmatex">\(p(\mathbf{x})\)</span> 固定，只需将其归类为拥有最大后验 <span class="arithmatex">\(p(\mathcal{C}_{k}\vert \mathbf{x})\)</span> 的类别 <span class="arithmatex">\(\mathcal{C}_{k}\)</span>．</p>
+<h3 id="minimizing-expected-loss">Minimizing Expected Loss<a class="headerlink" href="#minimizing-expected-loss" title="Permanent link">&para;</a></h3>
+<p>实际情况中，每种误分类所带来的损失不一样．记 <span class="arithmatex">\(L_{k,j}\)</span> 为将类别 <span class="arithmatex">\(\mathcal{C}_{k}\)</span> 的点误分类为 <span class="arithmatex">\(\mathcal{C}_{j}\)</span> 的损失，最小化如下的损失函数：</p>
+<div class="arithmatex">\[
+\mathbb{E}[L] = \sum_{k} \sum_{j} \int_{\mathcal{R}_{j}} L_{k,j} p(\mathbf{x},\mathcal{C}_{k})\, \mathrm{d}\mathbf{x} = \sum_{k}\sum_{j} \int_{\mathcal{R}_{j}} L_{k,j}p(\mathcal{C}_{k}\vert \mathbf{x})p(\mathbf{x})\, \mathrm{d}\mathbf{x}
+\]</div>
+<p>同样，将每个 <span class="arithmatex">\(\mathbf{x}\)</span> 归类为拥有最小 <span class="arithmatex">\(\sum_{k}L_{k,j}p(\mathcal{C}_{k}\vert x)\)</span> 的类别 <span class="arithmatex">\(\mathcal{C}_{j}\)</span>．</p>
+<h3 id="reject-option">Reject Option<a class="headerlink" href="#reject-option" title="Permanent link">&para;</a></h3>
+<p>设定阈值 <span class="arithmatex">\(\theta\)</span>，对于最大后验 <span class="arithmatex">\(\max_{k} p(\mathcal{C}_{k}\vert \mathbf{x})\leq \theta\)</span> 的输入 <span class="arithmatex">\(\mathbf{x}\)</span> 进行人工检测．</p>
+<h3 id="inference-decision">Inference &amp; Decision<a class="headerlink" href="#inference-decision" title="Permanent link">&para;</a></h3>
+<p>实际中有如下的三种策略：</p>
+<ul>
+<li>
+<p>建模 <span class="arithmatex">\(p(\mathbf{x}\vert \mathcal{C}_{k})\)</span> 和 <span class="arithmatex">\(p(\mathcal{C}_{k})\)</span> 或等价地建模 <span class="arithmatex">\(p(\mathbf{x},\mathcal{C}_{k})\)</span> ，由贝叶斯定理得到后验 <span class="arithmatex">\(p(\mathcal{C}_{k}\vert \mathbf{x})\)</span> ，再进行决策．</p>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>如上显示或隐式建模了输入分布 <span class="arithmatex">\(p(\mathbf{x})\)</span> 的模型称为 <strong>生成模型（Generative Model）</strong>．因可以采样生成合成数据点．可用于异常检测等任务．</p>
+</details>
+</li>
+<li>
+<p>建模后验 <span class="arithmatex">\(p(\mathcal{C}_{k}\vert \mathbf{x})\)</span> ，再进行决策．</p>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>如上显示建模后验的模型称为 <strong>判别模型（Discriminative Model）</strong>．</p>
+</details>
+</li>
+<li>
+<p>建模判别函数 <span class="arithmatex">\(f(\cdot)\)</span>，直接将输入 <span class="arithmatex">\(\mathbf{x}\)</span>  映射到类别标签 <span class="arithmatex">\(\mathcal{C}_{k}\)</span>．</p>
+</li>
+</ul>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>显示或隐式建模后验 <span class="arithmatex">\(p(\mathcal{C}_{k}\vert \mathbf{x})\)</span> 有诸多好处，其一用处如下： 
+对于存在稀有样本的情况，训练集的构造需要平衡正常样本和稀有样本的比例．这会影响样本的先验，从而得到错误的后验．根据贝叶斯定理，后验正比于先验．因此可以将训练集得到的后验除以训练集先验再乘上实际先验，最后归一化得到正确后验．直接建模判别函数无法实现这一点．</p>
+</details>
+<h2 id="4-information-theory">4. INFORMATION THEORY<a class="headerlink" href="#4-information-theory" title="Permanent link">&para;</a></h2>
+<h3 id="introduction">Introduction<a class="headerlink" href="#introduction" title="Permanent link">&para;</a></h3>
+<p>对于离散随机变量 <span class="arithmatex">\(x \sim p\)</span>，定义 <span class="arithmatex">\(h(\cdot)\)</span> 为关于 <span class="arithmatex">\(p\)</span> 的单调函数，表示信息量．那么当 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 独立时，有：</p>
+<div class="arithmatex">\[
+\begin{align}
+h(p(x,y) = h(p(x)) + h(p(y)),\ p(x,y) = p(x)p(y)
+\end{align}
+\]</div>
+<p>可得：</p>
+<div class="arithmatex">\[
+h(x) = h(p(x)) = -\log_{2} p(x)
+\]</div>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>对数的底数选择是任意的．目前采用信息论中常用的以 <span class="arithmatex">\(2\)</span> 为底，此时其单位为 “比特（bits）”；后面采用以 <span class="arithmatex">\(e\)</span> 为底，此时其单位为 “奈特（nats）”．</p>
+</details>
+<p>其包含的平均信息量称为 <strong>熵（Entropy）</strong>，计算如下：</p>
+<div class="arithmatex">\[
+\mathrm{H}[x] = -\sum_{x}p(x)\log_{2}p(x)
+\]</div>
+<p>直观来说，分布平均的随机变量熵值大，分布集中在某些点的随机变量熵值小．</p>
+<p><img alt="distribution-entropy-relation" src="../images/introduction8.png" /></p>
+<p>下面将熵的概念推广到连续性随机变量 <span class="arithmatex">\(x \sim p \in C[x]\)</span> ：</p>
+<p>将实轴等距分割，每一段距离为 <span class="arithmatex">\(\Delta\)</span> ，<span class="arithmatex">\(x\)</span> 在 <span class="arithmatex">\([i\Delta,(i+1)\Delta]\)</span> 中的概率为：</p>
+<div class="arithmatex">\[
+\int_{i\Delta}^{(i+1)\Delta} p(x) \, \mathrm{d}x = p(x_{i})\Delta
+\]</div>
+<p>将其视为离散分布，对应熵为：</p>
+<div class="arithmatex">\[
+\mathrm{H}_{\Delta} = -\sum_{i} p(x_{i})\Delta \ln(p(x_{i})\Delta) = -\sum_{i} p(x_{i})\Delta\ln p(x_{i}) - \ln\Delta
+\]</div>
+<p>忽略第二项 <span class="arithmatex">\(\ln\Delta\)</span> ，令 <span class="arithmatex">\(\Delta\to 0\)</span>，则有：</p>
+<div class="arithmatex">\[
+\mathrm{H}[x] = \lim_{ \Delta \to 0 } \left\{ -\sum_{i}p(x_{i})\Delta \ln p(x_{i}) \right\} = -\int p(x)\ln p(x) \, \mathrm{d}x
+\]</div>
+<p>称之为 <strong>微分熵（Differential Entropy）</strong> ．</p>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>注意到微分熵和离散熵之间相差 <span class="arithmatex">\(\ln\Delta\)</span> ，这反映了精确指定一个连续变量需要大量比特．</p>
+</details>
+<p>由 <a href="https://en.wikipedia.org/wiki/Lagrange_multiplier">Lagrange 乘数法</a> 计算知，离散分布情况下，最大熵对应于均匀分布．下面推导连续分布情况下的最大熵分布：</p>
+<p>为保证最大值的良定性，对 <span class="arithmatex">\(p(x)\)</span> 做如下约束：</p>
+<div class="arithmatex">\[
+\begin{align}
+\int_{-\infty}^{\infty} p(x) \, \mathrm{d}x &amp;= 1 \\
+\int_{-\infty}^{\infty} xp(x) \, \mathrm{d}x &amp;= \mu \\
+\int_{-\infty}^{\infty} (x-\mu)^{2}p(x) \, \mathrm{d}x &amp;= \sigma^{2}
+\end{align}
+\]</div>
+<p>由 Lagrange 乘数法计算有：</p>
+<div class="arithmatex">\[
+p(x) = \frac{1}{(2\pi\sigma^{2})^{1/2}}\exp \left\{ -\frac{(x-\mu)^{2}}{2\sigma^{2}} \right\} 
+\]</div>
+<p>即连续分布情况下的最大熵对应于高斯分布，此时微分熵为：</p>
+<div class="arithmatex">\[
+\mathrm{H}[x] = \frac{1}{2}[1+\ln(2\pi\sigma^{2})]
+\]</div>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>由上式 <span class="arithmatex">\(\mathrm{H}[x]\)</span> 表达式也可以看出，分布越分散熵值越大．并且微分熵可以为负值，当 <span class="arithmatex">\(\sigma^{2} &lt; 1/(2\pi e)\)</span> 时有 <span class="arithmatex">\(\mathrm{H}[x] &lt; 0\)</span> ．</p>
+</details>
+<p>假设现在有联合分布 <span class="arithmatex">\(p(x,y)\)</span> ．若 <span class="arithmatex">\(x\)</span> 的值已知，则确定某一 <span class="arithmatex">\(y\)</span> 值所需的额外信息为 <span class="arithmatex">\(-\ln p(y\vert x)\)</span> ，从而确定 <span class="arithmatex">\(y\)</span> 所需的平均信息量为：</p>
+<div class="arithmatex">\[
+\mathrm{H}[y\vert x] = -\int \int p(x,y)\ln p(y\vert x)\, \mathrm{d}y\, \mathrm{d}x
+\]</div>
+<p>称之为给定 <span class="arithmatex">\(x\)</span> 下 <span class="arithmatex">\(y\)</span> 的 <strong>条件熵（Conditional Entropy）</strong>．由乘法法则，计算有：</p>
+<div class="arithmatex">\[
+\mathrm{H}[x,y] = \mathrm{H}[y\vert x] + \mathrm{H}[x]
+\]</div>
+<h3 id="relative-entropy-mutual-information">Relative Entropy &amp; Mutual Information<a class="headerlink" href="#relative-entropy-mutual-information" title="Permanent link">&para;</a></h3>
+<p>假设有未知分布 <span class="arithmatex">\(p(x)\)</span>，建模得到近似分布 <span class="arithmatex">\(q(x)\)</span>，则以 <span class="arithmatex">\(q(x)\)</span> 传递 <span class="arithmatex">\(x\)</span> 值所需的平均额外信息量为：</p>
+<div class="arithmatex">\[
+\begin{align}
+\text{KL}(p\Vert q) &amp;= -\int p(x)\ln q(x) \, \mathrm{d}x - \left[ -\int p(x)\ln p(x)\, \mathrm{d}x \right]  \\
+&amp;= -\int p(x)\ln \left[ \frac{q(x)}{p(x)} \right] \, \mathrm{d}x
+\end{align}
+\]</div>
+<p>称之为 <strong>相对熵（Relative Entropy）</strong> 或 <strong>KL 散度（Kullback-Leibler Divergence）</strong>．</p>
+<details class="note" open="open">
+<summary>Properties</summary>
+<p>KL 散度有如下两个重要性质：</p>
+<ul>
+<li>
+<p>非对称性</p>
+<div class="arithmatex">\[
+\text{KL}(p\Vert q) \not\equiv \text{KL}(q\Vert q)
+\]</div>
+</li>
+<li>
+<p>非负性</p>
+<p>利用 <a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality">Jensen 不等式</a>：对于凸函数 <span class="arithmatex">\(f\)</span>，</p>
+<div class="arithmatex">\[
+f(\mathbb{E}[x]) \leq \mathbb{E}[f(x)]
+\]</div>
+<p>取 <span class="arithmatex">\(f(x) = -\ln x\)</span>，</p>
+<div class="arithmatex">\[
+\text{KL}(p\Vert q) = -\int p(x)\ln \left[ \frac{q(x)}{p(x)} \right] \, \mathrm{d}x \geq -\ln \int q(x)\, \mathrm{d}x = 0
+\]</div>
+<p>因此，可以视 KL 散度为两个分布 <span class="arithmatex">\(p(x)\)</span> 和 <span class="arithmatex">\(q(x)\)</span> 之间不相似性的度量．</p>
+</li>
+</ul>
+</details>
+<p>若两个分布 <span class="arithmatex">\(p,q\)</span> 独立，则有 <span class="arithmatex">\(p(x,y) = p(x)p(y)\)</span> ．而当 <span class="arithmatex">\(p,q\)</span> 不独立时，可使用 KL 散度衡量两个分布之间的“独立度”：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathrm{I}[x,y] &amp;\equiv \text{KL}(p(x,y)\Vert p(x)p(y)) \\
+&amp;= -\iint p(x,y)\ln \left[ \frac{p(x)p(y)}{p(x,y)} \right] \, \mathrm{d}x \, \mathrm{d}y 
+\end{align}
+\]</div>
+<p>称之为 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 之间的 <strong>互信息（Mutual Information）</strong>．</p>
+<p>此外，有如下关系式：</p>
+<div class="arithmatex">\[
+\mathrm{I}[x,y] = \mathrm{H}[x] - \mathrm{H}[x\vert y] = \mathrm{H}[y] - \mathrm{H}[y\vert x]
+\]</div>
+<p>即互信息为在观测 <span class="arithmatex">\(y\)</span> 后 <span class="arithmatex">\(x\)</span> 信息的减少量．</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2026 Sayaki
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.top", "navigation.instant", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+    
+  </body>
+</html>
