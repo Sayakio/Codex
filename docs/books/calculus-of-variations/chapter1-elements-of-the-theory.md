@@ -36,7 +36,7 @@ $$
 1. 若 $\alpha(x) \in \mathscr{C}(a,b)$，且 $\forall h \in \mathscr{C}(a,b)$，$h(a)=h(b)=0$，有：
 
     $$
-    \int_a^b \alpha(x) h(x)\, dx = 0，
+    \int_a^b \alpha(x) h(x)\, dx = 0
     $$
 
     则 $\alpha(x) \equiv C,\ \forall x \in [a,b]$；
@@ -44,7 +44,7 @@ $$
 2. 若 $\alpha(x) \in \mathscr{C}(a,b)$，且 $\forall h \in \mathscr{D}_1(a,b)$，$h(a)=h(b)=0$，有：
 
 	$$
-	\int_a^b \alpha(x) h^\prime (x)\, dx = 0，
+	\int_a^b \alpha(x) h^\prime (x)\, dx = 0
 	$$
 
 	则 $\alpha(x) \equiv C,\ \forall x \in [a,b]$；
@@ -52,7 +52,7 @@ $$
 3. 若 $\alpha(x) \in \mathscr{C}(a,b)$，且 $\forall h \in \mathscr{D}_2(a,b)$，$h(a)=h(b)=0$，$h^\prime(a) = h^\prime(b) = 0$，有：
 
     $$
-    \int_a^b \alpha(x) h^{\prime\prime} (x)\, dx = 0，
+    \int_a^b \alpha(x) h^{\prime\prime} (x)\, dx = 0
     $$
 
     则 $\alpha(x) \equiv C_0 + C_1 x,\ \forall x \in [a,b]$；
@@ -60,7 +60,7 @@ $$
 4. 若 $\alpha(x), \beta(x) \in \mathscr{C}(a,b)$，且 $\forall h \in \mathscr{D}_1(a,b)$，$h(a)=h(b)=0$，有：
 
 	$$
-	\int_a^b [\alpha(x) h(x) + \beta(x)h^\prime(x)]\, dx = 0，
+	\int_a^b [\alpha(x) h(x) + \beta(x)h^\prime(x)]\, dx = 0
 	$$
 
 	则 $\exists\, \beta^\prime(x) = \alpha(x),\ \forall x \in [a,b]$．

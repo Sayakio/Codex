@@ -1,18 +1,28 @@
 site_name: Sayaki's Codex
 site_description: Personal Study Library
 site_author: Sayaki
+site_url: https://sayakio.github.io/Codex
+
+repo_url: https://github.com/Sayaki-qwq/Codex
+repo_name: Sayaki/Codex
+
+copyright: 'Copyright &copy; 2026 Sayaki'
 
 theme:
   name: material
   features:
     - navigation.tabs 
     - navigation.top  
+    - navigation.instant
     - search.suggest  
+    - search.highlight
+    - content.tab.link
+    - content.code.annotation
     - content.code.copy
   palette:
     - media: "(prefers-color-scheme: light)"
       scheme: default
-      primary: indigo
+      primary: white
       accent: indigo
       toggle:
         icon: material/weather-sunny
@@ -20,7 +30,7 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
-      accent: indigo
+      accent: teal
       toggle:
         icon: material/weather-night
         name: Switch to system preference
@@ -36,19 +46,25 @@ nav:
   - 读书笔记:
     - Calculus of Variations: 
       - Chapter I Elements of the theory: books/calculus-of-variations/chapter1-elements-of-the-theory.md
+    - Pattern Recognition and Machine Learning:
+      - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md  
 
 plugins:
-- toggle-sidebar:
-    theme: material
-    toggle_button: all
+  - toggle-sidebar:
+      theme: material
+      toggle_button: all
+  - search
 
 markdown_extensions:
-  - pymdownx.highlight:
-      anchor_linenums: true
+  - toc:
+      permalink: true
   - admonition
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.details
+  - pymdownx.mark
+  - pymdownx.highlight:
+      linenums: true
   - pymdownx.superfences:
       custom_fences:
         - name: math
@@ -62,5 +78,8 @@ extra_javascript:
   - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
-repo_url: https://github.com/Sayaki-qwq/Codex
-repo_name: Sayaki/Codex
+extra_css:
+  - css/extra.css
+
+extra:
+  copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> &copy; 2026 Sayaki'
