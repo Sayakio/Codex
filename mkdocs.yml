@@ -47,7 +47,8 @@ nav:
     - Calculus of Variations: 
       - Chapter I Elements of the theory: books/calculus-of-variations/chapter1-elements-of-the-theory.md
     - Pattern Recognition and Machine Learning:
-      - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md  
+      - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md 
+      - Chapter II Probability Distribution: books/pattern-recognition-and-machine-learning/chapter2-probability-distribution.md
 
 plugins:
   - toggle-sidebar:
