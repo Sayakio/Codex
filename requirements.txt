@@ -1,2 +1,4 @@
 mkdocs-material
 mkdocs-toggle-sidebar-plugin
+mkdocs-statistics-plugin
+mkdocs-git-revision-date-localized-plugin

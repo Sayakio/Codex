@@ -1,19 +1,20 @@
 site_name: Sayaki's Codex
 site_description: Personal Study Library
 site_author: Sayaki
-site_url: https://sayakio.github.io/Codex
+site_url: https://sayakio.github.io/Codex/
 
-repo_url: https://github.com/Sayaki-qwq/Codex
+repo_url: https://github.com/Sayakio/Codex
 repo_name: Sayaki/Codex
 
-copyright: 'Copyright &copy; 2026 Sayaki'
+copyright: 'Copyright &copy; 2026 <a href="https://github.com/Sayakio" target="_blank" rel="noopener">Sayaki</a>'
 
 theme:
   name: material
+  custom_dir: overrides
   features:
     - navigation.tabs 
+    - navigation.tracking
     - navigation.top  
-    - navigation.instant
     - search.suggest  
     - search.highlight
     - content.tab.link
@@ -50,20 +51,20 @@ nav:
       - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md 
       - Chapter II Probability Distribution: books/pattern-recognition-and-machine-learning/chapter2-probability-distribution.md
 
-plugins:
-  - toggle-sidebar:
-      theme: material
-      toggle_button: all
-  - search
-
 markdown_extensions:
+  - meta
+  - md_in_html
   - toc:
       permalink: true
+  - attr_list
   - admonition
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.details
   - pymdownx.mark
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       linenums: true
   - pymdownx.superfences:
@@ -74,13 +75,31 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
+plugins:
+  - toggle-sidebar:
+      theme: material
+      toggle_button: all
+  - search
+  - statistics:
+      page_check_metadata: stats
+      page_template: templates/statistics.html
+  - git-revision-date-localized:
+      enable_creation_date: true
+
 extra_javascript:
   - javascripts/mathjax.js
-  - https://unpkg.com/mathjax@3/es5/tex-mml-chtml.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - https://cn.vercount.one/js     
 
 extra_css:
   - css/extra.css
 
 extra:
-  copyright: '<a href="https://creativecommons.org/licenses/by-sa/4.0/deed.zh">CC BY-SA 4.0</a> &copy; 2026 Sayaki'
+  copyright:
+    author: Sayaki
+    year: 2026
+    license: CC BY-NC-SA 4.0
+    
+  analytics:
+    provider: google
+    property: G-2NVLQ4ZLS6

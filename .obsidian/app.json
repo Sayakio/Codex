@@ -1,4 +1,6 @@
 {
   "showInlineTitle": false,
-  "trashOption": "none"
+  "trashOption": "none",
+  "alwaysUpdateLinks": true,
+  "useMarkdownLinks": true
 }

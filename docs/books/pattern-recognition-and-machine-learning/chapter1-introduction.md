@@ -1,3 +1,7 @@
+---
+stats: "true"
+---
+
 > Although these might sound like daunting topics, they are in fact straightforward, and a clear understanding of them is essential if machine learning techniques are to be used to best effect in practical applications.
 ## 1. POLYNOMIAL CURVE FITTING
 ### Preliminary
@@ -130,10 +134,10 @@ $$
 	$D$ 维高斯分布：
 
 	$$
-	\mathcal{N}(\mathbf{x}\vert \mathbf{\mu}, \mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \mathbf{\Sigma}\vert^{1/2}} \exp \left\{ -\frac12 (\mathbf{x}-\mu)^\mathrm{T} \mathbf{\Sigma}^{-1} (\mathbf{x}-\mu) \right\}
+	\mathcal{N}(\mathbf{x}\vert \boldsymbol{\mu}, \mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \mathbf{\Sigma}\vert^{1/2}} \exp \left\{ -\frac12 (\mathbf{x}-\boldsymbol{\mu})^\mathrm{T} \mathbf{\Sigma}^{-1} (\mathbf{x}-\boldsymbol{\mu}) \right\}
 	$$
 
-	其中 $\mathbf{\mu}$ 为均值，$\mathbf{\Sigma}$ 为协方差
+	其中 $\boldsymbol{\mu}$ 为均值，$\mathbf{\Sigma}$ 为协方差
 
 
 ### Curve Fitting Re-visited

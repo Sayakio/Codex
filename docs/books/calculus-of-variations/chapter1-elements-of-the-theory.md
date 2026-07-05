@@ -1,3 +1,7 @@
+---
+stats: "true"
+---
+
 ## 1. Variational Problems
 
 1. Brachistochrone Problem [John Bernoulli, 1696](https://en.wikipedia.org/wiki/Brachistochrone_curve)（最速降线问题）
