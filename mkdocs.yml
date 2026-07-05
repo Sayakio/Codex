@@ -1,5 +1,5 @@
 site_name: Sayaki's Codex
-site_description: Personal Study Library
+site_description: Personal Learning Library
 site_author: Sayaki
 site_url: https://Sayakio.github.io/Codex/
 
@@ -87,6 +87,8 @@ plugins:
       page_template: templates/statistics.html
   - git-revision-date-localized:
       enable_creation_date: true
+      exclude:
+        - index.md
 
 extra_javascript:
   - javascripts/mathjax.js
