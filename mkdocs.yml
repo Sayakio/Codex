@@ -82,6 +82,8 @@ plugins:
       theme: material
       toggle_button: all
   - search
+  - glightbox:
+      width: 90%
   - statistics:
       page_check_metadata: stats
       page_template: templates/statistics.html

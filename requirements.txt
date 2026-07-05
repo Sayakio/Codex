@@ -1,4 +1,5 @@
 mkdocs-material
 mkdocs-toggle-sidebar-plugin
 mkdocs-statistics-plugin
+mkdocs-glightbox
 mkdocs-git-revision-date-localized-plugin
