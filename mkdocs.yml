@@ -44,18 +44,19 @@ theme:
     code: 'Fira Mono'
 
 nav:
-  - 首页: index.md
-  - 读书笔记:
+  - 首页 • 起点: index.md
+  - 书籍 • 印记:
     - books/index.md
     - Calculus of Variations: 
       - Chapter I Elements of the theory: books/calculus-of-variations/chapter1-elements-of-the-theory.md
     - Pattern Recognition and Machine Learning:
       - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md 
       - Chapter II Probability Distribution: books/pattern-recognition-and-machine-learning/chapter2-probability-distribution.md
-  - 论文笔记:
+  - 论文 • 洞见:
     - papers/index.md
     - papers/test1.md
     - papers/test2.md
+    - papers/test3.md
 
 markdown_extensions:
   - meta
@@ -82,9 +83,9 @@ markdown_extensions:
       generic: true
 
 plugins:
-  - toggle-sidebar:
-      theme: material
-      toggle_button: all
+  #- toggle-sidebar:
+  #   theme: material
+  #    toggle_button: all
   - search
   - glightbox:
       width: 90%

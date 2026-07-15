@@ -1,1 +1,1 @@
-{"nodes": [{"id": "index.md", "label": "index"}, {"id": "test1.md", "label": "test1"}, {"id": "test2.md", "label": "test2"}], "links": []}
+{"nodes": [{"id": "index.md", "label": "index"}, {"id": "test1.md", "label": "test1"}, {"id": "test2.md", "label": "test2"}, {"id": "test3.md", "label": "test3"}], "links": [{"source": "test1.md", "target": "test2.md"}, {"source": "test1.md", "target": "test3.md"}]}

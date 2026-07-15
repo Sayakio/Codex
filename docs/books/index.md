@@ -1,5 +1,5 @@
 ---
 icon: material/book
 ---
-# 读书笔记
+# 书籍 • 印记
 
