@@ -109,10 +109,18 @@ $$
 	  
 	$$
 	\begin{align}
-	\mathbb{E}_{\boldsymbol{\theta}}[\boldsymbol{\theta}] &= \mathbb{E}_{\mathcal{D}}[\mathbb{E}_{\boldsymbol{\theta}}\vert \mathcal{D}] \\
-	\operatorname{var}_{\boldsymbol{\theta}}[\boldsymbol{\theta}] &= \mathbb{E}_{\mathcal{D}}[\operatorname{var}_{\boldsymbol{\theta}}[\boldsymbol{\theta}]\vert \mathcal{D}] + \operatorname{var}_{\mathcal{D}}[\mathbb{E}_{\boldsymbol{\theta}}[\boldsymbol{\theta}\vert \mathcal{D}]]
+	\mathbb{E}_{\boldsymbol{\theta}}[\boldsymbol{\theta}] &= \mathbb{E}_{\mathcal{D}}[\mathbb{E}_{\boldsymbol{\theta}}[\boldsymbol{\theta}\vert \mathcal{D}]] \tag{1} \label{1}\\
+	\operatorname{var}_{\boldsymbol{\theta}}[\boldsymbol{\theta}] &= \mathbb{E}_{\mathcal{D}}[\operatorname{var}_{\boldsymbol{\theta}}[\boldsymbol{\theta}\vert \mathcal{D}]] + \operatorname{var}_{\mathcal{D}}[\mathbb{E}_{\boldsymbol{\theta}}[\boldsymbol{\theta}\vert \mathcal{D}]] \tag{2} \label{2}
 	\end{align}
-	$$ 
+	$$
+
+	$\eqref{1}$ 式表示：在数据分布上平均来看，后验均值等于先验均值；
+	
+	$\eqref{2}$ 式表示：在数据分布上平均来看，后验方差小于先验方差（不确定度降低）。并且后验均值方差越大（数据信息更多），后验方差就会越小（不确定度更低）。
+
+
+
+## 2. Multinomial Variables
 
 
 

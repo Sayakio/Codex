@@ -52,6 +52,10 @@ nav:
     - Pattern Recognition and Machine Learning:
       - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md 
       - Chapter II Probability Distribution: books/pattern-recognition-and-machine-learning/chapter2-probability-distribution.md
+  - 论文笔记:
+    - papers/index.md
+    - papers/test1.md
+    - papers/test2.md
 
 markdown_extensions:
   - meta
@@ -88,7 +92,6 @@ plugins:
       page_check_metadata: stats
       page_template: templates/statistics.html
   - git-revision-date-localized:
-      enable_creation_date: true
       exclude:
         - index.md
 
@@ -109,3 +112,6 @@ extra:
   analytics:
     provider: google
     property: G-2NVLQ4ZLS6
+
+hooks:
+  - hooks/build_papers_graph.py
