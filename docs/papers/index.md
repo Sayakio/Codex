@@ -15,7 +15,7 @@ icon: material/script-text-outline
   const DIM_OPACITY = 0.1;
   const INITIAL_ALPHA = 1;
   const INITIAL_CLUSTER_RADIUS = 28;
-  const [RADIUS_MIN, RADIUS_MAX] = [2, 8];
+  const [RADIUS_MIN, RADIUS_MAX] = [5, 9];
   const COLOR = {
     default: "var(--md-default-fg-color--light)",
     active: "var(--md-accent-fg-color)",
@@ -65,14 +65,14 @@ icon: material/script-text-outline
     nodeGroup.append("circle").attr("r", d => d.radius).attr("fill", COLOR.bg);
     const circle = nodeGroup.append("circle").attr("r", d => d.radius).attr("fill", COLOR.default);
     nodeGroup.append("text").text(d => d.label)
-      .attr("x", 0).attr("y", d => d.radius + 14).attr("text-anchor", "middle")
-      .attr("font-size", "13px").attr("fill", COLOR.text).style("pointer-events", "none");
+      .attr("x", 0).attr("y", d => d.radius + 18).attr("text-anchor", "middle")
+      .attr("font-size", "16px").attr("fill", COLOR.text).style("pointer-events", "none");
     function tick() {
       link.attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y);
       nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
     }
     const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(70).strength(0.6))
+      .force("link", d3.forceLink(links).id(d => d.id).distance(180).strength(0.8))
       .force("charge", d3.forceManyBody().strength(-220))
       .force("collide", d3.forceCollide(d => d.radius + 14))
       .force("x", d3.forceX(widthOf() / 2).strength(0.03))
