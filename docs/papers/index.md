@@ -15,7 +15,8 @@ icon: material/script-text-outline
   const DIM_OPACITY = 0.1;
   const INITIAL_ALPHA = 1;
   const INITIAL_CLUSTER_RADIUS = 28;
-  const [RADIUS_MIN, RADIUS_MAX] = [5, 9];
+  const [RADIUS_MIN, RADIUS_MAX] = [8, 10];
+  const RADIUS_GROWTH_EXPONENT = 3;
   const COLOR = {
     default: "var(--md-default-fg-color--light)",
     active: "var(--md-accent-fg-color)",
@@ -53,9 +54,13 @@ icon: material/script-text-outline
     const nodes = (raw.nodes || []).map(node => ({ ...node }));
     const links = (raw.links || []).map(link => ({ ...link }));
     if (!nodes.length) return showFallback("No papers graph data available.");
-    const radiusScale = d3.scaleSqrt().domain([0, nodes[0].degree || 1]).range([RADIUS_MIN, RADIUS_MAX]);
     const relatedById = new Map(nodes.map(node => [node.id, new Set([node.id, ...(node.neighbors || [])])]));
-    nodes.forEach(node => { node.radius = radiusScale(node.degree || 0); });
+    const maxDegree = nodes[0].degree || 1;
+    const maxLevel = Math.log2(Math.max(maxDegree, 2));
+    const radiusOf = degree => degree <= 1
+      ? RADIUS_MIN
+      : RADIUS_MIN + (RADIUS_MAX - RADIUS_MIN) * (Math.log2(degree) / maxLevel) ** RADIUS_GROWTH_EXPONENT;
+    nodes.forEach(node => { node.radius = radiusOf(node.degree || 0); });
     seedNodes(nodes, widthOf());
     const svg = d3.select(el).append("svg").attr("width", "100%").attr("height", "100%");
     const link = svg.append("g").selectAll("line").data(links).join("line")
@@ -65,16 +70,16 @@ icon: material/script-text-outline
     nodeGroup.append("circle").attr("r", d => d.radius).attr("fill", COLOR.bg);
     const circle = nodeGroup.append("circle").attr("r", d => d.radius).attr("fill", COLOR.default);
     nodeGroup.append("text").text(d => d.label)
-      .attr("x", 0).attr("y", d => d.radius + 18).attr("text-anchor", "middle")
+      .attr("x", 0).attr("y", d => d.radius + 20).attr("text-anchor", "middle")
       .attr("font-size", "16px").attr("fill", COLOR.text).style("pointer-events", "none");
     function tick() {
       link.attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y);
       nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
     }
     const simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(180).strength(0.8))
+      .force("link", d3.forceLink(links).id(d => d.id).distance(200).strength(0.8))
       .force("charge", d3.forceManyBody().strength(-220))
-      .force("collide", d3.forceCollide(d => d.radius + 14))
+      .force("collide", d3.forceCollide(d => d.radius + 40))
       .force("x", d3.forceX(widthOf() / 2).strength(0.03))
       .force("y", d3.forceY(CENTER_Y).strength(0.03))
       .on("tick", tick);

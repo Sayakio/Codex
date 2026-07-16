@@ -57,6 +57,7 @@ nav:
     - papers/test1.md
     - papers/test2.md
     - papers/test3.md
+    - papers/test4.md
 
 markdown_extensions:
   - meta
