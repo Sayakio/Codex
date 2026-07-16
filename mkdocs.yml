@@ -83,12 +83,12 @@ markdown_extensions:
       generic: true
 
 plugins:
-  #- toggle-sidebar:
-  #   theme: material
-  #    toggle_button: all
   - search
   - glightbox:
       width: 90%
+  - toggle-sidebar:
+      theme: material
+      toggle_button: all
   - statistics:
       page_check_metadata: stats
       page_template: templates/statistics.html
