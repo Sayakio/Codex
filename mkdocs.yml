@@ -54,6 +54,7 @@ nav:
       - Chapter II Probability Distribution: books/pattern-recognition-and-machine-learning/chapter2-probability-distribution.md
   - 论文 • 洞见:
     - papers/index.md
+    - NeuS: papers/neus.md
     - papers/test1.md
     - papers/test2.md
     - papers/test3.md
