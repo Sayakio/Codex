@@ -56,7 +56,7 @@ $$
 - NeRF 中的一种自然解为：
   
     $$
-    w(t) = T(t)\sigma(t)
+    w(t) = T(t)\sigma(t) \tag{$\ast$} \label{star}
     $$
   
     其中 $\sigma(t)$ 为 **体密度（Volume Density）**，$T(t)=\exp \left( -\int_{0}^{t} \sigma(u) \, du \right)$ 为 **累积透射率（Accumulated Transmittance）**．
@@ -66,10 +66,80 @@ $$
 - 一个简单的无偏构造为：
   
     $$
-    w(t) = \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(f(\mathbf{p}(u))) \, du }
+    w(t) = \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(f(\mathbf{p}(u))) \, du } \tag{$\ast\ast$} \label{star2}
     $$
   
     此解满足：无偏✓，遮挡感知✗．
+
+若将两者结合，即可同时满足无偏和遮挡感知。想法为从无偏构造出发，推导出类似 $\eqref{star}$ 式的形式。为此，仿照体密度 $\sigma(t)$ 定义不透明密度函数 $\rho(t)$ ，权重函数可记为：
+
+$$
+w(t) = T(t)\rho(t), \quad T(t) = \exp\left( -\int_{0}^{t}\rho(u)  \, du  \right) 
+$$
+
+先考虑最简单情形：曲面为一个距离相机无穷远的平面。此时 $\eqref{star2}$ 式满足两个约束，以此推导 $\rho(t)$ 形式。
+
+记 $f(\mathbf{p}(t^*))=0$ ，$\theta=\angle(\mathbf{v},\mathbf{n})$ ，则 SDF $f(\mathbf{p}(t))=-\vert\cos\theta \vert \cdot (t-t^*)$ ，计算有： 
+
+$$
+\begin{align}
+w(t) &= \lim_{ t^* \to +\infty } \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(f(\mathbf{p}(u))) \, du } \\
+&= \lim_{ t^* \to +\infty } \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(-\vert\cos\theta\vert(u-t^*)) \, du } \\
+&= \lim_{ t^* \to +\infty } \frac{\phi_{s}(f(\mathbf{p}(t)))}{\vert\cos\theta\vert^{-1}\int_{-\vert\cos\theta\vert t^*}^{+\infty} \phi_{s}(\hat{u}) \, d\hat{u} } \\
+&= \vert\cos\theta\vert \phi_{s}(f(\mathbf{p}(t))) \\
+&= -\frac{d\Phi_{s}}{dt}(f(\mathbf{p}(t))) 
+\end{align}
+$$
+
+另一方面，在体渲染框架下计算有：
+
+$$
+\begin{align}
+w(t) = T(t)\rho(t) = -\frac{dT}{dt}(t) 
+\end{align}
+$$
+
+两式结合有：
+
+$$
+\begin{align}
+T(t) &= \Phi_{s}(f(\mathbf{p}(t))) \\
+\rho(t) &= \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))}
+\end{align}
+$$
+
+如上为单平面相交情形。在多平面情况下需确保 $\rho$ 非负，从而做截断得到一般情形的不透明度密度函数 $\rho(t)$ ：
+
+$$
+\rho(t) = \max \left( \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))} ,0 \right) 
+$$
+
+### Training
+
+$$
+\mathcal{L} = \mathcal{L}_{color} + \lambda \mathcal{L}_{reg} + \beta \mathcal{L}_{mask}
+$$
+
+颜色损失定义为：
+
+$$
+\mathcal{L}_{color} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
+$$
+
+添加 Eikonal 项作为正则项：
+
+$$
+\mathcal{L}_{reg} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
+$$
+
+可选 mask 损失定义为：
+
+$$
+\mathcal{L}_{mask} = \operatorname{BCE}(M_{k},\hat{O}_{k})
+$$
+
+
+
 
 
 ## 3. EXPERIMENTS
