@@ -924,6 +924,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. EXPERIMENTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baselines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baselines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1194,6 +1244,56 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="3. EXPERIMENTS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#datasets" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Datasets
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#baselines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Baselines
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Comparison
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1314,27 +1414,68 @@ T(t) &amp;= \Phi_{s}(f(\mathbf{p}(t))) \\
 \rho(t) &amp;= \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))}
 \end{align}
 \]</div>
+<p>此时权重偏置对比图如下：</p>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-bias.svg" data-desc-position="bottom"><img alt="bias" src="../assets/neus-bias.svg"></a></p>
 <p>如上为单平面相交情形。在多平面情况下需确保 <span class="arithmatex">\(\rho\)</span> 非负，从而做截断得到一般情形的不透明度密度函数 <span class="arithmatex">\(\rho(t)\)</span> ：</p>
 <div class="arithmatex">\[
 \rho(t) = \max \left( \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))} ,0 \right) 
 \]</div>
+<p>此时多曲面权重分布图如下：</p>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-illustration.svg" data-desc-position="bottom"><img alt="illustration" src="../assets/neus-illustration.svg"></a></p>
 <h3 id="training">Training<a class="headerlink" href="#training" title="Permanent link">¶</a></h3>
+<p>记世界空间 <span class="arithmatex">\(P=\{ C_{k},M_{k},\mathbf{o}_{k},\mathbf{v}_{k} \}\)</span>，其中 <span class="arithmatex">\(C_{k}\)</span> 为像素颜色，<span class="arithmatex">\(M_{k}\in \{0,1\}\)</span> 为可选掩码值。每轮迭代对一张图片采样 <span class="arithmatex">\(\text{batch_size} = m\)</span> 个像素，及对应射线上 <span class="arithmatex">\(\text{sampling_size} = n\)</span> 个点。训练目标为拟合 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(c\)</span> 的 MLP 及标准差 <span class="arithmatex">\(s\)</span> 。</p>
+<p>损失函数定义如下：</p>
 <div class="arithmatex">\[
 \mathcal{L} = \mathcal{L}_{color} + \lambda \mathcal{L}_{reg} + \beta \mathcal{L}_{mask}
 \]</div>
+<ul>
+<li>
 <p>颜色损失定义为：</p>
 <div class="arithmatex">\[
 \mathcal{L}_{color} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
 \]</div>
-<p>添加 Eikonal 项作为正则项：</p>
+<p>与 IDR 中同样取 <span class="arithmatex">\(\mathcal{R} = \text{L1 loss}\)</span> ，对异常值健壮并且训练稳定。</p>
+</li>
+<li>
+<p>添加 Eikonal 项作为 SDF 正则项：</p>
 <div class="arithmatex">\[
 \mathcal{L}_{reg} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
 \]</div>
+</li>
+<li>
 <p>可选 mask 损失定义为：</p>
 <div class="arithmatex">\[
 \mathcal{L}_{mask} = \operatorname{BCE}(M_{k},\hat{O}_{k})
 \]</div>
+<p>其中 <span class="arithmatex">\(\hat{O}_{k}=\sum_{i=1}^n T_{k,i}\alpha_{k,i}\)</span> 为沿光线权重和，<span class="arithmatex">\(\operatorname{BCE}\)</span> 为二元交叉熵损失。</p>
+</li>
+</ul>
+<details class="note" open="open">
+<summary>Hierarchical Sampling</summary>
+<p>本文使用类似于 NeRF 中的 “分层抽样策略”。首先对射线上的点进行均匀采样，然后在粗略概率估计的基础上迭代地进行重要性采样。</p>
+</details>
 <h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
+<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://roboimagedata.compute.dtu.dk/?page_id=36">DTU</a> 数据集。每个场景包含 <span class="arithmatex">\(49\)</span> 或 <span class="arithmatex">\(64\)</span> 张图片，分辨率 <span class="arithmatex">\(1600 \times 1200\)</span> 。可选掩码由 IDR 提供。</li>
+<li><a href="https://github.com/yoyo000/blendedmvs">BlendedMVS</a> 数据集（低分辨率版）。每个场景包含 <span class="arithmatex">\(31-143\)</span> 张图片，分辨率 <span class="arithmatex">\(768 \times 576\)</span> 。可选掩码由数据集本身提供。</li>
+</ul>
+<h3 id="baselines">Baselines<a class="headerlink" href="#baselines" title="Permanent link">¶</a></h3>
+<ul>
+<li>IDR - SOTA 级别的表面渲染方法。</li>
+<li>NeRF - SOTA 级别的体渲染方法。</li>
+<li>COLMAP - 广泛使用的 MVS 方法。</li>
+<li>UNISURF - 将表面渲染和体渲染与占用场统一作为场景表示的方法。</li>
+</ul>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">¶</a></h3>
+<ul>
+<li>设备：<span class="arithmatex">\(\text{NVIDIA RTX2080Ti GPU}\)</span></li>
+<li>参数：取 <span class="arithmatex">\(\text{sampling_size} = 512\)</span> ，<span class="arithmatex">\(\text{iterations} = 300\mathrm{k}\)</span> ，无掩码 <span class="arithmatex">\(\text{time} = 16\mathrm{h}\)</span>，带掩码 <span class="arithmatex">\(\text{time} = 14\mathrm{h}\)</span> 。</li>
+</ul>
+<h3 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">¶</a></h3>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-table1.png" data-desc-position="bottom"><img alt="table1" src="../assets/neus-table1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-compare1.png" data-desc-position="bottom"><img alt="compare1" src="../assets/neus-compare1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-compare2.png" data-desc-position="bottom"><img alt="compare2" src="../assets/neus-compare2.png"></a></p>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
 
 
@@ -1356,7 +1497,7 @@ T(t) &amp;= \Phi_{s}(f(\mathbf{p}(t))) \\
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 21, 2026 05:42:02 UTC">July 21, 2026</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date" title="July 22, 2026 11:01:54 UTC">July 22, 2026</span>
   </span>
 
     
