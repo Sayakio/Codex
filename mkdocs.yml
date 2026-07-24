@@ -9,7 +9,7 @@ repo_name: Sayaki/Codex
 copyright: 'Copyright &copy; 2026 <a href="https://github.com/Sayakio" target="_blank" rel="noopener">Sayaki</a>'
 
 theme:
-  name: material
+  name: materialx
   custom_dir: overrides
   features:
     - navigation.tabs 
@@ -94,9 +94,12 @@ plugins:
   - statistics:
       page_check_metadata: stats
       page_template: templates/statistics.html
-  - git-revision-date-localized:
+  - document-dates:
+      position: bottom
+      show_author: false
       exclude:
-        - index.md
+        - 'index.md'
+        - '*/index.md'    
 
 extra_javascript:
   - javascripts/mathjax.js
