@@ -12,6 +12,7 @@ theme:
   name: materialx
   custom_dir: overrides
   features:
+    - navigation.instant
     - navigation.tabs 
     - navigation.tracking
     - navigation.indexes
@@ -93,7 +94,6 @@ plugins:
       toggle_button: all
   - statistics:
       page_check_metadata: stats
-      page_template: templates/statistics.html
   - document-dates:
       position: bottom
       show_author: false
@@ -104,10 +104,17 @@ plugins:
 extra_javascript:
   - javascripts/mathjax.js
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
-  - https://cn.vercount.one/js     
+  - https://fastly.jsdelivr.net/npm/d3@7
+  - https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js
+  - https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js
+  - javascripts/papers-graph.js
+  - javascripts/music_player.js
+  - javascripts/extra.js
 
 extra_css:
+  - https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css
   - css/extra.css
+  - css/music_player.css
 
 extra:
   copyright:
