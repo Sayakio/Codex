@@ -106,7 +106,6 @@ extra_javascript:
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
   - https://fastly.jsdelivr.net/npm/d3@7
   - https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js
-  - https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js
   - javascripts/papers-graph.js
   - javascripts/music_player.js
   - javascripts/extra.js
