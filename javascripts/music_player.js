@@ -1,17 +1,34 @@
 const MUSIC_ICON = `<svg viewBox="0 0 24 24"><path d="M12,3V12.26C11.5,12.09 11,12 10.5,12C8,12 6,14 6,16.5C6,19 8,21 10.5,21C13,21 15,19 15,16.5V6H19V3H12Z" /></svg>`;
 const MUSIC_TRACKS = [
-    // Add direct HTTPS audio URLs here.
     {
         name: "Farewell",
         artist: "Lena Raine",
         url: "https://dn720601.ca.archive.org/0/items/lena-raine-celeste-farewell-original-soundtrack/Lena%20Raine%20-%20Celeste-%20Farewell%20%28Original%20Soundtrack%29%20FLAC/Lena%20Raine%20-%20Celeste-%20Farewell%20%28Original%20Soundtrack%29%20-%2010%20Farewell.mp3",
-        cover: "https://ia601405.us.archive.org/18/items/lena-raine-celeste-farewell-original-soundtrack/cover_thumb.jpg?cnt=0",
+        cover: "https://ia601405.us.archive.org/18/items/lena-raine-celeste-farewell-original-soundtrack/cover_thumb.jpg?cnt=0"
+    },
+    {
+        name: "The Empty Space Above",
+        artist: "Lena Raine",
+        url: "https://dn720601.ca.archive.org/0/items/lena-raine-celeste-farewell-original-soundtrack/Lena%20Raine%20-%20Celeste-%20Farewell%20%28Original%20Soundtrack%29%20FLAC/Lena%20Raine%20-%20Celeste-%20Farewell%20%28Original%20Soundtrack%29%20-%2001%20The%20Empty%20Space%20Above.mp3",
+        cover: "https://ia601405.us.archive.org/18/items/lena-raine-celeste-farewell-original-soundtrack/cover_thumb.jpg?cnt=0"
+    },
+    {
+        name: "wavedash.ppt",
+        artist: "Lena Raine",
+        url: "https://dn720601.ca.archive.org/0/items/lena-raine-celeste-farewell-original-soundtrack/Lena%20Raine%20-%20Celeste-%20Farewell%20%28Original%20Soundtrack%29%20FLAC/Lena%20Raine%20-%20Celeste-%20Farewell%20%28Original%20Soundtrack%29%20-%2013%20wavedash.ppt.mp3",
+        cover: "https://ia601405.us.archive.org/18/items/lena-raine-celeste-farewell-original-soundtrack/cover_thumb.jpg?cnt=0"
     },
     {
         name: "Golden Ridge (Golden Feather Mix)",
         artist: "in love with a ghost",
         url: "https://dn721905.ca.archive.org/0/items/kuraine-celeste-b-sides-07-summit-no-more-running-mix/in%20love%20with%20a%20ghost%20-%20Celeste%20B-Sides%20-%2004%20Golden%20Ridge%20%28Golden%20Feather%20Mix%29.mp3",
         cover: "https://ia800406.us.archive.org/29/items/kuraine-celeste-b-sides-07-summit-no-more-running-mix/cover_thumb.jpg?cnt=0"
+    },
+    {
+        name: "Journey of a Lifetime ~ Frieren Main Theme",
+        artist: "Evan Call",
+        url: "https://archive.org/download/frieren-beyond-journeys-end-ost/1-01%20Journey%20of%20a%20Lifetime%20~%20Frieren%20Main%20Theme.mp3",
+        cover: "https://ia802806.us.archive.org/4/items/frieren-beyond-journeys-end-ost/cover.jpg?cnt=0"
     }
 ];
 
