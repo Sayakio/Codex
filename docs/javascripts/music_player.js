@@ -475,8 +475,167 @@ const MUSIC_TRACKS = [
         cover: "https://static.wikia.nocookie.net/kimi-ga-shine/images/8/82/OST_1_cover.jpg"
     },
     {
-        name :""
-    }
+        name :"Enter Hallownest",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/01%20-%20Enter%20Hallownest.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Dirtmouth",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/02%20-%20Dirtmouth.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Crossroads",
+        artist: "Christopher Larkin",
+        url: "archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/03%20-%20Crossroads.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Greenpath",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/05%20-%20Greenpath.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Hornet",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/06%20-%20Hornet.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Reflection",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/07%20-%20Reflection.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"City of Tears",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/09%20-%20City%20of%20Tears.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Fungal Wastes",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/12%20-%20Fungal%20Wastes.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Resting Grounds",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/15%20-%20Resting%20Grounds.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Queen's Gardens",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/16%20-%20Queen%27s%20Gardens.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"The White Lady",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/17%20-%20The%20White%20Lady.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name :"Hollow Knight",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/official-hollow-knight-original-soundtrack/Hollow%20Knight%20-%20Official%20Soundtrack/26%20-%20Hollow%20Knight.mp3",
+        cover: "https://dn710202.ca.archive.org/0/items/official-hollow-knight-original-soundtrack/__ia_thumb.jpg"
+    },
+    {
+        name: "Moss Grotto",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/02%20-%20Moss%20Grotto.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Repose",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/07%20-%20Repose.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Bellhart",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/14%20-%20Bellhart.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Shellwood",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/16%20-%20Shellwood.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Hunter's Trail",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/18%20-%20Hunter%27s%20Trail.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Bilewater",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/21%20-%20Bilewater.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Choral Chambers",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/30%20-%20Choral%20Chambers.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Songclave",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/31%20-%20Songclave.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Cogwork Core",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/33%20-%20Cogwork%20Core.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Whispering Vaults",
+        artist: "Christopher Larkin",
+        url: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/34%20-%20Whispering%20Vaults.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "High Halls",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/36%20-%20High%20Halls.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Lost Verdania",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/45%20-%20Lost%20Verdania.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Last Dive",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/50%20-%20Last%20Dive.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Sister of the Void",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/52%20-%20Sister%20of%20the%20Void.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
+    {
+        name: "Silksong",
+        artist: "Christopher Larkin",
+        url: "https://archive.org/download/hollow-knight-silksong-ost/53%20-%20Silksong.mp3",
+        cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
+    },
 ];
 
 document$.subscribe(() => {
