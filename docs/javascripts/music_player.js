@@ -636,6 +636,75 @@ const MUSIC_TRACKS = [
         url: "https://archive.org/download/hollow-knight-silksong-ost/53%20-%20Silksong.mp3",
         cover: "https://dn721803.ca.archive.org/0/items/hollow-knight-silksong-ost/cover.jpg"
     },
+    {
+        name: "Megurin Luka Code Answer - D'elf",
+        artist: "KEIZO",
+        url: "https://nu.vgmtreasurechest.com/soundtracks/astlibra-revision-switch-windows-gamerip-2022/hrnnbtqw/110.%20Megurin%20Luka%20Code%20Answer%20-%20D%27elf%20%28Full%29.mp3",
+        cover: "https://nu.vgmtreasurechest.com/soundtracks/astlibra-revision-switch-windows-gamerip-2022/AlbumArt.png"
+    },
+    {
+        name: "Ambient 9",
+        artist: "iridtv",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/olfvksbjde/01.%20Ambient%209.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Clouds",
+        artist: "Kirk Osamayo",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/fnyemlvfba/02.%20Clouds.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Let's Have A Good Day",
+        artist: "Kirk Osamayo",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/ylabpqezzs/03.%20Let%27s%20Have%20A%20Good%20Day.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "A New Path",
+        artist: "Kirk Osamayo",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/pkyikxulmg/08.%20A%20New%20Path.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Above The Mountains",
+        artist: "Kirk Osamayo",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/czmyhedndm/31.%20Above%20The%20Mountains.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Comfort",
+        artist: "Abstraction",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/mhbdtnsziw/11.%20Comfort.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Slow Snow",
+        artist: "Abstraction",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/ihuhevxuml/16.%20Slow%20Snow.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Menu",
+        artist: "Abstraction",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/urfxzoetum/32.%20Menu.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Lullaby",
+        artist: "Mezzosound",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/gjqilvqpui/13.%20Lullaby.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: "Out of Love (Instrumental Version)",
+        artist: "SCENE feat. IFCHAN",
+        url: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/ershulanim/33.%20Out%20of%20Love%20%28Instrumental%20Version%29.mp3",
+        cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
+    },
+    {
+        name: ""
+    }
 ];
 
 document$.subscribe(() => {
