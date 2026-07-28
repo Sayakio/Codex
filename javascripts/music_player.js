@@ -730,7 +730,7 @@ function createMusicUI() {
     playerContainer.id = "music-player-container";
     document.body.appendChild(playerContainer);
 
-    new APlayer({
+    const player = new APlayer({
         container: playerContainer,
         fixed: false,
         mini: false,
@@ -741,6 +741,7 @@ function createMusicUI() {
         preload: "none",
         audio: MUSIC_TRACKS,
     });
+    player.options.fixed = true;
 
     toggleBtn.addEventListener("click", () => {
         playerContainer.classList.toggle("show");
