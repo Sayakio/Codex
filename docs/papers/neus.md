@@ -71,13 +71,13 @@ $$
   
     此解满足：无偏✓，遮挡感知✗．
 
-若将两者结合，即可同时满足无偏和遮挡感知。想法为从无偏构造出发，推导出类似 $\eqref{star}$ 式的形式。为此，仿照体密度 $\sigma(t)$ 定义不透明密度函数 $\rho(t)$ ，权重函数可记为：
+若将两者结合，即可同时满足无偏和遮挡感知．想法为从无偏构造出发，推导出类似 $\eqref{star}$ 式的形式．为此，仿照体密度 $\sigma(t)$ 定义不透明密度函数 $\rho(t)$ ，权重函数可记为：
 
 $$
 w(t) = T(t)\rho(t), \quad T(t) = \exp\left( -\int_{0}^{t}\rho(u)  \, du  \right) 
 $$
 
-先考虑最简单情形：曲面为一个距离相机无穷远的平面。此时 $\eqref{star2}$ 式满足两个约束，以此推导 $\rho(t)$ 形式。
+先考虑最简单情形：曲面为一个距离相机无穷远的平面．此时 $\eqref{star2}$ 式满足两个约束，以此推导 $\rho(t)$ 形式．
 
 记 $f(\mathbf{p}(t^*))=0$ ，$\theta=\angle(\mathbf{v},\mathbf{n})$ ，则 SDF $f(\mathbf{p}(t))=-\vert\cos\theta \vert \cdot (t-t^*)$ ，计算有： 
 
@@ -111,9 +111,12 @@ $$
 此时权重偏置对比图如下：
 
 ![bias](assets/neus-bias.svg)
+/// caption
+Figure 1: (a) 朴素解的权重偏差； (b) 本文解的权重函数，在 SDF 的一阶近似中无偏．
+ ///
 
 
-如上为单平面相交情形。在多平面情况下需确保 $\rho$ 非负，从而做截断得到一般情形的不透明度密度函数 $\rho(t)$ ：
+如上为单平面相交情形．在多平面情况下需确保 $\rho$ 非负，从而做截断得到一般情形的不透明度密度函数 $\rho(t)$ ：
 
 $$
 \rho(t) = \max \left( \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))} ,0 \right) 
@@ -122,9 +125,12 @@ $$
 此时多曲面权重分布图如下：
 
 ![illustration](assets/neus-illustration.svg)
+/// caption
+Figure 2: 多曲面相交情况下的权重分布图．
+///
 
 ### Training
-记世界空间 $P=\{ C_{k},M_{k},\mathbf{o}_{k},\mathbf{v}_{k} \}$，其中 $C_{k}$ 为像素颜色，$M_{k}\in \{0,1\}$ 为可选掩码值。每轮迭代对一张图片采样 $\text{batch_size} = m$ 个像素，及对应射线上 $\text{sampling_size} = n$ 个点。训练目标为拟合 $f$ 和 $c$ 的 MLP 及标准差 $s$ 。
+记世界空间 $P=\{ C_{k},M_{k},\mathbf{o}_{k},\mathbf{v}_{k} \}$，其中 $C_{k}$ 为像素颜色，$M_{k}\in \{0,1\}$ 为可选掩码值．每轮迭代对一张图片采样 $\text{batch_size} = m$ 个像素，及对应射线上 $\text{sampling_size} = n$ 个点．训练目标为拟合 $f$ 和 $c$ 的 MLP 及标准差 $s$ ．
 
 损失函数定义如下：
 
@@ -138,7 +144,7 @@ $$
 	\mathcal{L}_{color} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
 	$$
 
-	与 IDR 中同样取 $\mathcal{R} = \text{L1 loss}$ ，对异常值健壮并且训练稳定。
+	与 IDR 中同样取 $\mathcal{R} = \text{L1 loss}$ ，对异常值健壮并且训练稳定．
 
 - 添加 Eikonal 项作为 SDF 正则项：
 
@@ -152,34 +158,43 @@ $$
 	\mathcal{L}_{mask} = \operatorname{BCE}(M_{k},\hat{O}_{k})
 	$$
 	
-	其中 $\hat{O}_{k}=\sum_{i=1}^n T_{k,i}\alpha_{k,i}$ 为沿光线权重和，$\operatorname{BCE}$ 为二元交叉熵损失。
+	其中 $\hat{O}_{k}=\sum_{i=1}^n T_{k,i}\alpha_{k,i}$ 为沿光线权重和，$\operatorname{BCE}$ 为二元交叉熵损失．
 
 
 ???+ note "Hierarchical Sampling"
-	本文使用类似于 NeRF 中的 “分层抽样策略”。首先对射线上的点进行均匀采样，然后在粗略概率估计的基础上迭代地进行重要性采样。
+	本文使用类似于 NeRF 中的 “分层抽样策略”．首先对射线上的点进行均匀采样，然后在粗略概率估计的基础上迭代地进行重要性采样．
 
 ## 3. EXPERIMENTS
 ### Datasets
-- [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) 数据集。每个场景包含 $49$ 或 $64$ 张图片，分辨率 $1600 \times 1200$ 。可选掩码由 IDR 提供。
-- [BlendedMVS](https://github.com/yoyo000/blendedmvs) 数据集（低分辨率版）。每个场景包含 $31-143$ 张图片，分辨率 $768 \times 576$ 。可选掩码由数据集本身提供。
+- [DTU](https://roboimagedata.compute.dtu.dk/?page_id=36) 数据集．每个场景包含 $49$ 或 $64$ 张图片，分辨率 $1600 \times 1200$ ．可选掩码由 IDR 提供．
+- [BlendedMVS](https://github.com/yoyo000/blendedmvs) 数据集（低分辨率版）．每个场景包含 $31-143$ 张图片，分辨率 $768 \times 576$ ．可选掩码由数据集本身提供．
 
 ### Baselines
-- IDR - SOTA 级别的表面渲染方法。
-- NeRF - SOTA 级别的体渲染方法。
-- COLMAP - 广泛使用的 MVS 方法。
-- UNISURF - 将表面渲染和体渲染与占用场统一作为场景表示的方法。
+- IDR - SOTA 级别的表面渲染方法．
+- NeRF - SOTA 级别的体渲染方法．
+- COLMAP - 广泛使用的 MVS 方法．
+- UNISURF - 将表面渲染和体渲染与占用场统一作为场景表示的方法．
 
 ### Implementation
 - 设备：$\text{NVIDIA RTX2080Ti GPU}$
-- 参数：取 $\text{sampling_size} = 512$ ，$\text{iterations} = 300\mathrm{k}$ ，无掩码 $\text{time} = 16\mathrm{h}$，带掩码 $\text{time} = 14\mathrm{h}$ 。
+- 参数：取 $\text{sampling_size} = 512$ ，$\text{iterations} = 300\mathrm{k}$ ，无掩码 $\text{time} = 16\mathrm{h}$，带掩码 $\text{time} = 14\mathrm{h}$ ．
 
 ### Comparison
 
 ![table1](assets/neus-table1.png)
+/// caption
+Table 1: DTU数据集的定量评估． COLMAP 结果通过trim=0 获得．
+///
 
 ![compare1](assets/neus-compare1.png)
+/// caption
+Figure 3: 带掩模监督的表面重建对比图．
+///
 
 ![compare2](assets/neus-compare2.png)
+/// caption
+Figure 4: 无掩模监督的表面重建对比图．
+///
 
 
 ## 4. THINKING

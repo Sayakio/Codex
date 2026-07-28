@@ -68,6 +68,7 @@ markdown_extensions:
       permalink: true
   - attr_list
   - admonition
+  - pymdownx.blocks.caption
   - pymdownx.inlinehilite
   - pymdownx.snippets
   - pymdownx.details
