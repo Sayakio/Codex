@@ -703,6 +703,90 @@ const MUSIC_TRACKS = [
         cover: "https://jetta.vgmtreasurechest.com/soundtracks/zato-i-love-the-world-and-everything-in-it-2025/Cover.png"
     },
     {
+        name: "The Sunken City",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/mapwqmnd/01.%20The%20Sunken%20City.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Tranquil Moments",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/xyzconwu/03.%20Tranquil%20Moments.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Vertigo",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/hdtlwamk/04.%20Vertigo.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "The Face I See When I Close My Eyes",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/qwlrxqlh/05.%20The%20Face%20I%20See%20When%20I%20Close%20My%20Eyes.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Good Morning, Sunshine",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/yubwegtc/07.%20Good%20Morning%2C%20Sunshine.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Walking In The Twilight",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/hitwbrfz/09.%20Walking%20In%20The%20Twilight.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Working",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/jpvmvsdo/11.%20Working.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "The Children Play",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/bimifcxe/14.%20The%20Children%20Play.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "A Lull In The Sea",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/gqlkorpb/15.%20A%20Lull%20In%20The%20Sea.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "When I See The Sparkle Of Your Tears",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/ibjpzadq/19.%20When%20I%20See%20The%20Sparkle%20Of%20Your%20Tears.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Days Of Love",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/tutlwapv/20.%20Days%20Of%20Love.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Light Across the Seas",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/ifcxdykc/21.%20Light%20Across%20the%20Seas.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "Dear Moments",
+        artist: "Fuminori Matsumoto",
+        url: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/qgjchgjz/24.%20Dear%20Moments.mp3",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
+        name: "",
+        artist: "Fuminori Matsumoto",
+        url: "",
+        cover: "https://lambda.vgmtreasurechest.com/soundtracks/atri-my-dear-moments-original-soundtrack-2020/00%20Front.jpg"
+    },
+    {
         name: ""
     }
 ];
