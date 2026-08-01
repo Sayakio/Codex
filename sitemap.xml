@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
         <loc>https://Sayakio.github.io/Codex/</loc>
-        <lastmod>2026-07-15</lastmod>
+        <lastmod>2026-08-01</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -31,8 +31,18 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://Sayakio.github.io/Codex/papers/instant-ngp/</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://Sayakio.github.io/Codex/papers/neuralangelo/</loc>
+        <lastmod>2026-08-01</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://Sayakio.github.io/Codex/papers/neus/</loc>
-        <lastmod>2026-07-28</lastmod>
+        <lastmod>2026-08-01</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>

@@ -9,13 +9,9 @@
         <meta name="author" content="Sayaki">
       
       
-        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/neus/">
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/neuralangelo/">
       
       
-        <link rel="prev" href="../">
-      
-      
-        <link rel="next" href="../test1/">
       
       
         
@@ -33,7 +29,7 @@
     
     
       
-        <title>NeuS - Sayaki's Codex</title>
+        <title>Neuralangelo: High-Fidelity Neural Surface Reconstruction - Sayaki's Codex</title>
       
     
     
@@ -126,7 +122,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#neus-learning-neural-implicit-surfaces-by-volume-rendering-for-multi-view-reconstruction" class="md-skip">
+        <a href="#neuralangelo-high-fidelity-neural-surface-reconstruction" class="md-skip">
           Skip to content
         </a>
       
@@ -160,7 +156,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              NeuS
+              Neuralangelo: High-Fidelity Neural Surface Reconstruction
             
           </span>
         </div>
@@ -316,12 +312,10 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
+      <li class="md-tabs__item">
         <a href="../" class="md-tabs__link">
           
   
@@ -704,8 +698,6 @@
       
   
   
-    
-  
   
   
     
@@ -729,17 +721,14 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
         
           
           <div class="md-nav__link md-nav__container">
@@ -763,13 +752,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -786,37 +775,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    NeuS
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../neus/" class="md-nav__link">
         
   
   
@@ -832,203 +794,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc">
-      
-        <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        ABSTRACT
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#files-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FILES &amp; LINKS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. PROBLEMS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. METHOD
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. METHOD">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scene-representation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scene Representation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rendering" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rendering
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#discretization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Discretization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#training" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Training
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-experiments" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. EXPERIMENTS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. EXPERIMENTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#datasets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Datasets
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#baselines" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Baselines
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implementation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comparison
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#4-thinking" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        4. THINKING
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1221,67 +986,6 @@
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="2. METHOD">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#scene-representation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Scene Representation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#rendering" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Rendering
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#solution" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Solution
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#discretization" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Discretization
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#training" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Training
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
 </li>
       
         <li class="md-nav__item">
@@ -1292,56 +996,6 @@
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="3. EXPERIMENTS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#datasets" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Datasets
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#baselines" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Baselines
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementation" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Implementation
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#comparison" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Comparison
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1376,195 +1030,19 @@
   
 
 
-<h1 id="neus-learning-neural-implicit-surfaces-by-volume-rendering-for-multi-view-reconstruction">NeuS: Learning Neural Implicit Surfaces by Volume Rendering for Multi-view Reconstruction<a class="headerlink" href="#neus-learning-neural-implicit-surfaces-by-volume-rendering-for-multi-view-reconstruction" title="Permanent link">¶</a></h1>
+<h1 id="neuralangelo-high-fidelity-neural-surface-reconstruction">Neuralangelo: High-Fidelity Neural Surface Reconstruction<a class="headerlink" href="#neuralangelo-high-fidelity-neural-surface-reconstruction" title="Permanent link">¶</a></h1>
 <h2 id="abstract">ABSTRACT<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
-<p>We present a novel neural surface reconstruction method, called NeuS, for reconstructing objects and scenes with high fidelity from 2D image inputs. Existing neural surface reconstruction approaches, such as DVR and IDR, require foreground mask as supervision, easily get trapped in local minima, and therefore struggle with the reconstruction of objects with severe self-occlusion or thin structures. Meanwhile, recent neural methods for novel view synthesis, such as NeRF and its variants, use volume rendering to produce a neural scene representation with robustness of optimization, even for highly complex objects. However, extracting high-quality surfaces from this learned implicit representation is difficult because there are not sufficient surface constraints in the representation. In NeuS, we propose to represent a surface as the zero-level set of a signed distance function (SDF) and develop a new volume rendering method to train a neural SDF representation. We observe that the conventional volume rendering method causes inherent geometric errors (i.e. bias) for surface reconstruction, and therefore propose a new formulation that is free of bias in the first order of approximation, thus leading to more accurate surface reconstruction even without the mask supervision. Experiments on the DTU dataset and the BlendedMVS dataset show that NeuS outperforms the state-of-the-arts in high-quality surface reconstruction, especially for objects and scenes with complex structures and self-occlusion.</p>
+<p>Neural surface reconstruction has been shown to be powerful for recovering dense 3D surfaces via image-based neural rendering. However, current methods struggle to recover detailed structures of real-world scenes. To address the issue, we present Neuralangelo, which combines the representation power of multi-resolution 3D hash grids with neural surface rendering. Two key ingredients enable our approach: (1) numerical gradients for computing higher-order derivatives as a smoothing operation and (2) coarse-to-fine optimization on the hash grids controlling different levels of details. Even without auxiliary inputs such as depth, Neuralangelo can effectively recover dense 3D surface structures from multi-view images with fidelity significantly surpassing previous methods, enabling detailed large-scale scene reconstruction from RGB video captures.</p>
 <h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>URL:</strong>  <a href="http://arxiv.org/abs/2106.10689">Open Online</a></li>
-<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/24EHA565">PDF</a></li>
+<li><strong>URL:</strong>  <a href="https://ieeexplore.ieee.org/document/10205317/">Open Online</a></li>
+<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/LMQWJJCI">PDF</a></li>
 </ul>
 <h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
-<p>考虑一组 3D 物体图片 <span class="arithmatex">\(\{\mathcal{I}_{k}\}\)</span> ，目标为重建表面曲面 <span class="arithmatex">\(\mathcal{S}\)</span>．</p>
 <h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
-<h3 id="scene-representation">Scene Representation<a class="headerlink" href="#scene-representation" title="Permanent link">¶</a></h3>
-<p>物体场景由两个函数表示（均由 MLP 编码）：</p>
-<div class="arithmatex">\[
-f: \mathbb{R}^3 \to \mathbb{R},\quad c: \mathbb{R}^3 \times \mathbb{S}^2 \to \mathbb{R}^3
-\]</div>
-<p>对空间点 <span class="arithmatex">\(\mathbf{x}\in \mathbb{R}^3\)</span> 和观察方向 <span class="arithmatex">\(\mathbf{v}\in \mathbb{S}^2\)</span> ，<span class="arithmatex">\(f(\mathbf{x})\)</span> 表示 <span class="arithmatex">\(\mathbf{x}\)</span> 到 <span class="arithmatex">\(\mathcal{S}\)</span> 的带符号距离（即 SDF），<span class="arithmatex">\(c(\mathbf{x},\mathbf{v})\)</span> 为对应颜色．
-物体表面 <span class="arithmatex">\(\mathcal{S}\)</span> 可表示为 SDF 的零水平集：</p>
-<div class="arithmatex">\[
-\mathcal{S} = \left\{ \mathbf{x}\in \mathbb{R}^3\vert f(\mathbf{x}) = 0 \right\} 
-\]</div>
-<p>引入概率密度函数 <span class="arithmatex">\(\phi_{s}(f(\mathbf{x}))\)</span> ，称为 <strong>S-密度（S-density）</strong>．其中 <span class="arithmatex">\(\phi_{s}(x) = se^{-sx}/(1+e^{-sx})^{2}\)</span> 称为 <strong>逻辑密度函数（Logistics Density Distribution）</strong>，是 Sigmoid 函数 <span class="arithmatex">\(\Phi_{s}(x) = (1+e^{-sx})^{-1}\)</span> 的导数．</p>
-<details class="note" open="open">
-<summary>Remark</summary>
-<ul>
-<li><span class="arithmatex">\(\phi_{s}(x)\)</span> 可以是任意以 <span class="arithmatex">\(0\)</span> 为中心的钟形密度函数．</li>
-<li><span class="arithmatex">\(\phi_{s}(x)\)</span> 选取为逻辑密度函数有两个主要原因：计算方便（尤其积分有显式表示，见 <a href="#solution">Solution</a>）以及 <span class="arithmatex">\(\operatorname{std}(\phi_{s}) = 1/s\)</span>  可作为训练参数．</li>
-</ul>
-</details>
-<h3 id="rendering">Rendering<a class="headerlink" href="#rendering" title="Permanent link">¶</a></h3>
-<p>给定一像素 <span class="arithmatex">\(p\)</span> ，记 <span class="arithmatex">\(\mathbf{o}\)</span> 为观察点，<span class="arithmatex">\(\mathbf{v}\)</span> 为单位方向，<span class="arithmatex">\(p\)</span> 点发出的光线为 <span class="arithmatex">\(\left\{ \mathbf{p}(t)=\mathbf{o}+t \mathbf{v}\vert t\geq 0 \right\}\)</span>．作体渲染：</p>
-<div class="arithmatex">\[
-C(\mathbf{o},\mathbf{v}) = \int_{0}^{+\infty} w(t)c(\mathbf{p}(t),\mathbf{v}) \, dt 
-\]</div>
-<p>其中 <span class="arithmatex">\(C(\mathbf{o},\mathbf{v})\)</span> 为 <span class="arithmatex">\(p\)</span> 处输出颜色，<span class="arithmatex">\(w(t)\)</span> 为 <span class="arithmatex">\(\mathbf{p}(t)\)</span> 处权重．</p>
-<p>关键点为建立 <span class="arithmatex">\(C\)</span> 和 <span class="arithmatex">\(f\)</span> 之间的合适联系．即基于 SDF <span class="arithmatex">\(f\)</span> 推导合适的权重 <span class="arithmatex">\(w(t)\)</span>．为提高重建质量，提出如下两点约束：</p>
-<ul>
-<li><strong>无偏（Unbiased）</strong>．<span class="arithmatex">\(w(t)\)</span> 在光线与曲面相交点处取得极大值．即：给定光线 <span class="arithmatex">\(\mathbf{p}(t)\)</span> ，若 <span class="arithmatex">\(f(\mathbf{p}(t^*))=0\)</span> ，则 <span class="arithmatex">\(t^*\)</span> 为 <span class="arithmatex">\(w(t)\)</span> 极大值点．</li>
-<li><strong>遮挡感知（Occlusion-aware）</strong>．若两点 SDF 值相同，则距离 <span class="arithmatex">\(\mathbf{o}\)</span> 近的点 <span class="arithmatex">\(w\)</span> 值更大．即：给定 <span class="arithmatex">\(t_{0},t_{1}\)</span> 满足 <span class="arithmatex">\(f(t_{0})=f(t_{1})\)</span> 且 <span class="arithmatex">\(t_{0}&lt;t_{1}\)</span> ，则 <span class="arithmatex">\(w(t_{0})&gt;w(t_{1})\)</span>．</li>
-</ul>
-<h3 id="solution">Solution<a class="headerlink" href="#solution" title="Permanent link">¶</a></h3>
-<p>先考虑两种常见 <span class="arithmatex">\(w(t)\)</span>：</p>
-<ul>
-<li>
-<p>NeRF 中的一种自然解为：</p>
-<div class="arithmatex">\[
-w(t) = T(t)\sigma(t) \tag{$\ast$} \label{star}
-\]</div>
-<p>其中 <span class="arithmatex">\(\sigma(t)\)</span> 为 <strong>体密度（Volume Density）</strong>，<span class="arithmatex">\(T(t):=\exp \left( -\int_{0}^{t} \sigma(u) \, du \right)\)</span> 为 <strong>累积透射率（Accumulated Transmittance）</strong>．</p>
-<p>可取 <span class="arithmatex">\(\sigma(t)=\phi_{s}(f(\mathbf{p}(t)))\)</span> ，此解满足：遮挡感知✓，无偏✗．</p>
-</li>
-<li>
-<p>一个简单的无偏构造为：</p>
-<div class="arithmatex">\[
-w(t) = \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(f(\mathbf{p}(u))) \, du } \tag{$\ast\ast$} \label{star2}
-\]</div>
-<p>此解满足：无偏✓，遮挡感知✗．</p>
-</li>
-</ul>
-<p>若将两者结合，即可同时满足无偏和遮挡感知．想法为从无偏构造出发，推导出类似 <span class="arithmatex">\(\eqref{star}\)</span> 式的形式．为此，仿照体密度 <span class="arithmatex">\(\sigma(t)\)</span> 定义不透明密度函数 <span class="arithmatex">\(\rho(t)\)</span> ，权重函数可记为：</p>
-<div class="arithmatex">\[
-w(t) = T(t)\rho(t), \quad T(t) = \exp\left( -\int_{0}^{t}\rho(u)  \, du  \right) 
-\]</div>
-<p>先考虑最简单情形：曲面为一个距离相机无穷远的平面．此时 <span class="arithmatex">\(\eqref{star2}\)</span> 式满足两个约束，以此推导 <span class="arithmatex">\(\rho(t)\)</span> 形式．</p>
-<p>记 <span class="arithmatex">\(f(\mathbf{p}(t^*))=0\)</span> ，<span class="arithmatex">\(\theta=\angle(\mathbf{v},\mathbf{n})\)</span> ，则 SDF <span class="arithmatex">\(f(\mathbf{p}(t))=-\vert\cos\theta \vert \cdot (t-t^*)\)</span> ，计算有： </p>
-<div class="arithmatex">\[
-\begin{align}
-w(t) &amp;= \lim_{ t^* \to +\infty } \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(f(\mathbf{p}(u))) \, du } \\
-&amp;= \lim_{ t^* \to +\infty } \frac{\phi_{s}(f(\mathbf{p}(t)))}{\int_{0}^{+\infty} \phi_{s}(-\vert\cos\theta\vert(u-t^*)) \, du } \\
-&amp;= \lim_{ t^* \to +\infty } \frac{\phi_{s}(f(\mathbf{p}(t)))}{\vert\cos\theta\vert^{-1}\int_{-\vert\cos\theta\vert t^*}^{+\infty} \phi_{s}(\hat{u}) \, d\hat{u} } \\
-&amp;= \vert\cos\theta\vert \phi_{s}(f(\mathbf{p}(t))) \\
-&amp;= -\frac{d\Phi_{s}}{dt}(f(\mathbf{p}(t))) 
-\end{align}
-\]</div>
-<p>另一方面，在体渲染框架下计算有：</p>
-<div class="arithmatex">\[
-\begin{align}
-w(t) = T(t)\rho(t) = -\frac{dT}{dt}(t) 
-\end{align}
-\]</div>
-<p>两式结合有：</p>
-<div class="arithmatex">\[
-\begin{align}
-T(t) &amp;= \Phi_{s}(f(\mathbf{p}(t))) \\
-\rho(t) &amp;= \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))}
-\end{align}
-\]</div>
-<p>此时权重偏置对比图如下：</p>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-bias.svg" data-desc-position="bottom"><img alt="bias" src="../assets/neus-bias.svg"></a></p>
-<figcaption>
-<p>Figure 1: (a) 朴素解的权重偏差； (b) 本文解的权重函数，在 SDF 的一阶近似中无偏．</p>
-</figcaption>
-</figure>
-<p>如上为单平面相交情形．在多平面情况下需确保 <span class="arithmatex">\(\rho\)</span> 非负，从而做截断得到一般情形的不透明度密度函数 <span class="arithmatex">\(\rho(t)\)</span> ：</p>
-<div class="arithmatex">\[
-\rho(t) = \max \left( \frac{-\frac{d\Phi_{s}}{dt} (f(\mathbf{p}(t)))}{\Phi_{s}(f(\mathbf{p}(t)))} ,0 \right) 
-\]</div>
-<p>此时多曲面权重分布图如下：</p>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-illustration.svg" data-desc-position="bottom"><img alt="illustration" src="../assets/neus-illustration.svg"></a></p>
-<figcaption>
-<p>Figure 2: 多曲面相交情况下的权重分布图．</p>
-</figcaption>
-</figure>
-<h3 id="discretization">Discretization<a class="headerlink" href="#discretization" title="Permanent link">¶</a></h3>
-<p>采用 NeRF 中的近似方案。</p>
-<p>在光线上采样 <span class="arithmatex">\(n\)</span> 个点 <span class="arithmatex">\(\left\{ \mathbf{p}_{i}=\mathbf{o}+t_{i}\mathbf{v}\vert i=1,\dots,n, t_{i}&lt;t_{i+1} \right\}\)</span> ，对应像素颜色为：</p>
-<div class="arithmatex">\[
-\hat{C} = \sum_{i=1}^n T_{i}\alpha_{i}c_{i}
-\]</div>
-<p>其中 <span class="arithmatex">\(T_{i}\)</span> 为离散累积透射率 <span class="arithmatex">\(T_{i}=\prod_{j=1}^{i-1} (1-\alpha_{i})\)</span> ，<span class="arithmatex">\(\alpha_{i}\)</span> 为离散不透明度：</p>
-<div class="arithmatex">\[
-\begin{align}
-\alpha_{i} &amp;= 1 - \exp \left( -\int_{t_{i}}^{t_{i+1}} \rho(t) \, dt  \right)  \\
-&amp;= \max \left( \frac{\Phi_{s}(f(\mathbf{p}(t_{i}))) - \Phi_{s}(f(\mathbf{p}(t_{i+1})))}{\Phi_{s}(f(\mathbf{p}(t_{i})))}, 0 \right) 
-\end{align}
-\]</div>
-<h3 id="training">Training<a class="headerlink" href="#training" title="Permanent link">¶</a></h3>
-<p>记世界空间 <span class="arithmatex">\(P=\{ C_{k},M_{k},\mathbf{o}_{k},\mathbf{v}_{k} \}\)</span>，其中 <span class="arithmatex">\(C_{k}\)</span> 为像素颜色，<span class="arithmatex">\(M_{k}\in \{0,1\}\)</span> 为可选掩码值．每轮迭代对一张图片采样 <span class="arithmatex">\(\text{batch_size} = m\)</span> 个像素，及对应射线上 <span class="arithmatex">\(\text{sampling_size} = n\)</span> 个点．训练目标为拟合 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(c\)</span> 的 MLP 及标准差 <span class="arithmatex">\(s\)</span> ．</p>
-<p>损失函数定义如下：</p>
-<div class="arithmatex">\[
-\mathcal{L} = \mathcal{L}_{color} + \lambda \mathcal{L}_{reg} + \beta \mathcal{L}_{mask}
-\]</div>
-<ul>
-<li>
-<p>颜色损失定义为：</p>
-<div class="arithmatex">\[
-\mathcal{L}_{color} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
-\]</div>
-<p>与 IDR 中同样取 <span class="arithmatex">\(\mathcal{R} = \text{L1 loss}\)</span> ，对异常值健壮并且训练稳定．</p>
-</li>
-<li>
-<p>添加 Eikonal 项作为 SDF 正则项：</p>
-<div class="arithmatex">\[
-\mathcal{L}_{reg} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
-\]</div>
-</li>
-<li>
-<p>可选 mask 损失定义为：</p>
-<div class="arithmatex">\[
-\mathcal{L}_{mask} = \operatorname{BCE}(M_{k},\hat{O}_{k})
-\]</div>
-<p>其中 <span class="arithmatex">\(\hat{O}_{k}=\sum_{i=1}^n T_{k,i}\alpha_{k,i}\)</span> 为沿光线权重和，<span class="arithmatex">\(\operatorname{BCE}\)</span> 为二元交叉熵损失．</p>
-</li>
-</ul>
-<details class="note" open="open">
-<summary>Hierarchical Sampling</summary>
-<p>本文使用类似于 NeRF 中的 “分层抽样策略”．首先对射线上的点进行均匀采样，然后在粗略概率估计的基础上迭代地进行重要性采样．</p>
-</details>
 <h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
-<h3 id="datasets">Datasets<a class="headerlink" href="#datasets" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://roboimagedata.compute.dtu.dk/?page_id=36">DTU</a> 数据集．每个场景包含 <span class="arithmatex">\(49\)</span> 或 <span class="arithmatex">\(64\)</span> 张图片，分辨率 <span class="arithmatex">\(1600 \times 1200\)</span> ．可选掩码由 IDR 提供．</li>
-<li><a href="https://github.com/yoyo000/blendedmvs">BlendedMVS</a> 数据集（低分辨率版）．每个场景包含 <span class="arithmatex">\(31-143\)</span> 张图片，分辨率 <span class="arithmatex">\(768 \times 576\)</span> ．可选掩码由数据集本身提供．</li>
-</ul>
-<h3 id="baselines">Baselines<a class="headerlink" href="#baselines" title="Permanent link">¶</a></h3>
-<ul>
-<li>IDR - SOTA 级别的表面渲染方法．</li>
-<li>NeRF - SOTA 级别的体渲染方法．</li>
-<li>COLMAP - 广泛使用的 MVS 方法．</li>
-<li>UNISURF - 将表面渲染和体渲染与占用场统一作为场景表示的方法．</li>
-</ul>
-<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">¶</a></h3>
-<ul>
-<li>设备：<span class="arithmatex">\(\text{NVIDIA RTX2080Ti GPU}\)</span></li>
-<li>参数：取 <span class="arithmatex">\(\text{sampling_size} = 512\)</span> ，<span class="arithmatex">\(\text{iterations} = 300\mathrm{k}\)</span> ，无掩码 <span class="arithmatex">\(\text{time} = 16\mathrm{h}\)</span>，带掩码 <span class="arithmatex">\(\text{time} = 14\mathrm{h}\)</span> ．</li>
-</ul>
-<h3 id="comparison">Comparison<a class="headerlink" href="#comparison" title="Permanent link">¶</a></h3>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-table1.png" data-desc-position="bottom"><img alt="table1" src="../assets/neus-table1.png"></a></p>
-<figcaption>
-<p>Table 1: DTU数据集的定量评估． COLMAP 结果通过trim=0 获得．</p>
-</figcaption>
-</figure>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-compare1.png" data-desc-position="bottom"><img alt="compare1" src="../assets/neus-compare1.png"></a></p>
-<figcaption>
-<p>Figure 3: 带掩模监督的表面重建对比图．</p>
-</figcaption>
-</figure>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neus-compare2.png" data-desc-position="bottom"><img alt="compare2" src="../assets/neus-compare2.png"></a></p>
-<figcaption>
-<p>Figure 4: 无掩模监督的表面重建对比图．</p>
-</figcaption>
-</figure>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<p></p><div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-07-19"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-07-19T06:04:47+00:00">2026-07-19</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span></div></div></div><p></p>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span></div></div></div>
 
 
 

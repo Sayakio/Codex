@@ -123,11 +123,6 @@
     <label class="md-overlay" for="__toc"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#_1" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -347,7 +342,9 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden="">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -393,8 +390,6 @@
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
-      
-        
       
       
       <a href="." class="md-nav__link md-nav__link--active">
@@ -940,7 +935,9 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" hidden="">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -948,8 +945,6 @@
 <nav class="md-nav md-nav--secondary" aria-label="Table of contents">
   
   
-  
-    
   
   
 </nav>
@@ -970,9 +965,51 @@
   
 
 
-<h1 id="_1">首页 • 起点<a class="headerlink" href="#_1" title="Permanent link">¶</a></h1>
+<div class="codex-home">
+  <section class="codex-home__hero" aria-labelledby="codex-home-title">
+    <div class="codex-home__hero-media" aria-hidden="true">
+      <div class="codex-home__line-art" data-line-art=""></div>
+    </div>
+    <div class="codex-home__hero-inner">
+      <div class="codex-home__hero-copy home-reveal">
+        <p class="codex-home__eyebrow">Personal learning room / Est. 2026</p>
+        <h1 id="codex-home-title">Sayaki's Codex</h1>
+        <p class="codex-home__hero-lead">Ideas, carefully observed.</p>
+        <span class="codex-home__kaomoji codex-home__hero-mark" aria-hidden="true">(∠・ω&lt; )⌒★</span>
+      </div>
+    </div>
+  </section>
 
+  <section class="codex-home__section codex-home__section--featured">
+    <div class="codex-home__section-inner codex-home__featured home-reveal" data-featured-note="" aria-live="polite"></div>
+  </section>
 
+  <section class="codex-home__section codex-home__section--recent" aria-labelledby="recently-written">
+    <div class="codex-home__section-inner">
+      <div class="codex-home__section-heading home-reveal">
+        <p class="codex-home__eyebrow codex-home__eyebrow--dark">Latest entries</p>
+        <h2 id="recently-written">Recently</h2>
+      </div>
+      <div class="codex-home__entries home-reveal" data-latest-entries="">
+      </div>
+    </div>
+  </section>
+
+  <section class="codex-home__section codex-home__section--collections" aria-label="Collections">
+    <div class="codex-home__section-inner codex-home__collections home-reveal">
+      <a href="books/">
+        <span>01 / Collection</span>
+        <strong>书籍 / 印记</strong>
+        <i aria-hidden="true">→</i>
+      </a>
+      <a href="papers/">
+        <span>02 / Collection</span>
+        <strong>论文 / 洞见</strong>
+        <i aria-hidden="true">→</i>
+      </a>
+    </div>
+  </section>
+</div>
 
 
 
@@ -982,6 +1019,12 @@
 
   
 
+
+
+  
+
+
+  
 
 
 
@@ -1002,14 +1045,18 @@
     
       
       
-      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer">
+        
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer" hidden="">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path></svg>
       </label>
     
     
       
       
-      <label class="md-top__button md-top__side md-top__side--toc" for="__toc">
+        
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc" hidden="">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 3v18"></path></svg>
       </label>
     
