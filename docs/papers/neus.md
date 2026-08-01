@@ -59,7 +59,7 @@ $$
     w(t) = T(t)\sigma(t) \tag{$\ast$} \label{star}
     $$
   
-    其中 $\sigma(t)$ 为 **体密度（Volume Density）**，$T(t)=\exp \left( -\int_{0}^{t} \sigma(u) \, du \right)$ 为 **累积透射率（Accumulated Transmittance）**．
+    其中 $\sigma(t)$ 为 **体密度（Volume Density）**，$T(t):=\exp \left( -\int_{0}^{t} \sigma(u) \, du \right)$ 为 **累积透射率（Accumulated Transmittance）**．
   
     可取 $\sigma(t)=\phi_{s}(f(\mathbf{p}(t)))$ ，此解满足：遮挡感知✓，无偏✗．
 
@@ -128,6 +128,26 @@ $$
 /// caption
 Figure 2: 多曲面相交情况下的权重分布图．
 ///
+
+
+### Discretization
+采用 NeRF 中的近似方案。
+
+在光线上采样 $n$ 个点 $\left\{ \mathbf{p}_{i}=\mathbf{o}+t_{i}\mathbf{v}\vert i=1,\dots,n, t_{i}<t_{i+1} \right\}$ ，对应像素颜色为：
+
+$$
+\hat{C} = \sum_{i=1}^n T_{i}\alpha_{i}c_{i}
+$$
+
+其中 $T_{i}$ 为离散累积透射率 $T_{i}=\prod_{j=1}^{i-1} (1-\alpha_{i})$ ，$\alpha_{i}$ 为离散不透明度：
+
+$$
+\begin{align}
+\alpha_{i} &= 1 - \exp \left( -\int_{t_{i}}^{t_{i+1}} \rho(t) \, dt  \right)  \\
+&= \max \left( \frac{\Phi_{s}(f(\mathbf{p}(t_{i}))) - \Phi_{s}(f(\mathbf{p}(t_{i+1})))}{\Phi_{s}(f(\mathbf{p}(t_{i})))}, 0 \right) 
+\end{align}
+$$
+
 
 ### Training
 记世界空间 $P=\{ C_{k},M_{k},\mathbf{o}_{k},\mathbf{v}_{k} \}$，其中 $C_{k}$ 为像素颜色，$M_{k}\in \{0,1\}$ 为可选掩码值．每轮迭代对一张图片采样 $\text{batch_size} = m$ 个像素，及对应射线上 $\text{sampling_size} = n$ 个点．训练目标为拟合 $f$ 和 $c$ 的 MLP 及标准差 $s$ ．
