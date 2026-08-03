@@ -12,6 +12,10 @@
         <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/neuralangelo/">
       
       
+        <link rel="prev" href="../instant-ngp/">
+      
+      
+        <link rel="next" href="../test1/">
       
       
         
@@ -29,7 +33,7 @@
     
     
       
-        <title>Neuralangelo: High-Fidelity Neural Surface Reconstruction - Sayaki's Codex</title>
+        <title>Neuralangelo - Sayaki's Codex</title>
       
     
     
@@ -156,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Neuralangelo: High-Fidelity Neural Surface Reconstruction
+              Neuralangelo
             
           </span>
         </div>
@@ -312,10 +316,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -698,6 +704,8 @@
       
   
   
+    
+  
   
   
     
@@ -719,18 +727,23 @@
       
         
       
-    
-    
-    
-      
+        
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -754,13 +767,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -824,6 +837,214 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuralangelo
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuralangelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ABSTRACT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FILES &amp; LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. PROBLEMS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. PROBLEMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-resolution-hash-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-resolution Hash Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytic-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytic Gradient
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. METHOD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. METHOD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numerical-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerical Gradient
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressive-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressive Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. EXPERIMENTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. THINKING
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1005,6 +1226,34 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="1. PROBLEMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#multi-resolution-hash-encoding" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Multi-resolution Hash Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#analytic-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Analytic Gradient
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1015,6 +1264,45 @@
       
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="2. METHOD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#numerical-gradient" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Numerical Gradient
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#progressive-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Progressive Learning
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Optimization
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -1069,10 +1357,76 @@
 <li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/LMQWJJCI">PDF</a></li>
 </ul>
 <h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
+<p>考虑一组 3D 物体图片 <span class="arithmatex">\(\{\mathcal{I}_{k}\}\)</span> ，目标为提高表面 <span class="arithmatex">\(\mathcal{S}\)</span> 重建质量．</p>
+<p>SDF 的优化关键为其满足 Eikonal 方程 <span class="arithmatex">\(\Vert \nabla f(\mathbf{x})\Vert_{2}=1\)</span> ，从而有如下 Eikonal Loss：</p>
+<div class="arithmatex">\[
+\mathcal{L}_{\text{eik}} = \frac{1}{N} \sum_{i=1}^N \left( \Vert \nabla f(\mathbf{x}_{i}) \Vert_{2} - 1 \right)^{2} 
+\]</div>
+<h3 id="multi-resolution-hash-encoding">Multi-resolution Hash Encoding<a class="headerlink" href="#multi-resolution-hash-encoding" title="Permanent link">¶</a></h3>
+<p><a href="../instant-ngp/">Instant-NGP</a></p>
+<h3 id="analytic-gradient">Analytic Gradient<a class="headerlink" href="#analytic-gradient" title="Permanent link">¶</a></h3>
+<p>现存方法计算表面法向使用解析梯度．但在三线性插值哈希编码下，解析梯度在空间中并不连续．</p>
+<p>考虑点 <span class="arithmatex">\(\mathbf{x}_{i}\)</span> ，分辨率为 <span class="arithmatex">\(N_{l}\)</span> ，对应缩放点 <span class="arithmatex">\(\mathbf{x}_{{i,l}}:=\mathbf{x}_{i}\cdot N_{l}\)</span> ，插值权重为 <span class="arithmatex">\(\mathbf{w}:=\mathbf{x}_{i,l}-\lfloor \mathbf{x}_{i,l} \rfloor\)</span> ，该层级特征为：</p>
+<div class="arithmatex">\[
+\gamma_{l}(\mathbf{x}_{i,l}) = \gamma_{l}(\lfloor \mathbf{x}_{i,l} \rfloor )\cdot(1-\mathbf{w}) + \gamma_{l}(\lceil \mathbf{x}_{i,l} \rceil )\cdot \mathbf{w}
+\]</div>
+<p>哈希编码对于坐标的导数计算为：</p>
+<div class="arithmatex">\[
+\begin{align}
+\frac{\partial\gamma_{l}(\mathbf{x}_{i,l})}{\partial \mathbf{x}_{i}} &amp;= \gamma_{l}(\lfloor \mathbf{x}_{i,l} \rfloor )\cdot(  -\frac{\partial \mathbf{w}}{\partial \mathbf{x}_{i,l}}) + \gamma_{l}(\lceil \mathbf{x}_{i,l} \rceil )\cdot \frac{\partial \mathbf{w}}{\partial \mathbf{x}_{i,l}} \\
+&amp;= N_{l} \cdot(\gamma_{l}(\lceil \mathbf{x}_{i,l} \rceil ) - \gamma_{l}(\lfloor \mathbf{x}_{i,l} \rfloor ))
+\end{align}
+\]</div>
+<p>此时，<span class="arithmatex">\(\mathcal{L}_{\text{eik}}\)</span> 仅反向传播到局部哈希项，即 <span class="arithmatex">\(\gamma_{l}(\lfloor \mathbf{x}_{i,l} \rfloor)\)</span> 和 <span class="arithmatex">\(\gamma_{l}(\lceil \mathbf{x}_{i,l} \rceil)\)</span> </p>
 <h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
+<h3 id="numerical-gradient">Numerical Gradient<a class="headerlink" href="#numerical-gradient" title="Permanent link">¶</a></h3>
+<p>为克服哈希编码解析梯度的局部性，使用数值梯度计算表面法线．</p>
+<p>对于采样点 <span class="arithmatex">\(\mathbf{x}_{i}=(x_{i},y_{i},z_{i})\)</span> ，额外沿各坐标轴以步长 <span class="arithmatex">\(\epsilon\)</span> 采样一对点，以计算数值梯度：</p>
+<div class="arithmatex">\[
+\nabla_{x}f(\mathbf{x}_{i}) = \frac{f(\gamma(\mathbf{x}_{i}+\boldsymbol{\epsilon}_{x})) - f(\gamma(\mathbf{x}_{i}-\boldsymbol{\epsilon}_{x})}{2\epsilon}, \quad \boldsymbol{\epsilon}_{x}=[\epsilon,0,0]
+\]</div>
+<p>如图，数值梯度可视为对解析梯度的平滑操作，同时优化多个网格：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/neuralangelo-method.svg" data-desc-position="bottom"><img alt="neuralangelo-method" src="../assets/neuralangelo-method.svg"></a></p>
+<figcaption>
+<p>解析梯度和数值梯度示意图．</p>
+</figcaption>
+</figure>
+<h3 id="progressive-learning">Progressive Learning<a class="headerlink" href="#progressive-learning" title="Permanent link">¶</a></h3>
+<p>采用 Coarse-to-fine 的优化方式可以防止落入局部极小值．数值梯度对此有如下自然优势：</p>
+<ul>
+<li>
+<p>步长 <span class="arithmatex">\(\epsilon\)</span> ：</p>
+<p>大步长 <span class="arithmatex">\(\epsilon\)</span> 会保证表面法向在大尺度上的一致性；小步长 <span class="arithmatex">\(\epsilon\)</span> 会避免对细节的过度平滑．实践中，初始化 <span class="arithmatex">\(\epsilon=N_{\text{max}}\)</span> ，并在优化过程中指数递减，以匹配不同的哈希网格大小．</p>
+</li>
+<li>
+<p>哈希网格分辨率 <span class="arithmatex">\(N\)</span>：</p>
+<p>若所有分辨率网格都在优化开始时激活，精细网格会受到初始大步长 <span class="arithmatex">\(\epsilon\)</span> 的影响．因此，初始只激活一部分粗分辨率网格，当 <span class="arithmatex">\(\epsilon\)</span> 递减到一定空间尺寸，再激活对应分辨率网格．</p>
+</li>
+</ul>
+<h3 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">¶</a></h3>
+<p>损失函数定义如下：</p>
+<div class="arithmatex">\[
+\mathcal{L} = \mathcal{L}_{\text{color}} + \lambda_{\text{eik}}\mathcal{L}_{\text{eik}} + \lambda_{\text{curv}}\mathcal{L}_{\text{curv}}
+\]</div>
+<ul>
+<li>
+<p>颜色损失 <span class="arithmatex">\(\mathcal{L}_{\text{color}}\)</span> 同 <a href="../neus/#training">NeuS</a> ．</p>
+</li>
+<li>
+<p>Eikonal 损失 <span class="arithmatex">\(\mathcal{L}_{\text{eik}}\)</span> 使用数值梯度计算．</p>
+</li>
+<li>
+<p>为进一步提升重建曲面光滑性，添加曲率损失：</p>
+<div class="arithmatex">\[
+\mathcal{L}_{\text{curv}} = \frac{1}{N} \sum_{i=1}^N \vert \nabla^{2} f(\mathbf{x}_{i})\vert
+\]</div>
+<p>该平均曲率使用离散 Laplacian 计算．</p>
+</li>
+</ul>
 <h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-03"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-03T16:47:22+00:00">2026-08-03</time></span></div></div></div>
 
 
 

@@ -727,6 +727,8 @@
       
         
       
+        
+      
     
     
     
@@ -1051,6 +1053,34 @@
     
   
     Instant-NGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuralangelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuralangelo
   
 
     
@@ -1528,26 +1558,26 @@ T(t) &amp;= \Phi_{s}(f(\mathbf{p}(t))) \\
 <p>记世界空间 <span class="arithmatex">\(P=\{ C_{k},M_{k},\mathbf{o}_{k},\mathbf{v}_{k} \}\)</span>，其中 <span class="arithmatex">\(C_{k}\)</span> 为像素颜色，<span class="arithmatex">\(M_{k}\in \{0,1\}\)</span> 为可选掩码值．每轮迭代对一张图片采样 <span class="arithmatex">\(\text{batch_size} = m\)</span> 个像素，及对应射线上 <span class="arithmatex">\(\text{sampling_size} = n\)</span> 个点．训练目标为拟合 <span class="arithmatex">\(f\)</span> 和 <span class="arithmatex">\(c\)</span> 的 MLP 及标准差 <span class="arithmatex">\(s\)</span> ．</p>
 <p>损失函数定义如下：</p>
 <div class="arithmatex">\[
-\mathcal{L} = \mathcal{L}_{color} + \lambda \mathcal{L}_{reg} + \beta \mathcal{L}_{mask}
+\mathcal{L} = \mathcal{L}_{\text{color}} + \lambda_{\text{reg}} \mathcal{L}_{\text{reg}} + \lambda_{\text{mask}} \mathcal{L}_{\text{mask}}
 \]</div>
 <ul>
 <li>
 <p>颜色损失定义为：</p>
 <div class="arithmatex">\[
-\mathcal{L}_{color} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
+\mathcal{L}_{\text{color}} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
 \]</div>
 <p>与 IDR 中同样取 <span class="arithmatex">\(\mathcal{R} = \text{L1 loss}\)</span> ，对异常值健壮并且训练稳定．</p>
 </li>
 <li>
 <p>添加 Eikonal 项作为 SDF 正则项：</p>
 <div class="arithmatex">\[
-\mathcal{L}_{reg} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
+\mathcal{L}_{\text{reg}} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
 \]</div>
 </li>
 <li>
 <p>可选 mask 损失定义为：</p>
 <div class="arithmatex">\[
-\mathcal{L}_{mask} = \operatorname{BCE}(M_{k},\hat{O}_{k})
+\mathcal{L}_{\text{mask}} = \operatorname{BCE}(M_{k},\hat{O}_{k})
 \]</div>
 <p>其中 <span class="arithmatex">\(\hat{O}_{k}=\sum_{i=1}^n T_{k,i}\alpha_{k,i}\)</span> 为沿光线权重和，<span class="arithmatex">\(\operatorname{BCE}\)</span> 为二元交叉熵损失．</p>
 </li>
@@ -1594,7 +1624,7 @@ T(t) &amp;= \Phi_{s}(f(\mathbf{p}(t))) \\
 </figcaption>
 </figure>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<p></p><div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-07-19"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-07-19T06:04:47+00:00">2026-07-19</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span></div></div></div><p></p>
+<p></p><div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-07-19"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-07-19T06:04:47+00:00">2026-07-19</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-03"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-03T16:47:22+00:00">2026-08-03</time></span></div></div></div><p></p>
 
 
 

@@ -15,7 +15,7 @@
         <link rel="prev" href="../neus/">
       
       
-        <link rel="next" href="../test1/">
+        <link rel="next" href="../neuralangelo/">
       
       
         
@@ -727,6 +727,8 @@
       
         
       
+        
+      
     
     
     
@@ -913,10 +915,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#frequency-encodings" class="md-nav__link">
+  <a href="#frequency-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Frequency Encodings
+        Frequency Encoding
       
     </span>
   </a>
@@ -924,10 +926,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#parametric-encodings" class="md-nav__link">
+  <a href="#parametric-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametric Encodings
+        Parametric Encoding
       
     </span>
   </a>
@@ -935,10 +937,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sparse-parametric-encodings" class="md-nav__link">
+  <a href="#sparse-parametric-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sparse Parametric Encodings
+        Sparse Parametric Encoding
       
     </span>
   </a>
@@ -963,10 +965,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#multiresolution-hash-encoding" class="md-nav__link">
+  <a href="#multi-resolution-hash-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiresolution Hash Encoding
+        Multi-resolution Hash Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-linear-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D-linear Interpolation
       
     </span>
   </a>
@@ -1004,6 +1017,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuralangelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuralangelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1189,10 +1230,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#frequency-encodings" class="md-nav__link">
+  <a href="#frequency-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Frequency Encodings
+        Frequency Encoding
       
     </span>
   </a>
@@ -1200,10 +1241,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#parametric-encodings" class="md-nav__link">
+  <a href="#parametric-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Parametric Encodings
+        Parametric Encoding
       
     </span>
   </a>
@@ -1211,10 +1252,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sparse-parametric-encodings" class="md-nav__link">
+  <a href="#sparse-parametric-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sparse Parametric Encodings
+        Sparse Parametric Encoding
       
     </span>
   </a>
@@ -1239,10 +1280,21 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#multiresolution-hash-encoding" class="md-nav__link">
+  <a href="#multi-resolution-hash-encoding" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Multiresolution Hash Encoding
+        Multi-resolution Hash Encoding
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#d-linear-interpolation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        D-linear Interpolation
       
     </span>
   </a>
@@ -1302,24 +1354,24 @@
 <h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
 <ul>
 <li><strong>URL:</strong>  <a href="http://arxiv.org/abs/2201.05989">Open Online</a></li>
-<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/H4UEH68F">Full Text PDF</a></li>
+<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/H4UEH68F">PDF</a></li>
 </ul>
 <h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
-<p>考虑一个表示神经图像基元的 MLP <span class="arithmatex">\(m(x,\Phi)\)</span> ，目标为编码原始输入 <span class="arithmatex">\(x\)</span> 到更高维向量 <span class="arithmatex">\(y=\operatorname{enc}(x,\theta)\)</span> ，提升紧致模型的拟合质量。</p>
-<h3 id="frequency-encodings">Frequency Encodings<a class="headerlink" href="#frequency-encodings" title="Permanent link">¶</a></h3>
+<p>考虑一个表示神经图像基元的 MLP <span class="arithmatex">\(m(\mathbf{x};\Phi)\)</span> ，目标为编码原始输入 <span class="arithmatex">\(x\)</span> 到更高维向量 <span class="arithmatex">\(\mathbf{y}=\operatorname{enc}(\mathbf{x};\theta)\)</span> ，提升紧致模型的拟合质量．</p>
+<h3 id="frequency-encoding">Frequency Encoding<a class="headerlink" href="#frequency-encoding" title="Permanent link">¶</a></h3>
 <div class="arithmatex">\[
 \begin{align}
 \operatorname{enc}(x) = \big(&amp;\sin(2^0x),\sin(2^1x),\dots,\sin(2^{L-1}x), \\
 &amp;\cos(2^0x),\cos(2^1x),\dots,\cos(2^{L-1}x) \big)
 \end{align}
 \]</div>
-<h3 id="parametric-encodings">Parametric Encodings<a class="headerlink" href="#parametric-encodings" title="Permanent link">¶</a></h3>
-<h3 id="sparse-parametric-encodings">Sparse Parametric Encodings<a class="headerlink" href="#sparse-parametric-encodings" title="Permanent link">¶</a></h3>
+<h3 id="parametric-encoding">Parametric Encoding<a class="headerlink" href="#parametric-encoding" title="Permanent link">¶</a></h3>
+<h3 id="sparse-parametric-encoding">Sparse Parametric Encoding<a class="headerlink" href="#sparse-parametric-encoding" title="Permanent link">¶</a></h3>
 <h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
-<h3 id="multiresolution-hash-encoding">Multiresolution Hash Encoding<a class="headerlink" href="#multiresolution-hash-encoding" title="Permanent link">¶</a></h3>
-<p>对于 <span class="arithmatex">\(y=\operatorname{enc}(x,\theta)\)</span> ，<span class="arithmatex">\(\theta\)</span> 表示为 <span class="arithmatex">\(L\times T\times F\)</span> 的多分辨率哈希表。其中 <span class="arithmatex">\(L\)</span> 为分辨率级别数，<span class="arithmatex">\(T\)</span> 为特征向量数，<span class="arithmatex">\(F\)</span> 为特征向量维数。具体特征如下：</p>
+<h3 id="multi-resolution-hash-encoding">Multi-resolution Hash Encoding<a class="headerlink" href="#multi-resolution-hash-encoding" title="Permanent link">¶</a></h3>
+<p>对于 <span class="arithmatex">\(\mathbf{y}=\operatorname{enc}(\mathbf{x},\theta)\)</span> ，<span class="arithmatex">\(\theta\)</span> 表示为 <span class="arithmatex">\(L\times T\times F\)</span> 的多分辨率哈希表．其中 <span class="arithmatex">\(L\)</span> 为分辨率级别数，<span class="arithmatex">\(T\)</span> 为特征向量数，<span class="arithmatex">\(F\)</span> 为特征向量维数．具体特征如下：</p>
 <ul>
-<li>分辨率级别之间相互独立，并存储网格顶点的特征向量。</li>
+<li>分辨率级别之间相互独立，并存储网格顶点的特征向量．</li>
 <li>
 <p>分辨率按几何级数从范围 <span class="arithmatex">\([N_{\text{min}},N_{\text{max}}]\)</span> 内取值：</p>
 <div class="arithmatex">\[
@@ -1330,19 +1382,61 @@ b &amp;:= \exp \left( \frac{\ln N_{\text{max}} - \ln N_{\text{min}}}{L-1} \right
 \]</div>
 </li>
 </ul>
+<p>各参数具体信息如下：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/instant-ngp-table1.png" data-desc-position="bottom"><img alt="instant-ngp-table1" src="../assets/instant-ngp-table1.png"></a></p>
+<figcaption>
+<p>哈希编码参数及取值范围表．</p>
+</figcaption>
+</figure>
 <p>采用如下空间哈希函数 <span class="arithmatex">\(h: \mathbb{Z}^d \to \mathbb{Z}_{T}\)</span>：</p>
 <div class="arithmatex">\[
-h(x=(x_{1},\dots,x_{d})) = \left( \bigoplus_{i=1}^d \widetilde{x}_{i}\pi_{i} \right) \bmod T
+h(\mathbf{x}=(x_{1},\dots,x_{d})) = \left( \bigoplus_{i=1}^d \widetilde{x}_{i}\pi_{i} \right) \bmod T
 \]</div>
-<p>其中 <span class="arithmatex">\(\oplus\)</span> 表示按位 <span class="arithmatex">\(\operatorname{XOR}\)</span> ，<span class="arithmatex">\(\pi_{i}\)</span> 为互不相同的大质数。为消去维度相关性，<span class="arithmatex">\(\{\widetilde{x}_{i}\}\)</span> 为 <span class="arithmatex">\(\{x_{i}\}\)</span> 的随机置换。为实现独立性，只需置换 <span class="arithmatex">\(d-1\)</span> 维，从而取 <span class="arithmatex">\(\pi_{1}:=1,\pi_{2}:=2\,654\,435\,761,\pi_{3}:=805\,459\,861\)</span> 。</p>
-<p>对于级别 <span class="arithmatex">\(l\)</span> ，输入坐标 <span class="arithmatex">\(x\in \mathbb{R}^d\)</span> 位于其中一个网格，两个顶点为：</p>
+<p>其中 <span class="arithmatex">\(\oplus\)</span> 表示按位 <span class="arithmatex">\(\operatorname{XOR}\)</span> ，<span class="arithmatex">\(\pi_{i}\)</span> 为互不相同的大质数．为消去维度相关性，<span class="arithmatex">\(\{\widetilde{x}_{i}\}\)</span> 为 <span class="arithmatex">\(\{x_{i}\}\)</span> 的随机置换．为实现独立性，只需置换 <span class="arithmatex">\(d-1\)</span> 维，从而取 <span class="arithmatex">\(\pi_{1}:=1,\pi_{2}:=2\,654\,435\,761,\pi_{3}:=805\,459\,861\)</span> ．</p>
+<p>对于层级 <span class="arithmatex">\(l\)</span> ，输入坐标 <span class="arithmatex">\(\mathbf{x}\in \mathbb{R}^d\)</span> 位于其中一个网格，两个顶点为：</p>
 <div class="arithmatex">\[
-\lfloor x_{l} \rfloor := \lfloor x\cdot N_{l} \rfloor , \quad \lceil x_{l} \rceil := \lceil x\cdot N_{l} \rceil 
+\lfloor \mathbf{x}_{l} \rfloor := \lfloor \mathbf{x}\cdot N_{l} \rfloor , \quad \lceil \mathbf{x}_{l} \rceil := \lceil \mathbf{x}\cdot N_{l} \rceil 
 \]</div>
-<p>该级别 <span class="arithmatex">\(x\)</span> 处的特征向量由顶点处特征 <span class="arithmatex">\(d\)</span> 线性插值得到，权重为 <span class="arithmatex">\(w_{l}:=x_{l}-\lfloor x_{l} \rfloor\)</span> 。总计 <span class="arithmatex">\(L\)</span> 个特征向量和附加输入 <span class="arithmatex">\(\xi\in \mathbb{R}^E\)</span>  拼接成 <span class="arithmatex">\(y\in \mathbb{R}^{LF+E}\)</span> 。</p>
+<p>该层级 <span class="arithmatex">\(\mathbf{x}\)</span> 处的特征向量由顶点处特征 <span class="arithmatex">\(d\)</span>-linear 插值得到，权重为 <span class="arithmatex">\(\mathbf{w}_{l}:=\mathbf{x}_{l}-\lfloor \mathbf{x}_{l} \rfloor\)</span> ．总计 <span class="arithmatex">\(L\)</span> 个特征向量和附加输入 <span class="arithmatex">\(\xi\in \mathbb{R}^E\)</span>  拼接成 <span class="arithmatex">\(\mathbf{y}\in \mathbb{R}^{LF+E}\)</span> ．</p>
+<p>如上过程总结如图：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/instant-ngp-pipeline.png" data-desc-position="bottom"><img alt="" src="../assets/instant-ngp-pipeline.png"></a></p>
+<figcaption>
+<p>2D 多分辨率哈希管线图．</p>
+</figcaption>
+</figure>
+<details class="note" open="open">
+<summary>Remark (Implicit hash collision resolution)</summary>
+<p>本方法在存在哈希冲突下成功重建场景的关键为：不同分辨率层级提取不同特征，彼此互补．</p>
+<ul>
+<li>低分辨率层级不存在冲突，但只能提供粗略特征；高分辨率层级提供了精细特征，但存在大量冲突．由哈希函数特性，冲突会随机分布在空间中，并且同时在所有层级发生概率极低．</li>
+<li>对于冲突两点，其对重建结果的贡献几乎不同．特征优化会被重要点梯度主导．</li>
+</ul>
+</details>
+<h3 id="d-linear-interpolation">D-linear Interpolation<a class="headerlink" href="#d-linear-interpolation" title="Permanent link">¶</a></h3>
+<p>获取查询点特征使用 <span class="arithmatex">\(d\)</span>-linear 插值而不是网格对齐，目的是保证 <span class="arithmatex">\(m(\operatorname{enc}(\mathbf{x};\theta);\Phi)\)</span> 连续．</p>
+<p>对于高阶连续性需求（如拟合 SDF 需法向连续），有如下可选方案：</p>
+<ul>
+<li><span class="arithmatex">\(d\)</span>-quadratic 或 <span class="arithmatex">\(d\)</span>-cubic 插值．</li>
+<li>
+<p>利用 <strong>平滑阶梯函数（Smoothstep Function）</strong>：</p>
+<div class="arithmatex">\[
+S_{1}(x) = x^{2}(3-2x)
+\]</div>
+<p>令 <span class="arithmatex">\(\widetilde{\mathbf{w}}_l:=S_1(\mathbf{w}_l)\)</span> ，由 <span class="arithmatex">\(S_1^{\prime}(0)=S_1^{\prime}(1)=0\)</span> ，网格边界处一阶导数无跳变，有 <span class="arithmatex">\(C^1\)</span> 光滑性． </p>
+</li>
+</ul>
+<details class="note" open="open">
+<summary>Remark</summary>
+<ul>
+<li>使用“平滑阶梯函数”技巧会引发边界点在各层级处导数为 <span class="arithmatex">\(0\)</span> ．因此进行层级偏移，偏移量为 <span class="arithmatex">\(1/(2N_{l})\)</span> ．</li>
+<li>对于更高阶平滑性需求，可使用高阶平滑阶梯函数 <span class="arithmatex">\(S_{n}\)</span> ．但实验表明使用高阶 <span class="arithmatex">\(S_{n}\)</span> 反而会降低重建质量．</li>
+</ul>
+</details>
 <h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-01T09:38:27+00:00">2026-08-01</time></span></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-01"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-01T05:15:32+00:00">2026-08-01</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-03"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-03T16:47:22+00:00">2026-08-03</time></span></div></div></div>
 
 
 
