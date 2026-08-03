@@ -155,13 +155,13 @@ $$
 损失函数定义如下：
 
 $$
-\mathcal{L} = \mathcal{L}_{color} + \lambda \mathcal{L}_{reg} + \beta \mathcal{L}_{mask}
+\mathcal{L} = \mathcal{L}_{\text{color}} + \lambda_{\text{reg}} \mathcal{L}_{\text{reg}} + \lambda_{\text{mask}} \mathcal{L}_{\text{mask}}
 $$
 
 - 颜色损失定义为：
 
 	$$
-	\mathcal{L}_{color} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
+	\mathcal{L}_{\text{color}} = \frac{1}{m} \sum_{k} \mathcal{R}(\hat{C_{k}},C_{k})
 	$$
 
 	与 IDR 中同样取 $\mathcal{R} = \text{L1 loss}$ ，对异常值健壮并且训练稳定．
@@ -169,13 +169,13 @@ $$
 - 添加 Eikonal 项作为 SDF 正则项：
 
 	$$
-	\mathcal{L}_{reg} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
+	\mathcal{L}_{\text{reg}} = \frac{1}{nm} \sum_{k,i}\left( \Vert \nabla f(\hat{\mathbf{p}}_{k,i})\Vert_{2} - 1 \right)^{2} 
 	$$
 
 - 可选 mask 损失定义为：
 
 	$$
-	\mathcal{L}_{mask} = \operatorname{BCE}(M_{k},\hat{O}_{k})
+	\mathcal{L}_{\text{mask}} = \operatorname{BCE}(M_{k},\hat{O}_{k})
 	$$
 	
 	其中 $\hat{O}_{k}=\sum_{i=1}^n T_{k,i}\alpha_{k,i}$ 为沿光线权重和，$\operatorname{BCE}$ 为二元交叉熵损失．

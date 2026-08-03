@@ -57,6 +57,7 @@ nav:
     - papers/index.md
     - NeuS: papers/neus.md
     - Instant-NGP: papers/instant-ngp.md
+    - Neuralangelo: papers/neuralangelo.md
     - papers/test1.md
     - papers/test2.md
     - papers/test3.md

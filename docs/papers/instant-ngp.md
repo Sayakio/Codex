@@ -18,11 +18,11 @@ Neural graphics primitives, parameterized by fully connected neural networks, ca
 
 ## FILES & LINKS
 - **URL:**  [Open Online](http://arxiv.org/abs/2201.05989)
-- **Zotero Entry:** [Full Text PDF](zotero://select/library/items/H4UEH68F)
+- **Zotero Entry:** [PDF](zotero://select/library/items/H4UEH68F)
 
 
 ## 1. PROBLEMS
-考虑一个表示神经图像基元的 MLP $m(x;\Phi)$ ，目标为编码原始输入 $x$ 到更高维向量 $y=\operatorname{enc}(x;\theta)$ ，提升紧致模型的拟合质量．
+考虑一个表示神经图像基元的 MLP $m(\mathbf{x};\Phi)$ ，目标为编码原始输入 $x$ 到更高维向量 $\mathbf{y}=\operatorname{enc}(\mathbf{x};\theta)$ ，提升紧致模型的拟合质量．
 
 ### Frequency Encoding
 
@@ -40,8 +40,8 @@ $$
 
 
 ## 2. METHOD
-### Multiresolution Hash Encoding
-对于 $y=\operatorname{enc}(x,\theta)$ ，$\theta$ 表示为 $L\times T\times F$ 的多分辨率哈希表．其中 $L$ 为分辨率级别数，$T$ 为特征向量数，$F$ 为特征向量维数．具体特征如下：
+### Multi-resolution Hash Encoding
+对于 $\mathbf{y}=\operatorname{enc}(\mathbf{x},\theta)$ ，$\theta$ 表示为 $L\times T\times F$ 的多分辨率哈希表．其中 $L$ 为分辨率级别数，$T$ 为特征向量数，$F$ 为特征向量维数．具体特征如下：
 
 - 分辨率级别之间相互独立，并存储网格顶点的特征向量．
 - 分辨率按几何级数从范围 $[N_{\text{min}},N_{\text{max}}]$ 内取值：
@@ -64,18 +64,18 @@ $$
 采用如下空间哈希函数 $h: \mathbb{Z}^d \to \mathbb{Z}_{T}$：
 
 $$
-h(x=(x_{1},\dots,x_{d})) = \left( \bigoplus_{i=1}^d \widetilde{x}_{i}\pi_{i} \right) \bmod T
+h(\mathbf{x}=(x_{1},\dots,x_{d})) = \left( \bigoplus_{i=1}^d \widetilde{x}_{i}\pi_{i} \right) \bmod T
 $$
 
 其中 $\oplus$ 表示按位 $\operatorname{XOR}$ ，$\pi_{i}$ 为互不相同的大质数．为消去维度相关性，$\{\widetilde{x}_{i}\}$ 为 $\{x_{i}\}$ 的随机置换．为实现独立性，只需置换 $d-1$ 维，从而取 $\pi_{1}:=1,\pi_{2}:=2\,654\,435\,761,\pi_{3}:=805\,459\,861$ ．
 
-对于层级 $l$ ，输入坐标 $x\in \mathbb{R}^d$ 位于其中一个网格，两个顶点为：
+对于层级 $l$ ，输入坐标 $\mathbf{x}\in \mathbb{R}^d$ 位于其中一个网格，两个顶点为：
 
 $$
-\lfloor x_{l} \rfloor := \lfloor x\cdot N_{l} \rfloor , \quad \lceil x_{l} \rceil := \lceil x\cdot N_{l} \rceil 
+\lfloor \mathbf{x}_{l} \rfloor := \lfloor \mathbf{x}\cdot N_{l} \rfloor , \quad \lceil \mathbf{x}_{l} \rceil := \lceil \mathbf{x}\cdot N_{l} \rceil 
 $$
 
-该层级 $x$ 处的特征向量由顶点处特征 $d$-linear 插值得到，权重为 $w_{l}:=x_{l}-\lfloor x_{l} \rfloor$ ．总计 $L$ 个特征向量和附加输入 $\xi\in \mathbb{R}^E$  拼接成 $y\in \mathbb{R}^{LF+E}$ ．
+该层级 $\mathbf{x}$ 处的特征向量由顶点处特征 $d$-linear 插值得到，权重为 $\mathbf{w}_{l}:=\mathbf{x}_{l}-\lfloor \mathbf{x}_{l} \rfloor$ ．总计 $L$ 个特征向量和附加输入 $\xi\in \mathbb{R}^E$  拼接成 $\mathbf{y}\in \mathbb{R}^{LF+E}$ ．
 
 如上过程总结如图：
 
@@ -92,7 +92,7 @@ $$
 
 
 ### D-linear Interpolation
-获取查询点特征使用 $d$-linear 插值而不是网格对齐，目的是保证 $m(\operatorname{enc}(x;\theta);\Phi)$ 连续．
+获取查询点特征使用 $d$-linear 插值而不是网格对齐，目的是保证 $m(\operatorname{enc}(\mathbf{x};\theta);\Phi)$ 连续．
 
 对于高阶连续性需求（如拟合 SDF 需法向连续），有如下可选方案：
 
@@ -103,7 +103,7 @@ $$
 	S_{1}(x) = x^{2}(3-2x)
 	$$
 	
-	令 $\widetilde{w}_l:=S_1(w_l)$ ，由 $S_1^{\prime}(0)=S_1^{\prime}(1)=0$ ，网格边界处一阶导数无跳变，有 $C^1$ 光滑性． 
+	令 $\widetilde{\mathbf{w}}_l:=S_1(\mathbf{w}_l)$ ，由 $S_1^{\prime}(0)=S_1^{\prime}(1)=0$ ，网格边界处一阶导数无跳变，有 $C^1$ 光滑性． 
 
 ???+ note "Remark"
 	- 使用“平滑阶梯函数”技巧会引发边界点在各层级处导数为 $0$ ．因此进行层级偏移，偏移量为 $1/(2N_{l})$ ．
