@@ -57,7 +57,7 @@ $$
 
 ![instant-ngp-table1](./assets/instant-ngp-table1.png)
 /// caption
-哈希编码参数及取值范围表．
+Table 1: 哈希编码参数及取值范围表．
 ///
 
 
@@ -81,7 +81,7 @@ $$
 
 ![](assets/instant-ngp-pipeline.png)
 /// caption
-2D 多分辨率哈希管线图．
+Figure 1: 2D 多分辨率哈希管线图．
 ///
 
 ???+ note "Remark (Implicit hash collision resolution)"

@@ -83,7 +83,7 @@ $$
 
 
 不同超参数 $a,b$ 值对应的 Beta 分布示意图如下：
-![beta-distribution](./images/distribution1.png){: #beta}
+![beta-distribution](images/chap2-1.png){: #beta}
 
 令 $l=N-m$，计算后验如下：
 
@@ -125,13 +125,13 @@ $$
 考虑 $K$ 维随机变量 $\mathbf{x} \in \{0,1\}^K$ 且 $\sum_{k=1}^K x_{k} = 1$．记 $p(x_{k}=1)=\mu_{k}$，则 $\mathbf{x}$ 的分布如下：
 
 $$
-p(\mathbf{x}\vert \boldsymbol{\mu}) = \prod_{k=1}^K \mu_{k}^{x_{k}},\quad \boldsymbol{\mu} = (\mu_{1},\dots,\mu_{K})^\mathrm{T}
+p(\mathbf{x}\vert \boldsymbol{\mu}) = \prod_{k=1}^K \mu_{k}^{x_{k}},\quad \boldsymbol{\mu} = (\mu_{1},\dots,\mu_{K})^\mathsf{T}
 $$
 
 $\mathbf{x}$ 可视为 Bernoulli Distribution 的推广，即有 $K$ 个可取值．其矩值如下：
 
 $$
-	\mathbb{E}[\mathbf{x}\vert \boldsymbol{\mu}] = (\mu_{1},\dots,\mu_{K})^\mathrm{T} = \boldsymbol{\mu}
+	\mathbb{E}[\mathbf{x}\vert \boldsymbol{\mu}] = (\mu_{1},\dots,\mu_{K})^\mathsf{T} = \boldsymbol{\mu}
 $$
 
 假设数据集 $\mathcal{D}=\left\{ \mathbf{x}_{1},\dots,\mathbf{x}_{N} \right\}$ 从分布 $p(\mathbf{x}\vert \boldsymbol{\mu})$ 中采样，似然函数计算如下：
@@ -167,7 +167,7 @@ $$
 同 Beta Distribution ，共轭先验有如下形式：
 
 $$
-p(\boldsymbol{\mu}\vert \boldsymbol{\alpha}) \propto \prod_{k=1}^K \mu_{k}^{\alpha_{k}-1}, \quad \boldsymbol{\alpha} = (\alpha_{1},\dots,\alpha_{K})^\mathrm{T}
+p(\boldsymbol{\mu}\vert \boldsymbol{\alpha}) \propto \prod_{k=1}^K \mu_{k}^{\alpha_{k}-1}, \quad \boldsymbol{\alpha} = (\alpha_{1},\dots,\alpha_{K})^\mathsf{T}
 $$
 
 ???+ note "Dirichlet Distribution"
@@ -178,7 +178,7 @@ $$
 	$$
 
 不同超参 $\{\alpha_{k}\}$ 对应的 Dirichlet 分布示意图如下（从左到右依次为 $\{\alpha_{k}\} = 0.1, \{\alpha_{k}\} = 1, \{\alpha_{k}\} = 10$）：
-![dirichlet-distribution](./images/distribution2.png)
+![dirichlet-distribution](images/chap2-2.png)
 
 计算后验如下：
 

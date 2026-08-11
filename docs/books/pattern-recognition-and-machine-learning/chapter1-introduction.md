@@ -5,7 +5,7 @@ stats: "true"
 > Although these might sound like daunting topics, they are in fact straightforward, and a clear understanding of them is essential if machine learning techniques are to be used to best effect in practical applications.
 ## 1. POLYNOMIAL CURVE FITTING
 ### Preliminary
-假设给定训练集 $S$ 包含 $N$ 个观察点 $\mathbf{X} \equiv (x_1, x_2, \cdots, x_N)^\mathrm{T}$ 以及对应观察值 $\mathbf{T} \equiv (t_1, t_2, \cdots, t_N)^\mathrm{T}$ ．目标为对新的输入 $\widehat{x}$ 预测其对应值 $\widehat{\,t\,}$．这里我们将其视为简单的曲线拟合问题．特别地，选取如下形式的多项式函数作为拟合目标：
+假设给定训练集 $S$ 包含 $N$ 个观察点 $\mathbf{X} \equiv (x_1, x_2, \cdots, x_N)^\mathsf{T}$ 以及对应观察值 $\mathbf{T} \equiv (t_1, t_2, \cdots, t_N)^\mathsf{T}$ ．目标为对新的输入 $\widehat{x}$ 预测其对应值 $\widehat{\,t\,}$．这里我们将其视为简单的曲线拟合问题．特别地，选取如下形式的多项式函数作为拟合目标：
 
 $$
 y(x;\mathbf{w}) = w_0 + w_1 x + w_2 x^2 + \cdots + w_M x^M = \sum_{j=0}^M w_j x^j
@@ -25,7 +25,7 @@ $$
 
 现在问题转为确定多项式的阶数 $Ｍ$．下图为 $M = 0,1,3,9$ 时拟合结果多项式的对比图像（绿色为原曲线，红色为拟合曲线）．
 
-![polynomial-M](./images/introduction1.png)
+![polynomial-M](images/chap1-1.png)
 
 此外还可以进行一些定量分析．考虑测试集 $T$，对于不同 $M$ 计算在 $T$ 上的 **均方根误差（Root-mean-square，RMS）**：
 
@@ -35,7 +35,7 @@ $$
 
 训练集和测试集上的均方根误差随 $M$ 分布图如下：
 
-![E-RMS](./images/introduction2.png)
+![E-RMS](images/chap1-2.png)
 
 可以看到，$M$ 从 $0$ 开始增加时，结果多项式拟合效果持续上升．但 $M = 9$ 时，虽然训练集误差降低到 $0$，但测试误差激增，产生 **过拟合（Over-fitting）** 现象．
 
@@ -49,13 +49,13 @@ $$
 
 首先是系数 $\mathbf{w}^*$ 随 $M$ 的量级变化．
 
-![magnitude](./images/introduction3.png)
+![magnitude](images/chap1-3.png)
 
 直观来说，具有较大阶数 $M$ 的复杂多项式越来越适应目标值上的随机噪声．
 
 其次是给定模型（$M=9$）对不同量级数据集的拟合效果变化．
 
-![diff-size](./images/introduction4.png)
+![diff-size](images/chap1-4.png)
 
 数据集越大，就越能容得起对数据拟合一个更复杂的模型．
 
@@ -73,9 +73,9 @@ $$
 
 如下图表展示了 $M=9$ 时，添加不同系数 $\lambda$ 的正则项后，拟合结果对比图，系数 $\mathbf{w}$ 量级对比表和 $E_{\text{RMS}}$ 变化趋势图：
 
-![diff-lambda](./images/introduction5.png)
-![lambda-magnitude](./images/introduction6.png)
-![lambda-Erms](./images/introduction7.png)
+![diff-lambda](images/chap1-5.png)
+![lambda-magnitude](images/chap1-6.png)
+![lambda-Erms](images/chap1-7.png)
 
 ## 2. PROBABILITY THEORY
 概率论基本知识可参考 Wiki: [Probability Theory](https://en.wikipedia.org/wiki/Probability_theory)，[Expectation](https://en.wikipedia.org/wiki/Expected_value)，[Covariance](https://en.wikipedia.org/wiki/Covariance)．
@@ -134,7 +134,7 @@ $$
 	$D$ 维高斯分布：
 
 	$$
-	\mathcal{N}(\mathbf{x}\vert \boldsymbol{\mu}, \mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \mathbf{\Sigma}\vert^{1/2}} \exp \left\{ -\frac12 (\mathbf{x}-\boldsymbol{\mu})^\mathrm{T} \mathbf{\Sigma}^{-1} (\mathbf{x}-\boldsymbol{\mu}) \right\}
+	\mathcal{N}(\mathbf{x}\vert \boldsymbol{\mu}, \mathbf{\Sigma}) = \frac{1}{(2\pi)^{D/2}} \frac{1}{\vert \mathbf{\Sigma}\vert^{1/2}} \exp \left\{ -\frac12 (\mathbf{x}-\boldsymbol{\mu})^\mathsf{T} \mathbf{\Sigma}^{-1} (\mathbf{x}-\boldsymbol{\mu}) \right\}
 	$$
 
 	其中 $\boldsymbol{\mu}$ 为均值，$\mathbf{\Sigma}$ 为协方差
@@ -176,7 +176,7 @@ $$
 	引入参数 $\mathbf{w}$ 的先验分布：
 
 	$$
-	p(\mathbf{w}\vert \alpha) = \mathcal{N}(\mathbf{w}\vert \mathbf{0},\alpha^{-1}\mathbf{I}) = \left(\frac{\alpha}{2\pi}\right)^{(M+1)/2} \exp\left\{ -\frac{\alpha}2 \mathbf{w}^{\mathrm{T}}\mathbf{w} \right\}
+	p(\mathbf{w}\vert \alpha) = \mathcal{N}(\mathbf{w}\vert \mathbf{0},\alpha^{-1}\mathbf{I}) = \left(\frac{\alpha}{2\pi}\right)^{(M+1)/2} \exp\left\{ -\frac{\alpha}2 \mathbf{w}^{\mathsf{T}}\mathbf{w} \right\}
 	$$
 
 	由贝叶斯公式计算后验有：
@@ -184,7 +184,7 @@ $$
 	$$
 	\begin{align}
 	p(\mathbf{w}\vert \mathbf{X},\mathbf{T},\alpha,\beta) &\propto p(\mathbf{T}\vert \mathbf{X},\mathbf{w},\beta) p(\mathbf{w}\vert \alpha) \\
-	-\ln p(\mathbf{w}\vert \mathbf{X},\mathbf{T},\alpha,\beta) = \frac{\beta}{2}\sum_{n=1}^N [y(x_n,&\mathbf{w})-t_n]^2 + \frac{\alpha}2 \mathbf{w}^{\mathrm{T}}\mathbf{w}- \frac N2 \ln\beta + \text{Const}
+	-\ln p(\mathbf{w}\vert \mathbf{X},\mathbf{T},\alpha,\beta) = \frac{\beta}{2}\sum_{n=1}^N [y(x_n,&\mathbf{w})-t_n]^2 + \frac{\alpha}2 \mathbf{w}^{\mathsf{T}}\mathbf{w}- \frac N2 \ln\beta + \text{Const}
 	\end{align}
 	$$
 
@@ -192,7 +192,7 @@ $$
 
 	$$
 	\begin{align}
-	\mathbf{w}_{\rm{MAP}} &= \arg \min_{\mathbf{w}}\, \frac\beta2[y(x_n,\mathbf{w})-t_n]^2 + \frac\alpha2 \mathbf{w}^{\mathrm{T}}\mathbf{w} \\
+	\mathbf{w}_{\rm{MAP}} &= \arg \min_{\mathbf{w}}\, \frac\beta2[y(x_n,\mathbf{w})-t_n]^2 + \frac\alpha2 \mathbf{w}^{\mathsf{T}}\mathbf{w} \\
 	\beta_{\mathrm{MAP}}^{-1} &= \frac1N \sum_{n=1}^N [y(x_n,\mathbf{w_{\mathrm{MAP}}})-t_n]^2
 	\end{align}
 	$$
@@ -211,9 +211,9 @@ $$
 
 	$$
 	\begin{align}
-	m(x) &= \beta \mathbf{\phi}(x)^\mathrm{T}\mathbf{S}\sum_{n=1}^N \mathbf{\phi}(x_{n})t_{n}\\
-	s^{2}(x) &= \beta^{-1} + \mathbf{\phi}(x)^\mathrm{T}\mathbf{S}\mathbf{\phi}(x) \\ \\
-	\mathbf{S}^{-1} = \alpha \mathbf{I} + &\beta \sum_{n=1}^N \mathbf{\phi}(x_{n})\mathbf{\phi}(x)^\mathrm{T}, \quad \mathbf{\phi}_{i}(x) = x^i
+	m(x) &= \beta \mathbf{\phi}(x)^\mathsf{T}\mathbf{S}\sum_{n=1}^N \mathbf{\phi}(x_{n})t_{n}\\
+	s^{2}(x) &= \beta^{-1} + \mathbf{\phi}(x)^\mathsf{T}\mathbf{S}\mathbf{\phi}(x) \\ \\
+	\mathbf{S}^{-1} = \alpha \mathbf{I} + &\beta \sum_{n=1}^N \mathbf{\phi}(x_{n})\mathbf{\phi}(x)^\mathsf{T}, \quad \mathbf{\phi}_{i}(x) = x^i
 	\end{align}
 	$$
 
@@ -312,7 +312,7 @@ $$
 
 直观来说，分布平均的随机变量熵值大，分布集中在某些点的随机变量熵值小．
 
-![distribution-entropy-relation](./images/introduction8.png)
+![distribution-entropy-relation](images/chap1-8.png)
 
 下面将熵的概念推广到连续性随机变量 $x \sim p \in C[x]$ ：
 

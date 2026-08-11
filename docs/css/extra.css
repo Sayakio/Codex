@@ -1,11 +1,23 @@
-/* 增大所有提示框（note、warning 等）内的字体 */
+/* 增大提示框内的字体 */
 .md-typeset .admonition,
 .md-typeset details {
-  font-size: 0.8rem;   /* 原默认约 0.64rem，你可以按需要调整 */
+  font-size: 0.8rem;   /* 原默认约 0.64rem */
 }
 
 .md-typeset a:hover {
     text-decoration: none !important;
+}
+
+.md-typeset figure {
+  outline: var(--md-default-fg-color--lighter) solid thin;
+  border-radius: 8px;
+  margin: auto;
+  width: 100%;
+  padding: 15px;
+}
+
+.md-typeset figure figcaption {
+  max-width: 100%;
 }
 
 /* Homepage */

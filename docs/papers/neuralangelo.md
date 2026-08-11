@@ -65,7 +65,7 @@ $$
 
 ![neuralangelo-method](assets/neuralangelo-method.svg)
 /// caption
-解析梯度和数值梯度示意图．
+Figure 1: 解析梯度和数值梯度示意图．
 ///
 
 

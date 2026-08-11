@@ -32,8 +32,9 @@ document$.subscribe(async () => {
   const DIM_OPACITY = 0.1;
   const INITIAL_ALPHA = 1;
   const INITIAL_CLUSTER_RADIUS = 28;
-  const [RADIUS_MIN, RADIUS_MAX] = [8, 10];
-  const RADIUS_GROWTH_EXPONENT = 3;
+  const RADIUS_MIN = 8;
+  const RADIUS_STEP = 2;
+  const DEGREE_STEP = 5;
   const COLOR = {
     default: "var(--md-default-fg-color--light)",
     active: "var(--md-accent-fg-color)",
@@ -75,17 +76,12 @@ document$.subscribe(async () => {
     const links = (raw.links || []).map(link => ({ ...link }));
     if (!nodes.length) return showFallback("No papers graph data available.");
     const relatedById = new Map(nodes.map(node => [node.id, new Set([node.id, ...(node.neighbors || [])])]));
-    const maxDegree = nodes[0].degree || 1;
-    const maxLevel = Math.log2(Math.max(maxDegree, 2));
-    const radiusOf = degree => degree <= 1
-      ? RADIUS_MIN
-      : RADIUS_MIN + (RADIUS_MAX - RADIUS_MIN) * (Math.log2(degree) / maxLevel) ** RADIUS_GROWTH_EXPONENT;
+    const radiusOf = degree => RADIUS_MIN + Math.floor(degree / DEGREE_STEP) * RADIUS_STEP;
     nodes.forEach(node => { node.radius = radiusOf(node.degree || 0); });
     seedNodes(nodes, widthOf());
     const svg = d3.select(el).append("svg").attr("width", "100%").attr("height", "100%");
     const link = svg.append("g").selectAll("line").data(links).join("line")
-      .attr("stroke", COLOR.default)
-      .attr("stroke-width", d => Math.min(1 + Math.log2(d.weight || 1), 3));
+      .attr("stroke", COLOR.default);
     const nodeGroup = svg.append("g").selectAll("g").data(nodes).join("g").style("cursor", "pointer");
     nodeGroup.append("circle").attr("r", d => d.radius).attr("fill", COLOR.bg);
     const circle = nodeGroup.append("circle").attr("r", d => d.radius).attr("fill", COLOR.default);
