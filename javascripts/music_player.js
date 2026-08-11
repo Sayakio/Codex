@@ -821,7 +821,7 @@ function createMusicUI() {
         autoplay: false,
         listFolded: true,
         theme: "#2980b9",
-        volume: 0.7,
+        volume: 0.5,
         preload: "none",
         audio: MUSIC_TRACKS,
     });

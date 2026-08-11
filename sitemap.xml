@@ -16,13 +16,23 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline/</loc>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://Sayakio.github.io/Codex/books/pattern-recognition-and-machine-learning/chapter1-introduction/</loc>
-        <lastmod>2026-07-05</lastmod>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/books/pattern-recognition-and-machine-learning/chapter2-probability-distribution/</loc>
-        <lastmod>2026-07-17</lastmod>
+        <lastmod>2026-08-11</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://Sayakio.github.io/Codex/books/physically-based-rendering/chapter3-geometry%26transformations/</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -32,12 +42,12 @@
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/papers/instant-ngp/</loc>
-        <lastmod>2026-08-03</lastmod>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/papers/neuralangelo/</loc>
-        <lastmod>2026-08-03</lastmod>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -46,23 +56,13 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://Sayakio.github.io/Codex/papers/test1/</loc>
-        <lastmod>2026-07-15</lastmod>
+        <loc>https://Sayakio.github.io/Codex/papers/neus2/</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
-        <loc>https://Sayakio.github.io/Codex/papers/test2/</loc>
-        <lastmod>2026-07-15</lastmod>
-        <changefreq>daily</changefreq>
-    </url>
-    <url>
-        <loc>https://Sayakio.github.io/Codex/papers/test3/</loc>
-        <lastmod>2026-07-15</lastmod>
-        <changefreq>daily</changefreq>
-    </url>
-    <url>
-        <loc>https://Sayakio.github.io/Codex/papers/test4/</loc>
-        <lastmod>2026-07-16</lastmod>
+        <loc>https://Sayakio.github.io/Codex/papers/surfel/</loc>
+        <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>
     </url>
 </urlset>
