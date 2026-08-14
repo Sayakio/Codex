@@ -21,6 +21,16 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors%26matrices/</loc>
+        <lastmod>2026-08-14</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/</loc>
+        <lastmod>2026-08-14</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://Sayakio.github.io/Codex/books/pattern-recognition-and-machine-learning/chapter1-introduction/</loc>
         <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>

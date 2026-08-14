@@ -1,0 +1,2310 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal Learning Library">
+      
+      
+        <meta name="author" content="Sayaki">
+      
+      
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/">
+      
+      
+        <link rel="prev" href="../chapter2-vectors%26matrices/">
+      
+      
+        <link rel="next" href="../../physically-based-rendering/chapter3-geometry%26transformations/">
+      
+      
+        
+      
+      
+      
+      
+        
+        
+        
+          <link rel="icon" href="../../../favicon.svg">
+        
+      
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
+    
+    
+      
+        <title>Chapter III Transforms - Sayaki's Codex</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7aee198.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a45159b5.min.css">
+      
+    
+    
+
+    
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css">
+    
+      <link rel="stylesheet" href="../../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../../css/music_player.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
+    
+      <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-2NVLQ4ZLS6"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-2NVLQ4ZLS6",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-2NVLQ4ZLS6",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style><script src="../../../assets/javascripts/toggle-sidebar.js"></script></head>
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo" data-mx-topbar="glass">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__toc"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#1-linear-transformations" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Sayaki's Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sayaki's Codex
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Chapter III Transforms
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal" aria-label="Switch to system preference" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to system preference" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0">
+        <div class="md-search-result md-search-result--pagefind" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sayakio/Codex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Sayaki/Codex
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+    
+  
+  首页 • 起点
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"></path></svg>
+    
+  
+  书籍 • 印记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../papers/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 20a1 1 0 0 0 1-1V4H8a1 1 0 0 0-1 1v11H5V5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v1h-2V5a1 1 0 0 0-1-1 1 1 0 0 0-1 1v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1h11a2 2 0 0 0 2 2M9 6h5v2H9zm0 4h5v2H9zm0 4h5v2H9z"></path></svg>
+    
+  
+  论文 • 洞见
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Sayaki's Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
+
+    </a>
+    Sayaki's Codex
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sayakio/Codex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Sayaki/Codex
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    首页 • 起点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    书籍 • 印记
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    书籍 • 印记
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calculus of Variations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Calculus of Variations
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Elements of the theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pattern Recognition and Machine Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pattern Recognition and Machine Learning
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pattern-recognition-and-machine-learning/chapter1-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../pattern-recognition-and-machine-learning/chapter2-probability-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter II Probability Distribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mathematics for 3D Game Programming and Computer Graphics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mathematics for 3D Game Programming and Computer Graphics
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter1-the-rendering-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I The Rendering Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter2-vectors%26matrices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter II Vectors and Matrices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter III Transforms
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter III Transforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#1-linear-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LINEAR TRANSFORMATIONS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. LINEAR TRANSFORMATIONS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orthogonal-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orthogonal Matrices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handedness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-scaling-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. SCALING TRANSFORMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rotation-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ROTATION TRANSFORMS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ROTATION TRANSFORMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbitrary Rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-homogeneous-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. HOMOGENEOUS COORDINATES
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. HOMOGENEOUS COORDINATES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#four-dimensional-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four-Dimensional Transforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometrical-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometrical Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-transforming-normal-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TRANSFORMING NORMAL VECTORS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-quaternions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. QUATERNIONS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. QUATERNIONS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quaternion-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quaternion Mathematics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotations-with-quaternions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotations with Quaternions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physically Based Rendering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Physically Based Rendering
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../physically-based-rendering/chapter3-geometry%26transformations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter III Geometry and Transformations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../papers/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 20a1 1 0 0 0 1-1V4H8a1 1 0 0 0-1 1v11H5V5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v1h-2V5a1 1 0 0 0-1-1 1 1 0 0 0-1 1v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1h11a2 2 0 0 0 2 2M9 6h5v2H9zm0 4h5v2H9zm0 4h5v2H9z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    论文 • 洞见
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    论文 • 洞见
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D Reconstruction
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../papers/instant-ngp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instant-NGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surface Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Surface Reconstruction
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../papers/neus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../papers/neus2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuS2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../papers/neuralangelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuralangelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#1-linear-transformations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LINEAR TRANSFORMATIONS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. LINEAR TRANSFORMATIONS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#orthogonal-matrices" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Orthogonal Matrices
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#handedness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Handedness
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-scaling-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. SCALING TRANSFORMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-rotation-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. ROTATION TRANSFORMS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3. ROTATION TRANSFORMS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#arbitrary-rotation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Arbitrary Rotation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-homogeneous-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. HOMOGENEOUS COORDINATES
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4. HOMOGENEOUS COORDINATES">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#four-dimensional-transforms" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Four-Dimensional Transforms
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#geometrical-interpretation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Geometrical Interpretation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-transforming-normal-vectors" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        5. TRANSFORMING NORMAL VECTORS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-quaternions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        6. QUATERNIONS
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6. QUATERNIONS">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#quaternion-mathematics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quaternion Mathematics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rotations-with-quaternions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rotations with Quaternions
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              
+              
+              <article class="md-content__inner md-typeset" data-pagefind-body="">
+                
+                  
+  
+  
+
+
+  <h1>Chapter III Transforms</h1>
+
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 3517 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 3 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 12 分钟</p>
+</div>
+<blockquote>
+<p>Throughout any 3D graphics engine architecture, it is often necessary to transform a set of vectors from one coordinate space to another. ... In this chapter, we concern ourselves with linear transformations among different Cartesian coordinate frames. Such transformations include simple scales and translations, as well as arbitrary rotations.</p>
+</blockquote>
+<h2 id="1-linear-transformations">1. LINEAR TRANSFORMATIONS<a class="headerlink" href="#1-linear-transformations" title="Permanent link">¶</a></h2>
+<p>考虑 3D 坐标系统 <span class="arithmatex">\(O\)</span> ，<span class="arithmatex">\(\mathbf{p}\)</span> 在 <span class="arithmatex">\(O\)</span> 中坐标 <span class="arithmatex">\(\left&lt; x,y,z \right&gt;\)</span> ．引入另一坐标系统 <span class="arithmatex">\(O'\)</span> ，<span class="arithmatex">\(\mathbf{p}\)</span> 在 <span class="arithmatex">\(O'\)</span> 中坐标 <span class="arithmatex">\(\left&lt; x',y',z' \right&gt;\)</span> ，可写成如下线性函数：</p>
+<div class="arithmatex">\[
+\begin{align}
+x'(x,y,z) &amp;= U_{1}x + V_{1}y + W_{1}z + T_{1} \\
+y'(x,y,z) &amp;= U_{2}x + V_{2}y + W_{2}z + T_{2} \\
+z'(x,y,z) &amp;= U_{3}x + V_{3}y + W_{3}z + T_{3}
+\end{align}
+\]</div>
+<p>这构成了 <span class="arithmatex">\(O\)</span> 到 <span class="arithmatex">\(O'\)</span> 的 <strong>线性变换（Linear Transformation）</strong>，可记为如下矩阵形式：</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+x' \\
+y' \\
+z'
+\end{bmatrix} = \begin{bmatrix}
+U_{1} &amp; V_{1} &amp; W_{1} \\
+U_{2} &amp; V_{2} &amp; W_{2} \\
+U_{3} &amp; V_{3} &amp; W_{3}
+\end{bmatrix}\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} + \begin{bmatrix}
+T_{1} \\
+T_{2} \\
+T_{3}
+\end{bmatrix}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{T}\)</span> 表示从 <span class="arithmatex">\(O\)</span> 原点到 <span class="arithmatex">\(O'\)</span> 原点的平移变换．若该线性变换可逆，则 <span class="arithmatex">\(O'\)</span> 到 <span class="arithmatex">\(O\)</span> 的线性变换为：</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+x \\
+y \\
+z
+\end{bmatrix} = \begin{bmatrix}
+U_{1} &amp; V_{1} &amp; W_{1} \\
+U_{2} &amp; V_{2} &amp; W_{2} \\
+U_{3} &amp; V_{3} &amp; W_{3}
+\end{bmatrix}^{-1} \left( \begin{bmatrix}
+x' \\
+y' \\
+z'
+\end{bmatrix} - \begin{bmatrix}
+T_{1} \\
+T_{2} \\
+T_{3}
+\end{bmatrix} \right) 
+\]</div>
+<p>目前，暂时只考虑 <span class="arithmatex">\(\mathbf{T}\equiv\mathbf{0}\)</span>  的线性变换．</p>
+<h3 id="orthogonal-matrices">Orthogonal Matrices<a class="headerlink" href="#orthogonal-matrices" title="Permanent link">¶</a></h3>
+<p>图形学中，大部分 <span class="arithmatex">\(3\times3\)</span> 矩阵都为正交阵，其定义如下：</p>
+<details class="note" open="open">
+<summary>Definition</summary>
+<p>一个可逆 <span class="arithmatex">\(n\times n\)</span> 矩阵 <span class="arithmatex">\(\mathbf{M}\)</span> 称为 <strong>正交阵（Orthogonal）</strong> 当且仅当 <span class="arithmatex">\(\mathbf{M}^{-1}=\mathbf{M}^{\mathsf{T}}\)</span>．</p>
+</details>
+<p>设正交阵 <span class="arithmatex">\(\mathbf{M}=\begin{bmatrix}V_{1} &amp; V_{2} &amp; \cdots &amp; V_{n}\end{bmatrix}\)</span> ，由定义知其列向量 <span class="arithmatex">\(\left\{ V_{1},V_{2},\dots,V_{n} \right\}\)</span> 构成标准正交集；同理，对于标准正交集 <span class="arithmatex">\(\left\{ V_{1},V_{2},\dots,V_{n} \right\}\)</span> ，可构造出正交阵 <span class="arithmatex">\(\mathbf{M}=\begin{bmatrix}V_{1} &amp; V_{2} &amp; \cdots &amp; V_{n}\end{bmatrix}\)</span> ．</p>
+<p>正交阵有如下重要性质：</p>
+<details class="note" open="open">
+<summary>Theorem</summary>
+<p>若 <span class="arithmatex">\(n\times n\)</span> 矩阵 <span class="arithmatex">\(\mathbf{M}\)</span> 为正交阵，则 <span class="arithmatex">\(\mathbf{M}\)</span> 保长度和角度．</p>
+<p>实际上，对于向量 <span class="arithmatex">\(\mathbf{p}_1,\mathbf{p}_2\)</span> ，计算有：</p>
+<div class="arithmatex">\[(\mathbf{M}\mathbf{p}_{1})\cdot(\mathbf{M}\mathbf{p}_{2}) = (\mathbf{M}\mathbf{p}_{1})^\mathsf{T}(\mathbf{M}\mathbf{p}_{2}) = \mathbf{p}_{1}^\mathsf{T}\mathbf{M}^\mathsf{T}\mathbf{M}\mathbf{p}_{2} = \mathbf{p}_{1}^\mathsf{T}\mathbf{p}_{2} = \mathbf{p}_{1}\cdot \mathbf{p}_{2}
+\]</div>
+</details>
+<p>由于正交阵的保长和保角性，其会保持坐标系统的整体结构．从而正交阵可分解为反射和旋转的组合．</p>
+<p>其中，<strong>反射变换（Reflection Transform）</strong> 指将点按特定方向镜像的操作．</p>
+<h3 id="handedness">Handedness<a class="headerlink" href="#handedness" title="Permanent link">¶</a></h3>
+<p>在 <span class="arithmatex">\(3\)</span> 维空间中，一组坐标基 <span class="arithmatex">\(\mathcal{B}=\left\{ \mathbf{v}_{1},\mathbf{v}_{2},\mathbf{v}_{3} \right\}\)</span> 具有名为 <strong>手性（Handedness）</strong> 的性质．若 <span class="arithmatex">\((\mathbf{v}_{1}\times \mathbf{v}_{2})\cdot \mathbf{v}_{3}&gt;0\)</span> ，称之为右手系；若 <span class="arithmatex">\((\mathbf{v}_{1}\times \mathbf{v}_{2})\cdot \mathbf{v}_{3}&lt;0\)</span> 称之为左手系．</p>
+<p>手性只会受到反射变换的影响：</p>
+<ul>
+<li>进行奇数次反射变换会反转手性．</li>
+<li>进行偶数次反射变换等价于旋转，不改变手性．</li>
+</ul>
+<p>从而，一系列反射变换 = 单次旋转变换 + 至多一次反射变换．</p>
+<p>对于变换 <span class="arithmatex">\(\mathbf{M}\)</span> ，可计算其行列式判断是否存在反射：</p>
+<ul>
+<li>若 <span class="arithmatex">\(\det\mathbf{M}&gt;0\)</span> 则不存在反射．</li>
+<li>若 <span class="arithmatex">\(\det \mathbf{M}&lt;0\)</span> 则存在反射．</li>
+</ul>
+<p>特别地，对正交阵 <span class="arithmatex">\(\mathbf{M}\)</span> ，由于 <span class="arithmatex">\(\vert \det \mathbf{M}\vert=1\)</span> ，有如下判断：</p>
+<ul>
+<li>若 <span class="arithmatex">\(\det\mathbf{M}=1\)</span> 则 <span class="arithmatex">\(\mathbf{M}\)</span> 表示纯旋转．</li>
+<li>若 <span class="arithmatex">\(\det\mathbf{M}=-1\)</span> 则 <span class="arithmatex">\(\mathbf{M}\)</span> 表示旋转 + 反射．</li>
+</ul>
+<h2 id="2-scaling-transforms">2. SCALING TRANSFORMS<a class="headerlink" href="#2-scaling-transforms" title="Permanent link">¶</a></h2>
+<p>对于向量 <span class="arithmatex">\(\mathbf{p}\)</span> ，可进行如下从简单到复杂的缩放变换：</p>
+<ul>
+<li>
+<p><strong>一致缩放（Uniform Scale）</strong>：</p>
+<p>以一致因子 <span class="arithmatex">\(a\)</span> 缩放 <span class="arithmatex">\(\mathbf{p}\)</span> ，即 <span class="arithmatex">\(\mathbf{p}'=a\mathbf{p}\)</span> ，有矩阵表达：</p>
+<div class="arithmatex">\[
+\mathbf{p}' = \begin{bmatrix}
+a &amp; 0 &amp; 0 \\
+0 &amp; a &amp; 0 \\
+0 &amp; 0 &amp; a
+\end{bmatrix} \begin{bmatrix}
+p_{x} \\
+p_{y} \\
+p_{z}
+\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p><strong>非一致缩放（Nonuniform Scale）</strong>：</p>
+<p>对 <span class="arithmatex">\(x,y,z\)</span> 轴以不同因子缩放，有矩阵表达：</p>
+<div class="arithmatex">\[
+\mathbf{p}' = \begin{bmatrix}
+a &amp; 0 &amp; 0 \\
+0 &amp; b &amp; 0 \\
+0 &amp; 0 &amp; c
+\end{bmatrix} \begin{bmatrix}
+p_{x} \\
+p_{y} \\
+p_{z}
+\end{bmatrix}
+\]</div>
+</li>
+<li>
+<p>对任意轴非一致缩放：</p>
+<p>设 <span class="arithmatex">\(\mathbf{u}\)</span> 轴缩放因子 <span class="arithmatex">\(a\)</span> ，<span class="arithmatex">\(\mathbf{v}\)</span> 轴缩放因子 <span class="arithmatex">\(b\)</span> ， <span class="arithmatex">\(\mathbf{w}\)</span> 轴缩放因子 <span class="arithmatex">\(c\)</span> ．则先从 <span class="arithmatex">\((\mathbf{i},\mathbf{j},\mathbf{k})\)</span> 坐标系统变换到 <span class="arithmatex">\((\mathbf{u},\mathbf{v},\mathbf{w})\)</span> 坐标系统，再进行缩放，最后变换回 <span class="arithmatex">\((\mathbf{i},\mathbf{j},\mathbf{k})\)</span> 坐标系统．矩阵表达如下：</p>
+<div class="arithmatex">\[
+\mathbf{p}' = \begin{bmatrix}
+U_{x} &amp; V_{x} &amp; W_{x} \\
+U_{y} &amp; V_{y} &amp; W_{y} \\
+U_{z} &amp; V_{z} &amp; W_{z}
+\end{bmatrix} \begin{bmatrix}
+a &amp; 0 &amp; 0 \\
+0 &amp; b &amp; 0 \\
+0 &amp; 0 &amp; c
+\end{bmatrix} \begin{bmatrix}
+U_{x} &amp; V_{x} &amp; W_{x} \\
+U_{y} &amp; V_{y} &amp; W_{y} \\
+U_{z} &amp; V_{z} &amp; W_{z}
+\end{bmatrix}^{-1} \begin{bmatrix}
+p_{x} \\
+p_{y} \\
+p_{z}
+\end{bmatrix}
+\]</div>
+</li>
+</ul>
+<h2 id="3-rotation-transforms">3. ROTATION TRANSFORMS<a class="headerlink" href="#3-rotation-transforms" title="Permanent link">¶</a></h2>
+<p>对于向量 <span class="arithmatex">\(\mathbf{p}\)</span> 和轴 <span class="arithmatex">\(\mathbf{v}\)</span> ，考虑 <span class="arithmatex">\(\mathbf{p}\)</span> 关于 <span class="arithmatex">\(\mathbf{v}\)</span> 逆时针旋转 <span class="arithmatex">\(\theta\)</span> 得到 <span class="arithmatex">\(\mathbf{p}'\)</span> （以 <span class="arithmatex">\(\mathbf{v}\)</span> 指向方向观察），研究 <span class="arithmatex">\(\mathbf{p}'\)</span> 和旋转矩阵 <span class="arithmatex">\(\mathbf{R}_{\mathbf{v}}(\theta)\)</span> 表达式．</p>
+<p>首先考虑二维情况．对于 2D 向量 <span class="arithmatex">\(\mathbf{p}\)</span> ，可将其逆时针旋转 <span class="arithmatex">\(90^{\circ}\)</span> 得到 <span class="arithmatex">\(\mathbf{q}=\left&lt; -p_{y},p_{x} \right&gt;\)</span> ．向量 <span class="arithmatex">\(\mathbf{p}\)</span> 和 <span class="arithmatex">\(\mathbf{q}\)</span> 构成 <span class="arithmatex">\(x-y\)</span> 平面的正交基．</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap3-2d-rotation.png" data-desc-position="bottom"><img alt="2d-rotation" src="../assets/chap3-2d-rotation.png"></a></p>
+<figcaption>
+<p>Figure 1: <span class="arithmatex">\(\mathbf{p}'\)</span> 关于基向量 <span class="arithmatex">\(\mathbf{p},\mathbf{q}\)</span> 的分解示意图．</p>
+</figcaption>
+</figure>
+<p>如图，此时 <span class="arithmatex">\(\mathbf{p}'\)</span> 有如下线性表示：</p>
+<div class="arithmatex">\[
+\mathbf{p}' = \mathbf{p}\cos\theta + \mathbf{q}\sin\theta = \begin{bmatrix}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{bmatrix} \mathbf{p}
+\]</div>
+<p>即旋转矩阵为：</p>
+<div class="arithmatex">\[
+\mathbf{R}(\theta) = \begin{bmatrix}
+\cos\theta &amp; -\sin\theta \\
+\sin\theta &amp; \cos\theta
+\end{bmatrix}
+\]</div>
+<p>将如上结果推广到三维情况，可得到沿 <span class="arithmatex">\(x,y,z\)</span> 轴进行旋转变换的旋转矩阵：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{R}_{x}(\theta) &amp;= \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; \cos\theta &amp; -\sin\theta \\
+0 &amp; \sin\theta &amp; \cos\theta
+\end{bmatrix} \\
+\mathbf{R}_{y}(\theta) &amp;= \begin{bmatrix}
+\cos\theta &amp; 0 &amp; \sin\theta \\
+0 &amp; 1 &amp; 0 \\
+-\sin\theta &amp; 0 &amp; \cos\theta
+\end{bmatrix} \\
+\mathbf{R}_{z}(\theta) &amp;= \begin{bmatrix}
+\cos\theta &amp; -\sin\theta &amp; 0 \\
+\sin\theta &amp; \cos\theta &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix}
+\end{align}
+\]</div>
+<h3 id="arbitrary-rotation">Arbitrary Rotation<a class="headerlink" href="#arbitrary-rotation" title="Permanent link">¶</a></h3>
+<p>现在考虑向量 <span class="arithmatex">\(\mathbf{p}\)</span> 关于任意轴 <span class="arithmatex">\(\mathbf{v}\)</span> 进行逆时针旋转 <span class="arithmatex">\(\theta\)</span> ．不妨设 <span class="arithmatex">\(\mathbf{v}\)</span> 为单位向量．</p>
+<p>首先将 <span class="arithmatex">\(\mathbf{p}\)</span> 关于 <span class="arithmatex">\(\mathbf{v}\)</span> 进行分解：</p>
+<div class="arithmatex">\[
+\begin{align}
+\operatorname{proj}_{\mathbf{v}}\mathbf{p} &amp;= (\mathbf{v}\cdot \mathbf{p})\mathbf{v} \\
+\operatorname{perp}_{\mathbf{v}}\mathbf{p} &amp;= \mathbf{p} - (\mathbf{v}\cdot \mathbf{p})\mathbf{v}
+\end{align}
+\]</div>
+<p>只需要计算 <span class="arithmatex">\(\operatorname{perp}_{\mathbf{v}}\mathbf{p}\)</span> 关于 <span class="arithmatex">\(\mathbf{v}\)</span> 的旋转结果．</p>
+<p>此时旋转发生在二维平面，类似地构造正交基．将 <span class="arithmatex">\(\operatorname{perp}_{\mathbf{v}}\mathbf{p}\)</span> 逆时针旋转 <span class="arithmatex">\(90^\circ\)</span> ，可验证该向量为 <span class="arithmatex">\(\mathbf{v}\times \mathbf{p}\)</span> ．旋转后的向量有如下线性表示：</p>
+<div class="arithmatex">\[
+[\mathbf{p} - (\mathbf{v}\cdot \mathbf{p})\mathbf{v}]\cos\theta + (\mathbf{v}\times \mathbf{p})\sin\theta
+\]</div>
+<p>加上 <span class="arithmatex">\(\operatorname{proj}_{\mathbf{v}}\mathbf{p}\)</span> 可得到 <span class="arithmatex">\(\mathbf{p}'\)</span> 表达式：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{p}' = \mathbf{p}\cos\theta + (\mathbf{v}\times \mathbf{p})\sin\theta + \mathbf{v}(\mathbf{v}\cdot \mathbf{p})(1 - \cos\theta) \tag{$\ast$} \label{star} \\
+\end{align}
+\]</div>
+<p>展开有：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{p}' &amp;= \begin{bmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; 1
+\end{bmatrix} \mathbf{p}\cos\theta + \begin{bmatrix}
+0 &amp; -V_{z} &amp; V_{y} \\
+V_{z} &amp; 0 &amp; -V_{x} \\
+-V_{y} &amp; V_{x} &amp; 0
+\end{bmatrix} \mathbf{p}\sin\theta + \begin{bmatrix}
+V_{x}^{2} &amp; V_{x}V_{y} &amp; V_{x}V_{z} \\
+V_{x}V_{y} &amp; V_{y}^{2} &amp; V_{y}V_{z} \\
+V_{x}V_{z} &amp; V_{y}V_{z} &amp; V_{z}^{2} 
+\end{bmatrix}\mathbf{p}(1 - \cos\theta) \\
+&amp;= \begin{bmatrix}
+c+(1-c)V_{x}^{2} &amp; (1-c)V_{x}V_{y}-sV_{z} &amp; (1-c)V_{x}V_{z}+sV_{y} \\
+(1-c)V_{x}V_{y}+sV_{z} &amp; c+(1-c)V_{y}^{2} &amp; (1-c)V_{y}V_{z}-sV_{x} \\
+(1-c)V_{x}V_{z}-sV_{y} &amp; (1-c)V_{y}V_{z}+sV_{x} &amp; c+(1-c)V_{z}^{2}
+\end{bmatrix} \mathbf{p}
+\end{align}
+\]</div>
+<p>其中 <span class="arithmatex">\(c=\cos\theta,s=\sin\theta\)</span> ．即旋转矩阵为：</p>
+<div class="arithmatex">\[
+\mathbf{R}_{\mathbf{v}}(\theta) = \begin{bmatrix}
+c+(1-c)V_{x}^{2} &amp; (1-c)V_{x}V_{y}-sV_{z} &amp; (1-c)V_{x}V_{z}+sV_{y} \\
+(1-c)V_{x}V_{y}+sV_{z} &amp; c+(1-c)V_{y}^{2} &amp; (1-c)V_{y}V_{z}-sV_{x} \\
+(1-c)V_{x}V_{z}-sV_{y} &amp; (1-c)V_{y}V_{z}+sV_{x} &amp; c+(1-c)V_{z}^{2}
+\end{bmatrix} 
+\]</div>
+<h2 id="4-homogeneous-coordinates">4. HOMOGENEOUS COORDINATES<a class="headerlink" href="#4-homogeneous-coordinates" title="Permanent link">¶</a></h2>
+<p>现在处理 <span class="arithmatex">\(\mathbf{T}\not\equiv\mathbf{0}\)</span> 的线性变换，即进行如下变换：</p>
+<div class="arithmatex">\[
+\mathbf{p}' = \mathbf{M}\mathbf{p} + \mathbf{T}
+\]</div>
+<p>若进行两次变换，则会得到如下杂乱形式：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{p}' &amp;= \mathbf{M}_{2}(\mathbf{M}_{1}\mathbf{p}+\mathbf{T}_{1}) + \mathbf{T}_{2} \\
+&amp;= (\mathbf{M}_{2}\mathbf{M}_{1})\mathbf{p} + \mathbf{M}_{2}\mathbf{T}_{1} + \mathbf{T}_{2}
+\end{align}
+\]</div>
+<h3 id="four-dimensional-transforms">Four-Dimensional Transforms<a class="headerlink" href="#four-dimensional-transforms" title="Permanent link">¶</a></h3>
+<p>一个优雅的解决方案为，将 3D 坐标 <span class="arithmatex">\(\left&lt; x,y,z \right&gt;\)</span> 拓展到 4D <strong>齐次坐标（Homogeneous Coordinates）</strong> <span class="arithmatex">\(\left&lt; x,y,z,w \right&gt;\)</span> ，使用 <span class="arithmatex">\(4\times4\)</span> 矩阵进行变换。</p>
+<ul>
+<li>对于 3D 点 <span class="arithmatex">\(\mathbf{p}\)</span> ，令 <span class="arithmatex">\(w=1\)</span> 。</li>
+<li>对于 3D 向量 <span class="arithmatex">\(\mathbf{v}\)</span> ，令 <span class="arithmatex">\(w=0\)</span> 。一方面，向量对于平移变换具有不变性，另一方面与两点差 <span class="arithmatex">\(\mathbf{q}-\mathbf{p}\)</span> 构成向量的 <span class="arithmatex">\(w=0\)</span> 对应。</li>
+</ul>
+<p>此时 <span class="arithmatex">\(4\times4\)</span> 变换矩阵可构造为：</p>
+<div class="arithmatex">\[
+\mathbf{F} = \left[ \begin{array}{ccc:c}
+{} &amp; {} &amp; {} &amp; {} \\
+{} &amp; \mathbf{M} &amp; {} &amp; \mathbf{T} \\
+{} &amp; {} &amp; {} &amp; {} \\
+\hdashline
+{} &amp; 0 &amp; {} &amp; 1
+\end{array} \right] = \left[
+\begin{array}{ccc:c}
+M_{11} &amp; M_{12} &amp; M_{13} &amp; T_x \\
+M_{21} &amp; M_{22} &amp; M_{23} &amp; T_y \\
+M_{31} &amp; M_{32} &amp; M_{33} &amp; T_z \\
+\hdashline
+0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\]</div>
+<p>若变换可逆，有 <span class="arithmatex">\(\mathbf{p}=\mathbf{M}^{-1}\mathbf{p}'-\mathbf{M}^{-1}\mathbf{T}\)</span> ， <span class="arithmatex">\(\mathbf{F}^{-1}\)</span> 可表示为：</p>
+<div class="arithmatex">\[
+\mathbf{F}^{-1} = \left[ \begin{array}{ccc:c}
+{} &amp; {} &amp; {} &amp; {} \\
+{} &amp; \mathbf{M}^{-1} &amp; {} &amp; -\mathbf{M}^{-1}\mathbf{T} \\
+{} &amp; {} &amp; {} &amp; {} \\
+\hdashline
+{} &amp; 0 &amp; {} &amp; 1
+\end{array} \right] = \left[
+\begin{array}{ccc:c}
+M^{-1}_{11} &amp; M^{-1}_{12} &amp; M^{-1}_{13} &amp; -(\mathbf{M}^{-1}\mathbf{T})_{x} \\
+M^{-1}_{21} &amp; M^{-1}_{22} &amp; M^{-1}_{23} &amp; -(\mathbf{M}^{-1}\mathbf{T})_{y} \\
+M^{-1}_{31} &amp; M^{-1}_{32} &amp; M^{-1}_{33} &amp; -(\mathbf{M}^{-1}\mathbf{T})_{z} \\
+\hdashline
+0 &amp; 0 &amp; 0 &amp; 1
+\end{array}
+\right]
+\]</div>
+<p>计算可验证 <span class="arithmatex">\(\mathbf{F}\mathbf{F}^{-1}=\mathbf{I}_{4}\)</span> 。</p>
+<h3 id="geometrical-interpretation">Geometrical Interpretation<a class="headerlink" href="#geometrical-interpretation" title="Permanent link">¶</a></h3>
+<p>考虑一个逆向映射 <span class="arithmatex">\(\mathscr{F}\)</span>，将 4D 点 <span class="arithmatex">\(\mathbf{p}=\left&lt; x,y,z,w \right&gt;,w\neq0\)</span> 映射到 3D 点 <span class="arithmatex">\(\widetilde{\mathbf{p}}\)</span> ：</p>
+<div class="arithmatex">\[
+\widetilde{\mathbf{p}} = \left&lt; \frac{x}{w},\frac{y}{w},\frac{z}{w} \right&gt; 
+\]</div>
+<p>如下图所示，<span class="arithmatex">\(\widetilde{\mathbf{p}}\)</span> 为 <span class="arithmatex">\(\rm OP\)</span> 和三维平面 <span class="arithmatex">\(w=1\)</span> 交点：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap3-4d-projection.png" data-desc-position="bottom"><img alt="4d-projection" src="../assets/chap3-4d-projection.png"></a></p>
+<figcaption>
+<p>Figure 2: 4D 点 <span class="arithmatex">\(\mathbf{p}\)</span> 投影到三维空间 <span class="arithmatex">\(w=1\)</span> 示意图（略去 <span class="arithmatex">\(z\)</span> 轴以便可视化）。</p>
+</figcaption>
+</figure>
+<p>即映射 <span class="arithmatex">\(\mathscr{F}\)</span> 满足如下性质：</p>
+<div class="arithmatex">\[
+\mathscr{F}(a\mathbf{p}) = \mathscr{F}(\mathbf{p}), \quad \forall a \neq 0
+\]</div>
+<p>具体讨论可见 [Section 5.5]</p>
+<h2 id="5-transforming-normal-vectors">5. TRANSFORMING NORMAL VECTORS<a class="headerlink" href="#5-transforming-normal-vectors" title="Permanent link">¶</a></h2>
+<p>顶点除位置信息外，还会记录额外信息，如法向量和切向量。从而顶点变换时，还需变换额外信息。</p>
+<p>考虑点 <span class="arithmatex">\(\mathbf{p}\)</span> ，对应法向量 <span class="arithmatex">\(\mathbf{n}\)</span> ，切向量 <span class="arithmatex">\(\mathbf{t}\)</span> ，变换矩阵 为<span class="arithmatex">\(\mathbf{M}\)</span> ：</p>
+<ul>
+<li>
+<p>对于 <strong>切向量（Tangent Vector）</strong>：</p>
+<p>切向量通常以与临近点作差计算，如 <span class="arithmatex">\(\mathbf{t}=\mathbf{q}-\mathbf{p}\)</span> ，从而变换后的切向量为 <span class="arithmatex">\(\mathbf{M}\mathbf{q}-\mathbf{M}\mathbf{p}=\mathbf{M}\mathbf{t}\)</span> ，即变换矩阵仍为 <span class="arithmatex">\(\mathbf{M}\)</span> 。</p>
+</li>
+<li>
+<p>对于 <strong>法向量（Normal Vector）</strong>：</p>
+<p>法向量使用 <span class="arithmatex">\(\mathbf{M}\)</span> 变换会导致变换后与表面不垂直，如下图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap3-transform-normal-vector.png" data-desc-position="bottom"><img alt="transform-normal-vector" src="../assets/chap3-transform-normal-vector.png"></a></p>
+<figcaption>
+<p>Figure 3: 使用非正交矩阵 <span class="arithmatex">\(\mathbf{M}\)</span> 变换法向量 <span class="arithmatex">\(\mathbf{n}\)</span> 示意图。</p>
+</figcaption>
+</figure>
+<p>设正确的法向变换矩阵为 <span class="arithmatex">\(\mathbf{G}\)</span> ，下面推导 <span class="arithmatex">\(\mathbf{G}\)</span> 表达式：</p>
+<p>由于法向和切向垂直，所以有 <span class="arithmatex">\(\mathbf{n}\cdot\mathbf{t}=0\)</span> ，且变换后的 <span class="arithmatex">\(\mathbf{n}',\mathbf{t}'\)</span> 也应满足：</p>
+<div class="arithmatex">\[
+\begin{align}
+0 = \mathbf{n}'\cdot \mathbf{t}' &amp;= (\mathbf{G}\mathbf{n})\cdot(\mathbf{M}\mathbf{t})  \\
+&amp;= (\mathbf{G}\mathbf{n})^\mathsf{T}(\mathbf{M}\mathbf{t}) \\
+&amp;= \mathbf{n}^\mathsf{T}\mathbf{G}^\mathsf{T}\mathbf{M}\mathbf{t}
+\end{align}
+\]</div>
+<p>若 <span class="arithmatex">\(\mathbf{G}^\mathsf{T}\mathbf{M}=\mathbf{I}\)</span> ，则上式成立，即 <span class="arithmatex">\(\mathbf{G}=(\mathbf{M}^{-1})^\mathsf{T}\)</span> 。</p>
+</li>
+</ul>
+<p>当 <span class="arithmatex">\(\mathbf{M}\)</span> 为正交阵时，有 <span class="arithmatex">\((\mathbf{M}^{-1})^\mathsf{T}=\mathbf{M}\)</span> ，此时可避免取逆和转置运算，尤其 <span class="arithmatex">\(\mathbf{M}\)</span> 为旋转矩阵 <span class="arithmatex">\(\mathbf{R}_{x},\mathbf{R}_{y},\mathbf{R}_{z},\mathbf{R}_{\mathbf{v}}\)</span> 。</p>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>如上由原矩阵 <span class="arithmatex">\(\mathbf{M}\)</span> 变换的向量称为 <strong>逆变向量（Contravariant Vector）</strong>，由 <span class="arithmatex">\((\mathbf{M}^{-1})^\mathsf{T}\)</span> 变换的向量称为 <strong>协变向量（Covariant Vector）</strong>。</p>
+</details>
+<h2 id="6-quaternions">6. QUATERNIONS<a class="headerlink" href="#6-quaternions" title="Permanent link">¶</a></h2>
+<p>在许多情况下，旋转矩阵有上位替代：<strong>四元数（Quaternion）</strong>，因其有如下优点：</p>
+<ul>
+<li>占用更少存储空间。</li>
+<li>复合运算需要更少操作数。</li>
+<li>插值计算更简单。</li>
+</ul>
+<h3 id="quaternion-mathematics">Quaternion Mathematics<a class="headerlink" href="#quaternion-mathematics" title="Permanent link">¶</a></h3>
+<p>四元数集，记为 <span class="arithmatex">\(\mathbb{H}\)</span> ，可视为四维向量空间。对于 <span class="arithmatex">\(\mathbf{q}\in\mathbb{H}\)</span> ，有如下形式：</p>
+<div class="arithmatex">\[
+\mathbf{q} = \left&lt; w,x,y,z \right&gt; = w + x \mathbf{i} + y \mathbf{j} + z \mathbf{k} =: s + \mathbf{v}
+\]</div>
+<p>其中 <span class="arithmatex">\(s\)</span> 为标量部分 <span class="arithmatex">\(w\)</span> ，<span class="arithmatex">\(\mathbf{v}\)</span> 为向量部分 <span class="arithmatex">\(x \mathbf{i}+y \mathbf{j}+ z \mathbf{k}\)</span> 。</p>
+<p>加法运算与向量加法相同，构成交换群。下面考虑 <span class="arithmatex">\(\mathbb{H}\)</span> 上的乘法运算。类似复数，乘法使用分配律和如下规则定义：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{i}^2 = &amp;\mathbf{j}^{2} = \mathbf{k}^{2} = -1 \\
+\mathbf{i}\mathbf{j} &amp;= -\mathbf{j}\mathbf{i} = \mathbf{k} \\
+\mathbf{j}\mathbf{k} &amp;= -\mathbf{k}\mathbf{j} = \mathbf{i} \\
+\mathbf{k}\mathbf{i} &amp;=-\mathbf{i}\mathbf{k} = \mathbf{j}
+\end{align}
+\]</div>
+<p>验证可知，该乘法满足结合律，不满足交换律。对于 <span class="arithmatex">\(\mathbf{q}_{1}=w_{1}+x_{1}\mathbf{i}+y_{1}\mathbf{j}+z_{1}\mathbf{k}=s_{1}+\mathbf{v}_{1}\)</span> 和 <span class="arithmatex">\(\mathbf{q}_{2}=w_{2}+x_{2}\mathbf{i}+y_{2}\mathbf{j}+z_{2}\mathbf{k}=s_{2}+\mathbf{v}_{2}\)</span> ，乘积计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{q}_{1}\mathbf{q}_{2} &amp;= (w_{1}w_{2}-x_{1}x_{2}-y_{1}y_{2}-z_{1}z_{2}) \\
+&amp;+ (w_{1}x_{2}+x_{1}w_{2}+y_{1}z_{2}-z_{1}y_{2})\, \mathbf{i} \\
+&amp;+ (w_{1}y_{2}-x_{1}z_{2}+y_{1}w_{2}+z_{1}x_{2})\, \mathbf{j} \\
+&amp;+ (w_{1}z_{2}+x_{1}y_{2}-y_{1}x_{2}+z_{1}w_{2})\, \mathbf{k} \\
+&amp;= s_{1}s_{2}-\mathbf{v}_{1}\cdot\mathbf{v}_{2}+s_{1}\mathbf{v}_{2}+s_{2}\mathbf{v}_{1}+\mathbf{v}_{1}\times\mathbf{v}_{2}
+\end{align}
+\]</div>
+<p>类似复数，四元数也存在共轭：</p>
+<details class="note" open="open">
+<summary>Definition</summary>
+<p>四元数 <span class="arithmatex">\(\mathbf{q}=s+\mathbf{v}\)</span> 的 <strong>共轭（Conjugate）</strong> 定义为 <span class="arithmatex">\(\overline{\mathbf{q}}=s-\mathbf{v}\)</span> 。 </p>
+</details>
+<p>计算可知如下关系式成立：</p>
+<div class="arithmatex">\[
+\mathbf{q}\overline{\mathbf{q}} = \overline{\mathbf{q}}\mathbf{q} = \mathbf{q} \cdot \mathbf{q} = \Vert \mathbf{q} \Vert^{2} =: q^{2}
+\]</div>
+<p>从而可以定义四元数的逆：</p>
+<details class="note" open="open">
+<summary>Definition</summary>
+<p>非 <span class="arithmatex">\(0\)</span> 四元数 <span class="arithmatex">\(\mathbf{q}\)</span> 的 <strong>逆（Inverse）</strong> 记为 <span class="arithmatex">\(\mathbf{q}^{-1}\)</span> ，计算知：</p>
+<div class="arithmatex">\[
+\mathbf{q}^{-1} = \frac{\overline{\mathbf{q}}}{q^{2}}
+\]</div>
+</details>
+<p>综上，可知 <span class="arithmatex">\(\mathbb{H}\)</span> 为<a href="https://en.wikipedia.org/wiki/Ring_(mathematics)">环</a>，又称哈密顿四元数环。</p>
+<h3 id="rotations-with-quaternions">Rotations with Quaternions<a class="headerlink" href="#rotations-with-quaternions" title="Permanent link">¶</a></h3>
+<p>考虑三维空间变换 <span class="arithmatex">\(\varphi: \mathbb{R}^3\to \mathbb{R}^3\)</span> ，其为旋转变换当且仅当满足如下性质：保长度、保角度、保手性，即：</p>
+<div class="arithmatex">\[
+\begin{align}
+\Vert \varphi(\mathbf{P})\Vert &amp;= \Vert \mathbf{P}\Vert \tag{1}\label{1} \\
+\varphi(\mathbf{P}_{1})\cdot \varphi(\mathbf{P}_{2}) &amp;= \mathbf{P}_{1}\cdot \mathbf{P}_{2} \tag{2}\label{2} \\
+\varphi(\mathbf{P}_{1})\times \varphi(\mathbf{P}_{2}) &amp;= \varphi(\mathbf{P}_{1}\times \mathbf{P}) \tag{3}\label{3}
+\end{align}
+\]</div>
+<p>将 <span class="arithmatex">\(\varphi\)</span> 延拓到四元数环 <span class="arithmatex">\(\mathbb{H}\)</span> 上，令 <span class="arithmatex">\(\varphi(s+\mathbf{v})=s+\varphi(\mathbf{v})\)</span> ，则 <span class="arithmatex">\(\eqref{2}\)</span> 式可改写为：</p>
+<div class="arithmatex">\[
+\varphi(\mathbf{P}_{1})\cdot \varphi(\mathbf{P}_{2}) = \varphi(\mathbf{P}_{1}\cdot \mathbf{P}_{2})
+\]</div>
+<p>视 <span class="arithmatex">\(\mathbf{P}_{1}\)</span> 和 <span class="arithmatex">\(\mathbf{P}_{2}\)</span> 为虚四元数，其满足关系式：<span class="arithmatex">\(\mathbf{P}_{1}\mathbf{P}_{2}=-\mathbf{P}_{1}\cdot \mathbf{P}_{2}+\mathbf{P}_{1}\times \mathbf{P}_{2}\)</span> ，进而 <span class="arithmatex">\(\eqref{1},\eqref{2},\eqref{3}\)</span> 式与下式等价：</p>
+<div class="arithmatex">\[
+\varphi(\mathbf{P}_{1})\varphi(\mathbf{P}_{2}) = \varphi(\mathbf{P}_{1}\mathbf{P}_{2}) \tag{$\ast\ast$}\label{star2}
+\]</div>
+<p>等价性证明细节如下：</p>
+<details class="note">
+<summary>Proof</summary>
+<p>TODO</p>
+</details>
+<p>满足 <span class="arithmatex">\(\eqref{star2}\)</span> 式的 <span class="arithmatex">\(\varphi\)</span> 称为 <strong>同态（Homomorphism）</strong>。任取非 <span class="arithmatex">\(0\)</span> 四元数 <span class="arithmatex">\(\mathbf{q}\)</span> ，构造 <span class="arithmatex">\(\varphi_{\mathbf{q}}(\mathbf{P})=\mathbf{q}\mathbf{P}\mathbf{q}^{-1}\)</span> ，可验证其为同态，从而 <span class="arithmatex">\(\varphi_{\mathbf{q}}\)</span> 对应三维空间的一个旋转变换。</p>
+<p>考虑关于单位轴 <span class="arithmatex">\(\mathbf{A}\)</span> 旋转角 <span class="arithmatex">\(\theta\)</span> 的旋转变换，下面研究对应四元数 <span class="arithmatex">\(\mathbf{q}\)</span> 的形式。</p>
+<p>由于 <span class="arithmatex">\(\varphi_{a \mathbf{q}}=\varphi_{\mathbf{q}},\forall a\neq0\)</span> ，不妨设 <span class="arithmatex">\(\mathbf{q}=s+\mathbf{v}\)</span> 为单位四元数。<span class="arithmatex">\(\varphi_{\mathbf{q}}\)</span> 计算如下：</p>
+<div class="arithmatex">\[
+\begin{align}
+\varphi_{\mathbf{q}}(\mathbf{P}) = \mathbf{q}\mathbf{P}\mathbf{q}^{-1} &amp;= (s+\mathbf{v})\mathbf{P}(s-\mathbf{v}) \\
+&amp;= s^{2}\mathbf{P}+2s\mathbf{v}\times \mathbf{P}+(\mathbf{v}\cdot \mathbf{P})\mathbf{v}-\mathbf{v}\times \mathbf{P}\times \mathbf{v}
+\end{align}
+\]</div>
+<p>利用 <a href="../chapter2-vectors%26matrices/#cross-product">Chap.2</a> 中叉乘性质改写 <span class="arithmatex">\(\mathbf{v}\times \mathbf{P}\times \mathbf{v}\)</span>，并设 <span class="arithmatex">\(\mathbf{v}=t\mathbf{A}\)</span> 计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+\varphi_{\mathbf{q}}(\mathbf{P}) &amp;= (s^{2}-\mathbf{v}^{2})\mathbf{P}+2s\mathbf{v}\times \mathbf{P}+2(\mathbf{v}\cdot \mathbf{P})\mathbf{v} \\
+&amp;= (s^{2}-t^{2})\mathbf{P}+2st\mathbf{A}\times \mathbf{P}+2t^{2}(\mathbf{A}\cdot \mathbf{P})\mathbf{A}
+\end{align}
+\]</div>
+<p>与旋转公式 <span class="arithmatex">\(\eqref{star}\)</span> 式对比可知：</p>
+<div class="arithmatex">\[
+\begin{align}
+s^{2} - t^{2} &amp;= \cos\theta \\
+2st &amp;= \sin\theta \\
+2t^{2} &amp;= 1 - \cos\theta
+\end{align}
+\]</div>
+<p>求解得 <span class="arithmatex">\(t=\sin(\theta/2),s=\cos(\theta/2)\)</span> ，即对应四元数为：</p>
+<div class="arithmatex">\[
+\mathbf{q} = \cos \frac{\theta}{2} + \mathbf{A}\sin \frac{\theta}{2}
+\]</div>
+<details class="note" open="open">
+<summary>Remark</summary>
+<ul>
+<li>存储四元数 <span class="arithmatex">\(\mathbf{q}\)</span> 占用空间为 <span class="arithmatex">\(4\)</span> ，而存储旋转矩阵 <span class="arithmatex">\(\mathbf{M}\)</span> 占用空间为 <span class="arithmatex">\(9\)</span> 。</li>
+<li>由于 <span class="arithmatex">\(\varphi_{\mathbf{q}_{2}}\circ \varphi_{\mathbf{q}_{1}}=\varphi_{\mathbf{q}_{1}\mathbf{q}_{2}}\)</span> ，四元数复合所需乘加操作数为 <span class="arithmatex">\(16\)</span> ，而旋转矩阵复合所需乘加操作数为 <span class="arithmatex">\(27\)</span> 。</li>
+</ul>
+</details>
+<p>下面推导四元数 <span class="arithmatex">\(\mathbf{q}\)</span> 对应的旋转矩阵 <span class="arithmatex">\(\mathbf{R}_{\mathbf{q}}\)</span> 形式：</p>
+<p>记 <span class="arithmatex">\(\mathbf{q}=\left&lt; w,x,y,z \right&gt;\)</span> ，由 <span class="arithmatex">\(\mathbf{q}=s+t\mathbf{A}\)</span> ，<span class="arithmatex">\(\Vert\mathbf{A}\Vert=1\)</span> ，可知：</p>
+<div class="arithmatex">\[
+\begin{gathered}
+w=s,x=tA_{x},y=tA_{y},z=tA_{z} \\
+x^{2}+y^{2}+z^{2} = t^{2}A^{2} = t^{2}
+\end{gathered}
+\]</div>
+<p>代入 <span class="arithmatex">\(\varphi_{\mathbf{q}}\)</span> 关于 <span class="arithmatex">\(\mathbf{A}\)</span> 的表达式有：</p>
+<div class="arithmatex">\[
+\begin{gathered}
+\varphi_{\mathbf{q}}(\mathbf{P}) = \begin{bmatrix}
+w^{2}-x^{2}-y^{2}-z^{2} &amp; 0 &amp; 0 \\
+0 &amp; w^{2}-x^{2}-y^{2}-z^{2} &amp; 0 \\
+0 &amp; 0 &amp; w^{2}-x^{2}-y^{2}-z^{2}
+\end{bmatrix} \mathbf{P} \\
++ \begin{bmatrix}
+0 &amp; -2wz &amp; 2wy \\
+2wz &amp; 0 &amp; -2wx \\
+-2wy &amp; 2wx &amp; 0
+\end{bmatrix} \mathbf{P} + \begin{bmatrix}
+2x^{2} &amp; 2xy &amp; 2xz \\
+2xy &amp; 2y^{2} &amp; 2yz \\
+2xz &amp; 2yz &amp; 2z^{2}
+\end{bmatrix} \mathbf{P}
+\end{gathered}
+\]</div>
+<p>又由 <span class="arithmatex">\(\Vert\mathbf{q}\Vert=1\)</span> ，可知 <span class="arithmatex">\(w^{2}+x^{2}+y^{2}+z^{2}=1\)</span> ，代入上式化简得：</p>
+<div class="arithmatex">\[
+\mathbf{R}_{\mathbf{q}} = \begin{bmatrix}
+1-2y^{2}-2z^{2} &amp; 2xy-2wz &amp; 2xz+2wy \\
+2xy+2wz &amp; 1-2x^{2}-2z^{2} &amp; 2yz-2wx \\
+2xz-2wy &amp; 2yz+2wx &amp; 1-2x^{2}-2y^{2}
+\end{bmatrix}
+\]</div>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-14"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-14T09:52:50+00:00">2026-08-14</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-14"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-14T09:52:50+00:00">2026-08-14</time></span></div></div></div>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+          <div class="md-top" data-md-component="top" hidden="">
+  <div class="md-top__center">
+    <button type="button" class="md-top__button md-top__button--main" data-md-action="top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+      <span>Back to top</span>
+    </button>
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path></svg>
+      </label>
+    
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 3v18"></path></svg>
+      </label>
+    
+  </div>
+</div>
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 <a href="https://github.com/Sayakio" target="_blank" rel="noopener">Sayaki</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://jaywhj.github.io/mkdocs-materialx/" target="_blank" rel="noopener">
+      MaterialX
+    </a>
+    
+    modified by
+    <a href="https://github.com/Sayakio" target="_blank" rel="noopener">
+      Sayaki
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+          
+        
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "code": null, "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": {"options": {"baseUrl": "../../..", "bundleUrl": "../../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.offline": "Switch to Lunr for offline search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.44453a05.min.js"></script>
+      
+        <script src="../../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://fastly.jsdelivr.net/npm/d3@7"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+      
+        <script src="../../../javascripts/papers-graph.js"></script>
+      
+        <script src="../../../javascripts/music_player.js"></script>
+      
+        <script src="../../../javascripts/extra.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/popper.min.js"></script>
+      
+        <script src="../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/md5.min.js"></script>
+      
+        <script src="../../../assets/document_dates/core/default.config.js"></script>
+      
+        <script src="../../../assets/document_dates/core/utils.js"></script>
+      
+        <script src="../../../assets/document_dates/core/core.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
