@@ -51,6 +51,11 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://Sayakio.github.io/Codex/papers/3dgs/</loc>
+        <lastmod>2026-08-14</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://Sayakio.github.io/Codex/papers/instant-ngp/</loc>
         <lastmod>2026-08-11</lastmod>
         <changefreq>daily</changefreq>

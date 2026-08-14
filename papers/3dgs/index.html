@@ -9,13 +9,9 @@
         <meta name="author" content="Sayaki">
       
       
-        <link rel="canonical" href="https://Sayakio.github.io/Codex/books/physically-based-rendering/chapter3-geometry%26transformations/">
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/3dgs/">
       
       
-        <link rel="prev" href="../../mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/">
-      
-      
-        <link rel="next" href="../../../papers/">
       
       
         
@@ -26,21 +22,21 @@
         
         
         
-          <link rel="icon" href="../../../favicon.svg">
+          <link rel="icon" href="../../favicon.svg">
         
       
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
     
     
       
-        <title>Chapter III Geometry and Transformations - Sayaki's Codex</title>
+        <title>3D Gaussian Splatting for Real-Time Radiance Field Rendering - Sayaki's Codex</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7aee198.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7aee198.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a45159b5.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a45159b5.min.css">
       
     
     
@@ -62,27 +58,27 @@
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css">
     
-      <link rel="stylesheet" href="../../../css/extra.css">
+      <link rel="stylesheet" href="../../css/extra.css">
     
-      <link rel="stylesheet" href="../../../css/music_player.css">
+      <link rel="stylesheet" href="../../css/music_player.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
+      <link rel="stylesheet" href="../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/scale.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/material.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/backdrop.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/shift-away.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/light.css">
     
-      <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
+      <link rel="stylesheet" href="../../assets/document_dates/core/core.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -98,12 +94,12 @@
 
     
     
-  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
-        </style><script src="../../../assets/javascripts/toggle-sidebar.js"></script></head>
+        </style><script src="../../assets/javascripts/toggle-sidebar.js"></script></head>
   
   
   
@@ -126,7 +122,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-coordinate-systems" class="md-skip">
+        <a href="#3d-gaussian-splatting-for-real-time-radiance-field-rendering" class="md-skip">
           Skip to content
         </a>
       
@@ -140,7 +136,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Sayaki's Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+    <a href="../.." title="Sayaki's Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
@@ -160,7 +156,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Chapter III Geometry and Transformations
+              3D Gaussian Splatting for Real-Time Radiance Field Rendering
             
           </span>
         </div>
@@ -273,7 +269,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../.." class="md-tabs__link">
+      <a href="../.." class="md-tabs__link">
         
   
   
@@ -292,13 +288,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../books/" class="md-tabs__link">
           
   
   
@@ -322,7 +316,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../papers/" class="md-tabs__link">
+        <a href="../" class="md-tabs__link">
           
   
   
@@ -360,7 +354,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Sayaki's Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+    <a href="../.." title="Sayaki's Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
@@ -390,7 +384,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -416,8 +410,6 @@
       
   
   
-    
-  
   
   
     
@@ -439,21 +431,18 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../books/" class="md-nav__link ">
               
   
   
@@ -473,13 +462,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -553,7 +542,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
+      <a href="../../books/calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
         
   
   
@@ -645,7 +634,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pattern-recognition-and-machine-learning/chapter1-introduction/" class="md-nav__link">
+      <a href="../../books/pattern-recognition-and-machine-learning/chapter1-introduction/" class="md-nav__link">
         
   
   
@@ -673,7 +662,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../pattern-recognition-and-machine-learning/chapter2-probability-distribution/" class="md-nav__link">
+      <a href="../../books/pattern-recognition-and-machine-learning/chapter2-probability-distribution/" class="md-nav__link">
         
   
   
@@ -767,7 +756,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline/" class="md-nav__link">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline/" class="md-nav__link">
         
   
   
@@ -795,7 +784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors%26matrices/" class="md-nav__link">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors%26matrices/" class="md-nav__link">
         
   
   
@@ -823,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/" class="md-nav__link">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/" class="md-nav__link">
         
   
   
@@ -856,8 +845,6 @@
                 
   
   
-    
-  
   
   
     
@@ -872,11 +859,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5" checked="">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
         
           
           <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
@@ -897,7 +884,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -912,35 +899,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Chapter III Geometry and Transformations
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../books/physically-based-rendering/chapter3-geometry%26transformations/" class="md-nav__link">
         
   
   
@@ -956,63 +918,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc">
-      
-        <li class="md-nav__item">
-  <a href="#1-coordinate-systems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. COORDINATE SYSTEMS
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. COORDINATE SYSTEMS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#handedness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handedness
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-geometry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. GEOMETRY
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1065,7 +970,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../papers/" class="md-nav__link ">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1165,7 +1070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../papers/instant-ngp/" class="md-nav__link">
+      <a href="../instant-ngp/" class="md-nav__link">
         
   
   
@@ -1259,7 +1164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../papers/neus/" class="md-nav__link">
+      <a href="../neus/" class="md-nav__link">
         
   
   
@@ -1287,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../papers/neus2/" class="md-nav__link">
+      <a href="../neus2/" class="md-nav__link">
         
   
   
@@ -1315,7 +1220,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../papers/neuralangelo/" class="md-nav__link">
+      <a href="../neuralangelo/" class="md-nav__link">
         
   
   
@@ -1368,6 +1273,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1376,38 +1283,65 @@
     <ul class="md-nav__list" data-md-component="toc">
       
         <li class="md-nav__item">
-  <a href="#1-coordinate-systems" class="md-nav__link">
+  <a href="#abstract" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. COORDINATE SYSTEMS
+        ABSTRACT
       
     </span>
   </a>
-  
-    <nav class="md-nav" aria-label="1. COORDINATE SYSTEMS">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#handedness" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Handedness
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-geometry" class="md-nav__link">
+  <a href="#files-links" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. GEOMETRY
+        FILES &amp; LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. PROBLEMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. METHOD
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. EXPERIMENTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. THINKING
       
     </span>
   </a>
@@ -1434,34 +1368,19 @@
   
 
 
-  <h1>Chapter III Geometry and Transformations</h1>
-
-<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
-<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 263 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 1 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 1 分钟</p>
-</div>
-<blockquote>
-<p>Almost all nontrivial graphics programs are built on a foundation of geometric classes that represent mathematical constructs like points, vectors, and rays. Because these classes are ubiquitous throughout the system, good abstractions and efficient implementations are critical.</p>
-</blockquote>
-<h2 id="1-coordinate-systems">1. COORDINATE SYSTEMS<a class="headerlink" href="#1-coordinate-systems" title="Permanent link">¶</a></h2>
-<p>引入如下基本信息：</p>
+<h1 id="3d-gaussian-splatting-for-real-time-radiance-field-rendering">3D Gaussian Splatting for Real-Time Radiance Field Rendering<a class="headerlink" href="#3d-gaussian-splatting-for-real-time-radiance-field-rendering" title="Permanent link">¶</a></h1>
+<h2 id="abstract">ABSTRACT<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
+<p>Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos. However, achieving high visual quality still requires neural networks that are costly to train and render, while recent faster methods inevitably trade off speed for quality. For unbounded and complete scenes (rather than isolated objects) and 1080p resolution rendering, no current method can achieve real-time display rates. We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining competitive training times and importantly allow high-quality real-time (&gt;= 30 fps) novel-view synthesis at 1080p resolution. First, starting from sparse points produced during camera calibration, we represent the scene with 3D Gaussians that preserve desirable properties of continuous volumetric radiance fields for scene optimization while avoiding unnecessary computation in empty space; Second, we perform interleaved optimization/density control of the 3D Gaussians, notably optimizing anisotropic covariance to achieve an accurate representation of the scene; Third, we develop a fast visibility-aware rendering algorithm that supports anisotropic splatting and both accelerates training and allows realtime rendering. We demonstrate state-of-the-art visual quality and real-time rendering on several established datasets.</p>
+<h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
 <ul>
-<li>
-<p>为使用坐标值 <span class="arithmatex">\((x,y,z)\)</span> 表示三维点、向量、法向量，需要一个 <strong>坐标系统（Coordiante System）</strong>，其包含空间原点 <span class="arithmatex">\(\mathbf{p}_{0}\)</span> 和三个线性无关的向量表示 <span class="arithmatex">\(x,y,z\)</span> 轴，统称为 <strong>框架（Frame）</strong>．</p>
-</li>
-<li>
-<p>为避免点、向量和框架之间的循环定义，需要一个 <strong>标准框架（Standard Frame）</strong>，其具备原点 <span class="arithmatex">\((0,0,0)\)</span> 和基本向量 <span class="arithmatex">\((1,0,0),(0,1,0),(0,0,1)\)</span> 。标准框架定义了规范坐标系统，称之为 <strong>世界空间（World Space）</strong>。其他框架都将相对于世界空间定义。</p>
-</li>
+<li><strong>URL:</strong>  <a href="http://arxiv.org/abs/2308.04079">Open Online</a></li>
+<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/G65UKH6J">Full Text PDF</a></li>
 </ul>
-<h3 id="handedness">Handedness<a class="headerlink" href="#handedness" title="Permanent link">¶</a></h3>
-<p>存在如下图两种三维坐标系统：<strong>左手系（Left-handed）</strong> 和 <strong>右手系（Right-handed）</strong>．本书中使用左手系坐标系统．</p>
-<figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap1-handedness.svg" data-desc-position="bottom"><img alt="handedness" src="../assets/chap1-handedness.svg"></a></p>
-<figcaption>
-<p>Figure 1: (a) 左手系坐标系统，<span class="arithmatex">\(z\)</span> 轴指向页面内；(b) 右手系坐标系统，<span class="arithmatex">\(z\)</span> 轴指向页面外．</p>
-</figcaption>
-</figure>
-<h2 id="2-geometry">2. GEOMETRY<a class="headerlink" href="#2-geometry" title="Permanent link">¶</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span></div></div></div>
+<h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
+<h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
+<h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
+<h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-14"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-14T10:03:19+00:00">2026-08-14</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-14"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-14T10:03:19+00:00">2026-08-14</time></span></div></div></div>
 
 
 
@@ -1551,12 +1470,12 @@
           
           
         
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "code": null, "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": {"options": {"baseUrl": "../../..", "bundleUrl": "../../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.offline": "Switch to Lunr for offline search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "code": null, "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": {"options": {"baseUrl": "../..", "bundleUrl": "../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.offline": "Switch to Lunr for offline search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.44453a05.min.js"></script>
+      <script src="../../assets/javascripts/bundle.44453a05.min.js"></script>
       
-        <script src="../../../javascripts/mathjax.js"></script>
+        <script src="../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
@@ -1564,23 +1483,23 @@
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
       
-        <script src="../../../javascripts/papers-graph.js"></script>
+        <script src="../../javascripts/papers-graph.js"></script>
       
-        <script src="../../../javascripts/music_player.js"></script>
+        <script src="../../javascripts/music_player.js"></script>
       
-        <script src="../../../javascripts/extra.js"></script>
+        <script src="../../javascripts/extra.js"></script>
       
-        <script src="../../../assets/document_dates/tippy/popper.min.js"></script>
+        <script src="../../assets/document_dates/tippy/popper.min.js"></script>
       
-        <script src="../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+        <script src="../../assets/document_dates/tippy/tippy.umd.min.js"></script>
       
-        <script src="../../../assets/document_dates/core/md5.min.js"></script>
+        <script src="../../assets/document_dates/core/md5.min.js"></script>
       
-        <script src="../../../assets/document_dates/core/default.config.js"></script>
+        <script src="../../assets/document_dates/core/default.config.js"></script>
       
-        <script src="../../../assets/document_dates/core/utils.js"></script>
+        <script src="../../assets/document_dates/core/utils.js"></script>
       
-        <script src="../../../assets/document_dates/core/core.js"></script>
+        <script src="../../assets/document_dates/core/core.js"></script>
       
     
   
