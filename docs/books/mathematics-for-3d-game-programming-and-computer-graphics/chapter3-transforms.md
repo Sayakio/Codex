@@ -293,10 +293,10 @@ $$
 $$
 
 ### Four-Dimensional Transforms
-一个优雅的解决方案为，将 3D 坐标 $\left< x,y,z \right>$ 拓展到 4D **齐次坐标（Homogeneous Coordinates）** $\left< x,y,z,w \right>$ ，使用 $4\times4$ 矩阵进行变换。
+一个优雅的解决方案为，将 3D 坐标 $\left< x,y,z \right>$ 拓展到 4D **齐次坐标（Homogeneous Coordinates）** $\left< x,y,z,w \right>$ ，使用 $4\times4$ 矩阵进行变换．
 
-- 对于 3D 点 $\mathbf{p}$ ，令 $w=1$ 。
-- 对于 3D 向量 $\mathbf{v}$ ，令 $w=0$ 。一方面，向量对于平移变换具有不变性，另一方面与两点差 $\mathbf{q}-\mathbf{p}$ 构成向量的 $w=0$ 对应。
+- 对于 3D 点 $\mathbf{p}$ ，令 $w=1$ ．
+- 对于 3D 向量 $\mathbf{v}$ ，令 $w=0$ ．一方面，向量对于平移变换具有不变性，另一方面与两点差 $\mathbf{q}-\mathbf{p}$ 构成向量的 $w=0$ 对应．
 
 此时 $4\times4$ 变换矩阵可构造为：
 
@@ -338,7 +338,7 @@ M^{-1}_{31} & M^{-1}_{32} & M^{-1}_{33} & -(\mathbf{M}^{-1}\mathbf{T})_{z} \\
 \right]
 $$
 
-计算可验证 $\mathbf{F}\mathbf{F}^{-1}=\mathbf{I}_{4}$ 。
+计算可验证 $\mathbf{F}\mathbf{F}^{-1}=\mathbf{I}_{4}$ ．
 
 ### Geometrical Interpretation
 考虑一个逆向映射 $\mathscr{F}$，将 4D 点 $\mathbf{p}=\left< x,y,z,w \right>,w\neq0$ 映射到 3D 点 $\widetilde{\mathbf{p}}$ ：
@@ -351,7 +351,7 @@ $$
 
 ![4d-projection](./assets/chap3-4d-projection.png)
 /// caption
-Figure 2: 4D 点 $\mathbf{p}$ 投影到三维空间 $w=1$ 示意图（略去 $z$ 轴以便可视化）。
+Figure 2: 4D 点 $\mathbf{p}$ 投影到三维空间 $w=1$ 示意图（略去 $z$ 轴以便可视化）．
 ///
 
 即映射 $\mathscr{F}$ 满足如下性质：
@@ -364,13 +364,13 @@ $$
 
 
 ## 5. TRANSFORMING NORMAL VECTORS
-顶点除位置信息外，还会记录额外信息，如法向量和切向量。从而顶点变换时，还需变换额外信息。
+顶点除位置信息外，还会记录额外信息，如法向量和切向量．从而顶点变换时，还需变换额外信息．
 
 考虑点 $\mathbf{p}$ ，对应法向量 $\mathbf{n}$ ，切向量 $\mathbf{t}$ ，变换矩阵 为$\mathbf{M}$ ：
 
 - 对于 **切向量（Tangent Vector）**：
 	
-	切向量通常以与临近点作差计算，如 $\mathbf{t}=\mathbf{q}-\mathbf{p}$ ，从而变换后的切向量为 $\mathbf{M}\mathbf{q}-\mathbf{M}\mathbf{p}=\mathbf{M}\mathbf{t}$ ，即变换矩阵仍为 $\mathbf{M}$ 。
+	切向量通常以与临近点作差计算，如 $\mathbf{t}=\mathbf{q}-\mathbf{p}$ ，从而变换后的切向量为 $\mathbf{M}\mathbf{q}-\mathbf{M}\mathbf{p}=\mathbf{M}\mathbf{t}$ ，即变换矩阵仍为 $\mathbf{M}$ ．
 
 - 对于 **法向量（Normal Vector）**：
 	
@@ -378,7 +378,7 @@ $$
 	
 	![transform-normal-vector](./assets/chap3-transform-normal-vector.png)
 	/// caption
-	Figure 3: 使用非正交矩阵 $\mathbf{M}$ 变换法向量 $\mathbf{n}$ 示意图。
+	Figure 3: 使用非正交矩阵 $\mathbf{M}$ 变换法向量 $\mathbf{n}$ 示意图．
 	///
 	
 	设正确的法向变换矩阵为 $\mathbf{G}$ ，下面推导 $\mathbf{G}$ 表达式：
@@ -393,31 +393,31 @@ $$
 	\end{align}
 	$$
 	
-	若 $\mathbf{G}^\mathsf{T}\mathbf{M}=\mathbf{I}$ ，则上式成立，即 $\mathbf{G}=(\mathbf{M}^{-1})^\mathsf{T}$ 。
+	若 $\mathbf{G}^\mathsf{T}\mathbf{M}=\mathbf{I}$ ，则上式成立，即 $\mathbf{G}=(\mathbf{M}^{-1})^\mathsf{T}$ ．
 
-当 $\mathbf{M}$ 为正交阵时，有 $(\mathbf{M}^{-1})^\mathsf{T}=\mathbf{M}$ ，此时可避免取逆和转置运算，尤其 $\mathbf{M}$ 为旋转矩阵 $\mathbf{R}_{x},\mathbf{R}_{y},\mathbf{R}_{z},\mathbf{R}_{\mathbf{v}}$ 。
+当 $\mathbf{M}$ 为正交阵时，有 $(\mathbf{M}^{-1})^\mathsf{T}=\mathbf{M}$ ，此时可避免取逆和转置运算，尤其 $\mathbf{M}$ 为旋转矩阵 $\mathbf{R}_{x},\mathbf{R}_{y},\mathbf{R}_{z},\mathbf{R}_{\mathbf{v}}$ ．
 
 ???+ note "Remark"
-	如上由原矩阵 $\mathbf{M}$ 变换的向量称为 **逆变向量（Contravariant Vector）**，由 $(\mathbf{M}^{-1})^\mathsf{T}$ 变换的向量称为 **协变向量（Covariant Vector）**。
+	如上由原矩阵 $\mathbf{M}$ 变换的向量称为 **逆变向量（Contravariant Vector）**，由 $(\mathbf{M}^{-1})^\mathsf{T}$ 变换的向量称为 **协变向量（Covariant Vector）**．
 
 
 ## 6. QUATERNIONS
 在许多情况下，旋转矩阵有上位替代：**四元数（Quaternion）**，因其有如下优点：
 
-- 占用更少存储空间。
-- 复合运算需要更少操作数。
-- 插值计算更简单。
+- 占用更少存储空间．
+- 复合运算需要更少操作数．
+- 插值计算更简单．
 
 ### Quaternion Mathematics
-四元数集，记为 $\mathbb{H}$ ，可视为四维向量空间。对于 $\mathbf{q}\in\mathbb{H}$ ，有如下形式：
+四元数集，记为 $\mathbb{H}$ ，可视为四维向量空间．对于 $\mathbf{q}\in\mathbb{H}$ ，有如下形式：
 
 $$
 \mathbf{q} = \left< w,x,y,z \right> = w + x \mathbf{i} + y \mathbf{j} + z \mathbf{k} =: s + \mathbf{v}
 $$
 
-其中 $s$ 为标量部分 $w$ ，$\mathbf{v}$ 为向量部分 $x \mathbf{i}+y \mathbf{j}+ z \mathbf{k}$ 。
+其中 $s$ 为标量部分 $w$ ，$\mathbf{v}$ 为向量部分 $x \mathbf{i}+y \mathbf{j}+ z \mathbf{k}$ ．
 
-加法运算与向量加法相同，构成交换群。下面考虑 $\mathbb{H}$ 上的乘法运算。类似复数，乘法使用分配律和如下规则定义：
+加法运算与向量加法相同，构成交换群．下面考虑 $\mathbb{H}$ 上的乘法运算．类似复数，乘法使用分配律和如下规则定义：
 
 $$
 \begin{align}
@@ -428,7 +428,7 @@ $$
 \end{align}
 $$
 
-验证可知，该乘法满足结合律，不满足交换律。对于 $\mathbf{q}_{1}=w_{1}+x_{1}\mathbf{i}+y_{1}\mathbf{j}+z_{1}\mathbf{k}=s_{1}+\mathbf{v}_{1}$ 和 $\mathbf{q}_{2}=w_{2}+x_{2}\mathbf{i}+y_{2}\mathbf{j}+z_{2}\mathbf{k}=s_{2}+\mathbf{v}_{2}$ ，乘积计算有：
+验证可知，该乘法满足结合律，不满足交换律．对于 $\mathbf{q}_{1}=w_{1}+x_{1}\mathbf{i}+y_{1}\mathbf{j}+z_{1}\mathbf{k}=s_{1}+\mathbf{v}_{1}$ 和 $\mathbf{q}_{2}=w_{2}+x_{2}\mathbf{i}+y_{2}\mathbf{j}+z_{2}\mathbf{k}=s_{2}+\mathbf{v}_{2}$ ，乘积计算有：
 
 $$
 \begin{align}
@@ -443,7 +443,7 @@ $$
 类似复数，四元数也存在共轭：
 
 ???+ note "Definition"
-	四元数 $\mathbf{q}=s+\mathbf{v}$ 的 **共轭（Conjugate）** 定义为 $\overline{\mathbf{q}}=s-\mathbf{v}$ 。 
+	四元数 $\mathbf{q}=s+\mathbf{v}$ 的 **共轭（Conjugate）** 定义为 $\overline{\mathbf{q}}=s-\mathbf{v}$ ． 
 
 计算可知如下关系式成立：
 
@@ -460,7 +460,7 @@ $$
 	\mathbf{q}^{-1} = \frac{\overline{\mathbf{q}}}{q^{2}}
 	$$
 
-综上，可知 $\mathbb{H}$ 为[环](https://en.wikipedia.org/wiki/Ring_(mathematics))，又称哈密顿四元数环。
+综上，可知 $\mathbb{H}$ 为[环](https://en.wikipedia.org/wiki/Ring_(mathematics))，又称哈密顿四元数环．
 
 
 ### Rotations with Quaternions
@@ -491,11 +491,11 @@ $$
 ??? note "Proof"
 	TODO
 
-满足 $\eqref{star2}$ 式的 $\varphi$ 称为 **同态（Homomorphism）**。任取非 $0$ 四元数 $\mathbf{q}$ ，构造 $\varphi_{\mathbf{q}}(\mathbf{P})=\mathbf{q}\mathbf{P}\mathbf{q}^{-1}$ ，可验证其为同态，从而 $\varphi_{\mathbf{q}}$ 对应三维空间的一个旋转变换。
+满足 $\eqref{star2}$ 式的 $\varphi$ 称为 **同态（Homomorphism）**．任取非 $0$ 四元数 $\mathbf{q}$ ，构造 $\varphi_{\mathbf{q}}(\mathbf{P})=\mathbf{q}\mathbf{P}\mathbf{q}^{-1}$ ，可验证其为同态，从而 $\varphi_{\mathbf{q}}$ 对应三维空间的一个旋转变换．
 
-考虑关于单位轴 $\mathbf{A}$ 旋转角 $\theta$ 的旋转变换，下面研究对应四元数 $\mathbf{q}$ 的形式。
+考虑关于单位轴 $\mathbf{A}$ 旋转角 $\theta$ 的旋转变换，下面研究对应四元数 $\mathbf{q}$ 的形式．
 
-由于 $\varphi_{a \mathbf{q}}=\varphi_{\mathbf{q}},\forall a\neq0$ ，不妨设 $\mathbf{q}=s+\mathbf{v}$ 为单位四元数。$\varphi_{\mathbf{q}}$ 计算如下：
+由于 $\varphi_{a \mathbf{q}}=\varphi_{\mathbf{q}},\forall a\neq0$ ，不妨设 $\mathbf{q}=s+\mathbf{v}$ 为单位四元数．$\varphi_{\mathbf{q}}$ 计算如下：
 
 $$
 \begin{align}
@@ -530,8 +530,8 @@ $$
 $$
 
 ???+ note "Remark"
-	- 存储四元数 $\mathbf{q}$ 占用空间为 $4$ ，而存储旋转矩阵 $\mathbf{M}$ 占用空间为 $9$ 。
-	- 由于 $\varphi_{\mathbf{q}_{2}}\circ \varphi_{\mathbf{q}_{1}}=\varphi_{\mathbf{q}_{1}\mathbf{q}_{2}}$ ，四元数复合所需乘加操作数为 $16$ ，而旋转矩阵复合所需乘加操作数为 $27$ 。
+	- 存储四元数 $\mathbf{q}$ 占用空间为 $4$ ，而存储旋转矩阵 $\mathbf{M}$ 占用空间为 $9$ ．
+	- 由于 $\varphi_{\mathbf{q}_{2}}\circ \varphi_{\mathbf{q}_{1}}=\varphi_{\mathbf{q}_{1}\mathbf{q}_{2}}$ ，四元数复合所需乘加操作数为 $16$ ，而旋转矩阵复合所需乘加操作数为 $27$ ．
 
 下面推导四元数 $\mathbf{q}$ 对应的旋转矩阵 $\mathbf{R}_{\mathbf{q}}$ 形式：
 
@@ -575,4 +575,54 @@ $$
 \end{bmatrix}
 $$
 
+### Spherical Linear Interpolation
+对于两个变换结果中间的部分，通常使用插值进行生成．下面研究四元数的插值：
 
+最简单的方式为 **线性插值（Linear Interpolation）**．对两个单位四元数 $\mathbf{q}_{1},\mathbf{q}_{2}$ ，线性插值为：
+
+$$
+\mathbf{q}(t) = (1-t)\mathbf{q}_{1} + t\mathbf{q}_{2}
+$$
+
+由于先前讨论需求 $\mathbf{q}$ 为单位四元数，将其归一化为：
+
+$$
+\mathbf{q}(t) = \frac{(1-t)\mathbf{q}_{1}+t\mathbf{q}_{2}}{\Vert (1-t)\mathbf{q}_{1}+t\mathbf{q}_{2}\Vert}
+$$
+
+该插值存在一个问题：$\mathbf{q}(t)$ 在 $\mathbf{q}_{1}$ 和 $\mathbf{q}_{2}$ 之间并非匀速变化，如下图所示：
+
+![linear-interpolation](./assets/chap3-linear-interpolation.png)
+/// caption
+Figure 4: $\mathbf{q}(t)$ 从 $\mathbf{q}_{1}$ 到 $\mathbf{q}_{2}$ 变化时，夹角 $\theta$ 随参数 $t$ 变化图．
+///
+
+下面寻找满足单位长度和匀速变化的插值函数 $\mathbf{q}(t)$ ：
+
+设 $\mathbf{q}_{1}$ 和 $\mathbf{q}_{2}$ 夹角为 $\theta$ ，则 $\mathbf{q}(t)$ 与 $\mathbf{q}_{1}$ 夹角为 $\theta t$ ．令 
+
+$$
+\mathbf{q}(t) = a(t) \mathbf{q}_{1} + b(t) \mathbf{q}_{2}
+$$
+
+如下图所示：
+
+![spherical-interpolation](./assets/chap3-spherical-interpolation.png)
+/// caption
+Figure 5: (a) $\mathbf{q}(t)$ 在 $\mathbf{q}_{1}$ 上的分量；(b) $\mathbf{q}(t)$ 在 $\mathbf{q}_{2}$ 上的分量．利用相似三角形计算分量系数 $a(t)$ 和 $b(t)$ 示意图． 
+///
+
+利用图中的相似三角形，可计算出如下关系式
+
+$$
+a(t) = \frac{\sin(\theta(1-t))}{\sin\theta}, \quad b(t) = \frac{\sin(\theta t)}{\sin\theta}
+$$
+
+从而定义 **球面线性插值（Spherical Linear Interpolation，Slerp）** 函数 $\mathbf{q}(t)$ 为：
+
+$$
+\mathbf{q}(t) = \frac{\sin(\theta(1-t))}{\sin\theta} \mathbf{q}_{1} + \frac{\sin(\theta t)}{\sin\theta} \mathbf{q}_{2}
+$$
+
+???+ note "Remark"
+	由于 $\mathbf{q}$ 和 $-\mathbf{q}$ 代表同一旋转变换，通常取满足 $\mathbf{q}_{1}\cdot \mathbf{q}_{2}\geq 0$ 的符号，对应插值的最短路径．
