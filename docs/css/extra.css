@@ -1,7 +1,6 @@
-/* 增大提示框内的字体 */
 .md-typeset .admonition,
 .md-typeset details {
-  font-size: 0.8rem;   /* 原默认约 0.64rem */
+  font-size: 0.8rem;   /* default = 0.64rem */
 }
 
 .md-typeset a:hover {
@@ -17,7 +16,13 @@
 }
 
 .md-typeset figure figcaption {
+  font-style: normal;
   max-width: 100%;
+}
+
+/* Keep navigation arrows from shrinking beside long labels. */
+.md-nav__link .md-nav__icon {
+  flex: 0 0 0.9rem;
 }
 
 /* Homepage */

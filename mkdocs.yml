@@ -46,17 +46,24 @@ theme:
 
 nav:
   - 首页 • 起点: index.md
+
   - 书籍 • 印记:
     - books/index.md
     - Calculus of Variations: 
       - Chapter I Elements of the theory: books/calculus-of-variations/chapter1-elements-of-the-theory.md
+    
     - Pattern Recognition and Machine Learning:
       - Chapter I Introduction: books/pattern-recognition-and-machine-learning/chapter1-introduction.md 
       - Chapter II Probability Distribution: books/pattern-recognition-and-machine-learning/chapter2-probability-distribution.md
+    
     - Mathematics for 3D Game Programming and Computer Graphics:
       - Chapter I The Rendering Pipeline: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline.md
+      - Chapter II Vectors and Matrices: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors&matrices.md
+      - Chapter III Transforms: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms.md
+
     - Physically Based Rendering:
       - Chapter III Geometry and Transformations: books/physically-based-rendering/chapter3-geometry&transformations.md
+  
   - 论文 • 洞见:
     - papers/index.md
     - 3D Reconstruction:
