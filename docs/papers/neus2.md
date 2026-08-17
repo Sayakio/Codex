@@ -20,7 +20,7 @@ Recent methods for neural surface representation and rendering, for example NeuS
 
 
 ## 1. PROBLEMS
-考虑一组 3D 物体图片 $\{\mathcal{I}_{k}\}$ ，目标为提高表面 $\mathcal{S}$ 重建速度．
+给定一组 3D 物体图片 $\{\mathcal{I}_{k}\}$ ，目标为提高表面 $\mathcal{S}$ 重建速度．
 
 [NeuS](neus.md#training) 中使用的 Eikonal Loss 必不可少，加速关键为高效地计算用于反向传播的二阶导数。
 

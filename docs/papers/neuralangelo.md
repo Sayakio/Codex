@@ -20,7 +20,7 @@ Neural surface reconstruction has been shown to be powerful for recovering dense
 
 
 ## 1. PROBLEMS
-考虑一组 3D 物体图片 $\{\mathcal{I}_{k}\}$ ，目标为提高表面 $\mathcal{S}$ 重建质量．
+给定一组 3D 物体图片 $\{\mathcal{I}_{k}\}$ ，目标为提高表面 $\mathcal{S}$ 重建质量．
 
 SDF 的优化关键为其满足 Eikonal 方程 $\Vert \nabla f(\mathbf{x})\Vert_{2}=1$ ，从而有如下 Eikonal Loss：
 

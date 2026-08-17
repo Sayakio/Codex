@@ -22,7 +22,7 @@ Neural graphics primitives, parameterized by fully connected neural networks, ca
 
 
 ## 1. PROBLEMS
-考虑一个表示神经图像基元的 MLP $m(\mathbf{x};\Phi)$ ，目标为编码原始输入 $x$ 到更高维向量 $\mathbf{y}=\operatorname{enc}(\mathbf{x};\theta)$ ，提升紧致模型的拟合质量．
+给定一个表示神经图像基元的 MLP $m(\mathbf{x};\Phi)$ ，目标为编码原始输入 $x$ 到更高维向量 $\mathbf{y}=\operatorname{enc}(\mathbf{x};\theta)$ ，提升紧致模型的拟合质量．
 
 ### Frequency Encoding
 

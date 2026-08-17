@@ -488,8 +488,60 @@ $$
 
 等价性证明细节如下：
 
+??? note "Lemma 1"
+	设四元数 $\mathbf{q}_{1}=s_{1}+\mathbf{v}_{1},\mathbf{q}_{2}=s_{2}+\mathbf{v}_{2}$ ，则 $\overline{\mathbf{q}_{1}\mathbf{q}_{2}}=\bar{\mathbf{q}}_{2}\bar{\mathbf{q}}_{1}$ 。
+	
+	证：由 $\mathbf{q}_1\mathbf{q}_2$ 展开式计算有：
+	
+	$$
+	\begin{align}
+	\overline{\mathbf{q}_{1}\mathbf{q}_{2}} &= s_{1}s_{2}-\mathbf{v}_{1}\cdot\mathbf{v}_{2}-s_{1}\mathbf{v}_{2}-s_{2}\mathbf{v}_{1}-\mathbf{v}_{1}\times \mathbf{v}_{2} \\
+	\bar{\mathbf{q}}_{2}\bar{\mathbf{q}}_{1} &= s_{1}s_{2}-(-\mathbf{v}_{1})\cdot(-\mathbf{v}_{2})+s_{1}(-\mathbf{v}_{2})+s_{2}(-\mathbf{v}_{1})+(-\mathbf{v}_{2})\times(-\mathbf{v}_{1}) \\
+	&= s_{1}s_{2}-\mathbf{v}_{1}\cdot \mathbf{v}_{2}-s_{1}\mathbf{v}_{2}-s_{2}\mathbf{v}_{1}-\mathbf{v}_{1}\times \mathbf{v}_{2}
+	\end{align}
+	$$
+	
+	即 $\overline{\mathbf{q}_1\mathbf{q}_2}=\bar{\mathbf{q}}_2\bar{\mathbf{q}}_1$ ，得证。
+
+??? note "Lemma 2"
+	设四元数 $\mathbf{q}_{1},\mathbf{q}_{2}$ ，则 $\Vert\mathbf{q}_{1}\mathbf{q}_{2}\Vert=\Vert\mathbf{q}_{1}\Vert\Vert\mathbf{q}_{2}\Vert$ 。
+	
+	证：由 Lemma 1，计算有：
+	
+	$$
+	\begin{align}
+	\Vert \mathbf{q}_{1}\mathbf{q}_{2} \Vert^{2} &= (\mathbf{q}_{1}\mathbf{q}_{2})(\overline{\mathbf{q}_{1}\mathbf{q}_{2}}) \\
+	&= (\mathbf{q}_{2}\mathbf{q}_{1})(\bar{\mathbf{q}}_{1}\bar{\mathbf{q}}_{2})  \\
+	&= \mathbf{q}_{1}(\mathbf{q}_{2}\bar{\mathbf{q}}_{2})\bar{\mathbf{q}}_{1}  \\
+	&= \Vert \mathbf{q}_{2} \Vert^{2} (\mathbf{q}_{1}\bar{\mathbf{q}}_{1})  \\
+	&= \Vert \mathbf{q}_{2}\Vert^{2}\Vert \mathbf{q}_{1} \Vert^{2}
+	\end{align}
+	$$
+	
+	即 $\Vert\mathbf{q}_1\mathbf{q}_2\Vert=\Vert\mathbf{q}_1\Vert\Vert\mathbf{q}_2\Vert$ ，得证。	
+
 ??? note "Proof"
-	TODO
+	$\eqref{1},\eqref{2},\eqref{3}$ 式推 $\eqref{star2}$ 式显然。下证 $\eqref{star2}$ 式推 $\eqref{1},\eqref{2},\eqref{3}$ 式：
+	
+	由关系式：
+	
+	$$
+	\mathbf{P}_{1}\cdot \mathbf{P}_{2} = - \frac{\mathbf{P}_{1}\mathbf{P}_{2}+\mathbf{P}_{2}\mathbf{P}_{1}}{2}, \quad \mathbf{P}_{1}\times \mathbf{P}_{2} = \frac{\mathbf{P}_{1}\mathbf{P}_{2}-\mathbf{P}_{2}\mathbf{P}_{1}}{2}
+	$$
+	
+	结合 $\varphi(\mathbf{P}_1),\varphi(\mathbf{P}_2)$ 也为虚四元数，计算可知：
+	
+	$$
+	\varphi(\mathbf{P}_{1}\cdot\mathbf{P}_{2}) = \varphi(\mathbf{P}_{1})\cdot\varphi(\mathbf{P}_{2}), \quad \varphi(\mathbf{P}_{1}\times \mathbf{P}_{2}) = \varphi(\mathbf{P}_{1})\times \varphi(\mathbf{P}_{2})
+	$$
+	
+	而 
+	
+	$$
+	\Vert\varphi(\mathbf{P})\Vert^{2}=\varphi(\mathbf{P})\cdot \varphi(\mathbf{P})=\mathbf{P}\cdot \mathbf{P}=\Vert \mathbf{P}\Vert^{2}
+	$$
+	
+	即 $\Vert\varphi(\mathbf{P}\Vert=\Vert\mathbf{P}\Vert$ ，三式成立，得证。
 
 满足 $\eqref{star2}$ 式的 $\varphi$ 称为 **同态（Homomorphism）**．任取非 $0$ 四元数 $\mathbf{q}$ ，构造 $\varphi_{\mathbf{q}}(\mathbf{P})=\mathbf{q}\mathbf{P}\mathbf{q}^{-1}$ ，可验证其为同态，从而 $\varphi_{\mathbf{q}}$ 对应三维空间的一个旋转变换．
 

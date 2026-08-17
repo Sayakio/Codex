@@ -9,7 +9,7 @@ We present a novel neural surface reconstruction method, called NeuS, for recons
 
 
 ## 1. PROBLEMS
-考虑一组 3D 物体图片 $\{\mathcal{I}_{k}\}$ ，目标为重建表面曲面 $\mathcal{S}$．
+给定一组 3D 物体图片 $\{\mathcal{I}_{k}\}$ ，目标为重建表面曲面 $\mathcal{S}$．
 
 
 ## 2. METHOD
@@ -110,7 +110,7 @@ $$
 
 此时权重偏置对比图如下：
 
-![bias](assets/neus-bias.svg)
+![bias](./assets/neus-bias.svg)
 /// caption
 Figure 1: (a) 朴素解的权重偏差； (b) 本文解的权重函数，在 SDF 的一阶近似中无偏．
  ///
@@ -124,7 +124,7 @@ $$
 
 此时多曲面权重分布图如下：
 
-![illustration](assets/neus-illustration.svg)
+![illustration](./assets/neus-illustration.svg)
 /// caption
 Figure 2: 多曲面相交情况下的权重分布图．
 ///
@@ -201,17 +201,17 @@ $$
 
 ### Comparison
 
-![table1](assets/neus-table1.png)
+![table1](./assets/neus-table1.png)
 /// caption
 Table 1: DTU数据集的定量评估． COLMAP 结果通过trim=0 获得．
 ///
 
-![compare1](assets/neus-compare1.png)
+![compare1](./assets/neus-compare1.png)
 /// caption
 Figure 3: 带掩模监督的表面重建对比图．
 ///
 
-![compare2](assets/neus-compare2.png)
+![compare2](./assets/neus-compare2.png)
 /// caption
 Figure 4: 无掩模监督的表面重建对比图．
 ///

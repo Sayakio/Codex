@@ -66,6 +66,8 @@ nav:
   
   - 论文 • 洞见:
     - papers/index.md
+    - Rendering:
+      - EWA-Splatting: papers/ewa-splatting.md
     - 3D Reconstruction:
       - Instant-NGP: papers/instant-ngp.md
     - Surface Reconstruction:

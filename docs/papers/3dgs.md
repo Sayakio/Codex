@@ -25,7 +25,13 @@ Radiance Field methods have recently revolutionized novel-view synthesis of scen
 
 ## 2. METHOD
 
-
+``` cpp
+// Apply low-pass filter: every Gaussian should be at least
+// one pixel wide/high. Discard 3rd row and column.
+cov[0][0] += 0.3f;
+cov[1][1] += 0.3f;
+return { float(cov[0][0]), float(cov[0][1]), float(cov[1][1]) };
+```
 
 ## 3. EXPERIMENTS
 
