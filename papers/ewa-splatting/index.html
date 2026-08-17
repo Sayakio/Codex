@@ -9,9 +9,13 @@
         <meta name="author" content="Sayaki">
       
       
-        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/3dgs/">
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/ewa-splatting/">
       
       
+        <link rel="prev" href="../">
+      
+      
+        <link rel="next" href="../instant-ngp/">
       
       
         
@@ -29,7 +33,7 @@
     
     
       
-        <title>3D Gaussian Splatting for Real-Time Radiance Field Rendering - Sayaki's Codex</title>
+        <title>EWA-Splatting - Sayaki's Codex</title>
       
     
     
@@ -122,7 +126,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3d-gaussian-splatting-for-real-time-radiance-field-rendering" class="md-skip">
+        <a href="#ewa-volume-splatting" class="md-skip">
           Skip to content
         </a>
       
@@ -156,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3D Gaussian Splatting for Real-Time Radiance Field Rendering
+              EWA-Splatting
             
           </span>
         </div>
@@ -312,10 +316,12 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
+      <li class="md-tabs__item md-tabs__item--active">
         <a href="../" class="md-tabs__link">
           
   
@@ -942,6 +948,8 @@
       
   
   
+    
+  
   
   
     
@@ -961,14 +969,17 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -992,13 +1003,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1015,8 +1026,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1029,11 +1042,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked="">
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -1054,7 +1067,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1069,10 +1082,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../ewa-splatting/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EWA-Splatting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1088,6 +1128,186 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ABSTRACT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FILES &amp; LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. PROBLEMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. METHOD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. METHOD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume-rendering-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volume Rendering Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splatting-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Splatting Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliasing-in-volume-splatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aliasing in Volume Splatting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elliptical-gaussian-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elliptical Gaussian Kernels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viewing Transformation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projective-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projective Transformation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-and-band-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration and Band-Limiting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surface-reconstruction-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Surface Reconstruction Kernels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. EXPERIMENTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. THINKING
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -1416,6 +1636,100 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="2. METHOD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#volume-rendering-pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Volume Rendering Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#splatting-algorithm" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Splatting Algorithm
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#aliasing-in-volume-splatting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Aliasing in Volume Splatting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#elliptical-gaussian-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Elliptical Gaussian Kernels
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#viewing-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Viewing Transformation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projective-transformation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projective Transformation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-and-band-limiting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Integration and Band-Limiting
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#surface-reconstruction-kernels" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Surface Reconstruction Kernels
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -1460,29 +1774,315 @@
   
 
 
-<h1 id="3d-gaussian-splatting-for-real-time-radiance-field-rendering">3D Gaussian Splatting for Real-Time Radiance Field Rendering<a class="headerlink" href="#3d-gaussian-splatting-for-real-time-radiance-field-rendering" title="Permanent link">¶</a></h1>
+<h1 id="ewa-volume-splatting">EWA volume splatting<a class="headerlink" href="#ewa-volume-splatting" title="Permanent link">¶</a></h1>
 <h2 id="abstract">ABSTRACT<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
-<p>Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos. However, achieving high visual quality still requires neural networks that are costly to train and render, while recent faster methods inevitably trade off speed for quality. For unbounded and complete scenes (rather than isolated objects) and 1080p resolution rendering, no current method can achieve real-time display rates. We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining competitive training times and importantly allow high-quality real-time (&gt;= 30 fps) novel-view synthesis at 1080p resolution. First, starting from sparse points produced during camera calibration, we represent the scene with 3D Gaussians that preserve desirable properties of continuous volumetric radiance fields for scene optimization while avoiding unnecessary computation in empty space; Second, we perform interleaved optimization/density control of the 3D Gaussians, notably optimizing anisotropic covariance to achieve an accurate representation of the scene; Third, we develop a fast visibility-aware rendering algorithm that supports anisotropic splatting and both accelerates training and allows realtime rendering. We demonstrate state-of-the-art visual quality and real-time rendering on several established datasets.</p>
+<p>In this paper we present a novel framework for direct volume rendering using a splatting approach based on elliptical Gaussian kernels. To avoid aliasing artifacts, we introduce the concept of a resampling filter combining a reconstruction with a low-pass kernel. Because of the similarity to Heckbert's EWA (elliptical weighted average) filter for texture mapping we call our technique EWA volume splatting. It provides high image quality without aliasing artifacts or excessive blurring even with non-spherical kernels. Hence it is suitable for regular, rectilinear, and irregular volume data sets. Moreover, our framework introduces a novel approach to compute the footprint function. It facilitates efficient perspective projection of arbitrary elliptical kernels at very little additional cost. Finally, we show that EWA volume reconstruction kernels can be reduced to surface reconstruction kernels. This makes our splat primitive universal in reconstructing surface and volume data.</p>
 <h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>URL:</strong>  <a href="http://arxiv.org/abs/2308.04079">Open Online</a></li>
-<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/G65UKH6J">Full Text PDF</a></li>
+<li><strong>URL:</strong>  <a href="https://ieeexplore.ieee.org/document/964490/">Open Online</a></li>
+<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/S5SVEB8E">PDF</a></li>
 </ul>
 <h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
+<p>给定离散体样本集的原始标量 <span class="arithmatex">\(\left\{ f_{k} \right\}\)</span> ，目标为体渲染得到离散屏幕图像 <span class="arithmatex">\(\left\{ I_{\lambda}(\hat{\mathbf{x}}_{i}) \right\}\)</span> ．</p>
 <h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Apply low-pass filter: every Gaussian should be at least</span>
-<span class="c1">// one pixel wide/high. Discard 3rd row and column.</span>
-<span class="n">cov</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span>
-<span class="n">cov</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span>
-<span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div></td></tr></tbody></table></div>
+<h3 id="volume-rendering-pipeline">Volume Rendering Pipeline<a class="headerlink" href="#volume-rendering-pipeline" title="Permanent link">¶</a></h3>
+<p>体渲染有如下两种基本方式：</p>
+<ul>
+<li>反向映射：从图像平面的像素发射光线进入体数据．</li>
+<li>前向映射：将体数据直接映射到图像平面．</li>
+</ul>
+<p>本文方法基于前向映射，体渲染管线如下图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/ewa-splatting-pipeline.png" data-desc-position="bottom"><img alt="pipeline" src="../assets/ewa-splatting-pipeline.png"></a></p>
+<figcaption>
+<p>Figure 1:  前向映射体渲染管线．</p>
+</figcaption>
+</figure>
+<h3 id="splatting-algorithm">Splatting Algorithm<a class="headerlink" href="#splatting-algorithm" title="Permanent link">¶</a></h3>
+<p>前向映射体渲染最常用的技术为 <strong>泼溅算法（Splatting Algorithms）</strong>．下面从低反照率近似的体渲染方程以及一些简化假设推导泼溅公式．</p>
+<p>首先引入如下 <strong>光线空间（Ray Space）</strong> 的定义：</p>
+<p>使用三维列向量 <span class="arithmatex">\(\mathbf{x}=(x_{0},x_{1},x_{2})^\mathsf{T}\)</span> 表示光线空间中的点．给定投影中心和投影平面，三个坐标的几何解释如下：</p>
+<ul>
+<li>坐标 <span class="arithmatex">\((x_0,x_1)\)</span> 指定投影平面上的一点．对于从投影中心穿过投影平面点 <span class="arithmatex">\((x_0,x_1)\)</span> 的光线，称之为 <strong>视线（Viewing Ray）</strong>，记作 <span class="arithmatex">\(\hat{\mathbf{x}}=(x_0,x_1)^\mathsf{T}\)</span> ．</li>
+<li>坐标 <span class="arithmatex">\(x_2\)</span> 指定投影中心到视线上一点的欧氏距离，也可记作 <span class="arithmatex">\(\xi\)</span> ．</li>
+</ul>
+<p>为简化符号， <span class="arithmatex">\(\mathbf{x},(\hat{\mathbf{x}},\xi)^\mathsf{T},(x_{0},x_{1},x_{2})^\mathsf{T}\)</span> 都可表示光线空间的一点．</p>
+<p>体渲染方程描述了波长为 <span class="arithmatex">\(\lambda\)</span> 的光沿长度为 <span class="arithmatex">\(L\)</span> 的光线 <span class="arithmatex">\(\hat{\mathbf{x}}\)</span> 传播到投影中心时的光强 <span class="arithmatex">\(I_{\lambda}(\hat{\mathbf{x}})\)</span> ：</p>
+<div class="arithmatex">\[
+I_{\lambda}(\hat{\mathbf{x}}) = \int_{0}^{L} c_{\lambda}(\hat{\mathbf{x}},\xi)\sigma(\hat{\mathbf{x}},\xi)\exp \left( -\int_{0}^{\xi} \sigma(\hat{\mathbf{x}},\mu) \, d\mu  \right)  \, d\xi
+\]</div>
+<p>其中，各函数含义如下：</p>
+<ul>
+<li><span class="arithmatex">\(\sigma(\mathbf{x})\)</span> 为 <strong>消光函数（Extinction Function）</strong>，定义了光遮挡率．</li>
+<li><span class="arithmatex">\(c_{\lambda}(\mathbf{x})\)</span> 为 <strong>放射系数（Emission Coefficient）</strong>．</li>
+<li><span class="arithmatex">\(T(\xi):=\exp \left( -\int_{0}^{\xi} \sigma(\hat{\mathbf{x}},\mu) \, d\mu \right)\)</span> 可解释为 <strong>衰减因子（Attenuation Factor）</strong>．</li>
+<li><span class="arithmatex">\(c_{\lambda}(\mathbf{x})\sigma(\mathbf{x})\)</span> 称为 <strong>源项（Source Term）</strong>，描述了点 <span class="arithmatex">\(\xi\)</span> 沿射线 <span class="arithmatex">\(\hat{\mathbf{x}}\)</span> 方向散射的光强．</li>
+</ul>
+<p>考虑如下物理模型：体积由吸收和发射光的独立粒子组成．此时消光函数由重建核 <span class="arithmatex">\(g_{k}(\mathbf{x})\)</span> 和权重系数 <span class="arithmatex">\(\sigma_{k}\)</span> 给出：</p>
+<div class="arithmatex">\[
+\sigma(\mathbf{x}) = \sum_{k} \sigma_{k} g_{k}(\mathbf{x})
+\]</div>
+<p>代入 <span class="arithmatex">\(I_{\lambda}(\hat{\mathbf{x}})\)</span> 表达式有：</p>
+<div class="arithmatex">\[
+I_{\lambda}(\hat{\mathbf{x}}) = \sum_{k} \left( \int_{0}^{L} c_{\lambda}(\hat{\mathbf{x}},\xi)\sigma_{k}g_{k}(\hat{\mathbf{x}},\xi)\prod_{j}\exp \left( -\sigma_{j}\int_{0}^{\xi} g_{j}(\hat{\mathbf{x}},\mu) \, d\mu  \right)  \, d\xi  \right) 
+\]</div>
+<p>为数值计算如上表达式，泼溅算法提出如下简化假设：</p>
+<ul>
+<li>重建核 <span class="arithmatex">\(g_k(\mathbf{x})\)</span> 的局部支集 <span class="arithmatex">\(S_k=[\xi_k^\text{in},\xi_k^\text{out}]\)</span> 沿光线 <span class="arithmatex">\(\hat{\mathbf{x}}\)</span> 互不重叠，且按照从前往后排序．</li>
+<li>放射系数 <span class="arithmatex">\(c_\lambda(\mathbf{x})\)</span> 沿光线 <span class="arithmatex">\(\hat{\mathbf{x}}\)</span> 在各支集 <span class="arithmatex">\(S_k\)</span> 上为定值，即 <span class="arithmatex">\(c_{\lambda k}(\hat{\mathbf{x}})=c_{\lambda}(\hat{\mathbf{x}},\xi),\xi \in S_k\)</span> ．</li>
+<li>对 <span class="arithmatex">\(\exp\)</span> 使用 Taylor <span class="arithmatex">\(1\)</span> 阶近似，即 <span class="arithmatex">\(\exp(x)\approx 1-x\)</span> ．</li>
+<li>
+<p>忽略重建核的自遮挡，不出现在自身的透射率乘积中，即 </p>
+<div class="arithmatex">\[
+\int_0^\xi g_j(\hat{\mathbf{x}},\mu) \, d\mu=0,\xi\in S_j
+\]</div>
+</li>
+</ul>
+<p>对应示意图如下：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/ewa-splatting-splatting.png" data-desc-position="bottom"><img alt="splatting" src="../assets/ewa-splatting-splatting.png"></a></p>
+<figcaption>
+<p>Figure 2:  体渲染示意图．左：原体渲染方程；右：泼溅算法的近似方式．</p>
+</figcaption>
+</figure>
+<p>由如上假设，计算有：</p>
+<div class="arithmatex">\[
+I_{\lambda}(\hat{\mathbf{x}}) = \sum_{k} c_{\lambda k}(\hat{\mathbf{x}}) \sigma_{k} q_{k}(\hat{\mathbf{x}}) \prod_{j=0}^{k-1} (1 - \sigma_{j}q_{j}(\hat{\mathbf{x}})) \tag{$\ast$} \label{star}
+\]</div>
+<p>其中，<span class="arithmatex">\(q_{k}(\hat{\mathbf{x}})\)</span> 为重建核的积分，称为 <strong>足迹函数（Footprint Function）</strong>：</p>
+<div class="arithmatex">\[
+q_{k}(\hat{\mathbf{x}}) = \int_{\mathbb{R}} g_{k}(\hat{\mathbf{x}},\xi) d\xi
+\]</div>
+<p>该 2D 函数指定了一个 3D 核在图像平面上的贡献．</p>
+<p><span class="arithmatex">\(\eqref{star}\)</span> 式为所有泼溅算法的基础公式，其高效性主要来源于如下方面：</p>
+<ul>
+<li>利用预积分重建核，在体积分中只需 2D 插值．</li>
+<li>可以使用具有更大范围的高质量核函数．</li>
+</ul>
+<h3 id="aliasing-in-volume-splatting">Aliasing in Volume Splatting<a class="headerlink" href="#aliasing-in-volume-splatting" title="Permanent link">¶</a></h3>
+<p>当采样渲染图像到离散像素网格时，通常会发生 <strong>混叠（Aliasing）</strong> 问题．从信号处理角度，对混叠现象解释如下：</p>
+<blockquote>
+<p>在连续函数被采样到规则网格之前，必须对其 <strong>带限（Band-limit）</strong> 至网格的 Nyquist 频率．</p>
+</blockquote>
+<p>理论上，利用低通滤波器 <span class="arithmatex">\(h(\hat{\mathbf{x}})\)</span> 对 <span class="arithmatex">\(I_{\lambda}(\hat{\mathbf{x}})\)</span> 进行卷积操作可得抗混叠方程：</p>
+<div class="arithmatex">\[
+(I_{\lambda}\otimes h)(\hat{\mathbf{x}}) = \int_{\mathbb{R}^{2}} \sum_{k} c_{\lambda k}(\eta)\sigma_{k}q_{k}(\eta)\prod_{j=0}^{k-1} (1-\sigma_{j}q_{j}(\eta))h(\hat{\mathbf{x}}-\eta) \, d \eta
+\]</div>
+<p>但实际中，<span class="arithmatex">\(I_{\lambda}(\hat{\mathbf{x}})\)</span> 只在离散点（像素中心）计算，故无法直接使用上述方程．</p>
+<p>为利用低通滤波，提出如下简化假设重排积分：</p>
+<ul>
+<li>放射系数 <span class="arithmatex">\(c_{\lambda k}(\hat{\mathbf{x}})\)</span> 在 <span class="arithmatex">\(q_k\)</span> 的支集上近似为定值，即 <span class="arithmatex">\(c_{\lambda k}(\hat{\mathbf{x}})\approx c_{\lambda k}\)</span> ．此时 <span class="arithmatex">\(c_{\lambda}\)</span> 在重建核的 3D 支集上为定值，即忽略了着色影响．</li>
+<li>
+<p>衰减因子在 <span class="arithmatex">\(q_k\)</span> 支集上近似为定值，即</p>
+<div class="arithmatex">\[
+\prod_{j=0}^{k-1} (1 - \sigma_{j}q_{j}(\hat{\mathbf{x}})) \approx o_{k}
+\]</div>
+<p>原衰减因子表明足迹函数部分被一个更不透明的区域覆盖，即存在“软”边缘．将其近似为常数因无法避免边缘混叠．</p>
+</li>
+</ul>
+<p>由如上假设，计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+(I_{\lambda}\otimes h)(\hat{\mathbf{x}}) &amp;\approx \sum_{k} c_{\lambda k}o_{k}\sigma_{k} \int_{\mathbb{R}^{2}} q_{k}(\eta)h(\hat{\mathbf{x}}-\eta)\, d \eta \\
+&amp;= \sum_{k}c_{\lambda k}o_{k}\sigma_{k}(q_{k}\otimes h)(\hat{\mathbf{x}})
+\end{align}
+\]</div>
+<p>记 <span class="arithmatex">\(\rho_{k}(\hat{\mathbf{x}})=(q_{k}\otimes h)(\hat{\mathbf{x}})\)</span> ，称为 <strong>理想重采样滤波器（Ideal Resampling Filter）</strong>，其替代了原先抗混叠方程中的 <span class="arithmatex">\(q_{k}\)</span> ，即：将直接带限 <span class="arithmatex">\(I_{\lambda}(\hat{\mathbf{x}})\)</span> 转为分别带限各足迹函数．</p>
+<h3 id="elliptical-gaussian-kernels">Elliptical Gaussian Kernels<a class="headerlink" href="#elliptical-gaussian-kernels" title="Permanent link">¶</a></h3>
+<p>选择椭圆 Gaussian 作为重建核和低通滤波器，其具有如下重要性质：</p>
+<ul>
+<li>Gaussian 在仿射变换和卷积下封闭．</li>
+<li>3D Gaussian 沿一个坐标轴积分会得到 2D Gaussian ．</li>
+</ul>
+<p>定义中心点 <span class="arithmatex">\(\mathbf{p}\)</span> ，协方差 <span class="arithmatex">\(\boldsymbol{\Sigma}\)</span> 的椭圆 Gaussian 为：</p>
+<div class="arithmatex">\[
+\mathcal{G}_{\boldsymbol{\Sigma}}(\mathbf{x}-\mathbf{p}) = \frac{1}{2\pi \left| \boldsymbol{\Sigma} \right|^{\frac{1}{2}} } e^{-\frac{1}{2} (\mathbf{x}-\mathbf{p})^\mathsf{T}\boldsymbol{\Sigma}^{-1}(\mathbf{x}-\mathbf{p})}
+\]</div>
+<p>记 <span class="arithmatex">\(\mathbf{x}=(x_{0},x_{1},x_{2})^\mathsf{T},\mathbf{p}=(p_{0},p_{1},p_{2})^\mathsf{T}\)</span> ，三条重要性质表述如下：</p>
+<ul>
+<li>
+<p>对于仿射变换 <span class="arithmatex">\(\mathbf{u}=\Phi(\mathbf{x})=\mathbf{M}\mathbf{x}+\mathbf{c}\)</span> ，替换 <span class="arithmatex">\(\mathbf{x}=\Phi^{-1}(\mathbf{u})\)</span> 有：</p>
+<div class="arithmatex">\[
+\mathcal{G}_{\boldsymbol{\Sigma}}(\Phi ^{-1}(\mathbf{u})-\mathbf{p}) = \frac{1}{\left| \mathbf{M}^{-1} \right| } \mathcal{G}_{\mathbf{M}\boldsymbol{\Sigma}\mathbf{M}^\mathsf{T}}(\mathbf{u}-\Phi(\mathbf{p})) \tag{1} \label{1}
+\]</div>
+</li>
+<li>
+<p>对于两个 Gaussian <span class="arithmatex">\(\mathcal{G}_{\mathbf{X}}\)</span> 和 <span class="arithmatex">\(\mathcal{G}_{\mathbf{Y}}\)</span> ，卷积结果为协方差 <span class="arithmatex">\(\mathbf{X}+\mathbf{Y}\)</span> 的 Gaussian ：</p>
+<div class="arithmatex">\[
+(\mathcal{G}_{\mathbf{X}}\otimes \mathcal{G}_{\mathbf{Y}})(\mathbf{x}-\mathbf{p}) = \mathcal{G}_{\mathbf{X}+\mathbf{Y}}(\mathbf{x}-\mathbf{p}) \tag{2} \label{2}
+\]</div>
+</li>
+<li>
+<p>对 3D Gaussian <span class="arithmatex">\(\mathcal{G}_{\boldsymbol{\Sigma}}\)</span> ，沿一个坐标轴积分结果为 2D Gaussian <span class="arithmatex">\(\mathcal{G}_{\hat{\boldsymbol{\Sigma}}}\)</span> ：</p>
+<div class="arithmatex">\[
+\int_{\mathbb{R}^{2}} \mathcal{G}_{\boldsymbol{\Sigma}}(\mathbf{x}-\mathbf{p})\, d\xi = \mathcal{G}_{\hat{\boldsymbol{\Sigma}}}(\hat{\mathbf{x}}-\hat{\mathbf{p}}) \tag{3} \label{3}
+\]</div>
+<p>其中 <span class="arithmatex">\(\hat{\mathbf{x}}=(x_0,x_1)^\mathsf{T},\hat{\mathbf{p}}=(p_0,p_1)^\mathsf{T}\)</span> ，<span class="arithmatex">\(2\times2\)</span> 协方差矩阵 <span class="arithmatex">\(\hat{\boldsymbol{\Sigma}}\)</span> 为 <span class="arithmatex">\(3\times3\)</span> 协方差矩阵 <span class="arithmatex">\(\boldsymbol{\Sigma}\)</span> 去除第三行和列：</p>
+<div class="arithmatex">\[
+\boldsymbol{\Sigma} = \begin{pmatrix}
+a &amp; b &amp; c \\
+b &amp; d &amp; e \\
+c &amp; e &amp; f
+\end{pmatrix} \Leftrightarrow \begin{pmatrix}
+a &amp; b \\
+b &amp; d
+\end{pmatrix} = \hat{\boldsymbol{\Sigma}}
+\]</div>
+</li>
+</ul>
+<p>下面介绍如何将椭圆 Gaussian 重建核从物体空间映射到光线空间．</p>
+<h3 id="viewing-transformation">Viewing Transformation<a class="headerlink" href="#viewing-transformation" title="Permanent link">¶</a></h3>
+<p>重建核初始在物体空间，坐标为 <span class="arithmatex">\(\mathbf{t}=(t_{0},t_{1},t_{2})^\mathsf{T}\)</span> ，重建核为 <span class="arithmatex">\(g_{k}''(\mathbf{t})=\mathcal{G}_{\boldsymbol{\Sigma}''}(\mathbf{t}-\mathbf{t}_{k})\)</span> ．</p>
+<p>记相机空间坐标为 <span class="arithmatex">\(\mathbf{u}=(u_{0},u_{1},u_{2})^\mathsf{T}\)</span> ，重建核为 <span class="arithmatex">\(g_{k}'(\mathbf{u})\)</span> ．物体坐标到相机坐标的仿射变换为 <span class="arithmatex">\(\mathbf{u}=\varphi(\mathbf{t})=\mathbf{W}\mathbf{t}+\mathbf{d}\)</span> ，称为 <strong>视角变换（Viewing Transformation）</strong>．</p>
+<p>代入 <span class="arithmatex">\(\mathbf{t}=\varphi ^{-1}(\mathbf{u})\)</span> ，相机空间的重建核由 <span class="arithmatex">\(\eqref{1}\)</span> 式计算有：</p>
+<div class="arithmatex">\[
+g_{k}'(\mathbf{u}) = \mathcal{G}_{\Sigma_{k}''}(\varphi ^{-1}(\mathbf{u})-\mathbf{t}_{k}) = \frac{1}{\left| \mathbf{W}^{-1} \right| } \mathcal{G}_{\Sigma_{k}'}(\mathbf{u}-\mathbf{u}_{k})
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{u}_{k}=\varphi(\mathbf{t}_{k})\)</span> 为相机坐标下 Gaussian 中心点，<span class="arithmatex">\(\boldsymbol{\Sigma}_{k}'=\mathbf{W}\boldsymbol{\Sigma}_{k}''\mathbf{W}^\mathsf{T}\)</span> 为相机坐标下 Gaussian 协方差矩阵．</p>
+<h3 id="projective-transformation">Projective Transformation<a class="headerlink" href="#projective-transformation" title="Permanent link">¶</a></h3>
+<p>相机空间的原点位于投影中心，投影平面为 <span class="arithmatex">\(u_{2}=1\)</span> ．相机空间到光线空间的 <strong>投影变换（Projective Transformation）</strong> <span class="arithmatex">\(\mathbf{x}=\mathbf{m}(\mathbf{u})\)</span> 计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+\begin{pmatrix}
+x_{0} \\
+x_{1} \\
+x_{2}
+\end{pmatrix} &amp;= \mathbf{m}(\mathbf{u}) = \begin{pmatrix}
+u_{0}/u_{2} \\
+u_{1}/u_{2} \\
+\Vert (u_{0},u_{1},u_{2})^\mathsf{T}\Vert
+\end{pmatrix} \\
+\begin{pmatrix}
+u_{0} \\
+u_{1} \\
+u_{2}
+\end{pmatrix} &amp;= \mathbf{m}^{-1}(\mathbf{x}) = \begin{pmatrix}
+x_{0} / l\cdot x_{2} \\
+x_{1} / l\cdot x_{2} \\
+1 / l\cdot x_{2}
+\end{pmatrix}
+\end{align}
+\]</div>
+<p>其中 <span class="arithmatex">\(l=\Vert(x_{0},x_{1},1)^\mathsf{T}\Vert\)</span> ．</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/ewa-splatting-projective-transformation.png" data-desc-position="bottom"><img alt="projective-transformation" src="../assets/ewa-splatting-projective-transformation.png"></a></p>
+<figcaption>
+<p>Figure 3:  从相机空间到光线空间的投影变换示意图．上：相机空间；下：光线空间．</p>
+</figcaption>
+</figure>
+<p>如上图所示，由于变换 <span class="arithmatex">\(\mathbf{m}\)</span> 非仿射变换，对 <span class="arithmatex">\(\mathbf{m}(\mathbf{u})\)</span> 进行 Taylor 展开，有局部仿射近似 <span class="arithmatex">\(\mathbf{m}_{\mathbf{u}_{k}}\)</span> ：</p>
+<div class="arithmatex">\[
+\mathbf{m}_{\mathbf{u}_{k}}(\mathbf{u}) = \mathbf{x}_{k} + \mathbf{J}_{\mathbf{u}_{k}}\cdot(\mathbf{u}-\mathbf{u}_{k})
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{x}_{k}=\mathbf{m}(\mathbf{u}_{k})\)</span> 为光线空间 Gaussian 中心点，Jacobian <span class="arithmatex">\(\mathbf{J}_{\mathbf{u}}\)</span> 为 <span class="arithmatex">\(\mathbf{m}\)</span> 在 <span class="arithmatex">\(\mathbf{u}\)</span> 点的偏导数：</p>
+<div class="arithmatex">\[
+\mathbf{J}_{\mathbf{u}} = \frac{\partial \mathbf{m}}{\partial \mathbf{u}}(\mathbf{u}) = \begin{pmatrix}
+1 / u_{2} &amp; 0 &amp; -u_{0} / u_{2}^{2} \\
+0 &amp; 1 / u_{2} &amp; -u_{1} / u_{2}^{2} \\
+u_{0} / l' &amp; u_{1} / l' &amp; u_{2} / l'
+\end{pmatrix}
+\]</div>
+<p>其中 <span class="arithmatex">\(l'=\Vert(u_{0},u_{1},u_{2})^\mathsf{T}\Vert\)</span> ．之后讨论省略下标 <span class="arithmatex">\(\mathbf{u}_{k}\)</span> ，因此 <span class="arithmatex">\(\mathbf{m}(\mathbf{u})\)</span> 表示局部仿射近似．代入 <span class="arithmatex">\(\mathbf{u}=\mathbf{m}^{-1}(\mathbf{x})\)</span> ，由 <span class="arithmatex">\(\eqref{1}\)</span> 式计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+g_{k}(\mathbf{x}) &amp;= \frac{1}{\left| \mathbf{W}^{-1} \right| } \mathcal{G}_{\Sigma_{k}'}(\mathbf{m}^{-1}(\mathbf{x})-\mathbf{u}_{k}) \\
+&amp;= \frac{1}{\left| \mathbf{W}^{-1} \right| \left| \mathbf{J}^{-1} \right| } \mathcal{G}_{\Sigma_{k}}(\mathbf{x}-\mathbf{x}_{k})
+\end{align}
+\]</div>
+<p>其中 <span class="arithmatex">\(\boldsymbol{\Sigma}_{k}\)</span> 为光线空间 Gaussian 协方差矩阵，由如下表达式给出：</p>
+<div class="arithmatex">\[
+\begin{align}
+\Sigma_{k} &amp;= \mathbf{J}\Sigma_{k}'\mathbf{J}^\mathsf{T} \\
+&amp;= \mathbf{J}\mathbf{W}\Sigma_{k}''\mathbf{W}^\mathsf{T}\mathbf{J}^\mathsf{T}
+\end{align}
+\]</div>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/ewa-splatting-local-affine-approximation.png" data-desc-position="bottom"><img alt="local-affine-approximation" src="../assets/ewa-splatting-local-affine-approximation.png"></a></p>
+<figcaption>
+<p>Figure 4:  从相机空间映射重建核到光线空间示意图．上：相机空间．下：光线空间．左：局部仿射映射．右：精确映射．</p>
+</figcaption>
+</figure>
+<p>如上图所示，局部仿射映射本质上用斜平行投影近似透视投影，仅对通过 <span class="arithmatex">\(\mathbf{x}_{k}\)</span> 的光线精确．</p>
+<h3 id="integration-and-band-limiting">Integration and Band-Limiting<a class="headerlink" href="#integration-and-band-limiting" title="Permanent link">¶</a></h3>
+<p>由 <span class="arithmatex">\(\eqref{3}\)</span> 式积分 Gaussian 重建核可得 Gaussian 足迹函数 <span class="arithmatex">\(q_{k}\)</span> ：</p>
+<div class="arithmatex">\[
+\begin{align}
+q_{k}(\hat{\mathbf{x}}) &amp;= \int_{\mathbb{R}} \frac{1}{\left| \mathbf{J}^{-1} \right| \left| \mathbf{W}^{-1} \right| } \mathcal{G}_{\Sigma_{k}}(\hat{\mathbf{x}}-\hat{\mathbf{x}}_{k},\xi-\xi_{k})\, d \xi \\
+&amp;= \frac{1}{\left| \mathbf{J}^{-1} \right| \left| \mathbf{W}^{-1} \right| }\mathcal{G}_{\hat{\Sigma}_{k}}(\hat{\mathbf{x}}-\hat{\mathbf{x}}_{k})
+\end{align}
+\]</div>
+<p>选择 Gaussian 低通滤波器 <span class="arithmatex">\(h=\mathcal{G}_{\boldsymbol{\Sigma}^h}(\hat{\mathbf{x}})\)</span> ，其中协方差矩阵 <span class="arithmatex">\(\boldsymbol{\Sigma}^h\in \mathbb{R}^{2\times2}\)</span> 通常为单位矩阵 <span class="arithmatex">\(\mathbf{I}_{2}\)</span> ．由 <span class="arithmatex">\(\eqref{2}\)</span> 式计算卷积可得 EWA 体积重采样滤波器：</p>
+<div class="arithmatex">\[
+\begin{align}
+\rho_{k}(\hat{\mathbf{x}}) &amp;= (q_{k}\otimes h)(\hat{\mathbf{x}}) \\
+&amp;= \frac{1}{\left| \mathbf{J}^{-1} \right| \left| \mathbf{W}^{-1} \right| }(\mathcal{G}_{\hat{\boldsymbol{\Sigma}}_{k}}\otimes \mathcal{G}_{\boldsymbol{\Sigma}^h})(\hat{\mathbf{x}}-\hat{\mathbf{x}}_{k}) \\
+&amp;= \frac{1}{\left| \mathbf{J}^{-1} \right| \left| \mathbf{W}^{-1} \right| }\mathcal{G}_{\hat{\boldsymbol{\Sigma}}_{k}+\boldsymbol{\Sigma}^h}(\hat{\mathbf{x}}-\hat{\mathbf{x}}_{k})
+\end{align}
+\]</div>
+<h3 id="surface-reconstruction-kernels">Surface Reconstruction Kernels<a class="headerlink" href="#surface-reconstruction-kernels" title="Permanent link">¶</a></h3>
+<p>由于 EWA 体积重采样滤波器可以处理任意 Gaussian 重建核，可以沿表面法向扁平化重建核，提高等值面渲染精度．</p>
+<p>对物体空间的 Gaussian 在一个方向上放缩 <span class="arithmatex">\(1/s\)</span> 倍，得到扁平化的 Gaussian 重建核：</p>
+<div class="arithmatex">\[
+\boldsymbol{\Sigma}'' = \begin{pmatrix}
+1 &amp; 0 &amp; 0 \\
+0 &amp; 1 &amp; 0 \\
+0 &amp; 0 &amp; \frac{1}{s^{2}}
+\end{pmatrix}
+\]</div>
+<p>记 <span class="arithmatex">\(\mathbf{T}^\text{3D}=\mathbf{J}\mathbf{W}\)</span> ，光线空间的协方差矩阵 <span class="arithmatex">\(\Sigma\)</span> 的表达式为：</p>
+<div class="arithmatex">\[
+\boldsymbol{\Sigma} = \mathbf{J}\mathbf{W}\boldsymbol{\Sigma}''\mathbf{W}^\mathsf{T}\mathbf{J}^\mathsf{T} = \mathbf{T}^\text{3D}\boldsymbol{\Sigma}''{\mathbf{T}^\text{3D}}^\mathsf{T}
+\]</div>
+<p>去除 <span class="arithmatex">\(\boldsymbol{\Sigma}\)</span> 的第三行和列，并令 <span class="arithmatex">\(s\to \infty\)</span> ，计算得 2D Gaussian 足迹函数的协方差矩阵 <span class="arithmatex">\(\hat{\boldsymbol{\Sigma}}\)</span> ：</p>
+<div class="arithmatex">\[
+\hat{\boldsymbol{\Sigma}} = \begin{pmatrix}
+t_{00}^{2}+t_{01}^{2} &amp; t_{00}t_{10}+t_{01}t_{11} \\
+t_{00}t_{10}+t_{01}t_{11} &amp; t_{10}^{2}+t_{11}^{2}
+\end{pmatrix} = \mathbf{T}^\text{2D}{\mathbf{T}^\text{2D}}^\mathsf{T} = \begin{pmatrix}
+t_{00} &amp; t_{01} \\
+t_{10} &amp; t_{11}
+\end{pmatrix} \begin{pmatrix}
+t_{00} &amp; t_{10} \\
+t_{01} &amp; t_{11}
+\end{pmatrix}
+\]</div>
+<p>该扁平化过程如下图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/ewa-splatting-flattening.png" data-desc-position="bottom"><img alt="flattening" src="../assets/ewa-splatting-flattening.png"></a></p>
+<figcaption>
+<p>Figure 5:  体重建核扁平化为面重建核示意图．上：渲染体积核．下：渲染表面核．</p>
+</figcaption>
+</figure>
+<p>下面研究 2D 映射矩阵 <span class="arithmatex">\(\mathbf{T}^\text{2D}\)</span> ．</p>
+<p>由 <span class="arithmatex">\(\mathbf{T}^\text{3D}=\mathbf{J}\mathbf{W}\)</span> ，<span class="arithmatex">\(\mathbf{T}^\text{2D}\)</span> 可分解为：</p>
+<div class="arithmatex">\[
+\mathbf{T}^\text{2D} = \begin{pmatrix}
+1 / u_{2} &amp; 0 &amp; -u_{0} / u_{2}^{2} \\
+0 &amp; 1 / u_{2} &amp; -u_{1} / u_{2}^{2}
+\end{pmatrix} \begin{pmatrix}
+w_{00} &amp; w_{01} \\
+w_{10} &amp; w_{11} \\
+w_{20} &amp; w_{21}
+\end{pmatrix}
+\]</div>
+<p>该分解可解释为一个 3D 到 2D 映射和一个 2D 到 3D 映射的复合．如下图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/ewa-splatting-surface-kernel-rendering.png" data-desc-position="bottom"><img alt="surface-kernel-rendering" src="../assets/ewa-splatting-surface-kernel-rendering.png"></a></p>
+<figcaption>
+<p>Figure 6:  表面核渲染图．</p>
+</figcaption>
+</figure>
+<p>具体分为如下三个阶段：</p>
+<div class="steps">
+<ol>
+<li>将 2D 圆形纹理核映射到 3D 相机空间中由向量 <span class="arithmatex">\((w_{\text{00}},w_{\text{10}},w_{\text{20}})^\mathsf{T}\)</span> 和 <span class="arithmatex">\((w_{\text{01}},w_{\text{11}},w_{\text{21}})^\mathsf{T}\)</span> 定义的平面．</li>
+<li>进行缩放因子为 <span class="arithmatex">\(1/u_2\)</span> 的斜平行投影，该因子是透视投影的局部仿射近似．</li>
+<li>结合投影椭圆和低通滤波器，得到纹理过滤器．</li>
+</ol>
+</div>
 <h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-14"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-14T10:03:19+00:00">2026-08-14</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-17"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-17T15:27:09+00:00">2026-08-17</time></span></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-17"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-17T15:27:09+00:00">2026-08-17</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-17"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-17T15:27:09+00:00">2026-08-17</time></span></div></div></div>
 
 
 
