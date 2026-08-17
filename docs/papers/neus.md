@@ -112,7 +112,7 @@ $$
 
 ![bias](./assets/neus-bias.svg)
 /// caption
-Figure 1: (a) 朴素解的权重偏差； (b) 本文解的权重函数，在 SDF 的一阶近似中无偏．
+Figure 1:  (a) 朴素解的权重偏差； (b) 本文解的权重函数，在 SDF 的一阶近似中无偏．
  ///
 
 
@@ -126,7 +126,7 @@ $$
 
 ![illustration](./assets/neus-illustration.svg)
 /// caption
-Figure 2: 多曲面相交情况下的权重分布图．
+Figure 2:  多曲面相交情况下的权重分布图．
 ///
 
 
@@ -203,17 +203,17 @@ $$
 
 ![table1](./assets/neus-table1.png)
 /// caption
-Table 1: DTU数据集的定量评估． COLMAP 结果通过trim=0 获得．
+Table 1:  DTU数据集的定量评估． COLMAP 结果通过trim=0 获得．
 ///
 
 ![compare1](./assets/neus-compare1.png)
 /// caption
-Figure 3: 带掩模监督的表面重建对比图．
+Figure 3:  带掩模监督的表面重建对比图．
 ///
 
 ![compare2](./assets/neus-compare2.png)
 /// caption
-Figure 4: 无掩模监督的表面重建对比图．
+Figure 4:  无掩模监督的表面重建对比图．
 ///
 
 
