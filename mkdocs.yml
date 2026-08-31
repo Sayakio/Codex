@@ -60,6 +60,7 @@ nav:
       - Chapter I The Rendering Pipeline: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline.md
       - Chapter II Vectors and Matrices: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors&matrices.md
       - Chapter III Transforms: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms.md
+      - Chapter IV Geometry: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter4-geometry.md
 
     - Physically Based Rendering:
       - Chapter III Geometry and Transformations: books/physically-based-rendering/chapter3-geometry&transformations.md
@@ -70,6 +71,7 @@ nav:
       - EWA-Splatting: papers/ewa-splatting.md
     - 3D Reconstruction:
       - Instant-NGP: papers/instant-ngp.md
+      - 3DGS: papers/3dgs.md
     - Surface Reconstruction:
       - NeuS: papers/neus.md
       - NeuS2: papers/neus2.md
@@ -92,6 +94,8 @@ markdown_extensions:
       emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - pymdownx.highlight:
       linenums: true
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.superfences:
       custom_fences:
         - name: math

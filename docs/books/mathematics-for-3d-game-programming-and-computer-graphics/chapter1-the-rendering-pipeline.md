@@ -73,7 +73,7 @@ Figure 3: 渲染管线中的坐标空间关系图．
 <div class="steps" markdown>
 1. 单个模型的顶点数据存储在 **物体空间（Object Space）**，其为该模型的局部坐标系统．
 2. 每个模型的位置和方向存储在 **世界空间（World Space）**，其为全局坐标系统．
-3. 在渲染前，顶点需变换到 **相机空间（Camera Space）**，其 $x$ 和 $y$ 轴与显示器对齐，$z$ 轴与观察方向平行．顶点可通过复合变换，直接由物体空间变换到相机空间，称之为 **模型-视图变换（Model-view Transformation）** ．
+3. 在渲染前，顶点需变换到 **相机空间（Camera Space）**，其 $x$ 和 $y$ 轴与显示器对齐，$z$ 轴与观察方向平行．顶点可通过复合变换，直接由物体空间变换到相机空间，称之为 **模型-视图变换（Model-View Transformation）** ．
 4. 相机空间的顶点经过 **投影变换（Projection Transformation）**到 **齐次裁剪空间（Homogeneous Clip Space）**．该变换在 4D **齐次坐标（Homogeneous Coordinates）**中进行，并且结果会裁剪在可见区域范围内．在齐次裁剪空间中，顶点具有 **标准化设备坐标（Normalized Device Coordinates）**，即 $x,y,z \in [-1,1]$ ．
 5. 最后顶点经过 **视口变换（Viewport Transformation）**到 **窗口空间（Window Space）**，将标准坐标映射到视口的像素坐标范围．$z$ 坐标通常映射到 $[0,1]$ ，再缩放至深度缓冲中每像素位数对应的整数范围．
 </div>

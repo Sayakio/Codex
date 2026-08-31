@@ -146,7 +146,7 @@ $$
 \end{align}
 $$
 
-记 $\rho_{k}(\hat{\mathbf{x}})=(q_{k}\otimes h)(\hat{\mathbf{x}})$ ，称为 **理想重采样滤波器（Ideal Resampling Filter）**，其替代了原先抗混叠方程中的 $q_{k}$ ，即：将直接带限 $I_{\lambda}(\hat{\mathbf{x}})$ 转为分别带限各足迹函数．
+令 $\rho_{k}(\hat{\mathbf{x}}):=(q_{k}\otimes h)(\hat{\mathbf{x}})$ ，称为 **理想重采样滤波器（Ideal Resampling Filter）**，其替代了原先抗混叠方程中的 $q_{k}$ ，即：将直接带限 $I_{\lambda}(\hat{\mathbf{x}})$ 转为分别带限各足迹函数．
 
 
 ### Elliptical Gaussian Kernels
@@ -320,7 +320,7 @@ $$
 \end{pmatrix}
 $$
 
-记 $\mathbf{T}^\text{3D}=\mathbf{J}\mathbf{W}$ ，光线空间的协方差矩阵 $\Sigma$ 的表达式为：
+令 $\mathbf{T}^\text{3D}:=\mathbf{J}\mathbf{W}$ ，光线空间的协方差矩阵 $\Sigma$ 的表达式为：
 
 $$
 \boldsymbol{\Sigma} = \mathbf{J}\mathbf{W}\boldsymbol{\Sigma}''\mathbf{W}^\mathsf{T}\mathbf{J}^\mathsf{T} = \mathbf{T}^\text{3D}\boldsymbol{\Sigma}''{\mathbf{T}^\text{3D}}^\mathsf{T}
