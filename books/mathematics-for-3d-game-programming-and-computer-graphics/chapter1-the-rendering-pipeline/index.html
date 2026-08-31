@@ -719,6 +719,8 @@
       
         
       
+        
+      
     
     
     
@@ -937,6 +939,34 @@
     
   
     Chapter III Transforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../chapter4-geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter IV Geometry
   
 
     
@@ -1229,6 +1259,8 @@
       
         
       
+        
+      
     
     
     
@@ -1287,6 +1319,34 @@
     
   
     Instant-NGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../papers/3dgs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
   
 
     
@@ -1646,7 +1706,7 @@
 <ol>
 <li>单个模型的顶点数据存储在 <strong>物体空间（Object Space）</strong>，其为该模型的局部坐标系统．</li>
 <li>每个模型的位置和方向存储在 <strong>世界空间（World Space）</strong>，其为全局坐标系统．</li>
-<li>在渲染前，顶点需变换到 <strong>相机空间（Camera Space）</strong>，其 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 轴与显示器对齐，<span class="arithmatex">\(z\)</span> 轴与观察方向平行．顶点可通过复合变换，直接由物体空间变换到相机空间，称之为 <strong>模型-视图变换（Model-view Transformation）</strong> ．</li>
+<li>在渲染前，顶点需变换到 <strong>相机空间（Camera Space）</strong>，其 <span class="arithmatex">\(x\)</span> 和 <span class="arithmatex">\(y\)</span> 轴与显示器对齐，<span class="arithmatex">\(z\)</span> 轴与观察方向平行．顶点可通过复合变换，直接由物体空间变换到相机空间，称之为 <strong>模型-视图变换（Model-View Transformation）</strong> ．</li>
 <li>相机空间的顶点经过 <strong>投影变换（Projection Transformation）</strong>到 <strong>齐次裁剪空间（Homogeneous Clip Space）</strong>．该变换在 4D <strong>齐次坐标（Homogeneous Coordinates）</strong>中进行，并且结果会裁剪在可见区域范围内．在齐次裁剪空间中，顶点具有 <strong>标准化设备坐标（Normalized Device Coordinates）</strong>，即 <span class="arithmatex">\(x,y,z \in [-1,1]\)</span> ．</li>
 <li>最后顶点经过 <strong>视口变换（Viewport Transformation）</strong>到 <strong>窗口空间（Window Space）</strong>，将标准坐标映射到视口的像素坐标范围．<span class="arithmatex">\(z\)</span> 坐标通常映射到 <span class="arithmatex">\([0,1]\)</span> ，再缩放至深度缓冲中每像素位数对应的整数范围．</li>
 </ol>
@@ -1698,7 +1758,7 @@
 <summary>Remark</summary>
 <p>如上测试逻辑上发生在片元着色后，但大多数 GPU 会在片元着色前尽可能多地执行测试，以减少时间花费。</p>
 </details>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span></div></div></div>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-31"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-31T15:25:10+00:00">2026-08-31</time></span></div></div></div>
 
 
 

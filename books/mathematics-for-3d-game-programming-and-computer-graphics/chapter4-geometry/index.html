@@ -9,9 +9,13 @@
         <meta name="author" content="Sayaki">
       
       
-        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/surfel/">
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter4-geometry/">
       
       
+        <link rel="prev" href="../chapter3-transforms/">
+      
+      
+        <link rel="next" href="../../physically-based-rendering/chapter3-geometry%26transformations/">
       
       
         
@@ -22,21 +26,21 @@
         
         
         
-          <link rel="icon" href="../../favicon.svg">
+          <link rel="icon" href="../../../favicon.svg">
         
       
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
     
     
       
-        <title>Surfels: surface elements as rendering primitives - Sayaki's Codex</title>
+        <title>Chapter IV Geometry - Sayaki's Codex</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.d7aee198.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.d7aee198.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.a45159b5.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.a45159b5.min.css">
       
     
     
@@ -58,27 +62,27 @@
     
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css">
     
-      <link rel="stylesheet" href="../../css/extra.css">
+      <link rel="stylesheet" href="../../../css/extra.css">
     
-      <link rel="stylesheet" href="../../css/music_player.css">
+      <link rel="stylesheet" href="../../../css/music_player.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/fonts/material-icons.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/fonts/material-icons.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/tippy/scale.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/scale.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/tippy/tippy.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/tippy.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/tippy/material.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/material.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/tippy/backdrop.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/backdrop.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/tippy/shift-away.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/shift-away.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/tippy/light.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/tippy/light.css">
     
-      <link rel="stylesheet" href="../../assets/document_dates/core/core.css">
+      <link rel="stylesheet" href="../../../assets/document_dates/core/core.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -94,12 +98,12 @@
 
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
             .gslide-image img { background: white; }
-        </style><script src="../../assets/javascripts/toggle-sidebar.js"></script></head>
+        </style><script src="../../../assets/javascripts/toggle-sidebar.js"></script></head>
   
   
   
@@ -122,7 +126,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#surfels-surface-elements-as-rendering-primitives" class="md-skip">
+        <a href="#1-lines-in-3d-space" class="md-skip">
           Skip to content
         </a>
       
@@ -136,7 +140,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Sayaki's Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+    <a href="../../.." title="Sayaki's Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
@@ -156,7 +160,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Surfels: surface elements as rendering primitives
+              Chapter IV Geometry
             
           </span>
         </div>
@@ -269,7 +273,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
   
@@ -288,11 +292,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../books/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
   
@@ -316,7 +322,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../" class="md-tabs__link">
+        <a href="../../../papers/" class="md-tabs__link">
           
   
   
@@ -354,7 +360,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Sayaki's Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+    <a href="../../.." title="Sayaki's Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
@@ -384,7 +390,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -410,6 +416,8 @@
       
   
   
+    
+  
   
   
     
@@ -431,18 +439,21 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" checked="">
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../books/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   
@@ -462,13 +473,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -542,7 +553,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
+      <a href="../../calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
         
   
   
@@ -634,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/pattern-recognition-and-machine-learning/chapter1-introduction/" class="md-nav__link">
+      <a href="../../pattern-recognition-and-machine-learning/chapter1-introduction/" class="md-nav__link">
         
   
   
@@ -662,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/pattern-recognition-and-machine-learning/chapter2-probability-distribution/" class="md-nav__link">
+      <a href="../../pattern-recognition-and-machine-learning/chapter2-probability-distribution/" class="md-nav__link">
         
   
   
@@ -695,8 +706,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -706,6 +719,8 @@
       
         
       
+        
+      
     
     
     
@@ -713,11 +728,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4" checked="">
         
           
           <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
@@ -738,7 +753,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_2_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -756,7 +771,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline/" class="md-nav__link">
+      <a href="../chapter1-the-rendering-pipeline/" class="md-nav__link">
         
   
   
@@ -784,7 +799,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors%26matrices/" class="md-nav__link">
+      <a href="../chapter2-vectors%26matrices/" class="md-nav__link">
         
   
   
@@ -812,7 +827,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/" class="md-nav__link">
+      <a href="../chapter3-transforms/" class="md-nav__link">
         
   
   
@@ -828,6 +843,177 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter IV Geometry
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter IV Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#1-lines-in-3d-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. LINES IN 3D SPACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. LINES IN 3D SPACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#distance-between-a-point-and-a-line" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance Between a Point and a Line
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distance-between-two-lines" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Distance Between Two Lines
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-planes-in-3d-space" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. PLANES IN 3D SPACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PLANES IN 3D SPACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intersection-of-a-line-and-a-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intersection of a Line and a Plane
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intersection-of-three-planes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intersection of Three Planes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforming-planes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transforming Planes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-view-frustum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. THE VIEW FRUSTUM
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -902,7 +1088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../books/physically-based-rendering/chapter3-geometry%26transformations/" class="md-nav__link">
+      <a href="../../physically-based-rendering/chapter3-geometry%26transformations/" class="md-nav__link">
         
   
   
@@ -972,7 +1158,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../../../papers/" class="md-nav__link ">
               
   
   
@@ -1072,7 +1258,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ewa-splatting/" class="md-nav__link">
+      <a href="../../../papers/ewa-splatting/" class="md-nav__link">
         
   
   
@@ -1109,6 +1295,8 @@
   
     
     
+      
+        
       
         
       
@@ -1162,7 +1350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../instant-ngp/" class="md-nav__link">
+      <a href="../../../papers/instant-ngp/" class="md-nav__link">
         
   
   
@@ -1170,6 +1358,34 @@
     
   
     Instant-NGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../papers/3dgs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
   
 
     
@@ -1256,7 +1472,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../neus/" class="md-nav__link">
+      <a href="../../../papers/neus/" class="md-nav__link">
         
   
   
@@ -1284,7 +1500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../neus2/" class="md-nav__link">
+      <a href="../../../papers/neus2/" class="md-nav__link">
         
   
   
@@ -1312,7 +1528,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../neuralangelo/" class="md-nav__link">
+      <a href="../../../papers/neuralangelo/" class="md-nav__link">
         
   
   
@@ -1365,8 +1581,6 @@
   
   
   
-    
-  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -1375,55 +1589,22 @@
     <ul class="md-nav__list" data-md-component="toc">
       
         <li class="md-nav__item">
-  <a href="#abstract" class="md-nav__link">
+  <a href="#1-lines-in-3d-space" class="md-nav__link">
     <span class="md-ellipsis">
       
-        ABSTRACT
+        1. LINES IN 3D SPACE
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#files-links" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        FILES &amp; LINKS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-problems" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. PROBLEMS
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. METHOD
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. METHOD">
+    <nav class="md-nav" aria-label="1. LINES IN 3D SPACE">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#definition" class="md-nav__link">
+  <a href="#distance-between-a-point-and-a-line" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Definition
+        Distance Between a Point and a Line
       
     </span>
   </a>
@@ -1431,10 +1612,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#sampling" class="md-nav__link">
+  <a href="#distance-between-two-lines" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Sampling
+        Distance Between Two Lines
       
     </span>
   </a>
@@ -1447,21 +1628,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-experiments" class="md-nav__link">
+  <a href="#2-planes-in-3d-space" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. EXPERIMENTS
+        2. PLANES IN 3D SPACE
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. PLANES IN 3D SPACE">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#intersection-of-a-line-and-a-plane" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Intersection of a Line and a Plane
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#4-thinking" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#intersection-of-three-planes" class="md-nav__link">
     <span class="md-ellipsis">
       
-        4. THINKING
+        Intersection of Three Planes
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transforming-planes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transforming Planes
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-the-view-frustum" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. THE VIEW FRUSTUM
       
     </span>
   </a>
@@ -1488,26 +1708,220 @@
   
 
 
-<h1 id="surfels-surface-elements-as-rendering-primitives">Surfels: surface elements as rendering primitives<a class="headerlink" href="#surfels-surface-elements-as-rendering-primitives" title="Permanent link">¶</a></h1>
-<h2 id="abstract">ABSTRACT<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
-<p>Surface elements (surfels) are a powerful paradigm to efficiently render complex geometric objects at interactive frame rates. Unlike classical surface discretizations, i.e., triangles or quadrilateral meshes, surfels are point primitives without explicit connectivity. Surfel attributes comprise depth, texture color, normal, and others. As a pre-process, an octree-based surfel representation of a geometric object is computed. During sampling, surfel positions and normals are optionally perturbed, and different levels of texture colors are prefiltered and stored per surfel. During rendering, a hierarchical forward warping algorithm projects surfels to a z-buffer. A novel method called visibility splatting determines visible surfels and holes in the z-buffer. Visible surfels are shaded using texture filtering, Phong illumination, and environment mapping using per-surfel normals. Several methods of image reconstruction, including supersampling, offer flexible speed-quality tradeoffs. Due to the simplicity of the operations, the surfel rendering pipeline is amenable for hardware implementation. Surfel objects offer complex shape, low rendering cost and high image quality, which makes them specifically suited for low-cost, real-time graphics, such as games.</p>
-<h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>URL:</strong>  <a href="https://dl.acm.org/doi/10.1145/344779.344936">Open Online</a></li>
-<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/VJRRTQ7Y">PDF</a></li>
-</ul>
-<h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
-<h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
-<h3 id="definition">Definition<a class="headerlink" href="#definition" title="Permanent link">¶</a></h3>
-<p><strong>面元（Surfel）</strong> 名称来源于 <strong>表面元素（Surface Element）</strong> 的缩写，将其定义如下：</p>
-<details class="note">
-<summary>Definition</summary>
-<p>面元是一个 <span class="arithmatex">\(0\)</span> 维 <span class="arithmatex">\(n\)</span> 元组，具有形状和着色属性，以局部近似物体表面。</p>
-</details>
-<h3 id="sampling">Sampling<a class="headerlink" href="#sampling" title="Permanent link">¶</a></h3>
-<h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
-<h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-11"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-11T10:52:09+00:00">2026-08-11</time></span></div></div></div>
+  <h1>Chapter IV Geometry</h1>
+
+<div style="margin-top: -30px; font-size: 0.75em; opacity: 0.7;">
+<p><span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12a10 10 0 0 0 10 10 10 10 0 0 0 10-10h-2a8 8 0 0 1-8 8 8 8 0 0 1-8-8 8 8 0 0 1 8-8zm6.78 1a.7.7 0 0 0-.48.2l-1.22 1.21 2.5 2.5L20.8 5.7c.26-.26.26-.7 0-.95L19.25 3.2c-.13-.13-.3-.2-.47-.2m-2.41 2.12L9 12.5V15h2.5l7.37-7.38z"></path></svg></span> 约 1852 个字 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 17H7V3h14m0-2H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V3a2 2 0 0 0-2-2M3 5H1v16a2 2 0 0 0 2 2h16v-2H3m12.96-10.71-2.75 3.54-1.96-2.36L8.5 15h11z"></path></svg></span> 3 张图片 <span class="twemoji"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 20c4.42 0 8-3.58 8-8s-3.58-8-8-8-8 3.58-8 8 3.58 8 8 8m0-18c5.5 0 10 4.5 10 10s-4.5 10-10 10C6.47 22 2 17.5 2 12S6.5 2 12 2m.5 11H11V7h1.5v4.26l3.7-2.13.75 1.3z"></path></svg></span> 预计阅读时间 6 分钟</p>
+</div>
+<blockquote>
+<p>This chapter develops the mathematics that describe lines and planes in threedimensional space, then introduce the view frustum and examine some of the important mathematics governing the virtual camera through which we see our game universe.</p>
+</blockquote>
+<h2 id="1-lines-in-3d-space">1. LINES IN 3D SPACE<a class="headerlink" href="#1-lines-in-3d-space" title="Permanent link">¶</a></h2>
+<p>给定 3D 点 <span class="arithmatex">\(\mathbf{p}_{1}\)</span> 和 <span class="arithmatex">\(\mathbf{p}_{2}\)</span> ，可定义经过两点的直线如下：</p>
+<div class="arithmatex">\[
+\mathbf{p}(t) = (1-t) \mathbf{p}_{1} + t\mathbf{p}_{2} \quad (t\in \mathbb{R})
+\]</div>
+<p>记 <span class="arithmatex">\(\mathbf{s}=\mathbf{p}_{1}\)</span> ，<span class="arithmatex">\(\mathbf{v}=\mathbf{p}_{2}-\mathbf{p}_{1}\)</span> ，上式可改写成：</p>
+<div class="arithmatex">\[
+\mathbf{p}(t) = \mathbf{s} + t\mathbf{v}
+\]</div>
+<p>若约束 <span class="arithmatex">\(t\in[0,+\infty)\)</span> ，则其表示一条 <strong>射线（Ray）</strong>，其中 <span class="arithmatex">\(\mathbf{s}\)</span> 为端点，<span class="arithmatex">\(\mathbf{v}\)</span> 为方向。</p>
+<h3 id="distance-between-a-point-and-a-line">Distance Between a Point and a Line<a class="headerlink" href="#distance-between-a-point-and-a-line" title="Permanent link">¶</a></h3>
+<p>给定点 <span class="arithmatex">\(\mathbf{q}\)</span> 和直线 <span class="arithmatex">\(\mathbf{p}(t)=\mathbf{s}+t\mathbf{v}\)</span> ，点到直线的距离 <span class="arithmatex">\(d\)</span> 可由勾股定理得出，计算和示意图如下：</p>
+<div class="arithmatex">\[
+\begin{align}
+d^{2} &amp;= (\mathbf{q}-\mathbf{s})^{2} - [\operatorname{proj}_{\mathbf{v}}(\mathbf{q}-\mathbf{s})]^{2} \\
+&amp;= (\mathbf{q}-\mathbf{s})^{2} - \left[ \frac{(\mathbf{q}-\mathbf{s})\cdot \mathbf{v}}{\mathbf{v}^{2}} \mathbf{v} \right]^{2}
+\end{align}
+\]</div>
+<p>即：</p>
+<div class="arithmatex">\[
+d = \sqrt{ (\mathbf{q}-\mathbf{s})^{2} - \frac{[(\mathbf{q}-\mathbf{s})\cdot \mathbf{v}]^{2}}{\mathbf{v}^{2}} }
+\]</div>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap4-distance-pl.png" data-desc-position="bottom"><img alt="distance-point&amp;line" src="../assets/chap4-distance-pl.png"></a></p>
+<figcaption>
+<p>Figure 1:  点 <span class="arithmatex">\(\mathbf{q}\)</span> 到直线 <span class="arithmatex">\(\mathbf{s}+t\mathbf{v}\)</span> 距离 <span class="arithmatex">\(d\)</span> 计算示意图。</p>
+</figcaption>
+</figure>
+<h3 id="distance-between-two-lines">Distance Between Two Lines<a class="headerlink" href="#distance-between-two-lines" title="Permanent link">¶</a></h3>
+<p>在三维中，两条直线有三种位置关系：平行、相交、<strong>异面（Skew）</strong>。下面推导两条异面直线之间的最小距离：</p>
+<p>给定两条直线：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{p}_{1}(t_{1}) &amp;= \mathbf{s}_{1} + t_{1}\mathbf{v}_{1}\quad (t_{1}\in \mathbb{R}) \\
+\mathbf{p}_{2}(t_{2}) &amp;= \mathbf{s}_{2} + t_{2}\mathbf{v}_{2}\quad (t_{2}\in \mathbb{R})
+\end{align}
+\]</div>
+<p>两点 <span class="arithmatex">\(\mathbf{p}_{1}(t_{1}),\mathbf{p}_{2}(t_{2})\)</span> 之间的平方距离可记为如下函数：</p>
+<div class="arithmatex">\[
+\begin{align}
+f(t_{1},t_{2}) &amp;= \Vert \mathbf{p}_{1}(t_{1}) - \mathbf{p}_{2}(t_{2}) \Vert^{2} \\
+&amp;= \mathbf{s}_{1}^{2}+t_{1}^{2}\mathbf{v}_{1}^{2}+2t_{1}\mathbf{s}_{1}\cdot\mathbf{v}_{1}+\mathbf{s}_{2}^{2}+t_{2}^{2}\mathbf{v}_{2}^{2}+2t_{2}\mathbf{s}_{2}\cdot \mathbf{v}_{2} \\
+&amp;\qquad -2(\mathbf{s}_{1}\cdot \mathbf{s}_{2}+t_{1}\mathbf{v}_{1}\cdot \mathbf{s}_{2}+t_{2}\mathbf{v}_{2}\cdot \mathbf{s}_{1}+t_{1}t_{2}\mathbf{v}_{1}\cdot \mathbf{v}_{2})
+\end{align}
+\]</div>
+<p>最小值在 <span class="arithmatex">\(f\)</span> 关于 <span class="arithmatex">\(t_{1},t_{2}\)</span> 偏导数为 <span class="arithmatex">\(0\)</span> 时取得，即：</p>
+<div class="arithmatex">\[
+\begin{align}
+\frac{\partial f}{\partial t_{1}} &amp;= 2t_{1}\mathbf{v}_{1}^{2}+2\mathbf{s}_{1}\cdot \mathbf{v}_{1}-2\mathbf{v}_{1}\cdot \mathbf{s}_{2}-2t_{2}\mathbf{v}_{1}\cdot \mathbf{v}_{2} = 0 \\
+\frac{\partial f}{\partial t_{2}} &amp;= 2t_{2}\mathbf{v}_{2}^{2}+2\mathbf{s}_{2}\cdot \mathbf{v}_{2}-2\mathbf{v}_{2}\cdot \mathbf{s}_{1}-2t_{1}\mathbf{v}_{1}\cdot \mathbf{v}_{2} = 0
+\end{align}
+\]</div>
+<p>将如上方程转化为矩阵形式：</p>
+<div class="arithmatex">\[
+\begin{bmatrix}
+\mathbf{v}_{1}^{2} &amp; -\mathbf{v}_{1}\cdot \mathbf{v}_{2} \\
+\mathbf{v}_{1}\cdot \mathbf{v}_{2} &amp; -\mathbf{v}_{2}^{2}
+\end{bmatrix} \begin{bmatrix}
+t_{1} \\
+t_{2}
+\end{bmatrix} = \begin{bmatrix}
+(\mathbf{s}_{2}-\mathbf{s}_{1})\cdot \mathbf{v}_{1} \\
+(\mathbf{s}_{2}-\mathbf{s}_{1})\cdot \mathbf{v}_{2}
+\end{bmatrix}
+\]</div>
+<p>求解得：</p>
+<div class="arithmatex">\[
+\begin{align}
+\begin{bmatrix}
+t_{1} \\
+t_{2}
+\end{bmatrix} &amp;= \begin{bmatrix}
+\mathbf{v}_{1}^{2} &amp; -\mathbf{v}_{1}\cdot \mathbf{v}_{2} \\
+\mathbf{v}_{1}\cdot \mathbf{v}_{2} &amp; -\mathbf{v}_{2}^{2}
+\end{bmatrix}^{-1} \begin{bmatrix}
+(\mathbf{s}_{2}-\mathbf{s}_{1})\cdot \mathbf{v}_{1} \\
+(\mathbf{s}_{2}-\mathbf{s}_{1})\cdot \mathbf{v}_{2}
+\end{bmatrix} \\
+&amp;= \frac{1}{(\mathbf{v}_{1}\cdot \mathbf{v}_{2})^{2}-\mathbf{v}_{1}^{2}\mathbf{v}_{2}^{2}} \begin{bmatrix}
+-\mathbf{v}_{2}^{2} &amp; \mathbf{v}_{1}\cdot \mathbf{v}_{2} \\
+-\mathbf{v}_{1}\cdot \mathbf{v}_{2} &amp; \mathbf{v}_{1}^{2}
+\end{bmatrix} \begin{bmatrix}
+(\mathbf{s}_{2}-\mathbf{s}_{1})\cdot \mathbf{v}_{1} \\
+(\mathbf{s}_{2}-\mathbf{s}_{1})\cdot \mathbf{v}_{2}
+\end{bmatrix}
+\end{align}
+\]</div>
+<p>回代到 <span class="arithmatex">\(f\)</span> 表达式并开根号即可得到最小距离。注意到若 <span class="arithmatex">\((\mathbf{v}_{1}\cdot \mathbf{v}_{2})^{2}=\mathbf{v}_{1}^{2}\mathbf{v}_{2}^{2}\)</span> ，则两条直线平行，最小距离转化为点到直线距离。</p>
+<h2 id="2-planes-in-3d-space">2. PLANES IN 3D SPACE<a class="headerlink" href="#2-planes-in-3d-space" title="Permanent link">¶</a></h2>
+<p>给定 3D 点 <span class="arithmatex">\(\mathbf{p}\)</span> 和法向量 <span class="arithmatex">\(\mathbf{n}\)</span> ，经过点 <span class="arithmatex">\(\mathbf{p}\)</span> 并垂直于 <span class="arithmatex">\(\mathbf{n}\)</span> 的平面定义为满足 <span class="arithmatex">\(\mathbf{n}\cdot(\mathbf{q}-\mathbf{p})=0\)</span> 的点集 <span class="arithmatex">\(\{\mathbf{q}\}\)</span> 。其方程通常写为：</p>
+<div class="arithmatex">\[
+Ax + By + Cz + D = 0
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{n}=\left&lt; A,B,C \right&gt;\)</span> ，<span class="arithmatex">\(D=-\mathbf{n}\cdot \mathbf{p}\)</span> 。原点到平面的距离由 <span class="arithmatex">\(\left| D \right|/\Vert\mathbf{n}\Vert\)</span> 给出。当 <span class="arithmatex">\(\mathbf{n}\)</span> 为单位向量时，方程：</p>
+<div class="arithmatex">\[
+d = \mathbf{n}\cdot \mathbf{q} + D
+\]</div>
+<p>给出任意点 <span class="arithmatex">\(\mathbf{q}\)</span> 到平面的带符号距离。特别的，<span class="arithmatex">\(\left| D \right|\)</span> 为原点到平面距离。</p>
+<p>使用 4D 齐次坐标表示平面会更简洁：</p>
+<p>记 <span class="arithmatex">\(\mathbf{L}:=\left&lt; \mathbf{n},D \right&gt;=\left&lt; A,B,C,D \right&gt;\)</span> ，<span class="arithmatex">\(\mathbf{Q}:=\left&lt; \mathbf{q},1 \right&gt;\)</span> ，则平面方程为 <span class="arithmatex">\(\mathbf{L}\cdot \mathbf{Q}=0\)</span> ，距离方程为 <span class="arithmatex">\(d=\mathbf{L}\cdot \mathbf{Q}\)</span> 。</p>
+<h3 id="intersection-of-a-line-and-a-plane">Intersection of a Line and a Plane<a class="headerlink" href="#intersection-of-a-line-and-a-plane" title="Permanent link">¶</a></h3>
+<p>给定直线 <span class="arithmatex">\(\mathbf{p}(t)=\mathbf{s}+t\mathbf{v}\)</span> 和平面 <span class="arithmatex">\(\left&lt; \mathbf{n},D \right&gt;\)</span> ，可求解如下方程得到直线和平面的交点：</p>
+<div class="arithmatex">\[
+\mathbf{n}\cdot \mathbf{p}(t) + D = 0
+\]</div>
+<p>替换 <span class="arithmatex">\(\mathbf{p}(t)=\mathbf{s}+t\mathbf{v}\)</span> 有：</p>
+<div class="arithmatex">\[
+\mathbf{n}\cdot \mathbf{s} + (\mathbf{n}\cdot \mathbf{v})t + D = 0
+\]</div>
+<p>求解得：</p>
+<div class="arithmatex">\[
+t = \frac{-(\mathbf{n}\cdot \mathbf{s} + D)}{\mathbf{n}\cdot \mathbf{v}}
+\]</div>
+<p>回代到 <span class="arithmatex">\(\mathbf{p}(t)\)</span> 表达式即得交点。注意到若 <span class="arithmatex">\(\mathbf{n}\cdot \mathbf{v}=0\)</span> ，直线和平面法向垂直。此时若 <span class="arithmatex">\(\mathbf{n}\cdot \mathbf{s}+D=0\)</span> 则直线在平面内，否则直线与平面平行。</p>
+<p>同理有 4D 齐次坐标表示：</p>
+<p>记 <span class="arithmatex">\(\mathbf{S}:=\left&lt; \mathbf{s},1 \right&gt;\)</span> ，<span class="arithmatex">\(\mathbf{V}:=\left&lt; \mathbf{v},0 \right&gt;\)</span> ，交点方程为：</p>
+<div class="arithmatex">\[
+t = -\frac{\mathbf{L}\cdot \mathbf{S}}{\mathbf{L}\cdot \mathbf{V}}
+\]</div>
+<h3 id="intersection-of-three-planes">Intersection of Three Planes<a class="headerlink" href="#intersection-of-three-planes" title="Permanent link">¶</a></h3>
+<p>给定三个任意平面 <span class="arithmatex">\(\mathbf{L}_{1}=\left&lt; \mathbf{n}_{1},D_{1} \right&gt;,\mathbf{L}_{2}=\left&lt; \mathbf{n}_{2},D_{2} \right&gt;,\mathbf{L}_{3}=\left&lt; \mathbf{n}_{3},D_{3} \right&gt;\)</span> ，三个平面的交点 <span class="arithmatex">\(\mathbf{Q}\)</span> 由如下方程组给出：</p>
+<div class="arithmatex">\[
+\begin{align}
+\mathbf{L}_{1}\cdot \mathbf{Q} &amp;= 0 \\
+\mathbf{L}_{2}\cdot \mathbf{Q} &amp;= 0 \\
+\mathbf{L}_{3}\cdot \mathbf{Q} &amp;= 0
+\end{align}
+\]</div>
+<p>写成矩阵形式有：</p>
+<div class="arithmatex">\[
+\mathbf{M}\mathbf{q} = \begin{bmatrix}
+-D_{1} \\
+-D_{2} \\
+-D_{3}
+\end{bmatrix}
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{M}\)</span> 为：</p>
+<div class="arithmatex">\[
+\mathbf{M} = \begin{bmatrix}
+(\mathbf{n}_{1})_{x} &amp; (\mathbf{n}_{1})_{y} &amp; (\mathbf{n}_{1})_{z} \\
+(\mathbf{n}_{2})_{x} &amp; (\mathbf{n}_{2})_{y} &amp; (\mathbf{n}_{2})_{z} \\
+(\mathbf{n}_{3})_{x} &amp; (\mathbf{n}_{3})_{y} &amp; (\mathbf{n}_{3})_{z}
+\end{bmatrix}
+\]</div>
+<p>若 <span class="arithmatex">\(\mathbf{M}\)</span> 可逆，求解可得交点 <span class="arithmatex">\(\mathbf{q}\)</span> ：</p>
+<div class="arithmatex">\[
+\mathbf{q} = \mathbf{M}^{-1}\begin{bmatrix}
+-D_{1} \\
+-D_{2} \\
+-D_{3}
+\end{bmatrix}
+\]</div>
+<p>若 <span class="arithmatex">\(\det \mathbf{M}=0\)</span> 即 <span class="arithmatex">\(\mathbf{M}\)</span> 奇异，此时三个法向量共面，如下图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap4-3planes.png" data-desc-position="bottom"><img alt="3planes" src="../assets/chap4-3planes.png"></a></p>
+<figcaption>
+<p>Figure 2:  三平面未交于一点示意图。</p>
+</figcaption>
+</figure>
+<p>三平面交点方程可以解决如下两平面相交直线问题：</p>
+<p>给定两个不平行平面 <span class="arithmatex">\(\mathbf{L}_{1}=\left&lt; \mathbf{n}_{1},D_{1} \right&gt;,\mathbf{L}_{2}=\left&lt; \mathbf{n}_{2},D_{2} \right&gt;\)</span> ，会交于一条直线。直线方向 <span class="arithmatex">\(\mathbf{v}\)</span> 与两个平面的法向垂直，从而可表示为 <span class="arithmatex">\(\mathbf{v}=\mathbf{n}_{1}\times \mathbf{n}_{2}\)</span> 。为完全表示该直线，还需直线上一点。为此构造平面 <span class="arithmatex">\(\mathbf{L}_{3}=\left&lt; \mathbf{v},0 \right&gt;\)</span> ，利用三平面交点方程可得：</p>
+<div class="arithmatex">\[
+\mathbf{q} = \begin{bmatrix}
+(\mathbf{n}_{1})_{x} &amp; (\mathbf{n}_{1})_{y} &amp; (\mathbf{n}_{1})_{z} \\
+(\mathbf{n}_{2})_{x} &amp; (\mathbf{n}_{2})_{y} &amp; (\mathbf{n}_{2})_{z} \\
+\mathbf{v}_{x} &amp; \mathbf{v}_{y} &amp; \mathbf{v}_{z}
+\end{bmatrix}^{-1} \begin{bmatrix}
+-D_{1} \\
+-D_{2} \\
+0
+\end{bmatrix}
+\]</div>
+<p>相交直线即为 <span class="arithmatex">\(\mathbf{p}(t)=\mathbf{q}+t\mathbf{v}\)</span> 。示意图如下：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/chap4-2planes1line.png" data-desc-position="bottom"><img alt="2planes-1line" src="../assets/chap4-2planes1line.png"></a></p>
+<figcaption>
+<p>Figure 3:  两平面相交于方向为 <span class="arithmatex">\(\mathbf{v}\)</span> 的直线。构造第三个平面可找到直线上一点。</p>
+</figcaption>
+</figure>
+<h3 id="transforming-planes">Transforming Planes<a class="headerlink" href="#transforming-planes" title="Permanent link">¶</a></h3>
+<p>给定 <span class="arithmatex">\(3\times 3\)</span> 矩阵 <span class="arithmatex">\(\mathbf{M}\)</span> 和 3D 平移向量 <span class="arithmatex">\(\mathbf{T}\)</span> ，对于平面 <span class="arithmatex">\(\mathbf{L}=\left&lt; \mathbf{n},D \right&gt;\)</span> 探究变换后的平面表达式。</p>
+<p>由 <a href="../chapter3-transforms/#5-transforming-normal-vectors">Chap.3</a> 中法向量变换方程可知，变换后的法向量为 <span class="arithmatex">\(\mathbf{n}'=(\mathbf{M}^{-1})^\mathsf{T}\mathbf{n}\)</span> 。设 <span class="arithmatex">\(\mathbf{p}\)</span> 为原平面上一点，则变换后的对应点为 <span class="arithmatex">\(\mathbf{p}'=\mathbf{M}\mathbf{p}+\mathbf{T}\)</span> ，计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+D' &amp;= -\mathbf{n}'\mathbf{p}' \\
+&amp;= -((\mathbf{M}^{-1})^\mathsf{T}\mathbf{n})\cdot(\mathbf{M}\mathbf{p}+\mathbf{T}) \\
+&amp;= D - \mathbf{n}\cdot \mathbf{M}^{-1}\mathbf{T}
+\end{align}
+\]</div>
+<p><a href="../chapter3-transforms/#four-dimensional-transforms">Chap.3</a> 中给出了 4D 齐次坐标下的变换矩阵 <span class="arithmatex">\(\mathbf{F}\)</span> ，计算其逆转置有：</p>
+<div class="arithmatex">\[
+(\mathbf{F}^{-1})^\mathsf{T} = \left[ \begin{array}{ccc:c}
+{} &amp; {} &amp; {} &amp; {} \\
+{} &amp; (\mathbf{M}^{-1})^\mathsf{T} &amp; {} &amp; \mathbf{0} \\
+{} &amp; {} &amp; {} &amp; {} \\
+\hdashline
+{} &amp; -\mathbf{M}^{-1}\mathbf{T} &amp; {} &amp; 1
+\end{array} \right] 
+\]</div>
+<p>结合 <span class="arithmatex">\(\mathbf{n}'\)</span> 和 <span class="arithmatex">\(D'\)</span> 表达式可知，平面 <span class="arithmatex">\(\mathbf{L}=\left&lt; \mathbf{n},D \right&gt;\)</span> 变换后的表达式 <span class="arithmatex">\(\mathbf{L}'=\left&lt; \mathbf{n}',D' \right&gt;\)</span> 为：</p>
+<div class="arithmatex">\[
+\mathbf{L}'=(\mathbf{F}^{-1})^\mathsf{T}\mathbf{L}
+\]</div>
+<p>即平面为 4D 坐标中的协变向量。</p>
+<h2 id="3-the-view-frustum">3. THE VIEW FRUSTUM<a class="headerlink" href="#3-the-view-frustum" title="Permanent link">¶</a></h2>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-31"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-31T15:25:10+00:00">2026-08-31</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-31"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-31T15:25:10+00:00">2026-08-31</time></span></div></div></div>
 
 
 
@@ -1597,12 +2011,12 @@
           
           
         
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "code": null, "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": {"options": {"baseUrl": "../..", "bundleUrl": "../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.offline": "Switch to Lunr for offline search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "code": null, "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": {"options": {"baseUrl": "../../..", "bundleUrl": "../../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.offline": "Switch to Lunr for offline search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.44453a05.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.44453a05.min.js"></script>
       
-        <script src="../../javascripts/mathjax.js"></script>
+        <script src="../../../javascripts/mathjax.js"></script>
       
         <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
       
@@ -1610,23 +2024,23 @@
       
         <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
       
-        <script src="../../javascripts/papers-graph.js"></script>
+        <script src="../../../javascripts/papers-graph.js"></script>
       
-        <script src="../../javascripts/music_player.js"></script>
+        <script src="../../../javascripts/music_player.js"></script>
       
-        <script src="../../javascripts/extra.js"></script>
+        <script src="../../../javascripts/extra.js"></script>
       
-        <script src="../../assets/document_dates/tippy/popper.min.js"></script>
+        <script src="../../../assets/document_dates/tippy/popper.min.js"></script>
       
-        <script src="../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+        <script src="../../../assets/document_dates/tippy/tippy.umd.min.js"></script>
       
-        <script src="../../assets/document_dates/core/md5.min.js"></script>
+        <script src="../../../assets/document_dates/core/md5.min.js"></script>
       
-        <script src="../../assets/document_dates/core/default.config.js"></script>
+        <script src="../../../assets/document_dates/core/default.config.js"></script>
       
-        <script src="../../assets/document_dates/core/utils.js"></script>
+        <script src="../../../assets/document_dates/core/utils.js"></script>
       
-        <script src="../../assets/document_dates/core/core.js"></script>
+        <script src="../../../assets/document_dates/core/core.js"></script>
       
     
   
