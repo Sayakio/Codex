@@ -1,11 +1,7 @@
 import * as THREE from "./three.module.min.js";
 
-let userPaused = false;
-
 export function createNebula(home) {
     const host = home.querySelector(".home-cosmos__media");
-    const button = home.querySelector(".home-motion");
-    const reduced = matchMedia("(prefers-reduced-motion: reduce)");
     const events = new AbortController();
     const renderer = new THREE.WebGLRenderer({ alpha: false, antialias: false, powerPreference: "low-power" });
     renderer.setClearColor(0x050709);
@@ -16,7 +12,11 @@ export function createNebula(home) {
     camera.position.z = 16;
     const galaxy = new THREE.Group();
     galaxy.rotation.set(0.72, -0.2, -0.35);
-    scene.add(galaxy);
+    // Rotate the complete composition, including its offset, in the screen plane.
+    const galaxyPivot = new THREE.Group();
+    galaxyPivot.rotation.z = Math.PI;
+    galaxyPivot.add(galaxy);
+    scene.add(galaxyPivot);
 
     // Seeded particles keep the composition stable across reloads and fallback captures.
     let seed = 2026;
@@ -49,7 +49,13 @@ export function createNebula(home) {
     geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
     geometry.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
     geometry.setAttribute("aDust", new THREE.BufferAttribute(dust, 1));
-    const uniforms = { uTime: { value: 0 }, uPixelRatio: { value: renderer.getPixelRatio() } };
+    const uniforms = {
+        uTime: { value: 0 },
+        uPixelRatio: { value: renderer.getPixelRatio() },
+        uPointer: { value: new THREE.Vector2() },
+        uPointerStrength: { value: 0 },
+        uViewport: { value: new THREE.Vector2(1, 1) },
+    };
     const material = new THREE.ShaderMaterial({
         uniforms, vertexColors: true, transparent: true, depthWrite: false,
         blending: THREE.AdditiveBlending,
@@ -95,18 +101,24 @@ export function createNebula(home) {
     const points = new THREE.Points(geometry, material);
     points.frustumCulled = false; // Positions are polar coordinates until the vertex shader runs.
     galaxy.add(points);
-    const starCount = 1800;
+    const starCount = 8888;
     const starPositions = new Float32Array(starCount * 3);
     const starColors = new Float32Array(starCount * 3);
     const starSizes = new Float32Array(starCount);
     const starPhases = new Float32Array(starCount);
     for (let i = 0; i < starCount; i++) {
-        const x = random() * 2 - 1;
+        let x = random() * 2 - 1;
         // A loose diagonal star stream adds depth to the otherwise empty margins.
-        const y = i % 3 === 0 ? Math.sin(x * 2.4) * 0.45 + (random() - 0.5) * 0.65 : random() * 2 - 1;
+        let y = i % 2 === 0 ? Math.sin(x * 2.4) * 0.45 + (random() - 0.5) * 0.5 : random() * 2 - 1;
+        // Redistribute a small part of the star stream toward the quieter corners.
+        if (i % 10 === 0) {
+            const side = i % 20 === 0 ? -1 : 1;
+            x = side * (0.15 + Math.abs(x) * 0.7);
+            y = -side * (0.2 + Math.abs(y) * 0.7);
+        }
         starPositions.set([x, y, -8 - random() * 6], i * 3);
         starColors.set(random() > 0.8 ? [1, 0.8, 0.6] : [0.64, 0.79, 1], i * 3);
-        starSizes[i] = random() > 0.985 ? 5 + random() * 3 : 0.8 + random() * 1.7;
+        starSizes[i] = random() > 0.965 ? 8 + random() * 5 : 1.4 + random() * 2.2;
         starPhases[i] = random() * Math.PI * 2;
     }
     const starGeometry = new THREE.BufferGeometry();
@@ -120,15 +132,29 @@ export function createNebula(home) {
         vertexShader: `
             uniform float uTime;
             uniform float uPixelRatio;
+            uniform vec2 uPointer;
+            uniform float uPointerStrength;
+            uniform vec2 uViewport;
             attribute float aSize;
             attribute float aPhase;
             varying vec3 vColor;
             varying float vLight;
             void main() {
-                gl_Position = projectionMatrix * modelViewMatrix * vec4(position, 1.0);
+                float drift = uTime * 0.12 + aPhase;
+                vec3 p = position;
+                p.x += sin(drift + position.y * 2.0) * 0.055;
+                p.y += cos(drift * 1.17 + position.x * 1.4) * 0.045;
+                gl_Position = projectionMatrix * modelViewMatrix * vec4(p, 1.0);
+                // Screen-space distance keeps the interaction circular at every aspect ratio.
+                vec2 cursor = vec2(uPointer.x, -uPointer.y) * 2.0;
+                vec2 delta = (gl_Position.xy / gl_Position.w - cursor) * uViewport * 0.5;
+                float distance = length(delta);
+                float influence = 1.0 - smoothstep(0.0, 90.0, distance);
+                vec2 offset = delta / max(distance, 1.0) * influence * 26.0 * uPointerStrength;
+                gl_Position.xy += offset * 2.0 / uViewport * gl_Position.w;
                 gl_PointSize = aSize * uPixelRatio;
                 vColor = color;
-                vLight = 0.32 + 0.2 * sin(aPhase + uTime * 0.35);
+                vLight = 0.65 + 0.25 * sin(aPhase + uTime * 0.35);
             }
         `,
         fragmentShader: `
@@ -138,8 +164,8 @@ export function createNebula(home) {
                 vec2 p = abs(gl_PointCoord - 0.5) * 2.0;
                 float r = length(p);
                 if (r > 1.0) discard;
-                float light = exp(-r * r * 6.0);
-                light += 0.15 * exp(-min(p.x, p.y) * 24.0) * (1.0 - r);
+                float light = exp(-r * r * 5.0);
+                light += 0.3 * exp(-min(p.x, p.y) * 24.0) * (1.0 - r);
                 gl_FragColor = vec4(vColor, light * vLight);
             }
         `,
@@ -153,7 +179,8 @@ export function createNebula(home) {
     let contextLost = false;
     let disposed = false;
     const pointer = new THREE.Vector2();
-    const shouldAnimate = () => !userPaused && !reduced.matches && visible && !document.hidden && !contextLost && !disposed;
+    let pointerActive = false;
+    const shouldAnimate = () => visible && !document.hidden && !contextLost && !disposed;
     const draw = () => renderer.render(scene, camera);
     const tick = now => {
         frame = null;
@@ -161,6 +188,9 @@ export function createNebula(home) {
         const elapsed = previousTime ? Math.min((now - previousTime) / 1000, 0.08) : 0;
         previousTime = now;
         uniforms.uTime.value += elapsed;
+        if (pointerActive) uniforms.uPointer.value.copy(pointer);
+        const pointerBlend = 1 - Math.exp(-elapsed * 10);
+        uniforms.uPointerStrength.value += (Number(pointerActive) - uniforms.uPointerStrength.value) * pointerBlend;
         galaxy.rotation.x += (0.72 + pointer.y * 0.18 - galaxy.rotation.x) * 0.035;
         galaxy.rotation.y += (-0.2 + pointer.x * 0.2 - galaxy.rotation.y) * 0.035;
         draw();
@@ -170,15 +200,12 @@ export function createNebula(home) {
         if (frame !== null) cancelAnimationFrame(frame);
         frame = null;
         previousTime = 0;
-        const label = userPaused ? "播放星云动画" : "暂停星云动画";
-        button.setAttribute("aria-pressed", String(userPaused));
-        button.setAttribute("aria-label", label);
-        button.title = label;
         if (shouldAnimate()) frame = requestAnimationFrame(tick);
     };
     const resize = () => {
         const { width, height } = host.getBoundingClientRect();
         renderer.setSize(width, height, false);
+        uniforms.uViewport.value.set(width, height);
         camera.aspect = width / height;
         camera.updateProjectionMatrix();
         const scale = Math.min(1, camera.aspect * 1.02);
@@ -189,27 +216,26 @@ export function createNebula(home) {
         stars.scale.set(backgroundHeight * camera.aspect, backgroundHeight, 1);
         if (!contextLost) draw();
     };
-    button.hidden = false;
-    button.addEventListener("click", () => { userPaused = !userPaused; syncMotion(); }, { signal: events.signal });
     home.addEventListener("pointermove", event => {
         if (event.pointerType !== "mouse" || !shouldAnimate()) return;
         const rect = home.getBoundingClientRect();
+        pointerActive = true;
         pointer.set((event.clientX - rect.left) / rect.width - 0.5, (event.clientY - rect.top) / rect.height - 0.5);
     }, { signal: events.signal });
-    home.addEventListener("pointerleave", () => pointer.set(0, 0), { signal: events.signal });
-    reduced.addEventListener("change", syncMotion, { signal: events.signal });
+    home.addEventListener("pointerleave", () => {
+        pointerActive = false;
+        pointer.set(0, 0);
+    }, { signal: events.signal });
     document.addEventListener("visibilitychange", syncMotion, { signal: events.signal });
     renderer.domElement.addEventListener("webglcontextlost", event => {
         event.preventDefault();
         contextLost = true;
         renderer.domElement.style.visibility = "hidden";
-        button.hidden = true;
         syncMotion();
     }, { signal: events.signal });
     renderer.domElement.addEventListener("webglcontextrestored", () => {
         contextLost = false;
         renderer.domElement.style.visibility = "";
-        button.hidden = false;
         resize();
         syncMotion();
     }, { signal: events.signal });
