@@ -69,12 +69,24 @@ body:has(.codex-home) .md-header,
 body:has(.codex-home) .md-tabs {
   --md-primary-fg-color: #050709;
   --md-primary-bg-color: #e8eef2;
-  background: #050709;
+  background: transparent;
   color: #e8eef2;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+body:has(.codex-home) .md-header {
+  position: absolute;
+  inset: 0 0 auto;
 }
 
 body:has(.codex-home) .md-tabs {
-  border-bottom: 1px solid #1d252c;
+  position: absolute;
+  top: 2.4rem;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  border-bottom: 0;
 }
 
 body:has(.codex-home):not(:has(#__search:checked)) .md-search__form {
@@ -146,7 +158,8 @@ body:has(.codex-home) .md-copyright__highlight {
   position: relative;
   display: flex;
   flex: 1;
-  min-height: 480px;
+  min-height: max(580px, 100svh);
+  min-height: max(580px, 100dvh);
   isolation: isolate;
   overflow: hidden;
   align-items: center;
@@ -169,7 +182,7 @@ body:has(.codex-home) .md-copyright__highlight {
 
 .home-cosmos__copy {
   position: absolute;
-  top: 44px;
+  top: calc(4.8rem + 44px);
   left: 50%;
   transform: translateX(-50%);
   width: min(100% - 112px, 1280px);
@@ -215,12 +228,13 @@ body:has(.codex-home) .md-copyright__highlight {
 
 @media (max-width: 760px) {
   .home-cosmos {
-    min-height: 380px;
+    min-height: max(480px, 100svh);
+    min-height: max(480px, 100dvh);
   }
 
   .home-cosmos__copy { width: calc(100% - 48px); }
   .codex-home .home-cosmos h1 { font-size: 56px; }
-  .home-cosmos__copy { top: 48px; }
+  .home-cosmos__copy { top: calc(2.4rem + 48px); }
 
   .home-cosmos__bottom {
     left: 24px;
