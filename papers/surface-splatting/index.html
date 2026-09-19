@@ -9,13 +9,13 @@
         <meta name="author" content="Sayaki">
       
       
-        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/3dgs/">
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/surface-splatting/">
       
       
-        <link rel="prev" href="../instant-ngp/">
+        <link rel="prev" href="../ewa-splatting/">
       
       
-        <link rel="next" href="../neus/">
+        <link rel="next" href="../instant-ngp/">
       
       
         
@@ -33,7 +33,7 @@
     
     
       
-        <title>3DGS - Sayaki's Codex</title>
+        <title>Surface-Splatting - Sayaki's Codex</title>
       
     
     
@@ -128,7 +128,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#3d-gaussian-splatting-for-real-time-radiance-field-rendering" class="md-skip">
+        <a href="#surface-splatting" class="md-skip">
           Skip to content
         </a>
       
@@ -162,7 +162,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              3DGS
+              Surface-Splatting
             
           </span>
         </div>
@@ -1058,8 +1058,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -1074,11 +1076,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked="">
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -1099,7 +1101,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1142,128 +1144,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../surface-splatting/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Surface-Splatting
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked="">
-        
-          
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
-            
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    3D Reconstruction
-  
-
-    
-  </span>
-  
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    3D Reconstruction
-  
-
-          </label>
-          <ul class="md-nav__list">
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../instant-ngp/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Instant-NGP
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1283,7 +1163,7 @@
   <span class="md-ellipsis">
     
   
-    3DGS
+    Surface-Splatting
   
 
     
@@ -1301,7 +1181,7 @@
   <span class="md-ellipsis">
     
   
-    3DGS
+    Surface-Splatting
   
 
     
@@ -1372,10 +1252,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#point-based-rendering-vs-radiance-fields" class="md-nav__link">
+  <a href="#surface-texture-function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Point-Based Rendering vs. Radiance Fields
+        Surface Texture Function
       
     </span>
   </a>
@@ -1383,10 +1263,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#differentiable-3d-gaussian-splatting" class="md-nav__link">
+  <a href="#rendering-as-resampling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Differentiable 3D Gaussian Splatting
+        Rendering as Resampling
       
     </span>
   </a>
@@ -1394,10 +1274,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#directional-appearance" class="md-nav__link">
+  <a href="#screen-space-ewa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Directional Appearance
+        Screen Space EWA
       
     </span>
   </a>
@@ -1405,10 +1285,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#adaptive-control-of-gaussians" class="md-nav__link">
+  <a href="#surface-splatting-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Adaptive Control of Gaussians
+        Surface Splatting Algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Surface Splatting Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-resampling-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Determining the resampling kernel
       
     </span>
   </a>
@@ -1416,10 +1308,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fast-differentiable-rasterizer" class="md-nav__link">
+  <a href="#kernel-evaluation-and-visibility" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fast Differentiable Rasterizer
+        Kernel Evaluation and Visibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Texture Acquisition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Texture Acquisition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-point-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Point Color
       
     </span>
   </a>
@@ -1427,10 +1347,37 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimization" class="md-nav__link">
+  <a href="#texture-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optimization
+        Texture Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transparency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transparency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-antialiasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge Antialiasing
       
     </span>
   </a>
@@ -1468,6 +1415,126 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D Reconstruction
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instant-ngp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instant-NGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3dgs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1710,10 +1777,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#point-based-rendering-vs-radiance-fields" class="md-nav__link">
+  <a href="#surface-texture-function" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Point-Based Rendering vs. Radiance Fields
+        Surface Texture Function
       
     </span>
   </a>
@@ -1721,10 +1788,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#differentiable-3d-gaussian-splatting" class="md-nav__link">
+  <a href="#rendering-as-resampling" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Differentiable 3D Gaussian Splatting
+        Rendering as Resampling
       
     </span>
   </a>
@@ -1732,10 +1799,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#directional-appearance" class="md-nav__link">
+  <a href="#screen-space-ewa" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Directional Appearance
+        Screen Space EWA
       
     </span>
   </a>
@@ -1743,10 +1810,22 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#adaptive-control-of-gaussians" class="md-nav__link">
+  <a href="#surface-splatting-algorithm" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Adaptive Control of Gaussians
+        Surface Splatting Algorithm
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Surface Splatting Algorithm">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#determining-the-resampling-kernel" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Determining the resampling kernel
       
     </span>
   </a>
@@ -1754,10 +1833,38 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#fast-differentiable-rasterizer" class="md-nav__link">
+  <a href="#kernel-evaluation-and-visibility" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Fast Differentiable Rasterizer
+        Kernel Evaluation and Visibility
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#texture-acquisition" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Texture Acquisition
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Texture Acquisition">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#per-point-color" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Per-Point Color
       
     </span>
   </a>
@@ -1765,10 +1872,37 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#optimization" class="md-nav__link">
+  <a href="#texture-mapping" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Optimization
+        Texture Mapping
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transparency" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Transparency
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#edge-antialiasing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Edge Antialiasing
       
     </span>
   </a>
@@ -1821,7 +1955,7 @@
     <div class="codex-note">
       <div class="note-kicker">
         
-          PAPER NOTES <span>· 2023</span>
+          PAPER NOTES <span>· 2001</span>
         
       </div>
       
@@ -1830,170 +1964,307 @@
   
 
 
-<h1 id="3d-gaussian-splatting-for-real-time-radiance-field-rendering">3D Gaussian Splatting for Real-Time Radiance Field Rendering<a class="headerlink" href="#3d-gaussian-splatting-for-real-time-radiance-field-rendering" title="Permanent link">¶</a></h1>
+<h1 id="surface-splatting">Surface Splatting<a class="headerlink" href="#surface-splatting" title="Permanent link">¶</a></h1>
 <h2 id="abstract">ABSTRACT<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
-<p>Radiance Field methods have recently revolutionized novel-view synthesis of scenes captured with multiple photos or videos. However, achieving high visual quality still requires neural networks that are costly to train and render, while recent faster methods inevitably trade off speed for quality. For unbounded and complete scenes (rather than isolated objects) and 1080p resolution rendering, no current method can achieve real-time display rates. We introduce three key elements that allow us to achieve state-of-the-art visual quality while maintaining competitive training times and importantly allow high-quality real-time (&gt;= 30 fps) novel-view synthesis at 1080p resolution. First, starting from sparse points produced during camera calibration, we represent the scene with 3D Gaussians that preserve desirable properties of continuous volumetric radiance fields for scene optimization while avoiding unnecessary computation in empty space; Second, we perform interleaved optimization/density control of the 3D Gaussians, notably optimizing anisotropic covariance to achieve an accurate representation of the scene; Third, we develop a fast visibility-aware rendering algorithm that supports anisotropic splatting and both accelerates training and allows realtime rendering. We demonstrate state-of-the-art visual quality and real-time rendering on several established datasets.</p>
+<p>Modern laser range and optical scanners need rendering techniques that can handle millions of points with high resolution textures. This paper describes a point rendering and texture filtering technique called surface splatting which directly renders opaque and transparent surfaces from point clouds without connectivity. It is based on a novel screen space formulation of the Elliptical Weighted Average (EWA) filter. Our rigorous mathematical analysis extends the texture resampling framework of Heckbert to irregularly spaced point samples. To render the points, we develop a surface splat primitive that implements the screen space EWA filter. Moreover, we show how to optimally sample image and procedural textures to irregular point data during pre-processing. We also compare the optimal algorithm with a more efficient view-independent EWA pre-filter. Surface splatting makes the benefits of EWA texture filtering available to point-based rendering. It provides high quality anisotropic texture filtering, hidden surface removal, edge anti-aliasing, and order-independent transparency.</p>
 <h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>URL:</strong>  <a href="http://arxiv.org/abs/2308.04079">Open Online</a></li>
-<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/G65UKH6J">PDF</a></li>
+<li><strong>URL:</strong> <a href="https://dl.acm.org/doi/10.1145/383259.383289">Open Online</a></li>
+<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/IZ9AN7QN">PDF</a></li>
 </ul>
 <h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
-<p>给定一组 3D 静态场景图片 <span class="arithmatex">\(\{\mathcal{I}_{k}\}\)</span> ，以及 SfM 算法产生的稀疏点云，目标为重建 3D 场景表示。</p>
+<p>给定无连接关系的不规则三维点集：</p>
+<div class="arithmatex">\[
+\mathcal{P}=\{P_k\},
+\]</div>
+<p>各点具有位置、法向、径向对称基函数 <span class="arithmatex">\(r_{k}\)</span> ，颜色 <span class="arithmatex">\(w_{k}^r,w_{k}^g,w_{k}^b\)</span> 。目标是在保证纹理细节的同时完成高质量点渲染。需要同时解决如下问题：</p>
+<ul>
+<li>从不规则点样本重建连续的表面纹理函数。</li>
+<li>进行从物体空间到屏幕空间的正确重采样，避免纹理混叠和过度模糊。</li>
+<li>在没有拓扑连接的情况下完成隐藏面消除。</li>
+<li>支持透明表面和边缘抗锯齿，并尽量减少额外的存储和计算。</li>
+</ul>
 <h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
-<h3 id="point-based-rendering-vs-radiance-fields">Point-Based Rendering vs. Radiance Fields<a class="headerlink" href="#point-based-rendering-vs-radiance-fields" title="Permanent link">¶</a></h3>
-<p><span class="arithmatex">\(\alpha\)</span>-混合的点渲染和 NeRF 风格的体渲染本质拥有相同的图像形成模型：</p>
-<ul>
-<li>
-<p>NeRF 风格体渲染：</p>
-<div class="arithmatex">\[
-C = \sum_{i=1}^N T_{i}(1-\exp(-\sigma_{i}\delta_{i}))\mathbf{c}_{i}, \quad T_{i} := \exp \left( -\sum_{j=1}^{i-1} \sigma_{j}\delta_{j} \right) 
-\]</div>
-<p>其中 <span class="arithmatex">\(\sigma\)</span> 为密度，<span class="arithmatex">\(T\)</span> 为透射率，<span class="arithmatex">\(\mathbf{c}\)</span> 为颜色，<span class="arithmatex">\(\delta\)</span> 为射线采样区间。令 <span class="arithmatex">\(\alpha_i:=(1-\exp(-\sigma_i\delta_i))\)</span> ，有 <span class="arithmatex">\(T_i=\prod_{j=1}^{i-1}(1-\alpha_i)\)</span> ，上式可改写为： </p>
-<div class="arithmatex">\[
-C = \sum_{i=1}^N T_{i}\alpha_{i}\mathbf{c}_{i} \tag{1} \label{1}
-\]</div>
-</li>
-<li>
-<p><span class="arithmatex">\(\alpha\)</span>-混合的点渲染：</p>
-<div class="arithmatex">\[
-C = \sum_{i\in \mathcal{N}}\mathbf{c}_{i}\alpha_{i}\prod_{j=1}^{i-1}(1-\alpha_{j}) \tag{2} \label{2}
-\]</div>
-<p>其中 <span class="arithmatex">\(\mathcal{N}\)</span> 为覆盖该像素的有序点集大小， <span class="arithmatex">\(\mathbf{c}_i\)</span> 为各点颜色，<span class="arithmatex">\(\alpha_i\)</span> 为不透明度和足迹函数乘积。</p>
-</li>
-</ul>
-<p>从 <span class="arithmatex">\(\eqref{1}\)</span> 式和 <span class="arithmatex">\(\eqref{2}\)</span> 式可以看到两种方法图像形成模型相同，但渲染算法完全不同：</p>
-<ul>
-<li>NeRFs 为连续隐式表示，需要进行耗时的随机采样，带来噪声和计算开销。</li>
-<li>点集为无结构离散表示，可以灵活进行几何体的创建，销毁，移动，同时节省计算资源。</li>
-</ul>
-<h3 id="differentiable-3d-gaussian-splatting">Differentiable 3D Gaussian Splatting<a class="headerlink" href="#differentiable-3d-gaussian-splatting" title="Permanent link">¶</a></h3>
-<p>选择 3D Gaussian 作为基元，因其为可微表示并且易于投影到 2D 进行 <span class="arithmatex">\(\alpha\)</span>-混合渲染。几何建模为无法向的 3D Gaussian 集。</p>
-<p>仿照 <a href="../ewa-splatting/#elliptical-gaussian-kernels">EWA-Splatting</a> 定义世界空间中心点为 <span class="arithmatex">\(\boldsymbol{\mu}\)</span> 的 Gaussian ：</p>
-<div class="arithmatex">\[
-\mathcal{G}(\mathbf{x}-\boldsymbol{\mu}) = \exp \left( -\frac{1}{2}(\mathbf{x}-\boldsymbol{\mu})^\mathsf{T} \boldsymbol{\Sigma}^{-1}(\mathbf{x}-\boldsymbol{\mu}) \right) 
-\]</div>
-<p>使用 <a href="../ewa-splatting/#projective-transformation">EWA-Splatting</a> 中 3D Gaussian 到 2D Gaussian 的变换方法：</p>
-<p>先通过视角变换 <span class="arithmatex">\(\mathbf{W}\)</span> 和投影变换仿射近似 <span class="arithmatex">\(\mathbf{J}\)</span> 将 3D Gaussian 变换到光线空间：</p>
-<div class="arithmatex">\[
-\boldsymbol{\Sigma}' = \mathbf{J}\mathbf{W}\boldsymbol{\Sigma}\mathbf{W}^\mathsf{T}\mathbf{J}^\mathsf{T}
-\]</div>
-<p>再去除 <span class="arithmatex">\(\boldsymbol{\Sigma}'\)</span> 的第三行和列得到 <span class="arithmatex">\(2\times2\)</span> 协方差矩阵 <span class="arithmatex">\(\boldsymbol{\Sigma}^\text{2D}\)</span> 。</p>
-<p>对于优化方面，由于协方差 <span class="arithmatex">\(\boldsymbol{\Sigma}\)</span> 必须为半正定，难以直接梯度优化。考虑半正定矩阵的分解：</p>
-<div class="arithmatex">\[
-\mathbf{\Sigma} = \mathbf{R}\mathbf{S}\mathbf{S}^\mathsf{T}\mathbf{R}^\mathsf{T}
-\]</div>
-<p>其中 <span class="arithmatex">\(\mathbf{S}\)</span> 为缩放矩阵，<span class="arithmatex">\(\mathbf{R}\)</span> 为旋转矩阵，即独立优化两个因子，为此使用 3D 向量 <span class="arithmatex">\(\mathbf{s}\)</span> 表示缩放以及 <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/#6-quaternions">四元数</a> <span class="arithmatex">\(\mathbf{q}\)</span> 表示旋转。</p>
-<p>为避免训练过程自动微分的显著开销，显式推导所有参数的梯度，具体细节如下：</p>
-<details class="note">
-<summary>Gradient Computation</summary>
-<p>TODO</p>
-</details>
-<h3 id="directional-appearance">Directional Appearance<a class="headerlink" href="#directional-appearance" title="Permanent link">¶</a></h3>
-<p>TODO</p>
-<h3 id="adaptive-control-of-gaussians">Adaptive Control of Gaussians<a class="headerlink" href="#adaptive-control-of-gaussians" title="Permanent link">¶</a></h3>
-<p>由 SfM 提供的稀疏点云初始化 Gaussian 集并适应性控制其密度和数量。如下两种情况都会引起较大视图空间位置梯度：</p>
-<ul>
-<li><strong>欠重建（Under-Reconstruction）</strong>：缺少几何特征区域。</li>
-<li><strong>过重建（Over-Reconstruction）</strong>：Gaussian 覆盖大面积的区域。</li>
-</ul>
-<p>对视图空间位置梯度平均幅度超过阈值 <span class="arithmatex">\(\tau_{\text{pos}}\)</span> 的 Gaussian 进行增密。具体细节及图示如下：</p>
-<ul>
-<li>
-<p>欠重建区域：</p>
-<p>复制一份相同大小的 Gaussian ，移动到位置梯度方向。</p>
-</li>
-<li>
-<p>过重建区域：</p>
-<p>原 Gaussian 分为两个小 Gaussian ，放缩因子为 <span class="arithmatex">\(\phi=1.6\)</span> ，并以原 3D Gaussian 作为 PDF 采样初始化位置。</p>
-</li>
-</ul>
+<h3 id="surface-texture-function">Surface Texture Function<a class="headerlink" href="#surface-texture-function" title="Permanent link">¶</a></h3>
+<p>与三角网格不同，点渲染没有「Texture → Object → Screen」的复合二维映射，因此纹理必须显式存储在点的局部表面参数化中。</p>
+<p>考虑表面点 <span class="arithmatex">\(\mathbf{Q}\)</span> ，对其邻域建立局部二维表面参数化，如下图所示：</p>
 <figure>
-<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/3dgs-density-control.png" data-desc-position="bottom"><img alt="density-control" src="../assets/3dgs-density-control.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/surface-splatting-texture-function.png" data-desc-position="bottom"><img alt="texture-function" src="../assets/surface-splatting-texture-function.png"></a></p>
 <figcaption>
-<p>Figure 1:  适应性 Gaussian 增密方案图。上：欠重建；下：过重建。</p>
+<p>Figure 1:  在基于点的对象表面上定义纹理函数。</p>
 </figcaption>
 </figure>
-<p>如上两种情况都会增加 Gaussian 数量，从而与其他体积表示方法类似，该优化过程可能会陷入局部最优，在输入相机附近产生漂浮伪影。一种有效的方法为：</p>
-<div class="steps">
-<ol>
-<li>每 <span class="arithmatex">\(N=100\)</span> 轮迭代进行增密，并去除不透明度 <span class="arithmatex">\(\alpha\)</span> 低于阈值 <span class="arithmatex">\(\epsilon_\alpha\)</span> 的 Gaussian 。</li>
-<li>每 <span class="arithmatex">\(N=3000\)</span> 轮迭代设置 Gaussian 不透明度 <span class="arithmatex">\(\alpha\)</span> 近似为 <span class="arithmatex">\(0\)</span> 。</li>
-<li>优化过程会提高必需 Gaussian 的不透明度 <span class="arithmatex">\(\alpha\)</span> ，去除低于阈值 <span class="arithmatex">\(\epsilon_\alpha\)</span> 的 Gaussian ，实现密度控制。</li>
-</ol>
-</div>
-<h3 id="fast-differentiable-rasterizer">Fast Differentiable Rasterizer<a class="headerlink" href="#fast-differentiable-rasterizer" title="Permanent link">¶</a></h3>
-<p>为进行快速 <span class="arithmatex">\(\alpha\)</span>-混合近似和避免泼溅数量限制，设计如下基于图块的光栅化方法：</p>
-<p>首先将屏幕分割为 <span class="arithmatex">\(16\times 16\)</span> 图块，进行如下步骤：</p>
-<div class="steps">
-<ol>
-<li>
-<p>Gaussian 预处理：</p>
-<p>首先使用保护带剔除极端位置的 Gaussian ，将保留的 Gaussian 从世界坐标变换到相机坐标，检查是否位于相机视锥体内（置信区间 <span class="arithmatex">\(99\%\)</span>）。</p>
-</li>
-<li>
-<p>Gaussian 实例化：</p>
-<p>考虑编号为 <span class="arithmatex">\(g\)</span> 投影深度为 <span class="arithmatex">\(z_g\)</span> 的 Gaussian ，其在屏幕空间覆盖的图块集合为 <span class="arithmatex">\(\mathcal{T}_g\)</span> ，为每个 splat-tile 创建实例：</p>
+<p>点 <span class="arithmatex">\(\mathbf{Q}\)</span> 和邻域点 <span class="arithmatex">\(\mathbf{P}_k\)</span> 在该参数化中的坐标分别记为 <span class="arithmatex">\(\mathbf{u}\)</span> 和 <span class="arithmatex">\(\mathbf{u}_k\)</span> ，连续表面函数定义为：</p>
 <div class="arithmatex">\[
-(g,t,z_g), \quad t \in \mathcal{T}_g
+f_c(\mathbf{u})=\sum_{k\in\mathbb{N}}w_k r_k(\mathbf{u}-\mathbf{u}_k)
 \]</div>
-<p>并分配关键字：</p>
-<div class="arithmatex">\[
-K_{g,t} = (t \ll 32) \mathbin{|}  \operatorname{encode}(z_g)
-\]</div>
-<p>即高32位为图块编号，低32位为深度编码。</p>
-</li>
-<li>
-<p>Gaussian 排序：</p>
-<p>对所有实例进行全局 <strong>GPU 基数排序（Radix Sort）</strong> ，此时相同图块的实例排列在一起，并按深度由小到大排序。</p>
-<p>启动多线程并行寻找各图块对应的 Gaussian 列表：</p>
+<p>选取有局部支集或适合被截取的基函数 <span class="arithmatex">\(r_{k}\)</span> 。</p>
+<h3 id="rendering-as-resampling">Rendering as Resampling<a class="headerlink" href="#rendering-as-resampling" title="Permanent link">¶</a></h3>
+<p>将点表面渲染视为连续函数的「Warping → Filtering → Sampling」三步重采样过程。设从局部表面参数空间到屏幕空间的映射为 <span class="arithmatex">\(\mathbf{x}=\mathbf{m}(\mathbf{u}):\mathbb{R}^{2}\to \mathbb{R}^{2}\)</span> ，渲染分为三步：</p>
 <ul>
-<li>当前实例图块 ID 与前一个不同，则为对应区间起点。</li>
-<li>当前实例图块 ID 与后一个不同，则为对应区间终点。</li>
-</ul>
-</li>
 <li>
-<p>Gaussian 光栅化：</p>
-<p>对每个图块启动一个线程块，并行加载 Gaussian 数据包到共享内存。对于给定像素，从前向后遍历 Gaussian 列表，计算颜色和累积不透明度，当累积不透明度恰好小于 <span class="arithmatex">\(0.9999\)</span> 时终止对应线程。按固定间隔查询图块中的线程，当所有像素均已饱和，该图块处理终止。</p>
-</li>
-<li>
-<p>Gaussian 反向传播</p>
-<p>复用排序后的 Gaussian 列表，从后往前遍历。若 Gaussian 深度不超过像素记录的最大贡献深度，则进行覆盖检测和点处理。为得到梯度计算中所需的中间 Gaussian 透射率，各像素在前向过程记录最终透射率 <span class="arithmatex">\(T\)</span> ，在遍历过程中逐次除以各 Gaussian 透明度 <span class="arithmatex">\(1-\alpha_i\)</span> ，以节省资源负载。为数值稳定，在前向和后向过程中，跳过 <span class="arithmatex">\(\alpha&lt;\epsilon=\frac{1}{255}\)</span> 的更新，并截断 <span class="arithmatex">\(\alpha\)</span> 小于 <span class="arithmatex">\(0.99\)</span> 。</p>
-</li>
-</ol>
-</div>
-<h3 id="optimization">Optimization<a class="headerlink" href="#optimization" title="Permanent link">¶</a></h3>
-<p>给定 3D Gaussian <span class="arithmatex">\(\mathcal{G}_{i}\)</span> ，其具有如下优化参数：</p>
+<p><strong>变形（Warping）</strong>：</p>
+<p>将 <span class="arithmatex">\(f_{c}(\mathbf{u})\)</span> 变换为屏幕空间连续信号 <span class="arithmatex">\(g_{c}(\mathbf{x})\)</span> ：</p>
 <div class="arithmatex">\[
-\mathcal{G}_{i} = (\boldsymbol{\mu}_{i},\mathbf{s}_{i},\mathbf{q}_{i},\alpha_{i},\left\{ f_{i,lm} \right\} )
+g_c(\mathbf{x}) = (f_{c}\circ\mathbf{m}^{-1})(\mathbf{x}) = f_c\!\left(\mathbf{m}^{-1}(x)\right)
 \]</div>
-<p>其中 <span class="arithmatex">\(\boldsymbol{\mu}_{i}\)</span> 为中心位置，<span class="arithmatex">\(\mathbf{s}_{i},\mathbf{q}_{i}\)</span> 为协方差分解的缩放和旋转因子，<span class="arithmatex">\(\alpha_{i}\)</span> 为不透明度，<span class="arithmatex">\(\left\{ f_{i,lm} \right\}\)</span> 为球谐系数。</p>
-<p>为保证参数范围和梯度平滑，使用 Sigmoid 函数激活 <span class="arithmatex">\(\alpha_{i}\)</span> ，使用 Exponential 函数激活 <span class="arithmatex">\(\mathbf{s}_{i}\)</span> ，即：</p>
+</li>
+<li>
+<p><strong>滤波（Filtering）</strong>：</p>
+<p>使用低通滤波器 <span class="arithmatex">\(h\)</span> 对屏幕空间信号 <span class="arithmatex">\(g_{c}(\mathbf{x})\)</span> 进行带限：</p>
+<div class="arithmatex">\[
+g_c'(\mathbf{x})=g_c(\mathbf{x})\otimes h(\mathbf{x})=\int_{\mathbb{R}^2}g_c(\xi)h(\mathbf{x}-\xi)\,d\xi
+\]</div>
+</li>
+<li>
+<p><strong>采样（Sampling）</strong>：</p>
+<p>与屏幕像素冲激串 <span class="arithmatex">\(i\)</span> 相乘，得到离散图像 <span class="arithmatex">\(g(\mathbf{x})\)</span>：</p>
+</li>
+</ul>
+<div class="arithmatex">\[
+g(\mathbf{x})=g_c'(\mathbf{x})i(\mathbf{x}).
+\]</div>
+<p>如下图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/surface-splatting-rendering.png" data-desc-position="bottom"><img alt="rendering" src="../assets/surface-splatting-rendering.png"></a></p>
+<figcaption>
+<p>Figure 2:  纹理函数的变形、滤波、采样示意图。</p>
+</figcaption>
+</figure>
+<p>代入 <span class="arithmatex">\(f_{c}(\mathbf{u})\)</span> 表达式，<span class="arithmatex">\(g_{c}'(\mathbf{x})\)</span> 可显式写为：</p>
 <div class="arithmatex">\[
 \begin{align}
-\alpha_{i}' &amp;= \frac{1}{1+\exp(\alpha_{i})} \\
-\mathbf{s}_{i}' &amp;= \exp(\mathbf{s}_{i})
+g_c'(\mathbf{x}) &amp;= \int_{\mathbb{R}^{2}} h(\mathbf{x}-\xi) \sum_{k\in \mathbb{N}} w_{k}r_{k}(\mathbf{m}^{-1}(\xi)-\mathbf{u}_{k})\, d\xi \\
+&amp;= \sum_{k\in\mathbb{N}}w_k\rho_k(\mathbf{x})
 \end{align}
 \]</div>
-<p>Gaussian 初始化为各向同性，轴长取与最近三点距离的平均值。对位置 <span class="arithmatex">\(\boldsymbol{\mu}_{i}\)</span> 使用类似 [Plenoxels] 中的标准指数衰减调度技术。</p>
-<p>损失函数定义如下：</p>
+<p>其中：</p>
 <div class="arithmatex">\[
-\mathcal{L} = (1-\lambda) \mathcal{L}_{1} + \lambda \mathcal{L}_{\text{D-SSIM}}
+\rho_k(\mathbf{x}):=\int_{\mathbb{R}^2}h(\mathbf{x}-\xi)r_k\!\left(\mathbf{m}^{-1}(\xi)-\mathbf{u}_k\right)\,d\xi
 \]</div>
-<p>测试中取 <span class="arithmatex">\(\lambda=0.2\)</span> 。</p>
+<p>称为 <strong>重采样核（Resampling Kernel）</strong>。<span class="arithmatex">\(g_{c}'(\mathbf{x})\)</span> 形式表明可以先逐点构造屏幕空间核，再将所有核的贡献累积到图像缓冲区，称该框架为 <strong>表面泼溅（Surface Splatting）</strong>，示意图如下：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/surface-splatting-surface-splating.png" data-desc-position="bottom"><img alt="surface-splatting" src="../assets/surface-splatting-surface-splating.png"></a></p>
+<figcaption>
+<p>Figure 3:  表面泼溅渲染示意图。重建核前向累积在屏幕空间。</p>
+</figcaption>
+</figure>
+<p>为简化 <span class="arithmatex">\(\rho_{k}(\mathbf{x})\)</span> 中的积分计算，在各点 <span class="arithmatex">\(\mathbf{u}_k\)</span> 附近使用 <span class="arithmatex">\(\mathbf{m}\)</span> 的局部仿射近似 <span class="arithmatex">\(\mathbf{m}_{\mathbf{u}_{k}}\)</span>：</p>
+<div class="arithmatex">\[
+\mathbf{m}_{\mathbf{u}_k}(\mathbf{u})=\mathbf{x}_k+\mathbf{J}_{\mathbf{u}_k}(\mathbf{u}-\mathbf{u}_k)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{x}_k=\mathbf{m}(\mathbf{u}_k)\)</span> ，Jacobian 为 <span class="arithmatex">\(\mathbf{J}_{\mathbf{u}_k}=\frac{\partial \mathbf{m}}{\partial \mathbf{u}}(\mathbf{u}_k)\)</span> 。</p>
+<p>令变形后的基函数为 <span class="arithmatex">\(r_k'(\mathbf{x})=r_k(\mathbf{J}_{\mathbf{u}_{k}}^{-1}\mathbf{x})\)</span>，计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+\rho_{k}(\mathbf{x}) &amp;= \int_{\mathbb{R}^{2}} h(\mathbf{x}-\mathbf{m}_{\mathbf{u}_{k}}(\mathbf{u}_{k})-\xi)r_{k}'(\xi)\,d\xi \\
+&amp;= (r_k'\otimes h)\!\left(\mathbf{x}-\mathbf{m}_{\mathbf{u}_{k}}(\mathbf{u}_k)\right)
+\end{align}
+\]</div>
+<p>即重采样核 <span class="arithmatex">\(\rho_{k}(\mathbf{x})\)</span> 可表示为变换后的基函数 <span class="arithmatex">\(r_{k}'\)</span> 和低通滤波器 <span class="arithmatex">\(h\)</span> 的卷积。下文省略 <span class="arithmatex">\(\mathbf{m}\)</span> 和 <span class="arithmatex">\(\mathbf{J}\)</span> 的下标 <span class="arithmatex">\(\mathbf{u}_{k}\)</span> 。</p>
+<h3 id="screen-space-ewa">Screen Space EWA<a class="headerlink" href="#screen-space-ewa" title="Permanent link">¶</a></h3>
+<p>选择椭圆 Gaussian 作为基函数和低通滤波器，因其在仿射和卷积运算下封闭，详见 <a href="../ewa-splatting/#elliptical-gaussian-kernels">EWA-Splatting</a> 。方差为 <span class="arithmatex">\(\boldsymbol{\Sigma}\)</span> 的椭圆 Gaussian 定义为：</p>
+<div class="arithmatex">\[
+\mathcal{G}_{\boldsymbol{\Sigma}}(\mathbf{x})=\frac{1}{2\pi |\boldsymbol{\Sigma}|^{1/2}}\exp\!\left(-\frac{1}{2}\mathbf{x}^\mathsf{T}\boldsymbol{\Sigma}^{-1}\mathbf{x}\right)
+\]</div>
+<p>取 <span class="arithmatex">\(r_{k}\)</span> 和 <span class="arithmatex">\(h\)</span> 分别为方差 <span class="arithmatex">\(\boldsymbol{\Sigma}_{k}^r\)</span> 和 <span class="arithmatex">\(\boldsymbol{\Sigma}^h\)</span> 的 Gaussian 。计算有：</p>
+<div class="arithmatex">\[
+\begin{align}
+r_k'(\mathbf{x}) &amp;= r(\mathbf{J}^{-1}\mathbf{x}) = \mathcal{G}_{\boldsymbol{\Sigma}_{k}^r}(\mathbf{J}^{-1}\mathbf{x}) = \frac{1}{|\mathbf{J}^{-1}|}\mathcal{G}_{\mathbf{J}\boldsymbol{\Sigma}_k^r\mathbf{J}^\mathsf{T}}(\mathbf{x}) \\
+h(\mathbf{x}) &amp;= \mathcal{G}_{\Sigma^h}(\mathbf{x})
+\end{align}
+\]</div>
+<p>通常取 <span class="arithmatex">\(\boldsymbol{\Sigma}^h=\mathbf{I}\)</span> ，重建核 <span class="arithmatex">\(\rho_{k}\)</span> 同样有如下 Gaussian 形式：</p>
+<div class="arithmatex">\[
+\begin{align}
+\rho_k(\mathbf{x}) &amp;= (r_{k}'\otimes h)(\mathbf{x}-\mathbf{m}(\mathbf{u}_{k})) \\
+&amp;= \frac{1}{|\mathbf{J}^{-1}|}(\mathcal{G}_{\mathbf{J}\boldsymbol{\Sigma}_{k}^r\mathbf{J}^\mathsf{T}}\otimes \mathcal{G}_{\boldsymbol{\Sigma}^h})(\mathbf{x}-\mathbf{m}(\mathbf{u}_{k})) \\
+&amp;= \frac{1}{|\mathbf{J}^{-1}|}\mathcal{G}_{\mathbf{J}\boldsymbol{\Sigma}_k^r\mathbf{J}^\mathsf{T}+\mathbf{I}}\!\left(\mathbf{x}-\mathbf{m}(\mathbf{u}_k)\right)
+\end{align}
+\]</div>
+<p>代入 <span class="arithmatex">\(g_{c}'\)</span> 式中可得：</p>
+<div class="arithmatex">\[
+g_{c}'(\mathbf{x}) = \sum_{k\in \mathbb{N}} w_{k} \frac{1}{|\mathbf{J}^{-1}|} \mathcal{G}_{\mathbf{J}\boldsymbol{\Sigma}_{k}^r\mathbf{J}^\mathsf{T}+\mathbf{I}}(\mathbf{x}-\mathbf{m}(\mathbf{u}_{k}))
+\]</div>
+<p>称之为 <strong>屏幕空间 EWA（Screen Space EWA）</strong>。</p>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>[Heckbert] 中表述了 <strong>源空间 EWA（Source Space EWA）</strong> 方法：</p>
+<div class="arithmatex">\[
+g_{c}'(\mathbf{x}) = \sum_{k\in \mathbb{N}} w_{k}\mathcal{G}_{\boldsymbol{\Sigma}_{k}^r+\mathbf{J}^{-1}{\mathbf{J}^{-1}}^\mathsf{T}}(\mathbf{m}^{-1}(\mathbf{x})-\mathbf{u}_{k})
+\]</div>
+<p>由关系式：</p>
+<div class="arithmatex">\[
+\mathbf{x}-\mathbf{m}(\mathbf{u}_{k})=\mathbf{m}(\mathbf{m}^{-1}(\mathbf{x})-\mathbf{u}_{k})=\mathbf{J}\cdot(\mathbf{m}^{-1}(\mathbf{x})-\mathbf{u}_{k})
+\]</div>
+<p>知两式数学上等价，但实际含义不同。源空间 EWA 相当于对点云进行光线追踪以寻找表面交点；屏幕空间 EWA 可以直接前向累积，更适合交互式点渲染。</p>
+</details>
+<h3 id="surface-splatting-algorithm">Surface Splatting Algorithm<a class="headerlink" href="#surface-splatting-algorithm" title="Permanent link">¶</a></h3>
+<p>表面泼溅算法步骤如下：</p>
+<div class="steps">
+<ol>
+<li>将点 <span class="arithmatex">\(\mathbf{P}_k\)</span> 投影到屏幕空间 <span class="arithmatex">\(\mathbf{m}(\mathbf{u}_k)\)</span> 。</li>
+<li>根据局部投影 Jacobian <span class="arithmatex">\(\mathbf{J}\)</span> 确定 Gaussian 重采样核 <span class="arithmatex">\(\rho_k\)</span>。</li>
+<li>将 <span class="arithmatex">\(\rho_k\)</span> 的贡献泼溅到累积缓冲区，同时过滤颜色、法向、权重和相机空间深度。</li>
+<li>所有点处理完成后，对每个像素执行延迟着色（Deferred Shading）。</li>
+</ol>
+</div>
+<h4 id="determining-the-resampling-kernel">Determining the resampling kernel<a class="headerlink" href="#determining-the-resampling-kernel" title="Permanent link">¶</a></h4>
+<p>重采样核 <span class="arithmatex">\(\rho_{k}\)</span> 由 Jacobian <span class="arithmatex">\(\mathbf{J}\)</span> 决定，其为局部表面坐标到视口坐标的 2D 变换，可由如下三部分组成：</p>
+<ul>
+<li>仿射视角变换（物体空间→相机空间）：</li>
+</ul>
+<p>约束该变换禁止非均匀缩放或剪切，从而保 <span class="arithmatex">\(r_{k}\)</span> 的旋转不变性。因此对应 Jacobian 为一致缩放矩阵，缩放因子记为 <span class="arithmatex">\(s_{mv}\)</span> 。</p>
+<ul>
+<li>透视投影变换（相机空间→屏幕空间）：</li>
+</ul>
+<p>为计算该变换 Jacobian ，先构造局部表面参数化：</p>
+<p>给定相机空间物体表面点 <span class="arithmatex">\(\mathbf{P}_{k}\)</span> 及其法向 <span class="arithmatex">\(\mathbf{n}_{k}\)</span> ，以切平面近似局部表面。选取切平面正交基 <span class="arithmatex">\(\mathbf{u}_{0},\mathbf{u}_{1}\)</span> ，由于 <span class="arithmatex">\(r_{k}\)</span> 对称性，基向量方向任意。考虑将屏幕空间基向量 <span class="arithmatex">\(\mathbf{x}_{0},\mathbf{x}_{1}\)</span> 映射到</p>
+<ul>
+<li>视口变换（屏幕空间→视口空间）：</li>
+</ul>
+<p>约束该变换为平移和一致缩放，因此对应 Jacobian 也为一致缩放矩阵，缩放因子记为 <span class="arithmatex">\(s_{vp}\)</span> 。</p>
+<p>视角变换、透视投影和视口映射的 Jacobian 组合为：</p>
+<div class="arithmatex">\[
+J=s_{vp}\,J_{pr}\,s_{mv},
+\]</div>
+<p>为计算透视投影的局部 Jacobian，先在点 <span class="arithmatex">\(P_k\)</span> 的切平面上建立正交基 <span class="arithmatex">\(u_0,u_1\)</span>。将屏幕坐标轴沿穿过投影中心和 <span class="arithmatex">\(P_k\)</span> 的视线反投影到切平面，得到向量 <span class="arithmatex">\(\tilde{x}_0,\tilde{x}_1\)</span>，并令 <span class="arithmatex">\(u_0=\tilde{x}_0/\|\tilde{x}_0\|\)</span>。于是逆映射的 Jacobian 为：</p>
+<div class="arithmatex">\[
+J_{pr}^{-1}=\begin{pmatrix}
+\tilde{x}_0\cdot u_0 &amp; \tilde{x}_1\cdot u_0\\
+0 &amp; \tilde{x}_1\cdot u_1
+\end{pmatrix}.
+\]</div>
+<h4 id="kernel-evaluation-and-visibility">Kernel Evaluation and Visibility<a class="headerlink" href="#kernel-evaluation-and-visibility" title="Permanent link">¶</a></h4>
+<p>Gaussian 理论上具有无限支集，实际仅在如下椭圆区域内计算：</p>
+<div class="arithmatex">\[
+\beta(x)=\frac{1}{2}x^\mathsf{T}\left(I+J^{-\mathsf{T}}J^{-1}\right)x&lt;c.
+\]</div>
+<p>典型取值为 <span class="arithmatex">\(c=1\)</span>。由于核被截断，需要按像素内所有贡献的和进行归一化：</p>
+<div class="arithmatex">\[
+g(x)=\sum_{k\in\mathcal{N}}w_k\frac{\rho_k(x)}{\sum_{j\in\mathcal{N}}\rho_j(x)}. \tag{6} \label{6}
+\]</div>
+<p>为处理多层表面，在每个覆盖像素处计算点所在切平面的相机空间 <span class="arithmatex">\(z\)</span> 值。若新贡献与已存贡献的深度差小于阈值，则将其累积到同一表面；否则，仅当新贡献更靠近观察者时替换像素数据。这样无需点的全局排序即可完成隐藏面消除。延迟着色还避免了对最终不可见点进行着色。</p>
+<h3 id="texture-acquisition">Texture Acquisition<a class="headerlink" href="#texture-acquisition" title="Permanent link">¶</a></h3>
+<p>论文讨论两类纹理获取方式：点自带颜色，以及将外部图像或过程纹理映射到点云。</p>
+<h4 id="per-point-color">Per-Point Color<a class="headerlink" href="#per-point-color" title="Permanent link">¶</a></h4>
+<p>扫描系统为每个点提供颜色样本 <span class="arithmatex">\(c_k\)</span>。若假设基函数形成单位分解，可直接取 <span class="arithmatex">\(w_k=c_k\)</span>。但对不规则点集，直接归一化基函数会产生有理函数，破坏前述 EWA 推导。因此论文在渲染阶段归一化重采样核，即使用式 <span class="arithmatex">\(\eqref{6}\)</span>，无需额外计算。</p>
+<p>基函数方差应匹配局部点密度。若局部切平面近似边长为 <span class="arithmatex">\(h\)</span> 的抖动规则网格，可取：</p>
+<div class="arithmatex">\[
+V_k^r=\begin{pmatrix}h^2&amp;0\\0&amp;h^2\end{pmatrix}.
+\]</div>
+<p><span class="arithmatex">\(h\)</span> 也可以由邻域中最大点间距预计算并存入层次结构。</p>
+<h4 id="texture-mapping">Texture Mapping<a class="headerlink" href="#texture-mapping" title="Permanent link">¶</a></h4>
+<p>设纹理空间坐标为 <span class="arithmatex">\(s\)</span>，到物体局部参数空间的映射为 <span class="arithmatex">\(u=t(s)\)</span>。先用重建核 <span class="arithmatex">\(n(s)\)</span> 从规则纹理样本 <span class="arithmatex">\(c_i\)</span> 得到连续纹理：</p>
+<div class="arithmatex">\[
+c_c(s)=\sum_i c_i n(s-s_i).
+\]</div>
+<p>映射到物体空间后得到 <span class="arithmatex">\(\tilde f_c(u)=c_c(t^{-1}(u))\)</span>。通过最小化 <span class="arithmatex">\(L_2\)</span> 误差确定点权重：</p>
+<div class="arithmatex">\[
+F(w)=\left\|\tilde f_c(u)-f_c(u)\right\|_{L_2}^2.
+\]</div>
+<p>令 <span class="arithmatex">\(w=(w_j)\)</span>，对 <span class="arithmatex">\(F\)</span> 求梯度并令其为零，得到线性系统：</p>
+<div class="arithmatex">\[
+Rw=c,
+\]</div>
+<p>其中</p>
+<div class="arithmatex">\[
+R_{kj}=\langle r_k,r_j\rangle,\qquad c_k=\sum_i c_i\left\langle r_k,n_i\circ t^{-1}\right\rangle
+\]</div>
+<p>若进一步假设基函数正交，则 <span class="arithmatex">\(R=I\)</span>，系数退化为 view-independent EWA 的形式。论文实验表明，最小二乘优化在放大纹理时比 view-independent EWA 更清晰。</p>
+<figure>
+<p>[figure]</p>
+<figcaption>
+<p>Figure 2: 纹理最优采样与 view-independent EWA 采样在缩小、放大和极端放大下的对比。</p>
+</figcaption>
+</figure>
+<h3 id="transparency">Transparency<a class="headerlink" href="#transparency" title="Permanent link">¶</a></h3>
+<p>透明度使用固定层数 <span class="arithmatex">\(l\)</span> 的多层 A-buffer。每个像素的一个 fragment 收集同一表面的所有 splat 贡献。处理新贡献时依次执行：</p>
+<p></p><div class="steps" markdown="">
+1. <strong>累积或分离：</strong> 依据 <span class="arithmatex">\(z\)</span> 阈值判断新贡献是否属于已有表面；若属于则累积，否则创建临时 fragment。
+2. <strong>插入：</strong> 若 fragment 数尚未达到上限 <span class="arithmatex">\(l\)</span>，将临时 fragment 写入空槽位。
+3. <strong>合并：</strong> 若超过上限，选择两个 fragment 合并。合并前先着色，并按深度差优先选择更可能属于同一表面的片段。
+</div><p></p>
+<p>前片段和后片段的颜色、透明度分别为 <span class="arithmatex">\((c_f,\alpha_f)\)</span> 和 <span class="arithmatex">\((c_b,\alpha_b)\)</span>，合并结果为：</p>
+<div class="arithmatex">\[
+c_o=c_f\alpha_f+c_b\alpha_b(1-\alpha_f),
+\]</div>
+<div class="arithmatex">\[
+\alpha_o=\alpha_f+\alpha_b(1-\alpha_f)
+\]</div>
+<p>所有 splat 完成后，fragment 从后向前混合得到最终像素。该方法无需预先对全部点排序，但在相交表面或高曲率区域，由于不同表面贡献被错误合并，仍可能出现伪影。</p>
+<figure>
+<p>[figure]</p>
+<figcaption>
+<p>Figure 3: 多层 A-buffer 渲染相交透明表面时的 fragment 合并与边缘抗锯齿。</p>
+</figcaption>
+</figure>
+<h3 id="edge-antialiasing">Edge Antialiasing<a class="headerlink" href="#edge-antialiasing" title="Permanent link">¶</a></h3>
+<p>边缘抗锯齿需要估计一个 fragment 对像素的部分覆盖率。论文假设基函数位于规则网格且单位方差，因此近似满足单位分解；变形和带限后，所有重采样核的和仍近似为常数：</p>
+<div class="arithmatex">\[
+q=\sum_{k\in\mathcal{N}}\rho_k(x)\approx1.
+\]</div>
+<p>当 <span class="arithmatex">\(q&lt;1\)</span> 时，表示表面没有完全覆盖像素。考虑有限支集和不规则采样，取完整覆盖阈值 <span class="arithmatex">\(\tau=0.4\)</span>，定义：</p>
+<div class="arithmatex">\[
+q'=q/\tau.
+\]</div>
+<p>最终将 fragment 透明度修正为：</p>
+<div class="arithmatex">\[
+\alpha'=\begin{cases}
+\alpha q',&amp;q'&lt;1\\
+\alpha,&amp;q'\ge1.
+\end{cases}
+\]</div>
 <h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
+<p>作者以软件实现 surface splatting，并在预处理阶段将几何模型转换为点对象，同时构建支持多分辨率和渐进式渲染的层次结构。实验包含激光扫描人头、Matterhorn 地形以及直升机等点采样模型，并比较屏幕空间 EWA、源空间 EWA、圆形 splat 和椭圆 splat。</p>
+<p>在 1.1 GHz AMD Athlon、1.5 GB 内存的系统上，使用三层 frame buffer 时，典型性能如下：</p>
+<table>
+<thead>
+<tr>
+<th>数据集</th>
+<th style="text-align: right;">点数</th>
+<th style="text-align: right;">256×256</th>
+<th style="text-align: right;">512×512</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Scanned Head</td>
+<td style="text-align: right;">429,075</td>
+<td style="text-align: right;">1.3 fps</td>
+<td style="text-align: right;">0.7 fps</td>
+</tr>
+<tr>
+<td>Matterhorn</td>
+<td style="text-align: right;">4,782,011</td>
+<td style="text-align: right;">0.2 fps</td>
+<td style="text-align: right;">0.1 fps</td>
+</tr>
+<tr>
+<td>Helicopter</td>
+<td style="text-align: right;">987,552</td>
+<td style="text-align: right;">0.6 fps</td>
+<td style="text-align: right;">0.3 fps</td>
+</tr>
+</tbody>
+</table>
+<p>每个像素需要 <span class="arithmatex">\(3\times38=114\)</span> 字节，故三层 frame buffer 在 256×256 和 512×512 分辨率下分别约占 6.375 MB 和 25.5 MB。质量对比显示：</p>
+<ul>
+<li>屏幕空间 EWA 与源空间 EWA 的纹理质量基本等价，同时不需要层次结构进行反向查找。</li>
+<li>圆形 splat 在缩小场景中尚可，但放大时会过度模糊。</li>
+<li>仅依据法向构造椭圆 splat、忽略带限步骤，会在纹理缩小时产生混叠。</li>
+<li>屏幕空间 EWA 在缩小和放大之间提供连续过渡，并同时保持各向异性过滤质量。</li>
+</ul>
 <h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
-<div class="highlight"><table class="highlighttable"><tbody><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span>
-<span class="normal">3</span>
-<span class="normal">4</span>
-<span class="normal">5</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// Apply low-pass filter: every Gaussian should be at least</span>
-<span class="c1">// one pixel wide/high. Discard 3rd row and column.</span>
-<span class="n">cov</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span>
-<span class="n">cov</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span><span class="w"> </span><span class="o">+=</span><span class="w"> </span><span class="mf">0.3f</span><span class="p">;</span>
-<span class="k">return</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]),</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">1</span><span class="p">]),</span><span class="w"> </span><span class="kt">float</span><span class="p">(</span><span class="n">cov</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span><span class="w"> </span><span class="p">};</span>
-</code></pre></div></td></tr></tbody></table></div>
-<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-14"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-08-14T10:03:19+00:00">2026-08-14</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-08-31"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-08-31T15:25:10+00:00">2026-08-31</time></span></div></div></div>
+<ul>
+<li><strong>核心抽象：</strong> Surface splatting 将点渲染重新表述为“局部表面函数的屏幕空间重采样”。一旦把每个点的贡献写成重采样核，投影、低通和像素采样便能在同一框架中处理。</li>
+<li><strong>为什么使用屏幕空间 EWA：</strong> 源空间 EWA 需要将屏幕像素反向映射到表面并寻找交点，对无连接点云不实用；屏幕空间形式只需前向投影和核累积。</li>
+<li><strong>与 EWA volume splatting 的联系：</strong> 两者都利用 Gaussian 在仿射变换和卷积下的封闭性，但本文将三维体核替换为切平面上的定向二维核，因而能更直接地表达表面纹理的各向异性。</li>
+<li><strong>主要近似来源：</strong> 切平面近似、有限 Gaussian 支集、局部参数化不一致以及固定数量 fragment 的合并都会引入误差。高曲率、表面相交和几何欠采样区域尤其容易出现伪影。</li>
+<li><strong>工程启示：</strong> 归一化重采样核同时解决了有限支集造成的能量损失；延迟着色避免了不可见点的着色；Jacobian 和 Gaussian 协方差可以预计算或通过前向差分高效评估。</li>
+<li><strong>后续方向：</strong> 论文提出将屏幕空间 EWA 推广到体数据、探索硬件实现，并通过更高采样率或更高阶局部表面近似减少相交和高曲率区域的几何误差。</li>
+</ul>
+<div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-09-19"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-09-19T09:34:04+00:00">2026-09-19</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-09-19"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-09-19T09:34:04+00:00">2026-09-19</time></span></div></div></div>
 
 
 

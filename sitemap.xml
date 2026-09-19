@@ -7,7 +7,7 @@
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/books/</loc>
-        <lastmod>2026-07-15</lastmod>
+        <lastmod>2026-09-19</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -52,7 +52,7 @@
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/papers/</loc>
-        <lastmod>2026-07-25</lastmod>
+        <lastmod>2026-09-19</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -83,6 +83,11 @@
     <url>
         <loc>https://Sayakio.github.io/Codex/papers/neus2/</loc>
         <lastmod>2026-08-17</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://Sayakio.github.io/Codex/papers/surface-splatting/</loc>
+        <lastmod>2026-09-19</lastmod>
         <changefreq>daily</changefreq>
     </url>
 </urlset>

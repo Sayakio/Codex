@@ -1,0 +1,199 @@
+/* A fixed sky surrounds the quiet reading surface. */
+body:has(.codex-note) {
+  --note-surface: #fffefa;
+  --note-paper-blue: #d9eaf055;
+  --note-paper-gold: #f1dfbd44;
+  --note-border: #a8bdcc55;
+  --note-cloud-blue: #aecad955;
+  --note-cloud-violet: #c9bdd344;
+  --note-shadow: #50677b0a;
+  --note-line: #d9dedf;
+  --note-muted: #647481;
+  --note-star: #98743b;
+  --note-glow: #dce6ee80;
+  --md-default-bg-color: #f3f4f2;
+  --md-default-fg-color: #293843;
+  --md-default-fg-color--light: #647481;
+  --md-typeset-color: #293843;
+  --md-typeset-a-color: #306487;
+  --md-accent-fg-color: #306487;
+  --md-primary-fg-color: #f3f4f2;
+  --md-primary-bg-color: #293843;
+  --md-code-bg-color: #edf0f1;
+  isolation: isolate;
+  background: var(--md-default-bg-color);
+}
+
+body[data-md-color-scheme="slate"]:has(.codex-note) {
+  --note-surface: #192838;
+  --note-paper-blue: #608ca633;
+  --note-paper-gold: #ab91b522;
+  --note-border: #93b9d02e;
+  --note-cloud-blue: #34658b55;
+  --note-cloud-violet: #57507840;
+  --note-shadow: #02071030;
+  --note-line: #2b3c4e;
+  --note-muted: #9baec1;
+  --note-star: #d2b47f;
+  --note-glow: #24456566;
+  --md-default-bg-color: #0b121c;
+  --md-default-fg-color: #cdd8e3;
+  --md-default-fg-color--light: #9baec1;
+  --md-typeset-color: #cdd8e3;
+  --md-typeset-a-color: #9bc7ed;
+  --md-accent-fg-color: #d2b47f;
+  --md-primary-fg-color: #0b121c;
+  --md-primary-bg-color: #cdd8e3;
+  --md-code-bg-color: #223449;
+  --md-code-fg-color: #dbe5ef;
+  --md-admonition-bg-color: #213347;
+}
+
+body[data-md-color-scheme="slate"] .codex-note :is(.admonition, details) {
+  background-color: var(--md-admonition-bg-color);
+  color: var(--md-typeset-color);
+}
+
+body[data-md-color-scheme="slate"] .codex-note :is(.admonition-title, summary) {
+  background-color: #8dbbe614;
+}
+
+body[data-md-color-scheme="slate"] .codex-note .highlight .filename {
+  background-color: #293e54;
+  color: var(--md-code-fg-color);
+}
+
+body:has(.codex-note) .md-header,
+body:has(.codex-note) .md-tabs {
+  color: var(--md-typeset-color);
+}
+
+/* Keep every page's sky visible through both navigation rows. */
+body .md-header,
+body .md-tabs {
+  background: transparent !important;
+  box-shadow: none !important;
+  border: 0;
+  backdrop-filter: none !important;
+}
+
+.reading-sky {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 0% 35%, var(--note-cloud-blue), transparent 65%),
+              radial-gradient(ellipse at 100% 75%, var(--note-cloud-violet), transparent 65%),
+              radial-gradient(ellipse at 80% 0%, var(--note-cloud-blue), transparent 70%);
+}
+
+body:has(.codex-note) .md-sidebar .md-nav,
+body:has(.codex-note) .md-sidebar .md-nav__title {
+  background: transparent;
+  box-shadow: none;
+}
+
+.md-typeset .codex-note {
+  max-width: 46rem;
+  margin-inline: auto;
+  padding: clamp(1rem, 2.2vw, 2rem);
+  background-color: var(--note-surface);
+  background-image: radial-gradient(ellipse at 0 0, var(--note-paper-blue), transparent 65%),
+                    radial-gradient(ellipse at 100% 10%, var(--note-paper-gold), transparent 60%),
+                    radial-gradient(ellipse at 0 100%, var(--note-paper-blue), transparent 65%),
+                    radial-gradient(ellipse at 100% 90%, var(--note-paper-gold), transparent 60%);
+  background-size: 100% 850px;
+  background-position: left top, right top, left bottom, right bottom;
+  background-repeat: no-repeat;
+  border: 1px solid var(--note-border);
+  border-radius: .6rem;
+  box-shadow: 0 12px 65px var(--note-shadow);
+  line-height: 1.85;
+  overflow-wrap: break-word;
+}
+
+.codex-note .note-kicker {
+  display: flex;
+  align-items: center;
+  gap: .55rem;
+  color: var(--note-star);
+  font-size: .5rem;
+  letter-spacing: .2em;
+  margin-bottom: .8rem;
+}
+.note-kicker::before {
+  content: "";
+  width: .25rem;
+  height: .25rem;
+  border-radius: 50%;
+  background: currentColor;
+  box-shadow: 0 0 .4rem var(--note-glow);
+}
+.note-kicker span { color: var(--note-muted); }
+
+.md-typeset .codex-note h1 {
+  margin: 0 0 1.5rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--note-line);
+  font-family: "Fira Sans", "Songti SC", "STSong", "SimSun", serif;
+  font-size: clamp(1.35rem, 2.6vw, 1.8rem);
+  font-weight: 400;
+  line-height: 1.4;
+  color: var(--md-typeset-color);
+}
+.md-typeset .codex-note h2 {
+  margin-top: 2rem;
+  padding-left: .65rem;
+  border-left: 2px solid var(--note-star);
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.5;
+}
+.md-typeset .codex-note h3 { font-size: .9rem; line-height: 1.6; }
+.codex-note p { margin-block: .9em; }
+.codex-note a:not(.headerlink):not(.glightbox) { text-underline-offset: .2em; }
+.codex-note a:not(.headerlink):not(.glightbox):hover { text-decoration: underline !important; }
+.md-typeset .codex-note blockquote {
+  border-color: var(--note-star);
+  color: var(--note-muted);
+}
+.md-typeset .codex-note figure {
+  margin-block: 1.4rem;
+  padding: .8rem;
+  outline: none;
+  border: 1px solid var(--note-line);
+  border-radius: .25rem;
+}
+.codex-note figcaption { color: var(--note-muted); font-size: .65rem; }
+.codex-note .highlight { border-radius: .25rem; }
+.md-typeset .codex-note .steps {
+  --md-steps-fg-color: var(--note-star);
+  --md-steps-bg-color: color-mix(in srgb, var(--note-surface) 65%, var(--note-line));
+  --md-steps-circle-border: 1px solid color-mix(in srgb, var(--note-star) 45%, var(--note-line));
+  --md-steps-line-color: var(--note-line);
+}
+.codex-note .steps > :is(h1, h2, h3, h4, h5, h6)::before,
+.codex-note .steps > :is(ol, ul) > li::before {
+  box-shadow: 0 0 0 var(--md-steps-gap) var(--note-surface),
+              0 0 0 calc(var(--md-steps-gap) + 1px) var(--note-line);
+}
+.codex-note div.arithmatex { overflow-x: auto; padding-block: .25rem; }
+.codex-note .md-typeset__scrollwrap { justify-content: flex-start; }
+body:has(.codex-note) .md-nav__link--active { color: var(--md-typeset-a-color); }
+body:has(.codex-note) .md-sidebar--secondary .md-nav {
+  border-left: 1px solid var(--note-line);
+  padding-left: .6rem;
+}
+
+@media (max-width: 44.984375em) {
+  .md-typeset .codex-note { padding: 1rem .8rem; }
+  body:has(.codex-note) .md-content__inner { margin-inline: .6rem; }
+}
+
+@media print {
+  .reading-sky { display: none; }
+  .md-typeset .codex-note { padding: 0; border: 0; background: none; }
+  .codex-note .note-kicker { display: none; }
+}
