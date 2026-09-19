@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if page and (page.file.src_uri.startswith('papers/') or page.file.src_uri.startswith('books/')) and not page.file.src_uri.endswith('/index.md') %}
+    <div class="codex-note">
+      <div class="note-kicker">
+        {% if page.file.src_uri.startswith('papers/') %}
+          PAPER NOTES{% if page.meta.Year %} <span>· {{ page.meta.Year }}</span>{% endif %}
+        {% else %}
+          READING NOTES
+        {% endif %}
+      </div>
+      {{ super() }}
+    </div>
+  {% else %}
+    {{ super() }}
+  {% endif %}
+{% endblock %}

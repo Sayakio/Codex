@@ -29,14 +29,14 @@ theme:
       accent: indigo
       toggle:
         icon: material/weather-sunny
-        name: Switch to dark mode
+        name: Night
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: black
       accent: teal
       toggle:
         icon: material/weather-night
-        name: Switch to system preference
+        name: Day
   favicon: 'favicon.svg'
   icon:
     logo: 'material/vpn'
@@ -69,6 +69,7 @@ nav:
     - papers/index.md
     - Rendering:
       - EWA-Splatting: papers/ewa-splatting.md
+      - Surface-Splatting: papers/surface-splatting.md
     - 3D Reconstruction:
       - Instant-NGP: papers/instant-ngp.md
       - 3DGS: papers/3dgs.md
@@ -126,12 +127,14 @@ extra_javascript:
   - https://fastly.jsdelivr.net/npm/d3@7
   - https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js
   - javascripts/papers-graph.js
+  - javascripts/reading-sky.js
   - javascripts/music_player.js
   - javascripts/extra.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css
   - css/extra.css
+  - css/reading.css
   - css/music_player.css
 
 extra:
