@@ -70,9 +70,11 @@ nav:
     - Rendering:
       - EWA-Splatting: papers/ewa-splatting.md
       - Surface-Splatting: papers/surface-splatting.md
+      - Perspective-Accurate-Splatting: papers/perspective-accurate-splatting.md
     - 3D Reconstruction:
       - Instant-NGP: papers/instant-ngp.md
       - 3DGS: papers/3dgs.md
+      - 2DGS: papers/2dgs.md
     - Surface Reconstruction:
       - NeuS: papers/neus.md
       - NeuS2: papers/neus2.md
