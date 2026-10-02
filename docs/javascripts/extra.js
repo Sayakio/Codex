@@ -1,4 +1,20 @@
 let footerOffsetFrame = null;
+let renderedPagePath = window.location.pathname;
+const replaceHistoryState = history.replaceState;
+
+// Instant navigation changes the URL before replacing the outgoing document.
+// Keep its anchor tracking and scroll updates out of the destination's history.
+history.replaceState = function (...args) {
+    if (window.location.pathname !== renderedPagePath) return;
+    return replaceHistoryState.apply(this, args);
+};
+
+window.addEventListener("popstate", () => {
+    document.documentElement.classList.toggle(
+        "codex-history-loading",
+        window.location.pathname !== renderedPagePath,
+    );
+}, { capture: true });
 
 function setFooterOffset(offset) {
     document.documentElement.style.setProperty("--music-footer-offset", `${offset}px`);
@@ -67,6 +83,8 @@ window.addEventListener("scroll", scheduleFooterOffsetUpdate, { passive: true })
 window.addEventListener("resize", scheduleFooterOffsetUpdate);
 
 document$.subscribe(() => {
+    renderedPagePath = window.location.pathname;
+    document.documentElement.classList.remove("codex-history-loading");
     setFooterOffset(0);
     setupHomePage();
 

@@ -131,9 +131,8 @@ document$.subscribe(async () => {
   handlePageHide = disposePapersGraph;
   window.addEventListener("pagehide", handlePageHide, { once: true });
 
-  const HEIGHT = 500;
-  const CENTER_Y = HEIGHT / 2;
-  const MIN_WIDTH = 320;
+  const MIN_WIDTH = 240;
+  const MIN_HEIGHT = 280;
   const DIM_OPACITY = 0.1;
   const INITIAL_ALPHA = 1;
   const INITIAL_CLUSTER_RADIUS = 28;
@@ -152,21 +151,22 @@ document$.subscribe(async () => {
     Math.round(el.getBoundingClientRect().width || el.parentElement?.getBoundingClientRect().width || window.innerWidth || MIN_WIDTH),
     MIN_WIDTH,
   );
+  const heightOf = () => Math.max(Math.round(el.getBoundingClientRect().height), MIN_HEIGHT);
   const showFallback = message => {
     el.textContent = message;
     el.style.display = "grid";
     el.style.placeItems = "center";
     el.style.color = COLOR.default;
   };
-  const seedNodes = (nodes, width) => {
+  const seedNodes = (nodes, width, height) => {
     const centerX = width / 2;
-    const clusterRadius = Math.min(Math.min(width, HEIGHT) * 0.08, INITIAL_CLUSTER_RADIUS);
+    const clusterRadius = Math.min(Math.min(width, height) * 0.08, INITIAL_CLUSTER_RADIUS);
     const goldenAngle = Math.PI * (3 - Math.sqrt(5));
     nodes.forEach((node, index) => {
       const angle = index * goldenAngle;
       const radius = Math.sqrt((index + 0.5) / Math.max(nodes.length, 1)) * clusterRadius;
       node.x = centerX + Math.cos(angle) * radius;
-      node.y = CENTER_Y + Math.sin(angle) * radius;
+      node.y = height / 2 + Math.sin(angle) * radius;
       node.vx = 0;
       node.vy = 0;
     });
@@ -185,14 +185,15 @@ document$.subscribe(async () => {
     const radiusOf = degree => RADIUS_MIN + Math.floor(degree / DEGREE_STEP) * RADIUS_STEP;
     nodes.forEach(node => { node.radius = radiusOf(node.degree || 0); });
     let width = widthOf();
-    seedNodes(nodes, width);
+    let height = heightOf();
+    seedNodes(nodes, width, height);
     const svg = d3.select(el).append("svg").attr("width", "100%").attr("height", "100%");
     const gradient = svg.append("defs").append("radialGradient").attr("id", "paper-star-glow");
     gradient.append("stop").attr("offset", "0%").attr("stop-color", "#a5d0ff").attr("stop-opacity", .55);
     gradient.append("stop").attr("offset", "40%").attr("stop-color", "#82b8f4").attr("stop-opacity", .14);
     gradient.append("stop").attr("offset", "100%").attr("stop-color", "#82b8f4").attr("stop-opacity", 0);
     const link = svg.append("g").selectAll("line").data(links).join("line")
-      .attr("class", "paper-link").attr("stroke", COLOR.link);
+      .attr("class", "paper-link").attr("stroke", COLOR.link).attr("stroke-opacity", .55);
     const nodeGroup = svg.append("g").selectAll("g").data(nodes).join("g").attr("class", "paper-node")
       .attr("tabindex", 0).attr("role", "link").attr("aria-label", d => `阅读 ${d.label}`).style("cursor", "pointer");
     nodeGroup.append("circle").attr("class", "paper-halo").attr("r", d => d.radius * 3.5).attr("fill", "url(#paper-star-glow)");
@@ -201,28 +202,97 @@ document$.subscribe(async () => {
     const label = nodeGroup.append("text").attr("class", "paper-label").text(d => d.label)
       .attr("x", 0).attr("y", d => d.radius + 20).attr("text-anchor", "middle")
       .attr("font-size", "16px").attr("fill", COLOR.text).style("pointer-events", "none");
-    label.each(function(d) { d.labelWidth = this.getComputedTextLength(); });
+    function layoutLabels() {
+      label.each(function(d) {
+        const text = d3.select(this).text(null);
+        let span = text.append("tspan").attr("x", 0);
+        let line = "";
+        for (const word of d.label.split("-")) {
+          const next = line ? `${line}-${word}` : word;
+          span.text(next);
+          if (line && span.node().getComputedTextLength() > Math.min(240, width * .45)) {
+            span.text(line);
+            span = text.append("tspan").attr("x", 0).attr("dy", "1.2em").text(word);
+            line = word;
+          } else {
+            line = next;
+          }
+        }
+        const bounds = this.getBBox();
+        d.labelWidth = bounds.width;
+        d.labelHeight = bounds.height;
+        d.labelBottom = bounds.y + bounds.height;
+      });
+    }
+    layoutLabels();
+    const labelX = node => Math.max(node.labelWidth / 2 + 6, Math.min(width - node.labelWidth / 2 - 6, node.x));
+    function separateLabels() {
+      const boundsOf = node => {
+        const x = Math.max(node.radius + 12, Math.min(width - node.radius - 12, node.x + node.vx));
+        const y = Math.max(node.radius + 12, Math.min(height - node.radius - 32 - node.labelHeight, node.y + node.vy));
+        const textX = Math.max(node.labelWidth / 2 + 6, Math.min(width - node.labelWidth / 2 - 6, x));
+        return {
+          left: Math.min(x - node.radius, textX - node.labelWidth / 2),
+          right: Math.max(x + node.radius, textX + node.labelWidth / 2),
+          top: y - node.radius,
+          bottom: y + node.labelBottom,
+        };
+      };
+      for (let i = 0; i < nodes.length; i++) {
+        for (let j = i + 1; j < nodes.length; j++) {
+          const a = nodes[i], b = nodes[j];
+          const boxA = boundsOf(a), boxB = boundsOf(b);
+          const dx = (boxB.left + boxB.right - boxA.left - boxA.right) / 2;
+          const dy = (boxB.top + boxB.bottom - boxA.top - boxA.bottom) / 2;
+          const overlapX = (boxA.right - boxA.left + boxB.right - boxB.left) / 2 + 8 - Math.abs(dx);
+          const overlapY = (boxA.bottom - boxA.top + boxB.bottom - boxB.top) / 2 + 6 - Math.abs(dy);
+          if (overlapX > 0 && overlapY > 0) {
+            if (overlapX < overlapY) {
+              const push = Math.sign(dx || 1) * overlapX / 2;
+              a.vx -= push;
+              b.vx += push;
+            } else {
+              const push = Math.sign(dy || 1) * overlapY / 2;
+              a.vy -= push;
+              b.vy += push;
+            }
+          }
+        }
+      }
+    }
     function tick() {
+      // Keep the star cores and their labels inside the visible constellation.
+      nodes.forEach(node => {
+        node.x = Math.max(node.radius + 12, Math.min(width - node.radius - 12, node.x));
+        node.y = Math.max(node.radius + 12, Math.min(height - node.radius - 32 - node.labelHeight, node.y));
+      });
       link.attr("x1", d => d.source.x).attr("y1", d => d.source.y).attr("x2", d => d.target.x).attr("y2", d => d.target.y);
       nodeGroup.attr("transform", d => `translate(${d.x},${d.y})`);
-      label.attr("x", d => Math.max(d.labelWidth / 2 + 6, Math.min(width - d.labelWidth / 2 - 6, d.x)) - d.x);
+      label.attr("transform", d => `translate(${labelX(d) - d.x},0)`);
     }
     const forceX = d3.forceX(width / 2).strength(0.03);
+    const forceY = d3.forceY(height / 2).strength(0.03);
+    const forceCenter = d3.forceCenter(width / 2, height / 2);
+    const forceLink = d3.forceLink(links).id(d => d.id).distance(Math.min(200, width * .45, height * .4)).strength(0.8);
     simulation = d3.forceSimulation(nodes)
-      .force("link", d3.forceLink(links).id(d => d.id).distance(200).strength(0.8))
+      .force("link", forceLink)
       .force("charge", d3.forceManyBody().strength(-220))
       .force("collide", d3.forceCollide(d => d.radius + 40))
+      .force("center", forceCenter)
       .force("x", forceX)
-      .force("y", d3.forceY(CENTER_Y).strength(0.03))
+      .force("y", forceY)
+      .force("labels", separateLabels)
       .on("tick", tick);
     const paint = activeId => {
       if (state.active === activeId) return;
       state.active = activeId;
       const related = activeId ? relatedById.get(activeId) : null;
       circle.attr("fill", node => node.id === activeId ? COLOR.active : COLOR.default);
+      label.attr("fill", node => node.id === activeId ? COLOR.active : COLOR.text);
       nodeGroup.style("opacity", node => !related || related.has(node.id) ? 1 : DIM_OPACITY);
       link
         .style("opacity", edge => !related || edge.source.id === activeId || edge.target.id === activeId ? 1 : DIM_OPACITY)
+        .attr("stroke-opacity", edge => activeId && (edge.source.id === activeId || edge.target.id === activeId) ? .9 : .55)
         .attr("stroke", edge => activeId && (edge.source.id === activeId || edge.target.id === activeId) ? COLOR.active : COLOR.link);
     };
     const syncActive = () => paint(state.dragged || state.hovered);
@@ -263,11 +333,17 @@ document$.subscribe(async () => {
       .call(drag);
     const resize = (alpha = 0.2, reseed = false) => {
       const nextWidth = widthOf();
-      if (!reseed && nextWidth === width) return;
+      const nextHeight = heightOf();
+      if (!reseed && nextWidth === width && nextHeight === height) return;
       width = nextWidth;
-      if (reseed) seedNodes(nodes, width);
-      svg.attr("viewBox", [0, 0, width, HEIGHT]);
+      height = nextHeight;
+      layoutLabels();
+      forceLink.distance(Math.min(200, width * .45, height * .4));
+      if (reseed) seedNodes(nodes, width, height);
+      svg.attr("viewBox", [0, 0, width, height]);
       forceX.x(width / 2);
+      forceY.y(height / 2);
+      forceCenter.x(width / 2).y(height / 2);
       simulation.alpha(alpha).restart();
     };
     handleResize = () => resize();
