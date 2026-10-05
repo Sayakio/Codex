@@ -61,7 +61,7 @@ nav:
       - Chapter II Vectors and Matrices: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors&matrices.md
       - Chapter III Transforms: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms.md
       - Chapter IV Geometry: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter4-geometry.md
-
+      - Chapter XI Curves and Surfaces: books/mathematics-for-3d-game-programming-and-computer-graphics/chapter11-curves&surfaces.md
     - Physically Based Rendering:
       - Chapter III Geometry and Transformations: books/physically-based-rendering/chapter3-geometry&transformations.md
   
@@ -108,7 +108,9 @@ markdown_extensions:
       generic: true
 
 plugins:
-  - search
+  - search:
+      pagefind:
+        force_language: zh
   - glightbox:
       width: 90%
   - toggle-sidebar:
@@ -132,12 +134,14 @@ extra_javascript:
   - javascripts/reading-sky.js
   - javascripts/music_player.js
   - javascripts/extra.js
+  - javascripts/cagd-curves.js
 
 extra_css:
   - https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css
   - css/extra.css
   - css/reading.css
   - css/music_player.css
+  - css/cagd-curves.css
 
 extra:
   copyright:

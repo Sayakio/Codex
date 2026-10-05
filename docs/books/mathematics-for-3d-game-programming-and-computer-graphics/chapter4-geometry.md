@@ -346,7 +346,7 @@ Figure 8:  OpenGL 相机空间中锥平面法向方向示意图。
 |    Top    | $\left\langle 0,\,-\dfrac{e}{\sqrt{e^2+a^2}},\,-\dfrac{a}{\sqrt{e^2+a^2}},\,0\right\rangle$ |
 
 
-## 4. Perspective-Correct Interpolation
+## 4. PERSPECTIVE-CORRECT INTERPOLATION
 
 为渲染三角形到屏幕上，3D 图形处理器会逐扫描线地对其进行光栅化。当绘制单条扫描线时，每个像素处的信息由左右端点携带信息插值导出。该插值通常为非线性，如下图所示：
 
@@ -429,4 +429,209 @@ $$
 即 $b/z$ 为线性插值。
 
 
-## 5. Projections
+## 5. PROJECTIONS
+为在 2D 显示屏上渲染 3D 场景，需确定场景中点 $\mathbf{P}$ 在屏幕上的对应位置。考虑 $\mathbf{OP}$ 与投影平面的交点，投影点计算有：
+
+$$
+x=-\frac{e}{P_{z}}P_{x}, \quad y=-\frac{e}{P_{z}}P_{y}
+$$
+
+但此时深度信息会丢失，无法处理遮挡关系。下面使用齐次坐标在 4D 空间投影顶点。
+
+### Perspective Projections
+透视投影将 $x$ 和 $y$ 坐标映射到投影平面的正确位置，同时保留深度信息。其通过将视锥体映射到原点为中心的立方体 $[-1,1]^3$ ，称之为 **齐次裁剪空间（Homogeneous Clip Space）**。该映射可记为 $4\times 4$ 投影矩阵，其将 $z$ 坐标负值放置到变换点的 $w$ 坐标，归一化后得到 **规范化设备坐标（Normalized Device Coordinates，NDC）** 中 3D 点。
+
+![homogeneous-clip-space](./assets/chap4-homogeneous-clip-space.png)
+/// caption
+Figure 11:  透视投影将视锥体映射为齐次裁剪空间示意图。
+///
+
+设 $\mathbf{P}=\left< P_{x},P_{y},P_{z},1 \right>$ 为相机空间齐次坐标。记近平面为 $z=-n$ ，被四个边平面切出的矩形四边为：左 $x=l$ ，右 $x=r$ ，下 $y=b$ ，上 $y=t$ 。可计算投影后的 $x$ 和 $y$ 坐标为：
+
+$$
+x = -\frac{n}{P_{z}}P_{x}, \quad y = -\frac{n}{P_{z}}P_{y}
+$$
+
+将其归一化到齐次裁剪空间有：
+
+$$
+\begin{align}
+x' &= (x-l) \frac{2}{r-l} - 1 \\
+y' &= (y-b) \frac{2}{t-b} - 1
+\end{align}
+$$
+
+代入 $x$ 和 $y$ 表达式有：
+
+$$
+\begin{align}
+x' &= \frac{2n}{r-l}\left( -\frac{P_{x}}{P_{z}} \right) - \frac{r+l}{r-l} \\
+y' &= \frac{2n}{t-b}\left( -\frac{P_{y}}{P_{z}} \right) - \frac{t+b}{t-b}
+\end{align}
+$$
+
+对于投影点的 $z$ 坐标，令其满足两点约束：
+
+- 由 $-f\leq P_{z}\leq-n$ ，映射需满足 $-n\to-1$ 和 $-f\to{1}$ 。
+- 由于 $z$ 坐标在插值中需计算倒数，映射函数构造为关于 $1/z$ 的函数。
+
+记映射函数为：
+
+$$
+z' = \frac{A}{z} + B
+$$
+
+由 $-n\to-1$ 和 $-f\to 1$ 计算有：
+
+$$
+A = \frac{2nf}{f-n}, \quad B = \frac{f+n}{f-n}
+$$
+
+回代得：
+
+$$
+z' = -\frac{2nf}{f-n}\left( -\frac{1}{P_{z}} \right) + \frac{f+n}{f-n}
+$$
+
+???+ note "Remark"
+	注意到该映射反射了 $z$ 轴，从而齐次裁剪空间为左手系。
+
+注意到 $x',y',z'$ 分母同时有 $-P_{z}$ ，投影点 $\mathbf{P}'$ 4D 齐次坐标可记为：
+
+$$
+\mathbf{P}' = \left< -x'P_{z},-y'P_{z},-z'P_{z},-P_{z} \right> 
+$$
+
+记 $4\times 4$ 透视投影矩阵为 $\mathbf{M}_{\text{frustum}}$ ，$\mathbf{P}'$ 可计算为：
+
+$$
+\mathbf{P}' = \mathbf{M}_{\text{frustum}}\mathbf{P} = \begin{bmatrix}
+\frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\
+0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0 \\
+0 & 0 & -\frac{f+n}{f-n} & -\frac{2nf}{f-n} \\
+0 & 0 & -1 & 0
+\end{bmatrix} \begin{bmatrix}
+p_{x} \\
+P_{y} \\
+P_{z} \\
+1
+\end{bmatrix}
+$$
+
+???+ note "Remark"
+	因 $w$ 坐标为 $-P_{z}$ ，在插值顶点属性时，实际上为 $w$ 坐标倒数进行插值。
+
+下图展示了深度 $z$ 坐标由相机空间映射到 NDC 的范围对应关系：
+
+![z-coordinate-mapping](./assets/chap4-z-coordinate-mapping.png)
+/// caption
+Figure 12:  $z$ 坐标由相机空间映射到 NDC 范围对应关系图。
+///
+
+当远平面距离 $f\to \infty$ ，此时有投影矩阵 $\mathbf{M}_{\text{infinite}}$ ：
+
+$$
+\mathbf{M}_{\text{infinite}} = \lim_{ f \to \infty } \mathbf{M}_{\text{frustum}} = \begin{bmatrix}
+\frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\
+0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0 \\
+0 & 0 & -1 & -2n \\
+0 & 0 & -1 & 0
+\end{bmatrix}
+$$
+
+该投影矩阵可以渲染 $w=0$ 的点。记 $\mathbf{Q}=\left< Q_{x},Q_{y},Q_{z},0 \right>$ ，可解释为在方向 $\left< Q_{x},Q_{y},Q_{z} \right>$ 上的无穷远点，变换有：
+
+$$
+\mathbf{Q}' = \mathbf{M}_{\text{infinite}}\mathbf{Q} = \begin{bmatrix}
+\frac{2n}{r-l} & 0 & \frac{r+l}{r-l} & 0 \\
+0 & \frac{2n}{t-b} & \frac{t+b}{t-b} & 0 \\
+0 & 0 & -1 & -2n \\
+0 & 0 & -1 & 0
+\end{bmatrix} \begin{bmatrix}
+Q_{x} \\
+Q_{y} \\
+Q_{z} \\
+0
+\end{bmatrix} = \begin{bmatrix}
+\frac{2n}{r-l}Q_{x}+\frac{r+l}{r-l}Q_{z} \\
+\frac{2n}{t-b}Q_{y}+\frac{t+b}{t-b}Q_{z} \\
+-Q_{z} \\
+-Q_{z}
+\end{bmatrix}
+$$
+
+$\mathbf{Q}'$ 在约化 $w$ 坐标后有最大 $z$ 坐标 $1$ 。投影无穷远点的能力可用于 [Chap.10] 中的阴影渲染技术。
+
+
+### Orthographic Projections
+正交投影，又称平行投影，将相机空间点以平行相机视角方向映射到投影平面，从而不存在透视畸变。
+
+该投影函数将 $x,y$ 坐标从范围 $[l,r],[b,t]$ 映射到 $[-1,1]$ ：
+
+$$
+\begin{align}
+x' &= \frac{2}{r-l}x - \frac{r+l}{r-l} \\
+y' &= \frac{2}{t-b}y - \frac{t+b}{t-b}
+\end{align}
+$$
+
+对于 $z$ 坐标，为保持与透视投影反射一致性，同样令 $-n\to-1$ 和 $-f\to1$ ，即：
+
+$$
+z' = \frac{-2}{f-n}z - \frac{f+n}{f-n}
+$$
+
+记正交投影矩阵为 $\mathbf{M}_{\text{ortho}}$ ，写成矩阵形式有：
+
+$$
+\mathbf{P}' = \mathbf{M}_{\text{ortho}}\mathbf{P} = \begin{bmatrix}
+\frac{2}{r-l} & 0 & 0 & -\frac{r+l}{r-l} \\
+0 & \frac{2}{t-b} & 0 & -\frac{t+b}{t-b} \\
+0 & 0 & \frac{-2}{f-n} & -\frac{f+n}{f-n} \\
+0 & 0 & 0 & 1
+\end{bmatrix} \begin{bmatrix}
+P_{x} \\
+P_{y} \\
+P_{z} \\
+1
+\end{bmatrix}
+$$
+
+注意到 $w$ 坐标在变换后保持为 $1$ ，从而不存在透视投影。
+
+
+### Extracting Frustum Planes
+若已知投影矩阵 $\mathbf{M}$ ，考虑获取相机空间六个锥平面的 4D 向量表示。
+
+对于齐次裁剪空间中变换后的六个平面，其具有简洁且恒定的表示：
+
+| **Plane** |       $\langle \mathbf{n},D\rangle$        |
+| :-------: | :----------------------------------------: |
+|   Near    |          $\langle 0,0,1,1\rangle$          |
+|    Far    |         $\langle 0,0,-1,1\rangle$          |
+|   Left    | $\left\langle 1,\,0,\,0,\,1\right\rangle$  |
+|   Right   | $\left\langle -1,\,0,\,0,\,1\right\rangle$ |
+|  Bottom   | $\left\langle 0,\,1,\,0,\,1\right\rangle$  |
+|    Top    | $\left\langle 0,\,-1,\,0,\,1\right\rangle$ |
+
+设 $\mathbf{L}'$ 为齐次裁剪空间中的六平面之一，由齐次平面为协变向量，相机空间对应平面 $\mathbf{L}$ 计算为：
+
+$$
+\mathbf{L} = \left[(\mathbf{M}^{-1})^{-1}\right]^\mathsf{T} \mathbf{L}' = \mathbf{M}^\mathsf{T}\mathbf{L}'
+$$
+
+令 $\mathbf{M}_{i}$ 表示 $\mathbf{M}$ 的第 $i$ 行，展开上式有：
+
+$$
+\begin{align}
+near &= \mathbf{M}_{4} + \mathbf{M}_{3} \\
+far &= \mathbf{M}_{4} - \mathbf{M}_{3} \\
+left &= \mathbf{M}_{4} + \mathbf{M}_{1} \\
+right &= \mathbf{M}_{4} - \mathbf{M}_{1} \\
+bottom &= \mathbf{M}_{4} + \mathbf{M}_{2} \\
+top &= \mathbf{M}_{4} - \mathbf{M}_{2}
+\end{align}
+$$
+
+???+ note "Remark"
+	上式得到的平面向量并非拥有单位法向，需进行归一化。此外，若焦距和纵横比已知，则可直接计算锥平面向量。
