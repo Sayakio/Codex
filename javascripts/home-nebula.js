@@ -24,31 +24,35 @@ export function createNebula(home) {
         seed = (1664525 * seed + 1013904223) >>> 0;
         return seed / 4294967296;
     };
-    const count = matchMedia("(max-width: 760px)").matches ? 12500 : 24000;
-    const positions = new Float32Array(count * 3);
-    const colors = new Float32Array(count * 3);
-    const sizes = new Float32Array(count);
-    const phases = new Float32Array(count);
-    const dust = new Float32Array(count);
-    for (let i = 0; i < count; i++) {
-        const radius = Math.pow(random(), 1.25) * 5.5 + 0.03;
-        const arm = (i % 4) * Math.PI / 2;
-        const spread = random() + random() + random() - 1.5;
-        const angle = arm + radius * 1.15 + spread * (i % 5 === 0 ? 2.8 : 0.38);
-        positions.set([radius, angle, (random() - 0.5) * (0.2 + radius * 0.12)], i * 3);
-        const warm = random() > 0.79;
-        const core = Math.exp(-radius * 0.6);
-        colors.set(warm ? [1, 0.72 + core * 0.2, 0.5 + core * 0.4] : [0.65 + core * 0.35, 0.82 + core * 0.18, 1], i * 3);
-        dust[i] = random() < 0.24 ? 1 : 0;
-        sizes[i] = dust[i] ? 14 + random() * 26 : (random() > 0.97 ? 9 + random() * 6 : 1.6 + random() * 3.1);
-        phases[i] = random() * Math.PI * 2;
+    function createGalaxyGeometry(count) {
+        seed = 2026;
+        const positions = new Float32Array(count * 3);
+        const colors = new Float32Array(count * 3);
+        const sizes = new Float32Array(count);
+        const phases = new Float32Array(count);
+        const dust = new Float32Array(count);
+        for (let i = 0; i < count; i++) {
+            const radius = Math.pow(random(), 1.25) * 5.5 + 0.03;
+            const arm = (i % 4) * Math.PI / 2;
+            const spread = random() + random() + random() - 1.5;
+            const angle = arm + radius * 1.15 + spread * (i % 5 === 0 ? 2.8 : 0.38);
+            positions.set([radius, angle, (random() - 0.5) * (0.2 + radius * 0.12)], i * 3);
+            const warm = random() > 0.79;
+            const core = Math.exp(-radius * 0.6);
+            colors.set(warm ? [1, 0.72 + core * 0.2, 0.5 + core * 0.4] : [0.65 + core * 0.35, 0.82 + core * 0.18, 1], i * 3);
+            dust[i] = random() < 0.24 ? 1 : 0;
+            sizes[i] = dust[i] ? 14 + random() * 26 : (random() > 0.97 ? 9 + random() * 6 : 1.6 + random() * 3.1);
+            phases[i] = random() * Math.PI * 2;
+        }
+        const geometry = new THREE.BufferGeometry();
+        geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
+        geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
+        geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
+        geometry.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
+        geometry.setAttribute("aDust", new THREE.BufferAttribute(dust, 1));
+        return geometry;
     }
-    const geometry = new THREE.BufferGeometry();
-    geometry.setAttribute("position", new THREE.BufferAttribute(positions, 3));
-    geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-    geometry.setAttribute("aSize", new THREE.BufferAttribute(sizes, 1));
-    geometry.setAttribute("aPhase", new THREE.BufferAttribute(phases, 1));
-    geometry.setAttribute("aDust", new THREE.BufferAttribute(dust, 1));
+    let geometry = new THREE.BufferGeometry();
     const uniforms = {
         uTime: { value: 0 },
         uPixelRatio: { value: renderer.getPixelRatio() },
@@ -101,31 +105,35 @@ export function createNebula(home) {
     const points = new THREE.Points(geometry, material);
     points.frustumCulled = false; // Positions are polar coordinates until the vertex shader runs.
     galaxy.add(points);
-    const starCount = 8888;
-    const starPositions = new Float32Array(starCount * 3);
-    const starColors = new Float32Array(starCount * 3);
-    const starSizes = new Float32Array(starCount);
-    const starPhases = new Float32Array(starCount);
-    for (let i = 0; i < starCount; i++) {
-        let x = random() * 2 - 1;
-        // A loose diagonal star stream adds depth to the otherwise empty margins.
-        let y = i % 2 === 0 ? Math.sin(x * 2.4) * 0.45 + (random() - 0.5) * 0.5 : random() * 2 - 1;
-        // Redistribute a small part of the star stream toward the quieter corners.
-        if (i % 10 === 0) {
-            const side = i % 20 === 0 ? -1 : 1;
-            x = side * (0.15 + Math.abs(x) * 0.7);
-            y = -side * (0.2 + Math.abs(y) * 0.7);
+    function createStarGeometry(starCount) {
+        seed = 2026;
+        const starPositions = new Float32Array(starCount * 3);
+        const starColors = new Float32Array(starCount * 3);
+        const starSizes = new Float32Array(starCount);
+        const starPhases = new Float32Array(starCount);
+        for (let i = 0; i < starCount; i++) {
+            let x = random() * 2 - 1;
+            // A loose diagonal star stream adds depth to the otherwise empty margins.
+            let y = i % 2 === 0 ? Math.sin(x * 2.4) * 0.45 + (random() - 0.5) * 0.5 : random() * 2 - 1;
+            // Redistribute a small part of the star stream toward the quieter corners.
+            if (i % 10 === 0) {
+                const side = i % 20 === 0 ? -1 : 1;
+                x = side * (0.15 + Math.abs(x) * 0.7);
+                y = -side * (0.2 + Math.abs(y) * 0.7);
+            }
+            starPositions.set([x, y, -8 - random() * 6], i * 3);
+            starColors.set(random() > 0.8 ? [1, 0.8, 0.6] : [0.64, 0.79, 1], i * 3);
+            starSizes[i] = random() > 0.965 ? 8 + random() * 5 : 1.4 + random() * 2.2;
+            starPhases[i] = random() * Math.PI * 2;
         }
-        starPositions.set([x, y, -8 - random() * 6], i * 3);
-        starColors.set(random() > 0.8 ? [1, 0.8, 0.6] : [0.64, 0.79, 1], i * 3);
-        starSizes[i] = random() > 0.965 ? 8 + random() * 5 : 1.4 + random() * 2.2;
-        starPhases[i] = random() * Math.PI * 2;
+        const starGeometry = new THREE.BufferGeometry();
+        starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
+        starGeometry.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
+        starGeometry.setAttribute("aSize", new THREE.BufferAttribute(starSizes, 1));
+        starGeometry.setAttribute("aPhase", new THREE.BufferAttribute(starPhases, 1));
+        return starGeometry;
     }
-    const starGeometry = new THREE.BufferGeometry();
-    starGeometry.setAttribute("position", new THREE.BufferAttribute(starPositions, 3));
-    starGeometry.setAttribute("color", new THREE.BufferAttribute(starColors, 3));
-    starGeometry.setAttribute("aSize", new THREE.BufferAttribute(starSizes, 1));
-    starGeometry.setAttribute("aPhase", new THREE.BufferAttribute(starPhases, 1));
+    let starGeometry = new THREE.BufferGeometry();
     const starMaterial = new THREE.ShaderMaterial({
         uniforms, vertexColors: true, transparent: true, depthWrite: false,
         blending: THREE.AdditiveBlending,
@@ -204,6 +212,18 @@ export function createNebula(home) {
     };
     const resize = () => {
         const { width, height } = host.getBoundingClientRect();
+        // Keep the original desktop density at a 1920 × 1080 CSS-pixel reference size.
+        const areaScale = width * height / (1920 * 1080);
+        const count = Math.round(50000 * areaScale);
+        const starCount = Math.round(20000 * areaScale);
+        if (geometry.getAttribute("position")?.count !== count) {
+            geometry.dispose();
+            points.geometry = geometry = createGalaxyGeometry(count);
+        }
+        if (starGeometry.getAttribute("position")?.count !== starCount) {
+            starGeometry.dispose();
+            stars.geometry = starGeometry = createStarGeometry(starCount);
+        }
         renderer.setSize(width, height, false);
         uniforms.uViewport.value.set(width, height);
         camera.aspect = width / height;

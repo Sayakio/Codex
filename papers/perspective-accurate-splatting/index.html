@@ -1,0 +1,2346 @@
+<!DOCTYPE html><html lang="en" class="no-js"><head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Personal Learning Library">
+      
+      
+        <meta name="author" content="Sayaki">
+      
+      
+        <link rel="canonical" href="https://Sayakio.github.io/Codex/papers/perspective-accurate-splatting/">
+      
+      
+        <link rel="prev" href="../surface-splatting/">
+      
+      
+        <link rel="next" href="../instant-ngp/">
+      
+      
+        
+      
+      
+      
+      
+        
+        
+        
+          <link rel="icon" href="../../favicon.svg">
+        
+      
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-materialx-10.2.0">
+    
+    
+      
+        <title>Perspective-Accurate-Splatting - Sayaki's Codex</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.d7aee198.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.a45159b5.min.css">
+      
+    
+    
+
+    
+
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Fira+Sans:300,300i,400,400i,700,700i%7CFira+Mono:400,400i,700,700i&amp;display=fallback">
+        <style>:root{--md-text-font:"Fira Sans";--md-code-font:"Fira Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css">
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+      <link rel="stylesheet" href="../../css/reading.css">
+    
+      <link rel="stylesheet" href="../../css/music_player.css">
+    
+      <link rel="stylesheet" href="../../css/cagd-curves.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/fonts/material-icons.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/shift-away.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/tippy.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/material.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/backdrop.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/scale.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/tippy/light.css">
+    
+      <link rel="stylesheet" href="../../assets/document_dates/core/core.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function e(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],e("js",new Date),e("config","G-2NVLQ4ZLS6"),document.addEventListener("DOMContentLoaded",(function(){document.forms.search&&document.forms.search.query.addEventListener("blur",(function(){this.value&&e("event","search",{search_term:this.value})}));document$.subscribe((function(){var t=document.forms.feedback;if(void 0!==t)for(var a of t.querySelectorAll("[type=submit]"))a.addEventListener("click",(function(a){a.preventDefault();var n=document.location.pathname,d=this.getAttribute("data-md-value");e("event","feedback",{page:n,data:d}),t.firstElementChild.disabled=!0;var r=t.querySelector(".md-feedback__note [data-md-value='"+d+"']");r&&(r.hidden=!1)})),t.hidden=!1})),location$.subscribe((function(t){e("config","G-2NVLQ4ZLS6",{page_path:t.pathname})}))}));var t=document.createElement("script");t.async=!0,t.src="https://www.googletagmanager.com/gtag/js?id=G-2NVLQ4ZLS6",document.getElementById("__analytics").insertAdjacentElement("afterEnd",t)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+        </style><script src="../../assets/javascripts/toggle-sidebar.js"></script></head>
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo" data-mx-topbar="glass">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="toc" type="checkbox" id="__toc" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <label class="md-overlay" for="__toc"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#perspective-accurate-splatting" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Sayaki's Codex" class="md-header__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Sayaki's Codex
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Perspective-Accurate-Splatting
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="white" data-md-color-accent="indigo" aria-label="Night" type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Night" for="__palette_1" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5s-1.65.15-2.39.42zM3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29zm.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14zM20.65 7l-1.77 3.79a7.02 7.02 0 0 0-2.38-4.15zm-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29zM12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44z"></path></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="black" data-md-color-accent="teal" aria-label="Day" type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Day" for="__palette_0" hidden="">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3zm3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95zm-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31"></path></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"></path></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10.25 2a8.25 8.25 0 0 1 6.34 13.53l5.69 5.69a.749.749 0 0 1-.326 1.275.75.75 0 0 1-.734-.215l-5.69-5.69A8.25 8.25 0 1 1 10.25 2M3.5 10.25a6.75 6.75 0 1 0 13.5 0 6.75 6.75 0 0 0-13.5 0"></path></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0">
+        <div class="md-search-result md-search-result--pagefind" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/Sayakio/Codex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Sayaki/Codex
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+    
+  
+  首页 • 起点
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../books/" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"></path></svg>
+    
+  
+  书籍 • 印记
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
+          
+  
+  
+    
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 20a1 1 0 0 0 1-1V4H8a1 1 0 0 0-1 1v11H5V5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v1h-2V5a1 1 0 0 0-1-1 1 1 0 0 0-1 1v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1h11a2 2 0 0 0 2 2M9 6h5v2H9zm0 4h5v2H9zm0 4h5v2H9z"></path></svg>
+    
+  
+  论文 • 洞见
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Sayaki's Codex" class="md-nav__button md-logo" aria-label="Sayaki's Codex" data-md-component="logo">
+      
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9 5h6l-3 3zm1.5 9.66c-.3.34-.5.84-.5 1.34a2 2 0 0 0 2 2 2 2 0 0 0 2-2c0-.55-.22-1.05-.59-1.41l1.42-1.42C15.55 13.9 16 14.9 16 16a4 4 0 0 1-4 4 4 4 0 0 1-4-4c0-1.07.42-2.04 1.1-2.75l-.01-.01 7.08-7.07A4 4 0 0 1 19 5a4 4 0 0 1 4 4 4 4 0 0 1-4 4c-1.1 0-2.1-.45-2.83-1.17l1.42-1.42c.36.37.86.59 1.41.59a2 2 0 0 0 2-2 2 2 0 0 0-2-2c-.55 0-1.05.22-1.41.59zM6.41 7.59C6.05 7.22 5.55 7 5 7a2 2 0 0 0-2 2 2 2 0 0 0 2 2c.55 0 1.05-.22 1.41-.59l1.42 1.42C7.1 12.55 6.1 13 5 13a4 4 0 0 1-4-4 4 4 0 0 1 4-4c1.11 0 2.11.45 2.83 1.17l2.76 2.76-1.42 1.42z"></path></svg>
+
+    </a>
+    Sayaki's Codex
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/Sayakio/Codex" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
+  </div>
+  <div class="md-source__repository">
+    Sayaki/Codex
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list">
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    首页 • 起点
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../books/" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 22a2 2 0 0 0 2-2V4a2 2 0 0 0-2-2h-6v7L9.5 7.5 7 9V2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    书籍 • 印记
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    书籍 • 印记
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_2">
+        
+          
+          <label class="md-nav__link" for="__nav_2_2" id="__nav_2_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Calculus of Variations
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Calculus of Variations
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/calculus-of-variations/chapter1-elements-of-the-theory/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Elements of the theory
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_3">
+        
+          
+          <label class="md-nav__link" for="__nav_2_3" id="__nav_2_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pattern Recognition and Machine Learning
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Pattern Recognition and Machine Learning
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/pattern-recognition-and-machine-learning/chapter1-introduction/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I Introduction
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/pattern-recognition-and-machine-learning/chapter2-probability-distribution/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter II Probability Distribution
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_4">
+        
+          
+          <label class="md-nav__link" for="__nav_2_4" id="__nav_2_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Mathematics for 3D Game Programming and Computer Graphics
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Mathematics for 3D Game Programming and Computer Graphics
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter I The Rendering Pipeline
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter2-vectors%26matrices/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter II Vectors and Matrices
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter3-transforms/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter III Transforms
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter4-geometry/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter IV Geometry
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/mathematics-for-3d-game-programming-and-computer-graphics/chapter11-curves%26surfaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter XI Curves and Surfaces
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_5">
+        
+          
+          <label class="md-nav__link" for="__nav_2_5" id="__nav_2_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Physically Based Rendering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Physically Based Rendering
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../books/physically-based-rendering/chapter3-geometry%26transformations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Chapter III Geometry and Transformations
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked="">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M15 20a1 1 0 0 0 1-1V4H8a1 1 0 0 0-1 1v11H5V5a3 3 0 0 1 3-3h11a3 3 0 0 1 3 3v1h-2V5a1 1 0 0 0-1-1 1 1 0 0 0-1 1v14a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-1h11a2 2 0 0 0 2 2M9 6h5v2H9zm0 4h5v2H9zm0 4h5v2H9z"></path></svg>
+  
+  <span class="md-ellipsis">
+    
+  
+    论文 • 洞见
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    论文 • 洞见
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked="">
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Rendering
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Rendering
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ewa-splatting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    EWA-Splatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../surface-splatting/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surface-Splatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perspective-Accurate-Splatting
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Perspective-Accurate-Splatting
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ABSTRACT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FILES &amp; LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. PROBLEMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. METHOD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. METHOD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-rendering-as-a-resampling-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Point Rendering as a Resampling Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perspective-accurate-splatting-using-homogeneous-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perspective Accurate Splatting Using Homogeneous Coordinates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perspective Accurate Splatting Using Homogeneous Coordinates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#homogeneous-coordinates-and-projective-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Homogeneous Coordinates and Projective Mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicit-conics-in-homogeneous-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implicit Conics in Homogeneous Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projective-mappings-of-conics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projective Mappings of Conics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-to-gaussian-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application to Gaussian Filters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-sharp-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering Sharp Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. EXPERIMENTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. THINKING
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3D Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    3D Reconstruction
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../instant-ngp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Instant-NGP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../3dgs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    3DGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../2dgs/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    2DGS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Surface Reconstruction
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Surface Reconstruction
+  
+
+          </label>
+          <ul class="md-nav__list">
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuS
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neus2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    NeuS2
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../neuralangelo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Neuralangelo
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc">
+      
+        <li class="md-nav__item">
+  <a href="#abstract" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ABSTRACT
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#files-links" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FILES &amp; LINKS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        1. PROBLEMS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        2. METHOD
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2. METHOD">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#point-rendering-as-a-resampling-process" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Point Rendering as a Resampling Process
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#perspective-accurate-splatting-using-homogeneous-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Perspective Accurate Splatting Using Homogeneous Coordinates
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perspective Accurate Splatting Using Homogeneous Coordinates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#homogeneous-coordinates-and-projective-mappings" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Homogeneous Coordinates and Projective Mappings
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implicit-conics-in-homogeneous-coordinates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implicit Conics in Homogeneous Coordinates
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#projective-mappings-of-conics" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Projective Mappings of Conics
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#application-to-gaussian-filters" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Application to Gaussian Filters
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#rendering-sharp-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rendering Sharp Features
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Implementation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-experiments" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        3. EXPERIMENTS
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-thinking" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        4. THINKING
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+              
+              
+              <article class="md-content__inner md-typeset" data-pagefind-body="">
+                
+  
+    <div class="codex-note codex-note--paper">
+      <div class="note-kicker">
+        
+          PAPER NOTES <span>· 2004</span>
+        
+      </div>
+      
+                  
+  
+  
+
+
+<h1 id="perspective-accurate-splatting">Perspective Accurate Splatting<a class="headerlink" href="#perspective-accurate-splatting" title="Permanent link">¶</a></h1>
+<h2 id="abstract">ABSTRACT<a class="headerlink" href="#abstract" title="Permanent link">¶</a></h2>
+<p>We present a novel algorithm for accurate, high quality point rendering, which is based on the formulation of splatting using homogeneous coordinates. In contrast to previous methods, this leads to perspective correct splat shapes, avoiding artifacts such as holes caused by the afﬁne approximation of the perspective projection. Further, our algorithm implements the EWA resampling ﬁlter, hence providing high image quality with anisotropic texture ﬁltering. We also present an extension of our rendering primitive that facilitates the display of sharp edges and corners. Finally, we describe an efﬁcient implementation of the entire point rendering pipeline using vertex and fragment programs of current GPUs.</p>
+<h2 id="files-links">FILES &amp; LINKS<a class="headerlink" href="#files-links" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>URL:</strong> <a href="https://cgl.ethz.ch/Downloads/Publications/Papers/2004/Zwi04/Zwi04.pdf">Open Online</a></li>
+<li><strong>Zotero Entry:</strong> <a href="zotero://select/library/items/XX6GPJH7">PDF</a></li>
+</ul>
+<h2 id="1-problems">1. PROBLEMS<a class="headerlink" href="#1-problems" title="Permanent link">¶</a></h2>
+<p>给定不规则分布的表面点 <span class="arithmatex">\({\mathbf{p}_k}\)</span> ，各点具有局部切平面、重建核 <span class="arithmatex">\(r_{k}\)</span> ，及颜色样本 <span class="arithmatex">\(f_{k}\)</span>，目标为将点样本重建为连续图像，并避免透视投影、重采样和几何尖锐特征带来的伪影．</p>
+<p>已有 <a href="../surface-splatting/">Surface Splatting</a> 在各点中心将透视投影局部仿射化，能够得到高质量的各向异性过滤，但 splat 的投影外形并非严格透视正确．在大倾角、远离视轴的位置，相邻 splat 可能在图像空间分离，出现孔洞．此外，平滑重建核难以保留尖锐边缘和角点．</p>
+<h2 id="2-method">2. METHOD<a class="headerlink" href="#2-method" title="Permanent link">¶</a></h2>
+<h3 id="point-rendering-as-a-resampling-process">Point Rendering as a Resampling Process<a class="headerlink" href="#point-rendering-as-a-resampling-process" title="Permanent link">¶</a></h3>
+<p>点采样表面可视为非均匀采样信号．在点 <span class="arithmatex">\(\mathbf{p}_k\)</span> 的局部切平面上定义二维重建核 <span class="arithmatex">\(r_k(\mathbf{u})\)</span> ，局部坐标为 <span class="arithmatex">\(\mathbf{u}=(u,v)\)</span> ，颜色样本为 <span class="arithmatex">\(f_k\)</span> ．记切平面到图像空间的投影映射为 <span class="arithmatex">\(\mathbf{M}_k\)</span> ，可得渲染：</p>
+<div class="arithmatex">\[
+g(\mathbf{x})=\sum_k f_k r_k\!\left(\mathbf{M}_k^{-1}(\mathbf{x})\right)=\sum_k f_k r_k'(\mathbf{x})
+\]</div>
+<p>其中 <span class="arithmatex">\(r_k'\)</span> 为投影到图像空间的重建核．因 <span class="arithmatex">\(g\)</span> 包含任意高频信息，直接采样会导致混叠，故先与低通滤波器 <span class="arithmatex">\(h\)</span> 卷积：</p>
+<div class="arithmatex">\[
+g'(\mathbf{x})=\sum_k f_k\left(r_k'\otimes h\right)(\mathbf{x})=\sum_k f_k\rho_k(\mathbf{x})
+\]</div>
+<p>其中 <span class="arithmatex">\(\rho_k\)</span> 为合并重建与带限步骤的 <strong>重采样滤波器（Resampling Filter）</strong>．因各核通常不满足单位分解，通常需进行归一化．</p>
+<p>选取 2D Gaussian 作为重建核和低通滤波器，其定义为：</p>
+<div class="arithmatex">\[
+\mathcal{G}_{\boldsymbol{\Sigma}}(\mathbf{x})=\frac{|\boldsymbol{\Sigma}^{-1}|^{1/2}}{2\pi}\exp\!\left(-\frac{1}{2}\mathbf{x}\boldsymbol{\Sigma}^{-1}\mathbf{x}^{\mathsf T}\right)
+\]</div>
+<p>记重建核和低通滤波器分别为 <span class="arithmatex">\(r_k=\mathcal{G}_{\mathbf{R}_k}\)</span> 和 <span class="arithmatex">\(h=\mathcal{G}_{\mathbf{H}}\)</span>  ．</p>
+<p>用仿射映射近似透视投影 <span class="arithmatex">\(\mathbf{M}_{k}\)</span> 后，图像空间重建核为：</p>
+<div class="arithmatex">\[
+r'_{k}(\mathbf{x}) = \frac{1}{|\mathbf{R}'_{k}|^{1/2}}g_{\mathbf{R}'_{k}}(\mathbf{x})
+\]</div>
+<p>对应重采样滤波器为：</p>
+<div class="arithmatex">\[
+\rho_k(\mathbf{x})=\frac{1}{|\mathbf{R}_k'|^{1/2}}\mathcal{G}_{\mathbf{R}_k'+\mathbf{H}}(\mathbf{x})
+\]</div>
+<p>一般取 <span class="arithmatex">\(\mathbf{H}=\mathbf{I}\)</span> ，称之为 <strong>EWA 重采样滤波器（EWA Resampling Filter）</strong> ． 详细推导见 <a href="../surface-splatting/#2-method">Surface Splatting</a>  ．</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/perspective-accurate-splatting-kernel-mapping.png" data-desc-position="bottom"><img alt="" src="../assets/perspective-accurate-splatting-kernel-mapping.png"></a></p>
+<figcaption>
+<p>Figure 1:  局部切平面上的重建核投影到图像空间示意图．</p>
+</figcaption>
+</figure>
+<h3 id="perspective-accurate-splatting-using-homogeneous-coordinates">Perspective Accurate Splatting Using Homogeneous Coordinates<a class="headerlink" href="#perspective-accurate-splatting-using-homogeneous-coordinates" title="Permanent link">¶</a></h3>
+<p>下面的探究如何获得准确的图像空间重建核外形，以实现视角正确 ．</p>
+<h4 id="homogeneous-coordinates-and-projective-mappings">Homogeneous Coordinates and Projective Mappings<a class="headerlink" href="#homogeneous-coordinates-and-projective-mappings" title="Permanent link">¶</a></h4>
+<p>在齐次坐标下，2D-to-2D 投影映射可写为 <span class="arithmatex">\(\mathbf{x}=\mathbf{u}\mathbf{M}^\star\)</span> ，其中 <span class="arithmatex">\(\mathbf{x},\mathbf{u}\)</span> 分别为原空间点和目标空间点齐次坐标，<span class="arithmatex">\(\mathbf{M}^\star\)</span> 为 <span class="arithmatex">\(3\times3\)</span> 投影变换 ．下面研究 <span class="arithmatex">\(\mathbf{M}^\star\)</span> 表达式：</p>
+<p>对相机空间中的点 <span class="arithmatex">\(\mathbf{p}_k\)</span> ，取切平面基向量 <span class="arithmatex">\(\mathbf{t}_u,\mathbf{t}_v\)</span> ．切平面上的三维点 <span class="arithmatex">\(\mathbf{p}=(p_{x},p_{y},p_{z})\)</span> 可表示为：</p>
+<div class="arithmatex">\[
+\mathbf{p}=(u,v,1)\begin{bmatrix}
+\mathbf{t}_u\\
+\mathbf{t}_v\\
+\mathbf{p}_k
+\end{bmatrix}=(u,v,1)\mathbf{M}_k
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{u}_{h}:=(u,v,1)\)</span> 可视为 <span class="arithmatex">\(\mathbf{p}\)</span> 在切平面上的齐次坐标 ．</p>
+<p>令投影中心为原点，图像平面为 <span class="arithmatex">\(z=1\)</span> ，则点 <span class="arithmatex">\(\mathbf{p}\)</span> 在图像平面上的透视投影为：</p>
+<div class="arithmatex">\[
+(x,y,1)=\left(\frac{p_x}{p_z},\frac{p_y}{p_z},1\right)
+\]</div>
+<p>其中 <span class="arithmatex">\(\mathbf{x}_{h}:=(x,y,1)\)</span> 可视为 <span class="arithmatex">\(\mathbf{p}\)</span> 在图像平面上的齐次坐标 ．</p>
+<p>将 <span class="arithmatex">\(\mathbf{p}\)</span> 看作齐次图像坐标，则有：</p>
+<div class="arithmatex">\[
+\mathbf{u}_{h}\mathbf{M}_{k} = (p_{x},p_{y},p_{z}) = \left(\frac{p_x}{p_z},\frac{p_y}{p_z},1\right) = \mathbf{x}_{h}
+\]</div>
+<p>即投影映射 <span class="arithmatex">\(\mathbf{M}^\star=\mathbf{M}_{k}\)</span> ，逆映射则由 <span class="arithmatex">\(\mathbf{u}_h=\mathbf{x}_h\mathbf{M}_k^{-1}\)</span> 给出．</p>
+<h4 id="implicit-conics-in-homogeneous-coordinates">Implicit Conics in Homogeneous Coordinates<a class="headerlink" href="#implicit-conics-in-homogeneous-coordinates" title="Permanent link">¶</a></h4>
+<p>Gaussian 等值线为椭圆，可用二次曲线的隐式形式表示：</p>
+<div class="arithmatex">\[
+\phi(x,y)=Ax^2+2Bxy+Cy^2+2Dx+2Ey-F=0
+\]</div>
+<p>令 <span class="arithmatex">\(\Delta=AC-B^2\)</span> ．当 <span class="arithmatex">\(A\ge0\)</span> 时，<span class="arithmatex">\(\Delta&gt;0\)</span>、<span class="arithmatex">\(\Delta=0\)</span>、<span class="arithmatex">\(\Delta&lt;0\)</span> 分别对应椭圆、抛物线、双曲线．在齐次坐标中，二次曲线矩阵形式为：</p>
+<div class="arithmatex">\[
+\mathbf{x}_h\mathbf{Q}_h\mathbf{x}_h^{\mathsf T}=0,\quad
+\mathbf{Q}_h=\begin{bmatrix}
+A &amp; B &amp; D\\
+B &amp; C &amp; E\\
+D &amp; E &amp; -F
+\end{bmatrix}, \quad \mathbf{x}_{h}=\begin{bmatrix}
+x &amp; y &amp; 1
+\end{bmatrix}
+\]</div>
+<p>当 <span class="arithmatex">\(D=E=0\)</span> ，二次曲线中心为原点，此时：</p>
+<div class="arithmatex">\[
+Ax^{2}+2Bxy+Cy^{2}=F
+\]</div>
+<p>称为 <strong>中心二次曲线（Central Conic）</strong> ．</p>
+<p>一般二次曲线可平移为中心二次曲线 ．设偏移量为 <span class="arithmatex">\(\mathbf{x}_t=(x_t,y_t)\)</span> ，由一次项为零的可得：</p>
+<div class="arithmatex">\[
+\mathbf{x}_t=\left(\frac{BE-CD}{\Delta},\frac{BD-AE}{\Delta}\right)
+\]</div>
+<p>此时中心形式为：</p>
+<div class="arithmatex">\[
+Ax^{2} + 2Bxy + Cy^{2} =F-Dx_t-Ey_t
+\]</div>
+<p>光栅化时只需测试二次曲线包围内的像素．由极值位置满足的导数关系：</p>
+<div class="arithmatex">\[
+\begin{align}
+\frac{\partial \phi}{\partial y} &amp;= 2Bx + 2Cy + 2E = 0 \\
+\frac{\partial \phi}{\partial x} &amp;= 2Ax + 2By + 2D = 0
+\end{align}
+\]</div>
+<p>计算可得紧致的轴对齐包围盒：</p>
+<div class="arithmatex">\[
+\begin{align}
+x_{\max},x_{\min}&amp;=x_t\pm\sqrt{\frac{C(F-Dx_t-Ey_t)}{\Delta}} \\
+y_{\max},y_{\min}&amp;=y_t\pm\sqrt{\frac{A(F-Dx_t-Ey_t)}{\Delta}}
+\end{align}
+\]</div>
+<h4 id="projective-mappings-of-conics">Projective Mappings of Conics<a class="headerlink" href="#projective-mappings-of-conics" title="Permanent link">¶</a></h4>
+<p>给定切平面中的二次曲线 <span class="arithmatex">\(\mathbf{u}_h\mathbf{Q}_h\mathbf{u}_h^{\mathsf T}=0\)</span> 和投影 <span class="arithmatex">\(\mathbf{x}_h=\mathbf{u}_h\mathbf{M}_k\)</span> ，代入 <span class="arithmatex">\(\mathbf{u}_h=\mathbf{x}_h\mathbf{M}_k^{-1}\)</span> 有：</p>
+<div class="arithmatex">\[
+\mathbf{x}_h\mathbf{Q}_h'\mathbf{x}_h^{\mathsf T}=0,\quad
+\mathbf{Q}_h'=\mathbf{M}_k^{-1}\mathbf{Q}_h\mathbf{M}_k^{-\mathsf T}
+\]</div>
+<p>即二次曲线在投影变换下仍为二次曲线．记：</p>
+<div class="arithmatex">\[
+\mathbf{Q}_h'=\begin{bmatrix}a&amp;b&amp;d\\b&amp;c&amp;e\\d&amp;e&amp;-f\end{bmatrix},\quad
+\mathbf{Q}''=\begin{bmatrix}a&amp;b\\b&amp;c\end{bmatrix}
+\]</div>
+<p>对投影后的二次曲线中心化得包围区域表达式：</p>
+<div class="arithmatex">\[
+(\mathbf{x}-\mathbf{x}_t)\mathbf{Q}''(\mathbf{x}-\mathbf{x}_t)^{\mathsf T}\le f-dx_t-ey_t
+\]</div>
+<p>注意到该中心形式可视为原二次曲线经过仿射变换得到，其与投影变换得到的区域具有相同边界，但曲线内部各点的映射并不相同 ．</p>
+<h4 id="application-to-gaussian-filters">Application to Gaussian Filters<a class="headerlink" href="#application-to-gaussian-filters" title="Permanent link">¶</a></h4>
+<p>实际渲染只计算 Gaussian 的有限支集．设截断值 <span class="arithmatex">\(F_g\)</span> （通常有 <span class="arithmatex">\(1&lt;F_g&lt;2\)</span> ），切平面中的截断等值线为：</p>
+<div class="arithmatex">\[
+\mathbf{u}\mathbf{R}_k^{-1}\mathbf{u}^{\mathsf T}=F_g^2
+\]</div>
+<p>在齐次坐标下可表示为：</p>
+<div class="arithmatex">\[
+\mathbf{u}_{h}\mathbf{Q}_{h}\mathbf{u}_{h}^\mathsf{T} = 0, \quad \mathbf{Q}_h=\begin{bmatrix}
+\mathbf{R}_k^{-1}&amp;\mathbf{0}\\
+\mathbf{0}&amp;-F_g^2
+\end{bmatrix}, \quad \mathbf{u}_{h}=\begin{bmatrix}
+u &amp; v &amp; 1
+\end{bmatrix}
+\]</div>
+<p>按前述方法将该等值线透视投影并平移到中心，再缩放使得右侧为 <span class="arithmatex">\(F_g^2\)</span> 可得：</p>
+<div class="arithmatex">\[
+\mathbf{Q}'''=\frac{F_g^2}{f-dx_t-ey_t}\mathbf{Q}''
+\]</div>
+<p>从而重建核在图像空间的仿射近似为：</p>
+<div class="arithmatex">\[
+r'_{k}(\mathbf{x}) = \frac{1}{|\mathbf{Q}'''|^{1/2}}g_{\mathbf({Q}''')^{-1}}(\mathbf{x}-\mathbf{x}_{t})
+\]</div>
+<p>此时重建核截断外轮廓与精确投影变换一致，如下两图所示：</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/perspective-accurate-splatting-compare-1.png" data-desc-position="bottom"><img alt="compare-1" src="../assets/perspective-accurate-splatting-compare-1.png"></a></p>
+<figcaption>
+<p>Figure 2:  上左：Gaussian 等值线精确投影变换结果；上中：视角准确仿射近似结果，最外侧等值线是正确的；上右：中心匹配仿射近似，中心附近是正确的 ．底行：中心匹配近似的一种较差情况对比 ．</p>
+</figcaption>
+</figure>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/perspective-accurate-splatting-compare-2.png" data-desc-position="bottom"><img alt="compare-2" src="../assets/perspective-accurate-splatting-compare-2.png"></a></p>
+<figcaption>
+<p>Figure 3:  点采样平面的透视投影结果对比图 ．左：视角准确仿射近似；右：中心匹配仿射近似 ．</p>
+</figcaption>
+</figure>
+<details class="note" open="open">
+<summary>Remark</summary>
+<p>与中心匹配的局部仿射近似相比，这一近似选择使指定等值线匹配，而中心 <span class="arithmatex">\(\mathbf{x}_t\)</span> 不一定是点 <span class="arithmatex">\(\mathbf{p}_k\)</span> 的精确透视投影位置，其他等值线及内部权重也并非逐点透视正确．相邻重建核在切平面上恰好接触时，其截断边界投影后仍接触，从而避免大倾角视角下的孔洞．</p>
+</details>
+<h3 id="rendering-sharp-features">Rendering Sharp Features<a class="headerlink" href="#rendering-sharp-features" title="Permanent link">¶</a></h3>
+<p>尖锐边缘与角点包含高频几何变化，仅靠平滑重建核需要极高的采样密度．为此在局部切平面中额外存储 <strong>剪裁线（Clip Line）</strong> ．相邻表面两侧的切平面相交，得到共享的剪裁线；核在剪裁线一侧正常求值，在另一侧丢弃．共享边界可避免剪裁产生新的孔洞．</p>
+<p>设剪裁线上的两个齐次点为 <span class="arithmatex">\(\mathbf{c}_h,\mathbf{d}_h\)</span> ，其投影为：</p>
+<div class="arithmatex">\[
+\mathbf{c}_h'=\mathbf{c}_h\mathbf{M}_k,\qquad
+\mathbf{d}_h'=\mathbf{d}_h\mathbf{M}_k
+\]</div>
+<p>齐次归一化后得到二维点 <span class="arithmatex">\(\mathbf{c}',\mathbf{d}'\)</span> ，取与 <span class="arithmatex">\(\mathbf{d}'-\mathbf{c}'\)</span> 垂直且指向保留侧的向量 <span class="arithmatex">\(\boldsymbol{\Sigma}\)</span> ．对图像空间像素 <span class="arithmatex">\(\mathbf{x}\)</span>，仅当：</p>
+<div class="arithmatex">\[
+(\mathbf{x}-\mathbf{c}')\cdot\boldsymbol{\Sigma}&gt;0
+\]</div>
+<p>才计算重采样核．边缘一般只需一条剪裁线，角点需要两条．</p>
+<figure>
+<p><a class="glightbox" data-type="image" data-width="90%" data-height="auto" href="../assets/perspective-accurate-splatting-clip.png" data-desc-position="bottom"><img alt="" src="../assets/perspective-accurate-splatting-clip.png"></a></p>
+<figcaption>
+<p>Figure 4:  相邻切平面交线所定义的剪裁线，以及剪裁 splat 后的尖锐边缘与角点．</p>
+</figcaption>
+</figure>
+<h3 id="implementation">Implementation<a class="headerlink" href="#implementation" title="Permanent link">¶</a></h3>
+<p>使用 GPU 顶点程序和片段程序，以 OpenGL 点基元代替四边形或三角形承载 splat ．渲染分为三遍：</p>
+<div class="steps">
+<ol>
+<li>渲染沿视线略作偏移的深度图像．</li>
+<li>只进行深度测试而不更新深度，启用颜色混合，累积各 splat 的颜色与核权重．</li>
+<li>按累积权重归一化颜色，得到最终像素值．</li>
+</ol>
+</div>
+<p>顶点程序计算 <span class="arithmatex">\(\mathbf{Q}'''\)</span>、滤波方差 <span class="arithmatex">\(\mathbf{R}_k'+\mathbf{H}\)</span> 及投影二次曲线的轴对齐包围盒，并据此设置点基元尺寸．当 <span class="arithmatex">\(\mathbf{M}_k\)</span> 条件数过大、切平面接近退化为线段，或投影二次曲线不再是椭圆时，丢弃对应 splat ．</p>
+<p>片段程序对包围盒中的每个像素计算：</p>
+<div class="arithmatex">\[
+r^2=(\mathbf{x}-\mathbf{x}_t)(\mathbf{R}_k'+\mathbf{H})^{-1}(\mathbf{x}-\mathbf{x}_t)^{\mathsf T}
+\]</div>
+<p>若 <span class="arithmatex">\(r^2&lt;F_g^2\)</span> ，通过一维查找表读取 Gaussian 权重；否则丢弃片段．剪裁 splat 时再增加剪裁线的半平面测试．</p>
+<h2 id="3-experiments">3. EXPERIMENTS<a class="headerlink" href="#3-experiments" title="Permanent link">¶</a></h2>
+<p>在 GeForceFX 5950 GPU、Pentium IV 3.0 GHz CPU 上，对约 10 万至 65 万点的对象测试．下表单位为百万 splat / 秒：</p>
+<table>
+<thead>
+<tr>
+<th>实现</th>
+<th style="text-align: right;">512×512 单遍</th>
+<th style="text-align: right;">512×512 三遍</th>
+<th style="text-align: right;">1280×1024 单遍</th>
+<th style="text-align: right;">1280×1024 三遍</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cg</td>
+<td style="text-align: right;">2.9</td>
+<td style="text-align: right;">1.4</td>
+<td style="text-align: right;">2.8</td>
+<td style="text-align: right;">1.2</td>
+</tr>
+<tr>
+<td>汇编优化</td>
+<td style="text-align: right;">11.2</td>
+<td style="text-align: right;">3.1</td>
+<td style="text-align: right;">10.4</td>
+<td style="text-align: right;">2.8</td>
+</tr>
+</tbody>
+</table>
+<p>开启 Gaussian 预滤波可以消除棋盘格纹理中的明显莫尔纹．在大倾角且偏离视轴的观察位置，中心匹配的仿射 splat 会留下孔洞；等值线匹配的 splat 保持连续覆盖．带剪裁线的 splat 还可用 6433 个点表现 CSG 对象的尖锐边缘与角点．</p>
+<h2 id="4-thinking">4. THINKING<a class="headerlink" href="#4-thinking" title="Permanent link">¶</a></h2>
+<ul>
+<li><strong>精确性边界：</strong> 透视正确的是选定 Gaussian 等值线所限定的 splat 形状，而非整个 Gaussian 函数的逐点投影．滤波仍是以 <span class="arithmatex">\(\mathbf{x}_t\)</span> 为中心、方差 <span class="arithmatex">\(\mathbf{R}_k'+\mathbf{H}\)</span> 的仿射 Gaussian 近似．</li>
+<li><strong>与 <a href="../surface-splatting/#screen-space-ewa">Surface Splatting</a> 的关系：</strong> 保留屏幕空间 EWA 的“重建核投影 + 低通滤波”框架，将原先在点中心线性化的外形估计，改为基于齐次二次曲线的截断轮廓估计．</li>
+<li><strong>采样与几何的分工：</strong> EWA 低通处理纹理缩小时的混叠；剪裁线处理几何不连续性；二次曲线投影处理极端透视下 splat 覆盖不连续的问题．三者解决的伪影不同．</li>
+<li><strong>限制：</strong> 需要计算并求逆 <span class="arithmatex">\(3\times3\)</span> 投影矩阵及二次曲线矩阵；接近退化的 splat 会被剔除．固定等值线匹配也不能保证核内部的透视精确性．</li>
+</ul>
+<p></p><div class="document-dates-plugin-wrapper document-dates-bottom"><div class="document-dates-plugin" locale=""><div class="dd-left"><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-10-01"><span class="material-icons" data-icon="doc_created"></span><time datetime="2026-10-01T13:14:07+00:00">2026-10-01</time></span><span class="dd-item" data-tippy-content="" data-tippy-raw="2026-10-01"><span class="material-icons" data-icon="doc_updated"></span><time datetime="2026-10-01T13:14:07+00:00">2026-10-01</time></span></div></div></div><p></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+    </div>
+  
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+          <div class="md-top" data-md-component="top" hidden="">
+  <div class="md-top__center">
+    <button type="button" class="md-top__button md-top__button--main" data-md-action="top">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
+      <span>Back to top</span>
+    </button>
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--nav" for="__drawer">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-left" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M9 3v18"></path></svg>
+      </label>
+    
+    
+      
+      
+      <label class="md-top__button md-top__side md-top__side--toc" for="__toc">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="lucide lucide-panel-right" viewBox="0 0 24 24"><rect width="18" height="18" x="3" y="3" rx="2"></rect><path d="M15 3v18"></path></svg>
+      </label>
+    
+  </div>
+</div>
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright © 2026 <a href="https://github.com/Sayakio" target="_blank" rel="noopener">Sayaki</a>
+    </div>
+  
+  
+    Made with
+    <a href="https://jaywhj.github.io/mkdocs-materialx/" target="_blank" rel="noopener">
+      MaterialX
+    </a>
+    
+    modified by
+    <a href="https://github.com/Sayakio" target="_blank" rel="noopener">
+      Sayaki
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      
+      
+        
+        
+          
+          
+        
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "code": null, "features": ["navigation.instant", "navigation.tabs", "navigation.tracking", "navigation.indexes", "navigation.top", "search.suggest", "search.highlight", "content.tab.link", "content.code.annotation", "content.code.copy"], "search": {"options": {"baseUrl": "../..", "bundleUrl": "../../search/", "highlight": true, "searchOptions": {}}, "provider": "pagefind"}, "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "code.collapse": "Collapse", "code.download": "Download", "code.expand": "Expand remaining # lines", "code.select": "Toggle line selection", "search.offline": "Switch to Lunr for offline search", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.44453a05.min.js"></script>
+      
+        <script src="../../javascripts/mathjax.js"></script>
+      
+        <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+      
+        <script src="https://fastly.jsdelivr.net/npm/d3@7"></script>
+      
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script>
+      
+        <script src="../../javascripts/papers-graph.js"></script>
+      
+        <script src="../../javascripts/reading-sky.js"></script>
+      
+        <script src="../../javascripts/music_player.js"></script>
+      
+        <script src="../../javascripts/extra.js"></script>
+      
+        <script src="../../javascripts/cagd-curves.js"></script>
+      
+        <script src="../../assets/document_dates/tippy/popper.min.js"></script>
+      
+        <script src="../../assets/document_dates/tippy/tippy.umd.min.js"></script>
+      
+        <script src="../../assets/document_dates/core/md5.min.js"></script>
+      
+        <script src="../../assets/document_dates/core/default.config.js"></script>
+      
+        <script src="../../assets/document_dates/core/utils.js"></script>
+      
+        <script src="../../assets/document_dates/core/core.js"></script>
+      
+    
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

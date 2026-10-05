@@ -17,7 +17,12 @@
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter1-the-rendering-pipeline/</loc>
-        <lastmod>2026-08-31</lastmod>
+        <lastmod>2026-10-05</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter11-curves%26surfaces/</loc>
+        <lastmod>2026-10-05</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -32,7 +37,7 @@
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/books/mathematics-for-3d-game-programming-and-computer-graphics/chapter4-geometry/</loc>
-        <lastmod>2026-09-06</lastmod>
+        <lastmod>2026-10-05</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -52,7 +57,12 @@
     </url>
     <url>
         <loc>https://Sayakio.github.io/Codex/papers/</loc>
-        <lastmod>2026-09-19</lastmod>
+        <lastmod>2026-10-02</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
+        <loc>https://Sayakio.github.io/Codex/papers/2dgs/</loc>
+        <lastmod>2026-10-01</lastmod>
         <changefreq>daily</changefreq>
     </url>
     <url>
@@ -86,8 +96,13 @@
         <changefreq>daily</changefreq>
     </url>
     <url>
+        <loc>https://Sayakio.github.io/Codex/papers/perspective-accurate-splatting/</loc>
+        <lastmod>2026-10-01</lastmod>
+        <changefreq>daily</changefreq>
+    </url>
+    <url>
         <loc>https://Sayakio.github.io/Codex/papers/surface-splatting/</loc>
-        <lastmod>2026-09-19</lastmod>
+        <lastmod>2026-10-01</lastmod>
         <changefreq>daily</changefreq>
     </url>
 </urlset>
